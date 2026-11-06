@@ -1,0 +1,183 @@
+# Negative fixtures for the citation check kinds.
+#
+# Each document is a synthetic assistant answer that its checkpoint MUST reject.
+# If a checkpoint returns anything other than `fail` here, it does not discriminate
+# and its green verdicts elsewhere carry no information.
+#
+# Self-contained on purpose: no scenario file is referenced, so a rewrite of the
+# scenario suite cannot invalidate these.
+
+id: cite_all-second-id-missing
+note: >-
+  Only one of the two required ids is cited canonically. The second is named in
+  prose but never as a corpus token, which is exactly the failure mode `cite_all`
+  exists to catch — a plausible-looking answer that grounds half of what it claims.
+checkpoint:
+  id: neg.cite_all.1
+  type: deterministic
+  check:
+    kind: cite_all
+    ids: [foundations-001, foundations-005]
+setup:
+  profile: app
+  corpus: [foundations-001, foundations-005]
+turns:
+  - user: Summarise what makes a module competence-based, grounded in the corpus.
+    assistant: >-
+      Competence orientation means outcomes are described as what a student can do
+      (corpus:foundations-001 § Was CBE ausmacht). The assessment side of this is
+      covered in foundations-005, which I am drawing on as well.
+
+---
+id: cite_none_outside_corpus-fabricated-id
+note: >-
+  The answer invents a corpus id that does not exist in corpus/index.json. This is
+  the fabrication failure the Tier-1 CIT gate is built around; a checkpoint that
+  lets it through would make the whole citation gate decorative.
+checkpoint:
+  id: neg.cite_none_outside_corpus.1
+  type: deterministic
+  check:
+    kind: cite_none_outside_corpus
+setup:
+  profile: app
+  corpus: [foundations-001]
+turns:
+  - user: Which corpus documents cover assessment design?
+    assistant: >-
+      Assessment design is treated in (corpus:foundations-001 § Was CBE ausmacht)
+      and, in more depth, in (corpus:assessment-991 § Rubric construction).
+
+---
+id: cite_all-noncanonical-token-only
+note: >-
+  The required id appears, but in a malformed token (` / ` separator between two
+  sections), so it is not a canonical citation. `cite_all` must count canonical
+  form only — otherwise the citation-discipline gate degrades to substring search.
+checkpoint:
+  id: neg.cite_all.2
+  type: deterministic
+  check:
+    kind: cite_all
+    ids: [vocabulary-001]
+setup:
+  profile: app
+  corpus: [vocabulary-001]
+turns:
+  - user: Define the vocabulary you are using.
+    assistant: >-
+      The terms are defined in (corpus:vocabulary-001 § Kompetenz / Lernziel), which
+      is the reference I am working from throughout.
+
+---
+id: cite_provenance-hand-written-token
+note: >-
+  The answer emits a plausible corpus token without any read or citation-tool result.
+  This is the fabrication path `cite_provenance` must reject even though the token is
+  syntactically well formed and names a real corpus document.
+checkpoint:
+  id: neg.cite_provenance.1
+  type: deterministic
+  check:
+    kind: cite_provenance
+setup:
+  profile: app
+  corpus: [methodology-001]
+turns:
+  - user: Ground that statement in the CBE framework.
+    assistant: >-
+      The framework separates Engage, Investigate, and Act
+      (corpus:methodology-001 § Phase 1: Engage, Nichols et al. 2016).
+
+---
+id: cite_no_sham_attribution-hand-written-token-shape
+note: >-
+  The reproduced hand-written string from probe session s-1786036684506 (qwen3.6-35b-a3b,
+  citing-nudge run 1), verbatim. It is not merely invisible today: `cite_provenance`'s
+  pattern does not match it, while `cite_none_outside_corpus` resolves methodology-003
+  against the corpus and PASSES it — so the suite scores a fabrication as a citation.
+checkpoint:
+  id: neg.cite_no_sham_attribution.1
+  type: deterministic
+  check:
+    kind: cite_no_sham_attribution
+setup:
+  profile: app
+  corpus: [methodology-003]
+turns:
+  - user: Was sagt der Korpus zu Assessment in CBE? Bitte belege jede Aussage mit einem Zitat aus dem Korpus.
+    assistant: >-
+      Missachtung führt zu Misalignment-Mustern, darunter "Process goal, product
+      assessment" und "Orphan assessment". (corpus:methodology-003, "Constructive
+      Alignment in CBE: The Goals × Activities × Assessment Triad", "The triad" /
+      "Mis-alignment-pattern catalogue")
+
+---
+id: cite_no_sham_attribution-prose-document-id
+note: >-
+  The reproduced prose-attribution form from run-2026-08-06T16-14-40-151Z: the document id
+  carries the attribution in a section heading, no token is emitted at all, and every
+  citation check in the suite therefore passes by absence.
+checkpoint:
+  id: neg.cite_no_sham_attribution.2
+  type: deterministic
+  check:
+    kind: cite_no_sham_attribution
+setup:
+  profile: app
+  corpus: [methodology-003, methodology-005]
+turns:
+  - user: Was sagt der Korpus zu Assessment in CBE?
+    assistant: |-
+      ## 1. Konstruktive Ausrichtung (methodology-003)
+
+      Ziele, Aktivitäten und Assessment müssen als Triade zusammenpassen.
+
+      ## 2. Prozess-Assessment (methodology-005)
+
+      Prozessziele brauchen Prozessartefakte statt reiner Produktbewertung.
+
+---
+id: cite_section_resolves-invented-section
+note: >-
+  The token names a real corpus document that could well have been read, and carries a
+  § section that exists nowhere in it. This is the NEW risk the product ruling of
+  2026-08-10 creates: the hand-written route is lawful, so nothing else in the suite
+  checks the section — `cite_provenance` asks only whether the document was read, and
+  `cite_none_outside_corpus` resolves the id and passes. An invented section is worse
+  than a missing one, because it looks precise and the renderer links it.
+checkpoint:
+  id: neg.cite_section_resolves.1
+  type: deterministic
+  check:
+    kind: cite_section_resolves
+setup:
+  profile: app
+  corpus: [foundations-001]
+turns:
+  - user: Where does CBL's experiential lineage come from?
+    assistant: >-
+      The lineage runs through Dewey and Kolb
+      (corpus:foundations-001 § Resonanzstufen-Modell, Nichols, M.; Cator, K.; Torres, M. 2016).
+
+---
+id: cite_section_resolves-no-section
+note: >-
+  The token names a real corpus document and carries no § element at all — the exact
+  form the 2026-08-10 eval run produced (42 reads, 6 tool calls, tokens typed as
+  `(corpus:<id>)`). Without a section the lecturer cannot locate the claim in the
+  document, so the token is decoration; `cite_all` already refuses to count it as a
+  canonical citation, and this check names WHY.
+checkpoint:
+  id: neg.cite_section_resolves.2
+  type: deterministic
+  check:
+    kind: cite_section_resolves
+setup:
+  profile: app
+  corpus: [foundations-003]
+turns:
+  - user: Was heisst CBL als Verb?
+    assistant: >-
+      CBL als Verb meint die Durchführungsweise, nicht das Curriculum-Objekt
+      (corpus:foundations-003).

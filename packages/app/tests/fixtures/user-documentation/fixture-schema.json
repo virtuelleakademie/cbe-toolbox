@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "runMarker": "cbe-user-documentation-capture",
+  "fixedTime": "2026-10-27T12:00:00.000Z",
+  "providerModel": "documentation-fixture-model",
+  "providerKey": "DOCS-NON-USABLE-TEST-KEY",
+  "locales": {
+    "en": {
+      "courseTitle": "Civic Energy Studio",
+      "secondaryCourseTitle": "Neighbourhood Mobility Lab",
+      "userTurn": "Help me review the challenge and its assessment connection.",
+      "assistantTurn": "We are working at the coherence check after step 3. The challenge is concrete; the assessment still needs evidence of student decision-making."
+    },
+    "de": {
+      "courseTitle": "Lernstudio Quartierenergie",
+      "secondaryCourseTitle": "Mobilitätslabor Quartier",
+      "userTurn": "Hilf mir, die Challenge und ihre Verbindung zum Assessment zu prüfen.",
+      "assistantTurn": "Wir arbeiten an der Kohärenzprüfung nach Schritt 3. Die Challenge ist konkret; im Assessment fehlt noch Evidenz für studentische Entscheidungen."
+    }
+  }
+}

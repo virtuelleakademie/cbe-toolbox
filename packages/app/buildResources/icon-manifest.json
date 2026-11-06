@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "packages/app/icon-source/cbe-toolbox-icon.svg",
+    "sha256": "7fd40de8311adba4d0259a0a53e99f9a212d982cfee1c2b3a1733456ac73911c",
+    "byteSize": 2785
+  },
+  "recipe": {
+    "path": "packages/app/scripts/icon-pipeline.mjs",
+    "sha256": "65370e2eb3b2d572b3fa589a334b98c615e8c232b8d37e8fb535f439b374c5f1"
+  },
+  "tools": {
+    "sharp": {
+      "version": "0.35.5",
+      "integrity": "sha512-Ywn4OnzGukp7CDMrp08RQ50YKmuwG47brZgIVPTvBaaAfQlRlygrRqSrxdCiL9M+LlzLBiJ68IR1QqvzHyjC7g=="
+    },
+    "prettier": {
+      "version": "3.8.3",
+      "integrity": "sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw=="
+    }
+  },
+  "outputs": [
+    {
+      "path": "icon.icns",
+      "format": "icns",
+      "representations": [
+        { "type": "icp4", "size": 16 },
+        { "type": "icp5", "size": 32 },
+        { "type": "icp6", "size": 64 },
+        { "type": "ic07", "size": 128 },
+        { "type": "ic08", "size": 256 },
+        { "type": "ic09", "size": 512 },
+        { "type": "ic10", "size": 1024 }
+      ],
+      "sha256": "f4d8146a9c79289cf8be0913ae250e1423c5fa1d3220e1c198bf9edceeb81c27"
+    },
+    {
+      "path": "icon.ico",
+      "format": "ico",
+      "representations": [16, 32, 48, 64, 128, 256],
+      "sha256": "491b7edeeae161274e8a744c4a95092ad95907bbb1348246a9f3502312d0dd1d"
+    },
+    {
+      "path": "icon.png",
+      "format": "png",
+      "dimensions": { "width": 1024, "height": 1024 },
+      "sha256": "f6a7e7b7fb6a0a0ccad8b46081dd25ba03713680d7c450033bab4f9ac1250874"
+    },
+    {
+      "path": "icons/1024x1024.png",
+      "format": "png",
+      "dimensions": { "width": 1024, "height": 1024 },
+      "sha256": "f6a7e7b7fb6a0a0ccad8b46081dd25ba03713680d7c450033bab4f9ac1250874"
+    },
+    {
+      "path": "icons/128x128.png",
+      "format": "png",
+      "dimensions": { "width": 128, "height": 128 },
+      "sha256": "2b079a1a6b85781b60fe343853ed695ce3d8946e31a002c2bc15cdf9e3f50b4a"
+    },
+    {
+      "path": "icons/16x16.png",
+      "format": "png",
+      "dimensions": { "width": 16, "height": 16 },
+      "sha256": "7f9aa7418e05f7ed6482633e908e48bcff6e9b377af050e3faa89ded41ed371e"
+    },
+    {
+      "path": "icons/256x256.png",
+      "format": "png",
+      "dimensions": { "width": 256, "height": 256 },
+      "sha256": "d464b4743e20cc3e1c40ebee70b8d0b400e9f57c57f0b6cacbd773eda7eb4423"
+    },
+    {
+      "path": "icons/32x32.png",
+      "format": "png",
+      "dimensions": { "width": 32, "height": 32 },
+      "sha256": "76a593c569f491dd71591d596e27b1a3eeaed6cc5c79d7c84c1021b5217a6af8"
+    },
+    {
+      "path": "icons/48x48.png",
+      "format": "png",
+      "dimensions": { "width": 48, "height": 48 },
+      "sha256": "d1e2d038f79c1fd6714307300aa3cb0fe2a179fdaecf9d9c383ca7ab661a3750"
+    },
+    {
+      "path": "icons/512x512.png",
+      "format": "png",
+      "dimensions": { "width": 512, "height": 512 },
+      "sha256": "284389c92332e3556cf36db8b2b005957bc1ae6d2c8ec8e3ecfb3dfa40c35b9a"
+    },
+    {
+      "path": "icons/64x64.png",
+      "format": "png",
+      "dimensions": { "width": 64, "height": 64 },
+      "sha256": "971af3aa0de9929ce14a95d8e3ed7bcedfb1cf821aef977062c34b603000f827"
+    }
+  ]
+}

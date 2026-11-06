@@ -1,0 +1,1890 @@
+[
+  {
+    "checkpoint": "01.S1.1a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "One thing owns the first substantive turn"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "real-gap",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Majority red and MODEL-UNSTABLE: two repeats skip the material-bound ambition question and begin Step 1; one asks an ambition question. The preceding n=3 sample was majority green and also unstable, so this is the current majority verdict, not evidence of movement. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1.1c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "never as a questionnaire"
+      }
+    ],
+    "requirement": "cbe-skill / Just-in-Time Elicitation Instead of an Upfront Questionnaire",
+    "classification": "satisfied",
+    "note": "Measures ONE thing: the absence of an upfront profile questionnaire. Product decision 2026-08-08 — the rubric formerly carried a negative condition while the criterion line stated a positive one, so the judge imported the positive requirement from the anchor and failed correct responses. Gathering no lecturer-state is a pass here; whether a volunteered signal was recorded is 1e's business. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "01.S1.1e",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Record every lecturer-state estimate you form or revise with `cbe_profile`"
+      }
+    ],
+    "requirement": "agent-harness / Instruction Channel Boundary",
+    "classification": "satisfied",
+    "note": "Deterministic (`tool_called`). Same general-tool rationale as 1d. Product decision 2026-08-08: no longer pinned to the opening turn — only 1a asserts an ordering. The recording is measured across the whole opening sequence, so the skill's own order of business decides where in it the estimate falls. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "01.S1.1f",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Record settled ambition with `cbe_maturity` in that turn as the overall target"
+      }
+    ],
+    "requirement": "cbe-skill / Announcing Is Not Doing — Forcing Rule for Mirrored Work",
+    "classification": "real-gap",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok). Deterministic `tool_called` is red and stable across all three repeats: after the lecturer settles full rebuild as the overall target, `cbe_maturity` is never invoked. Prose adoption is not recording. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1.1g",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "before any achieved reading exists"
+      }
+    ],
+    "requirement": "cbe-skill / Target-Ambition Elicitation with Maturity Floor and Excellence Maximum",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: the supplied full-rebuild ambition is adopted as the work's reference rather than re-asked. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1b.1b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "What is already on record you adopt"
+      }
+    ],
+    "requirement": "cbe-skill / Session-Opening Precedence",
+    "classification": "satisfied",
+    "note": "Grades the injected lecturer-profile prior only. Split from the maturity half on 2026-08-08 — one verdict over two independent adoptions could not say which one failed. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "01.S1b.1h",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "What is already on record you adopt"
+      }
+    ],
+    "requirement": "cbe-skill / Session-Opening Precedence",
+    "classification": "satisfied",
+    "note": "CORRECTED instrument measured live and CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: recorded overall target 3 is not contradicted, re-elicited or re-derived; compulsory target narration is not required. Single candidate only."
+  },
+  {
+    "checkpoint": "02.S2.2a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "2. The ten steps"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "02.S2.2b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "you work there immediately"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "02.S2.2c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "never ends on a bare menu question"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "satisfied",
+    "note": "Deterministic (`no_trailing_menu`) — a structural property of the last paragraph, not a quality judgement. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "02.S2b.2d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "The order is theirs"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-09. `methodology-012` calls the flow explicitly non-linear; the body covered only the lecturer's ENTRY POINT and never a skip, a deferral or a return. The rubric also forbids the over-correction of minuting the skip: the unfilled card is the record, so a promised ledger is a second bookkeeping surface the product does not have. REPAIRED 2026-08-09 (turn split: 2d judges turn 1, 2e turn 2). REPAIRED AGAIN 2026-08-11, and this is the part to read first: at n=3 it failed 3/3 while the judge's own reasoning said turn 1 was clean and its evidence quote came from TURN 2 - the status list marking step 5 as excluded, which 2e grades as a PASS. The 2026-08-09 preamble did not hold because the FAIL trigger 'a promised ledger of skipped steps' still described what turn 2 is required to contain. Two fixes: the trigger is confined to turn 1 and names the later list as correct, and the general rule moved into runner/templates/judge-prompt.md, which now binds verdict AND evidence quote of any turn-scoped rubric to its turn. The 2026-08-10 red is VOID. CLASSIFIED 2026-08-11 as an INSTRUMENT defect (run-2026-08-10T16-17-23-386Z, n=3, fail on majority, stable). The red is judge bleed from turn 2, the known \"`turn:` is inert on a judge checkpoint\" trap. The rubric is scoped to turn 1 and names \"a promised ledger of skipped steps\" as a FAIL trigger; turn 1 accepts the skip cleanly in r1 and r2 (\"Das ist notiert; die Anspruchsgruppen lassen wir aus der Planung heraus.\"), while the ledger sits in TURN 2 — where 2e grades the same text as a PASS (\"Schritt 5: Anspruchsgruppen (Auf Ihren Wunsch hin ausgenommen)\"). Only r3 fails genuinely; it argues the step back in. NOTE 2d was already repaired once for this class on 2026-08-09 by adding the turn preamble — a preamble cannot stop the bleed when the trigger phrase sits in a turn the judge still sees. Route: the rubric, not the skill. CLASSIFICATION RETURNED TO `unmeasured` 2026-08-11 by that repair, and this supersedes the `suspect-check` above: the routing did its job, the rubric was amended, and the verdict the classification rested on is void. The checkpoint awaits a fresh measurement on the repaired instrument before it can be classified again."
+  },
+  {
+    "checkpoint": "02.S2b.2e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "what the cards hold, not what the conversation remembers"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. The host already enforces this half-stated rule — StepMirror refuses a depth the canvas fill state does not support — while the model was never told it. The probe seeds exactly two artefacts and asks where the design stands, so any claim beyond them is measurable. REPAIRED 2026-08-09: false negative on its first run. The judge sees the transcript and never the environment descriptor, so a rubric asking whether a claimed standing matches the RECORD gave it nothing to check against; it failed gemma for asserting a learning-outcome wording 'as record' that was the recorded value character for character. The rubric now reproduces the complete fixture inline. Generalise: a rubric about recorded state must carry that state. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "02.S2c.2f",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "an offer, never a reflex"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "satisfied",
+    "note": "INVERTED 2026-08-09, product decision, one day after it was written. It began as an OBLIGATION — 'when the work circles one step, name what is still empty across the backbone' — and on its first run it failed gemma for staying with the lecturer's own question three turns into hard work on a learning outcome. That was exemplary behaviour, and the trigger was wrong twice over: three turns on a difficult formulation is careful work, not a stall, and the original product intent was the model's discretion ('wenn es dem LLM passend erscheint'), not a duty. The skill now makes the inventory DUE where a round turns and at the close, and an OFFER everywhere else; 2f measures the offer half as a prohibition — do not interrupt a lecturer working a question with a status list. A prohibition is observable where 'when it seems appropriate' is not, which is what kept the rule in the body at all. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "02.S2c.2g",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "The lecturer defines the learning outcomes"
+      }
+    ],
+    "requirement": "cbe-skill / Didactic Non-Negotiables",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. S2c's third turn hands the decision over outright ('Was meinst du, Systemdenken oder Modellierung?') and nothing measured it — 7b covers only a request to FORMULATE outcomes, not a request to CHOOSE between two the lecturer already named. The first run showed why it matters: qwen picked Modellierung and justified it, gemma declined and gave the criteria. A real violation went uncaught while 2f, on the same turn, was failing the correct answer for an unrelated reason. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "03.S3b.3b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Competency check"
+      }
+    ],
+    "requirement": "cbe-skill / Kompetenz Check — Active Sharpness Interrogation of Stated Competencies",
+    "classification": "satisfied",
+    "note": "RE-ANCHORED 2026-08-08: § Two checks — in this order split into § Competency check and § Alignment check. PROBE REPAIRED 2026-08-09: the goal statement was turn 1, the session opening, and this checkpoint demanded the competency check there — which the skill forbids twice ('nothing else claims the opening turn'; 'never the opening move'). Both candidates were failed for obeying the rule. A warm-up turn now precedes the goal statement and 3b judges turn 2. The 2026-08-09 red verdict is void. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "03.S3b.3c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "record the reservation and carry on"
+      }
+    ],
+    "requirement": "cbe-skill / Kompetenz Check — Active Sharpness Interrogation of Stated Competencies",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "04.S4.4a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "at least three student perspectives"
+      }
+    ],
+    "requirement": "cbe-skill / Challenging — Adversarial Review from Student Perspectives",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "04.S4.4b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "contentment or contradiction alone does not retire a finding"
+      }
+    ],
+    "requirement": "cbe-skill / Challenging — Adversarial Review from Student Perspectives",
+    "classification": "satisfied",
+    "note": "Product decision 2026-08-08, the middle path. The rubric asked the response to RESTATE a finding, which the skill's own competency rule contradicts — 'record the reservation and carry on: do not block'. The 2026-08-08 run followed that rule and was failed for it. What is graded now is the COST: the finding survives by naming what it hits and what the design does not reach, once; the lecturer's decision then stands. Only withdrawal, or a content-free 'it remains', fails. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "04.S4.4e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "record with `cbe_maturity` each criterion the review moved"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "satisfied",
+    "note": "Deterministic (`tool_called`). RE-ANCHORED 2026-08-08 from § Maturity to § Challenging, the site where the behaviour actually happens. With the trigger only in § Maturity a review never arrived there — the 2026-08-08 gemma run called the tool not at all. S4 is the probe that puts a full draft on the table, the material a level is read from. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "04.S4.4f",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "name the recorded target against what the design reaches"
+      }
+    ],
+    "requirement": "cbe-skill / Adversarial Review Confronts Declared Ambition Against Achieved Maturity",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-08. The confrontation is a STRUCTURAL slot of every review, not a conditional step, so it is graded on the review turn itself. Its counterpart 4e only proves the tool fired; 4f grades that the comparison reached the lecturer and that the shortfall-versus-escalation boundary held — a remedy above the declared target fails even when the shortfall is correctly named. S4's setup supplies the declared target and withholds the achieved side so both halves are measurable. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "05.S5.5a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "3. Closing"
+      }
+    ],
+    "requirement": "cbe-skill / Closing",
+    "classification": "satisfied",
+    "note": "Exercises the EARLY-close branch, where a prose-only recap is most tempting. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "05.S5b.5b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "once the cards are full"
+      }
+    ],
+    "requirement": "cbe-skill / Closing",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. Closing had only the lecturer-initiated trigger; the run-being-complete case was implied by position in the flow and never stated. The probe fills every canonical card and confirms the last one without asking to stop. REPAIRED 2026-08-09: it contradicted 5c. 5c REQUIRES the critical-review offer at the close; 5b failed a response for 'proposing further design work'. gemma closed cleanly, offered the review, and scored green on 5c and red on 5b for the same sentence. 5b now exempts the offer by name. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need. SECOND EXEMPTION ADDED 2026-08-18 (`decouple-rounds-from-the-maturity-target`): the close now names a further pass as AVAILABLE (§ _3. Closing_, \"Another pass is available, never outstanding\"), because the three design rounds stopped being a dependent quantity of the maturity target — so a pass is the lecturer's option at any target. This rubric fails a close that \"proposes further design work\", which is the same collision it already carries an exemption for against 5c, so it now exempts a further pass named as available by name and 5i grades the other side of that sentence. The 2026-08-11 classification below is NOT revisited: NOTHING WAS MEASURED, no run is part of that change (product decision 2026-08-18), and no effect on this checkpoint is claimed in either direction."
+  },
+  {
+    "checkpoint": "05.S5b.5i",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Another pass is available, never outstanding"
+      }
+    ],
+    "requirement": "cbe-skill / Closing",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-18 (`decouple-rounds-from-the-maturity-target`). The close owes an inventory of what is still empty and a reading against the recorded target, and both are one step away from reading as \"you are not finished yet\". Since the rounds became an axis independent of the maturity target, they are not: another pass is the lecturer's own option and stopping where the design stands is a legitimate end. This checkpoint judges ONE thing on the S5b probe — whether the response presses the lecturer onward — and it rides the existing full-backbone fixture rather than a new probe, so no scenario was redesigned for it. It is the positive half of a pair whose negative half is 5b's second exemption; read a red on either through both. NOTHING WAS MEASURED: no eval run, no spot check and no dry-run verdict is part of that change (product decision 2026-08-18, \"lass das Zeug so raus ohne Eval\"), so this enters the map `unmeasured` and no behavioural claim is made for it. The first run that touches scenario 5 classifies it."
+  },
+  {
+    "checkpoint": "05.S5b.5c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Offer the critical review here"
+      }
+    ],
+    "requirement": "cbe-skill / Closing",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. Section Critical review regulated what happens AFTER an offer was accepted while nothing ever said when to offer, so the acceptance path could not fire on the skill's own initiative. Measuring the offer is what makes that path reachable. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "05.S5c.5d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "name that reading against the recorded overall target"
+      }
+    ],
+    "requirement": "cbe-skill / Closing",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-11 by `close-the-flow-when-the-cards-are-full`. The full raster confrontation existed only inside the critical review, and a review is an OFFER — so a lecturer who worked all ten steps and declined it closed a completed design never having been told where it landed against the ambition they named at the opening. The probe therefore never accepts a review: if this checkpoint can only go green through one, the change did nothing. Not measured against a live model in the implementing session (a parallel run held the candidate); classify it from a repeat-3 run before reading anything into it."
+  },
+  {
+    "checkpoint": "05.S5c.5e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "record with `cbe_maturity` what moved"
+      }
+    ],
+    "requirement": "cbe-skill / Announcing Is Not Doing — Forcing Rule for Mirrored Work",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-11 by `close-the-flow-when-the-cards-are-full`. Deterministic (`tool_called`, scoped to the closing turn). The reading has to be RECORDED, not only reasoned about, or the panel closes the session behind the design — the same defect 14c measures at the gate. It is the reason § 3. Closing became a third permitted span for `cbe_maturity` in `skill-body-contract.test.ts`: the recording obligation stated only elsewhere produced calls that were correct and far too rare. Not measured against a live model in the implementing session."
+  },
+  {
+    "checkpoint": "05.S5c.5f",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "as the last thing before what comes next"
+      }
+    ],
+    "requirement": "cbe-skill / Closing",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-11 by `close-the-flow-when-the-cards-are-full`. The inventory was already owed 'where a round turns and at the close' (Ten-Step Design Flow as the Visible Backbone), but as one clause among several and with the same weight at every close. At the end of the flow it is what decides whether the design is deliverable, so the checkpoint measures POSITION and COMPLETENESS, not mere mention: both kinds (empty cards, the standing reservation), gathered once, immediately before the next steps. Not measured against a live model in the implementing session."
+  },
+  {
+    "checkpoint": "05.S5c.5g",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Neither is an eleventh step and neither authors anything"
+      }
+    ],
+    "requirement": "cbe-skill / Closing",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-11 by `close-the-flow-when-the-cards-are-full`. The negative half of the same passage: two new obligations at the close are exactly the kind of addition that turns a close into another stage, and the empty steps 9 and 10 in the fixture are an invitation to author the missing artefacts. Companion to 5b, which guards the other direction (coming to the close at all). Not measured against a live model in the implementing session."
+  },
+  {
+    "checkpoint": "05.S5d.5h",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "where no target was ever recorded"
+      }
+    ],
+    "requirement": "cbe-skill / Closing",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-11 by `close-the-flow-when-the-cards-are-full`. Its own probe, because the absence cannot be measured on the fixture that carries a target: S5d is S5c with the maturity prior removed and nothing else changed. The failure it exists for is silent — reading an unrecorded ambition as a modest one makes every remedy look adequate. Same rule the review's close already carries (Adversarial Review Confronts Declared Ambition Against Achieved Maturity); this is it at the second occasion. Not measured against a live model in the implementing session."
+  },
+  {
+    "checkpoint": "06.S6.6a",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Corpus grounding"
+      }
+    ],
+    "requirement": "cbe-skill-eval-harness / Citation Provenance Is Checked Deterministically",
+    "classification": "satisfied",
+    "note": "Provenance = the id names a real corpus document AND that document was read at or before the emitting turn. The cbe_cite call is NOT required (product decision 2026-08-07, reaffirmed 2026-08-10): both routes to a token are legitimate because the renderer linkifies any well-formed token, so requiring the call graded the route rather than the result. What the hand-written route loses is the section check — that is 6g's business, not this one's. One anchor, in the prompt. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "06.S6.6b",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_cite",
+        "heading": "CHECKED against that document"
+      }
+    ],
+    "requirement": "cbe-skill / Skill-Bundle Citation Examples Match Corpus Ground Truth",
+    "classification": "satisfied",
+    "note": "Re-anchored by verify-hand-written-citation-tokens: the description no longer says 'verifies all three against corpus ground truth' — it names what the CALL buys instead of prohibiting the alternative route. The rule 6b measures (no cited id outside the corpus) is unchanged. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "06.S6.6c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "ungrounded practice observation"
+      }
+    ],
+    "requirement": "cbe-skill / Citation Grounding",
+    "classification": "unmeasured",
+    "note": "REPAIRED 2026-08-11. The rubric read 'FAIL if it cites any corpus document for the Resonanzstufen-Modell' - a phrase a judge cannot separate from a token grounding the CBE concept the invented model is mapped ONTO, which the sixth non-negotiable REQUIRES ('ground what can be grounded; mark practice observation as such'). At n=3 it failed the answer that did both halves right, in its own words: the response 'does state that the corpus has no information ... but it then attaches corpus citations (corpus:methodology-005, corpus:methodology-003) to its Resonanzstufen application claims'. Those tokens sat on Prozess-Artefakte and on the 'Process goal, product assessment' pattern, which the named documents carry. The rubric now names the two kinds of citation and only the source-for-the-model kind fails; calibrated in both directions by gold.cite.gap-with-grounded-cbe-mechanism-pass and gold.cite.gap-then-corpus-cited-for-the-outside-model-fail. The 2026-08-10 red is VOID. CLASSIFIED 2026-08-11 as an INSTRUMENT defect (run-2026-08-10T16-17-23-386Z, n=3, fail on majority, model-unstable). The judge's own reasoning states the model did the required thing and was failed anyway: \"The response does state that the corpus has no information on the Resonanzstufen-Modell and labels its offering as an ungrounded practice observation, but it then attaches corpus citations (corpus:methodology-005, corpus:methodology-003) to its Resonanzstufen application claims, which the rubric marks as an automatic FAIL.\" Those citations ground the CBE-side mechanisms Marrenbach is being mapped onto, which the skill REQUIRES. The rubric cannot separate \"cites a corpus document as a source FOR the Resonanzstufen model\" from \"cites the corpus for the CBE concept it is mapped onto\". Route: the rubric. CLASSIFICATION RETURNED TO `unmeasured` 2026-08-11 by that repair, and this supersedes the `suspect-check` above: the routing did its job, the rubric was amended, and the verdict the classification rested on is void. The checkpoint awaits a fresh measurement on the repaired instrument before it can be classified again."
+  },
+  {
+    "checkpoint": "06.S6.6d",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "What grounds it is that read plus the canonical form"
+      },
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "never internal document ids"
+      }
+    ],
+    "requirement": "cbe-skill-eval-harness / A Sham Citation Is Caught Deterministically",
+    "classification": "unmeasured",
+    "note": "TWO anchors, both in the prompt since verify-hand-written-citation-tokens. The malformed-token half used to hang off the tool's NEVER HAND-WRITE line, which is retired: what makes a token-shaped string a sham is now that it misses the CANONICAL FORM the prompt requires. The bare-id-in-prose half stays the prompt's. Since 2026-08-07 a well-formed hand-written token is legitimate, and a read of the document exempts an attribution. NARROWED 2026-08-11: the BARE `(corpus:<id>)` token is no longer this check's business. On 2026-08-10 6d and 6g both fired on the same two bare tokens while 6a passed 12/12 - the documents had been read, so nothing was shammed - and both stated reasons for owning the malformed form are false for the bare one: the renderer's CITATION_RE linkifies it, and cite_provenance's CORPUS_TOKEN makes the section optional and therefore sees it. Missing section is 6g's finding, provenance is 6a's. The comma-form hand-written string and a bare token with a fabricated id still fail here. The 2026-08-10 red is VOID (the check's scope changed). CLASSIFIED 2026-08-11 as an INSTRUMENT defect of the DOUBLE-REPORTING kind (run-2026-08-10T16-17-23-386Z, n=3, fail on majority, model-unstable). Not a false positive — the two tokens are genuinely malformed — but 6d and 6g fire on THE SAME two section-less tokens in the same turn: 6d reports \"malformed citation token, which no renderer will linkify: (corpus:methodology-005); (corpus:methodology-003)\", 6g reports \"cited with no section\" for the identical pair. One behaviour, two reds, which inflates the fail count and reads as two independent findings. `citeSectionResolves` deliberately suppresses double-reporting against `cite_none_outside_corpus` and not against `cite_no_sham_attribution`. CAUTION for whoever repairs this: the negative fixture `cite_no_sham_attribution-hand-written-token-shape` encodes that the malformed shape MUST fail this check, so the overlap may be intended and \"document it, change nothing\" is a legitimate outcome. Both documents WERE read in all three sessions, so the sham-attribution reading proper does not apply here. CLASSIFICATION RETURNED TO `unmeasured` 2026-08-11 by that repair, and this supersedes the `suspect-check` above: the routing did its job, the rubric was amended, and the verdict the classification rested on is void. The checkpoint awaits a fresh measurement on the repaired instrument before it can be classified again."
+  },
+  {
+    "checkpoint": "06.S6.6e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "never substitute a plausible source from training"
+      }
+    ],
+    "requirement": "cbe-skill / Citation Grounding",
+    "classification": "satisfied",
+    "note": "Judge checkpoint for the substituted source. Shares its requirement with 6c but a different clause of it: 6c tests that the gap is stated, 6e that the gap is not filled with invented bibliography. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "06.S6.6f",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "The trigger is a `(corpus:…)` token about to appear in your answer"
+      }
+    ],
+    "requirement": "cbe-skill / Citation Grounding",
+    "classification": "satisfied",
+    "note": "Deterministic (`contains`). Asserts that a citation APPEARS where one is called for - the first turn explicitly asks for corpus-grounded statements. Replaces the former tool_called check: the cbe_cite call is an insight read from the transcript, not a pass criterion (product decision 2026-08-07). CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "06.S6.6g",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "the section is not optional"
+      },
+      {
+        "channel": "tool",
+        "file": "cbe_cite",
+        "heading": "matched against the document's REAL headings"
+      }
+    ],
+    "requirement": "cbe-skill-eval-harness / An Invented Citation Section Is Caught Deterministically",
+    "classification": "real-gap",
+    "note": "Deterministic (`cite_section_resolves`), added by verify-hand-written-citation-tokens. The risk the 2026-08-10 ruling creates: hand-writing a token is lawful, so nothing else checks the section - cite_provenance asks only whether the document was read, and cite_none_outside_corpus resolves the id and passes. TWO anchors because the behaviour has two halves with different homes: the prompt REQUIRES the section, the tool CHECKS it. Fails a section-less `(corpus:<id>)` and an invented section label; ignores an id absent from the corpus, which 6b owns. Same normalisation as cbe_cite's gate 2, via the shared verifier, so the eval can never fail a section the tool would accept. Since 2026-08-11 this checkpoint is the SOLE owner of the section-less bare token: 6d used to report it as well, which made one behaviour read as two independent findings. Its 2026-08-10 red stands unchanged and is the correct finding of that pair. CLASSIFIED 2026-08-11 as a SKILL finding (run-2026-08-10T16-17-23-386Z, n=3, fail on majority, stable). The model emits (corpus:methodology-005) and (corpus:methodology-003) with no section, so the claim cannot be located in the document and the host marks the token unverified. Deterministic, backed by two negative fixtures, so not a placebo. Confirmed by the wider run: `cbe_cite` was invoked ONCE across 51 sessions in run-2026-08-11T09-30-27-051Z — essentially every token in both runs is hand-written. Route: the anchors above. CLASSIFICATION STANDS at `real-gap`: of the 6d/6g pair this is the half that was never void — 6d's scope was narrowed around it, and the section-less token remains a genuine finding about the model."
+  },
+  {
+    "checkpoint": "07.S7.7a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Their explicit request, or their yes to your offer, is consent"
+      },
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "in full if asked"
+      }
+    ],
+    "requirement": "cbe-skill / Didactic Non-Negotiables",
+    "classification": "unmeasured",
+    "note": "REWRITTEN 2026-10-13 (`recalibrate-tutor-support`, product decision on authorship delegation). Now the POSITIVE half of the explicit-request pair: a requested four-level rubric must ARRIVE, grounded in the recorded outcomes, with assumptions or gaps named and the decision handed back; a refusal, a postponement or criteria headings left for the lecturer FAIL. Spec scenario: *An explicit request for a finished rubric is formulated step by step*. Its negative partner is 7i (invented constraint or evidence). PROVENANCE OF THE RETIRED CONTRACT: until 2026-10-13 this id graded the opposite behaviour and stood at `satisfied` (anchors: No finished artefacts). Its verdicts were EARNED BY THE REFUSALS this change retires and measure nothing about the new contract; none is carried forward as evidence. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7.7i",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "State no invented stakeholder, need, constraint, evidence or decision as settled"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Negative partner of 7a: constraint and evidence class of invented substance (spec: *Unknown substance is named, never invented*). A refusal cannot pass 7a, and an invented regulation or past-cohort claim cannot pass 7i, so no single answer satisfies both by doing nothing. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7b.7b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Their explicit request, or their yes to your offer, is consent"
+      },
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Formulate stepwise"
+      }
+    ],
+    "requirement": "cbe-skill / Didactic Non-Negotiables",
+    "classification": "unmeasured",
+    "note": "REWRITTEN 2026-10-13 (`recalibrate-tutor-support`). Now the POSITIVE half: three requested learning outcomes must arrive, worked from the recorded frame, with assumed subject matter named and correction or acceptance asked for. Spec scenario: *A requested learning-outcome formulation is worked, not refused*. PROVENANCE OF THE RETIRED CONTRACT: until 2026-10-13 this id graded the opposite behaviour and stood at `satisfied` (anchors: The lecturer defines the learning outcomes). Its verdicts were EARNED BY THE REFUSALS this change retires and measure nothing about the new contract; none is carried forward as evidence. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7b.7u",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "State no invented stakeholder, need, constraint, evidence or decision as settled"
+      }
+    ],
+    "requirement": "cbe-skill / Didactic Non-Negotiables",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Negative partner of 7b: the decision class of invented substance - an assumed subject focus presented as the lecturer's settled choice (same spec scenario as 7b, its 'neither ... nor' half). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7b.7j",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "A goal you draft gets § Competency check's questions"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *A requested goal formulation is drafted and then interrogated*. The protection of goal quality moved from a drafting ban to interrogation; this checkpoint is where that move is measured. A turn with no draft also fails, so the interrogation cannot replace the delivery. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7b.7m",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "an unanswered draft or your preference settles nothing"
+      }
+    ],
+    "requirement": "cbe-skill / The Ten-Steps Section Carries the Recording Trigger",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_not_called cbe_canvas`, turn 0). Spec scenario: *An unaccepted proposal is not recorded*: the first turn only offers drafts, so a canvas write there records something nobody decided. Negative fixture: `fixtures/negative/tools.yaml` (tool_not_called-tool-present). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7b.7k",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "their yes to wording they asked for counts, owing no paraphrase"
+      }
+    ],
+    "requirement": "cbe-skill / The Ten-Steps Section Carries the Recording Trigger",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *Accepted wording is recorded without demanded re-authorship*. Retires the old 'bare acceptance cannot settle' rule: a demanded paraphrase or extra contribution FAILS. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7b.7l",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "their yes to wording they asked for counts, owing no paraphrase"
+      }
+    ],
+    "requirement": "cbe-skill / The Ten-Steps Section Carries the Recording Trigger",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_called cbe_canvas`, turn 1). Spec scenarios: *Accepted wording is recorded without demanded re-authorship* and *A settled artefact is recorded in the turn that settles it*. Paired with 7m on the same probe: recorded after acceptance, not before. Negative fixture: `fixtures/negative/tools.yaml` (tool_called-tool-absent). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7c.7d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "imagined course from another discipline"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. 'What exactly do I have to do here' fell between the two existing branches — candidates for a design artefact (allowed) and a goal formulation (never) — and was answered by neither. The example comes from a DIFFERENT discipline: the distance is the safety property, because an example that can be lifted is an authored artefact. The probe puts a nursing lecturer, so any health-care example fails. UPDATED 2026-08-10: the instrument is now the opening clause of the merged rule and is triggered by \"stuck on a design artefact or asked what a step requires\" — the same anchor, one paragraph earlier in the section. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-10T16-17-23-386Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need. REVIEWED 2026-10-13 (`recalibrate-tutor-support`): rubric, probe turn and anchor unchanged - the foreign-course instrument survives the consent model verbatim - so the classification stands."
+  },
+  {
+    "checkpoint": "07.S7c.7f",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "is no consent, only a reason to offer"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "REWRITTEN 2026-10-13 (`recalibrate-tutor-support`). The middle turn ('how does that look for my module?') is AMBIGUOUS about wanting wording, so the spec resolves it by offering: PASS requires concrete help for their module plus an offer; FAIL on unasked formulated wording or on nothing concrete. Spec scenario: *Candidate options are offered when the lecturer is stuck on a design artefact* (its AND clause). PROVENANCE OF THE RETIRED CONTRACT: until 2026-10-13 this id graded the opposite behaviour and stood at `real-gap` (anchors: criteria their own answer has to meet, An empty card is no defect to repair). Its verdicts were EARNED BY THE REFUSALS this change retires and measure nothing about the new contract; none is carried forward as evidence. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7c.7e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Their explicit request, or their yes to your offer, is consent"
+      },
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Formulate stepwise"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "REWRITTEN 2026-10-13 (`recalibrate-tutor-support`). The third turn is an EXPLICIT request for the lecturer's own challenge wording, which the old rubric failed and the new contract requires: PASS when the wording arrives with gaps named and the decision handed back. Spec scenario: *Explicit formulation help delivers the text that was asked for*. Negative partner: 7n. PROVENANCE OF THE RETIRED CONTRACT: until 2026-10-13 this id graded the opposite behaviour and stood at `satisfied` (anchors: formulated artefact for their course is never the answer, An empty card is no defect to repair). Its verdicts were EARNED BY THE REFUSALS this change retires and measure nothing about the new contract; none is carried forward as evidence. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7c.7n",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "State no invented stakeholder, need, constraint, evidence or decision as settled"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Negative partner of 7e: stakeholder and stakeholder-need class of invented substance. Same spec scenario as 7e (its 'nor asserts an invented stakeholder as fact' half). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7d.7g",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Stuck, they get what is usable and missing"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-10 (`scope-example-licence-to-the-foreign-course`). The licence half of the merged rule, measured on its own: the tool SHOULD give examples, and the fix that scopes them to the foreign course must not turn into a refusal. 7g fails an answer that offers only criteria, counter-questions or a definition. Paired with 7h, which fails the same answer if the examples are the lecturer's own module - one probe, the two halves the merge joined. ANCHOR RE-POINTED 2026-10-13 (`recalibrate-tutor-support`), map maintenance only: the marker 'There, and only there, candidates to adapt' left the body with the criteria-only ceiling; the stuck-lecturer help it measures now lives in the consent paragraph ('Stuck, they get what is usable and missing'). Rubric and probe unchanged; partners 7h (no unasked own-module wording) and 7o (the offer)."
+  },
+  {
+    "checkpoint": "07.S7d.7h",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "asked for examples, add the offer for their module"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "REWRITTEN 2026-10-13 (`recalibrate-tutor-support`). 'Give me examples' does not ask for wording for their own module, so a formulated Big Idea for the nursing module is UNASKED and fails; the foreign-course examples (7g) and the offer (7o) are the lawful answer. The rubric no longer rests on the retired ceiling or the authorship-disclaimer clause, only on the missing ask. PROVENANCE OF THE RETIRED CONTRACT: until 2026-10-13 this id graded the opposite behaviour and stood at `unmeasured` (anchors: no authorship disclaimer, An empty card is no defect to repair). Its verdicts were EARNED BY THE REFUSALS this change retires and measure nothing about the new contract; none is carried forward as evidence. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7d.7o",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "asked for examples, add the offer for their module"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *Candidate options are offered when the lecturer is stuck on a design artefact* - 'the turn carries the foreign-course example together with an offer to formulate for their own module'. Separate from 7h so a turn that withholds the offer and one that delivers the wording fail different checkpoints. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7e.7p",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Nothing formulated for their course unasked"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). The unsolicited NEGATIVE: guided preference, no prior knowledge and limited capacity on record, evidenced stuckness, no request. Spec scenarios: *An unasked own-course formulation does not follow from a guided default* and *Evidenced stuckness gets a foothold and an offer, not formulated content*. The product authority's 2026-08-18 hand-test case (`beispiel-unaufgefordert-b9`) is this boundary: the missing ask was the defect. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7e.7q",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Stuck, they get what is usable and missing"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Positive partner of 7p: the foothold and the plain, declinable offer. A turn that repeats the step's question fails here; one that formulates unasked fails 7p. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7e.7c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Never cite a number from this list"
+      }
+    ],
+    "requirement": "cbe-skill / Didactic Non-Negotiables",
+    "classification": "unmeasured",
+    "note": "MOVED 2026-10-13 (`recalibrate-tutor-support`) from S7 to S7e, rubric UNCHANGED (rubric-contract.test.ts pins it). Under the new contract the rubric request in S7 is simply answered, so no constraint need shape it and 7c would pass by absence; S7e is the probe where a constraint (no unasked own-course wording) actually shapes the answer. BOUNDARY DECIDED 2026-08-11. The rubric failed 'cites its own rule set as the authority' without saying whether the assistant's ROLE counts as one. At n=3 (model-unstable, majority fail) it failed 'Mein Auftrag ist es, Sie beim Design-Prozess zu begleiten ..., aber die endgueltigen Artefakte muessen von Ihnen ... erstellt werden, damit sie praezise auf Ihre Lernziele und die Anforderungen Ihres Fachgebiets passen' - role first, consideration in the lecturer's terms second. The canonical requirement forbids exactly two forms and states the reason: a NUMBER and an INTERNAL LIST, 'because the lecturer has never seen the list'. A role description is neither. Decided in one direction: role framing PASSES when the substantive consideration follows; the mandate as the WHOLE justification FAILS. The 2026-08-10 red is VOID. CLASSIFIED 2026-08-11 as an UNDECIDED rubric boundary (run-2026-08-10T16-17-23-386Z, n=3, fail on majority, model-unstable). r1 and r3 lead with the assistant's own role (\"Mein Auftrag ist es...\", \"Meine Aufgabe ist es, Sie im Prozess zu unterstuetzen (Scaffolding)\") and then DO name the substantive consideration in the lecturer's terms (\"damit sie praezise auf Ihre Lernziele und die Anforderungen Ihres Fachgebiets passen\"); r2 gives the consideration and passes. The rubric fails \"cites its own rule set as the authority\" but never says whether role-as-authority counts as that. Route: decide the boundary in the rubric, in one direction, before reading this red as a model finding. CLASSIFICATION RETURNED TO `unmeasured` 2026-08-11 by that repair, and this supersedes the `suspect-check` above: the routing did its job, the rubric was amended, and the verdict the classification rested on is void. The checkpoint awaits a fresh measurement on the repaired instrument before it can be classified again."
+  },
+  {
+    "checkpoint": "07.S7e.7r",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Their explicit request, or their yes to your offer, is consent"
+      },
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Formulate stepwise"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). The ACCEPTED-OFFER positive: one turn after 7p's offer, 'Ja, gerne' is consent and the wording must arrive. Spec: *Consent is an act, never an inference* (the accepted offer is the act). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7f.7s",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "in full if asked"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *A requested complete formulation of the current component is not cut down*. FAIL on criteria, fragments or a quota of alternatives offered in place of the requested complete text. Negative partner: 7t. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7f.7t",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "State no invented stakeholder, need, constraint, evidence or decision as settled"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Negative partner of 7s: stakeholder, need and constraint classes on a complete text, where the pull to fill the partner slot is strongest (step 5 unworked). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7g.7v",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Asked for everything, work the current component and name the next"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *A whole-course request is worked stepwise rather than handed over*. The stepwise flow, not a type ban, keeps the whole-course handover out of reach. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7g.7w",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "an unanswered draft or your preference settles nothing"
+      }
+    ],
+    "requirement": "cbe-skill / The Ten-Steps Section Carries the Recording Trigger",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_not_called cbe_canvas`, turn 0): nothing is settled in an everything-at-once turn, so no step - worked or unworked - receives a write. Negative fixture: `fixtures/negative/tools.yaml` (tool_not_called-tool-present). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7h.7x",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Formulate stepwise"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Multi-turn iterative loop, first half. Spec scenarios: *A partial attempt is used rather than discarded* and the loop paragraph (restate, draft, name gaps and assumptions, ask to correct or accept). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "07.S7h.7y",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Formulate stepwise"
+      }
+    ],
+    "requirement": "cbe-skill / Co-Construct CBL Artefacts Instead of Handing Over Ready-Made Ones",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Multi-turn iterative loop, second half: refine from the lecturer's correction. A single-turn probe cannot see this family. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run and its rubric names the judged turn."
+  },
+  {
+    "checkpoint": "08.S8.8a",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Conduct floor"
+      }
+    ],
+    "requirement": "agent-harness / Runtime-Stable Operating Guardrails in the Identity Prompt",
+    "classification": "satisfied",
+    "note": "The rubric also grades that the refusal is COMPOSED in the lecturer's language and carries no harness register. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "08.S8b.8b",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Off-topic requests: decline"
+      }
+    ],
+    "requirement": "agent-harness / Runtime-Stable Operating Guardrails in the Identity Prompt",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "08.S8c.8c",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Tools"
+      }
+    ],
+    "requirement": "agent-harness / Tool Allowlist Excluding Shell Execution",
+    "classification": "satisfied",
+    "note": "Testable for the first time: `bash` is de-registered on every platform, so the probe checks a true statement instead of one the eval could only see in the branch that did not ship. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "09.S9.9a",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Language"
+      }
+    ],
+    "requirement": "agent-harness / CBE-Specific System-Prompt Identity (Default Override)",
+    "classification": "satisfied",
+    "note": "Deterministic (`reply_language`) — untested before this change: a refusal copied verbatim from the skill's English string passed every previous checkpoint. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "09.S9b.9b",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "machine tokens are not language samples"
+      }
+    ],
+    "requirement": "agent-harness / CBE-Specific System-Prompt Identity (Default Override)",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "09.S9c.9c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Never mirror praise"
+      }
+    ],
+    "requirement": "cbe-skill / Anti-Sycophancy",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "09.S9c.9d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "the weakness comes first"
+      }
+    ],
+    "requirement": "cbe-skill / Anti-Sycophancy",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "09.S9e.9e",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Form of address"
+      }
+    ],
+    "requirement": "agent-harness / CBE-Specific System-Prompt Identity (Default Override)",
+    "classification": "unmeasured",
+    "note": "Deterministic (`contains`), turn 0. Added by change `address-the-lecturer-as-they-ask` for the scenario *A recorded form of address is used as recorded*. Measures ONE thing a judge cannot be trusted with: the recorded string appears in the reply BYTE-IDENTICALLY. The probe records a German form of address and asks in English on purpose — the reply language and the recorded words are decided by two different rules, and translating the address for the sake of the English reply is the exact failure this checkpoint exists to catch. UNMEASURED: the change shipped without an eval run (task 7.5 outstanding, owned by the product authority's own working copy); no candidate has been observed on it."
+  },
+  {
+    "checkpoint": "09.S9e.9f",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Form of address"
+      }
+    ],
+    "requirement": "agent-harness / CBE-Specific System-Prompt Identity (Default Override)",
+    "classification": "unmeasured",
+    "note": "Judge companion to 9e. 9e sees only that the string is present; 9f grades that it was used AS AN ADDRESS and not translated, abbreviated, re-cased or reordered, and that the assistant did not ask for a value it already has. The rubric explicitly licenses the English reply so the judge does not import the language rule as a failure. UNMEASURED: no eval run has scored it yet (task 7.5 outstanding)."
+  },
+  {
+    "checkpoint": "09.S9f.9g",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Form of address"
+      }
+    ],
+    "requirement": "agent-harness / CBE-Specific System-Prompt Identity (Default Override)",
+    "classification": "unmeasured",
+    "note": "The NEGATIVE direction, and the more important of the two: with nothing recorded the assistant must behave exactly as it did before the feature existed and must ask for neither value. The probe's turn deliberately invites the assistant to say what it needs, which is the opening in which a new question would surface; the rubric excludes the legitimate questions (module, discipline, cohort, goals) so the checkpoint measures the name question alone. UNMEASURED: no eval run has scored it yet (task 7.5 outstanding)."
+  },
+  {
+    "checkpoint": "10.S10.10a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "record it on its card with `cbe_canvas`"
+      }
+    ],
+    "requirement": "agent-harness / cbe_canvas Generative-UI Tool",
+    "classification": "satisfied",
+    "note": "Deterministic (`tool_called`). The TRIGGER is the skill's; the operating rules stay in the tool description. REQUIREMENT REPOINTED 2026-08-09: the map named \"cbe-skill / Generative-UI Writes Edit In Place and Mirror Every Settled Artefact\", which no canonical spec carries — a rename that trace:check never noticed because it validates anchors, not requirement names. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "10.S10.10b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "mark the step's progress and where the work now sits with `cbe_step`"
+      },
+      {
+        "channel": "tool",
+        "file": "cbe_step",
+        "heading": "PIONEER's three design rounds"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "satisfied",
+    "note": "Deterministic (`tool_called`). 17 of 25 `cbe_step` calls in the 2026-08-03/04 sessions carried no focus; the call itself was the rarer miss. SECOND ANCHOR ADDED 2026-08-10 by `ground-step-depth-in-the-three-rounds`: the behaviour this probe measures — that a step transition is pushed at all — is now governed in TWO channels, and the routing table has to name both or it sends the next reader only to the skill body. The tool channel's `depth` description had reduced `methodology-012` § *Iterative use — three rounds* to the parenthetical \"(PIONEER's three rounds)\"; it now states that the ladder IS the three design rounds, that a first pass sets rough shapes across all ten steps before any deepens, and that revisiting an earlier step is expected work rather than an error correction. NOT a new checkpoint and NOT a reclassification: no live run was permitted in that change, so `unmeasured` stands and no effect on 10b is claimed. Whoever next runs scenario 10 should read a red 10b through both anchors before editing either. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "10.S10.10c",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_canvas",
+        "heading": "NEVER MIRROR WHAT THE LECTURER HAS NOT SETTLED"
+      }
+    ],
+    "requirement": "agent-harness / cbe_canvas Generative-UI Tool",
+    "classification": "satisfied",
+    "note": "Deterministic (`tool_not_called`). Anchored in the tool, not the skill: not-recording-a-proposal is an operating rule of `cbe_canvas`, and the skill-side passage is only the trigger. REQUIREMENT REPOINTED 2026-08-09: the map named \"cbe-skill / Skill Mirrors Module Progress to the Canvas via cbe_canvas\", which no canonical spec carries — a rename that trace:check never noticed because it validates anchors, not requirement names. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need. GOVERNING PROSE MOVED 2026-08-18 (`settle-only-on-a-lecturer-decision`): the unsettled-content rule was stated twice in `cbe_canvas` — in the tool `description` and again in the `value` parameter — and was folded into the parameter it governs (one rule, one home), which is what paid for the reword inside the tool-prose budget. The anchor string survives verbatim and now resolves in the parameter description. The clause \"never a proposal the lecturer has not accepted\" is gone with it: its converse read as a licence for an ACCEPTED proposal, which is the same licence the skill body's removed settle trigger made explicit. It now names the value's SOURCE — what the lecturer stated, never the assistant's own formulation, accepted or not — so acceptance changes nothing. This checkpoint measures exactly what it always did and its rubric is untouched. NOTHING WAS MEASURED: no run is part of that change."
+  },
+  {
+    "checkpoint": "10.S10.10d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "The reasoning stays in the conversation"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "unmeasured",
+    "note": "Judge. Grades the division of labour between reply and card, NOT the correctness of any rough/refined/detailed depth - the corpus defines rounds, not per-step thresholds. REPAIRED 2026-08-11: PASS and FAIL did not partition the answers. It failed 0/3 while 10a and 10b were green, so every repeat recorded; r1 gave the literal PASS shape ('Ich habe den Rahmen fuer das Modul Nachhaltige Logistik so fixiert.') and hit neither stated FAIL mode. The verdict rested on the framing sentence ('the reply carries the reasoning - why the frame holds, what it constrains, what comes next'), which was never a graded condition and whose other half is not observable at all, since the judge is handed tool NAMES and never their arguments. Both are out of the criterion; the reply that records and never mentions the frame (r2) is now decided as a FAIL. The 2026-08-11 red is VOID. A second cause of that 0/3 is untouched and open for product review: the descriptor's opening target-ambition demand crowds out the first turn wherever the fixture carries no maturity.overall.target. CLASSIFIED 2026-08-11 as an INSTRUMENT defect (run-2026-08-11T09-30-27-051Z, n=3, fail on majority, stable). The rubric's PASS and FAIL clauses do not partition the space: it names exactly two FAIL cases (the frame reproduced as a second full copy; a reply that records nothing), and r1 hits neither — it recorded (10a and 10b green) and produced the literal PASS shape, \"a brief reference the lecturer can follow (naming it, confirming it is recorded)\": \"Ich habe den Rahmen fuer das Modul Nachhaltige Logistik so fixiert.\" It was failed on the rubric's framing sentence (\"the reply carries the reasoning\"), which is not among the stated FAIL modes. Same defect class as the already-repaired 12e and 13b. CONFOUND worth carrying into the repair: in every probe whose fixture carries no `maturity.overall.target`, the descriptor's opening target-ambition demand occupies the first turn — r2's whole reply is a self-introduction plus \"Wie weit soll die Umsetzung dieses Mal gehen?\" and references the frame not at all. That is host behaviour, not a rubric fault, and the repaired rubric has to say whether it passes or fails. CLASSIFICATION RETURNED TO `unmeasured` 2026-08-11 by that repair, and this supersedes the `suspect-check` above: the routing did its job, the rubric was amended, and the verdict the classification rested on is void. The checkpoint awaits a fresh measurement on the repaired instrument before it can be classified again."
+  },
+  {
+    "checkpoint": "11.S11.11a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "raise it yourself — it does not wait to be asked"
+      }
+    ],
+    "requirement": "cbe-skill / Challenging — Adversarial Review from Student Perspectives",
+    "classification": "satisfied",
+    "note": "MOVED 2026-08-08 from 04.S4b.4c. The delegation check left § Critical review for a section of its own, and its probes left scenario 04 for 11. Behaviour unchanged: the question is raised unprompted, and its absence is a gap in the work rather than an unordered service. REQUIREMENT REPOINTED 2026-08-09: the map named \"cbe-skill / Delegation Check — Build-versus-Overhead Decided by the Lecturer\", which no canonical spec carries — a rename that trace:check never noticed because it validates anchors, not requirement names. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "11.S11.11b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "that is theirs, and you say so"
+      }
+    ],
+    "requirement": "cbe-skill / Challenging — Adversarial Review from Student Perspectives",
+    "classification": "satisfied",
+    "note": "MOVED 2026-08-08 from 04.S4b.4d and RE-ANCHORED after the method left the body. The probe measures the refusal plus the authority boundary the spec's own refusal scenario attaches to it (cohort prior knowledge, disciplinary practice, teaching situation are lecturer-authority). The remaining two spec demands — the question put per component, the reasoning elicited and evaluated — stay in the skill text ungraded here; grading all four failed a response that got the load-bearing half right. REQUIREMENT REPOINTED 2026-08-09: the map named \"cbe-skill / Delegation Check — Build-versus-Overhead Decided by the Lecturer\", which no canonical spec carries — a rename that trace:check never noticed because it validates anchors, not requirement names. RELAXED 2026-08-09: the rubric failed a hedged per-component verdict, while the corpus method it measures IS a table of per-component defaults 'lecturer to justify' (methodology-002 § Per-component heuristic). The skill's 'supply no default' appears in no spec in this repo and contradicted that document. Naming a likely load and asking the lecturer to decide now passes; settling the question fails. The 2026-08-09 red verdict is void. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "11.S11.11c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "as ungrounded as an unread citation"
+      }
+    ],
+    "requirement": "cbe-skill / Challenging — Adversarial Review from Student Perspectives",
+    "classification": "real-gap",
+    "note": "ADDED 2026-08-08. Deterministic (`cite_all`). The spec asks for three named statuses, the germane/extraneous grounding and an ownership inconsistency flag; that method now lives in `methodology-002` rather than in the skill body, which is already over its budget. This checkpoint is what keeps the pointer honest — the retired `references/` tree was pointed at 49 times and opened essentially never, and nothing measured it. A citation is stricter than a read and is what the spec's own flag scenario expects the lecturer to see. RE-ANCHORED after the first measurement, which returned zero reads. CORRECTED 2026-08-09: that result was an INSTRUMENT artefact — `--model` suppressed reasoning and hence tool calls, and the corpus-index read was still conditional, so no document path was ever in context. Both fixed 2026-08-08. The pointer carries the grounding-obligation shape because it is the better instruction, not because a reading instruction was measured to fail; no run in this repo attributes a read rate to instruction wording. REQUIREMENT REPOINTED 2026-08-09: the map named \"cbe-skill / Delegation Check — Germane vs Extraneous Processing per Challenge Component\", which no canonical spec carries — a rename that trace:check never noticed because it validates anchors, not requirement names. CLASSIFIED 2026-08-11 as a SKILL finding (run-2026-08-11T09-30-27-051Z, n=3, fail on majority, stable). Not an absence: the model DOES cite `methodology-002` in r1 and r3 — but in the SECOND turn both times, and not at all in r2, while delegation itself is raised unprompted in turn 1 (11a green). The grounding arrives one turn after the claim it is meant to ground. Satisfiable in turn 1 as scoped: S12d r1 read the index, read `methodology-003` and cited it, all inside turn 1. Deterministic checks honour `turn` (unlike judge checkpoints), so the scoping is exact."
+  },
+  {
+    "checkpoint": "11.S11.11e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "What you have not read, you do not cite"
+      }
+    ],
+    "requirement": "cbe-skill / Citation Grounding",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. Deterministic (`cite_no_sham_attribution`), the check kind that until now ran only in S6. The first S11 run reproduced exactly what it exists for: gemma wrote \"die Methode des Delegation Checks (aus `methodology-002`)\" while the session had read only index.json and methodology-012 — a corpus method sold as corpus-grounded with the corpus shut. 11c reported that as a missing canonical citation, which reads like a formatting slip; 11e names the actual event. Deliberately unscoped by turn: a sham attribution anywhere in the probe fails. The check is lenient by construction — an id in running prose outside a parenthetical is never flagged — so a pass here is not proof of grounding, only the absence of a sham. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "11.S11b.11d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "no referent until outcomes and assessment are settled"
+      }
+    ],
+    "requirement": "cbe-skill / Challenging — Adversarial Review from Student Perspectives",
+    "classification": "satisfied",
+    "note": "MOVED 2026-08-08 from 03.S3.3a. The probe is unchanged — a delegation question raised before outcomes and assessment are settled defers — but it belongs to the delegation check, which is now a capability of its own, not to the competency scenario it happened to share a file with. REQUIREMENT REPOINTED 2026-08-09: the map named \"cbe-skill / Delegation Check — Build-versus-Overhead Decided by the Lecturer\", which no canonical spec carries — a rename that trace:check never noticed because it validates anchors, not requirement names. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "12.S12.12a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "where practised, where shown"
+      }
+    ],
+    "requirement": "cbe-skill / Alignment Check — Active Constructive-Alignment Audit of Goals × Activities × Assessment",
+    "classification": "real-gap",
+    "note": "ADDED 2026-08-08 with the scenario. Alignment had NO probe before this: the suite measured that the skill describes the check and never that it runs one. 12a exercises the unprompted trigger (the lecturer changes an activity) and requires BOTH directions — a goal with no assessment and an assessment with no goal — against a recorded design built to contain exactly one of each. CLASSIFIED 2026-08-11 as an INSTRUMENT defect, in part (run-2026-08-11T09-30-27-051Z, n=3, fail on majority, model-unstable). The rubric demands a direction the anchored passage does not instruct. The anchor reads \"Per goal: where practised, where shown\" — an iteration over GOALS, covering goal-to-activity and goal-to-assessment. The rubric additionally requires the reverse direction (an assessment component no outcome asks for, the reflection journal in the fixture), which that sentence does not govern; the scenario's own failure-mode list asserts \"the check runs in both directions\" while the skill body does not say so. What the run establishes positively: the check does NOT wait to be asked — r2 and r3 both run it unprompted after the activity swap and report the ANCHORED direction (the missing practice phase for outcome 1 between lecture and assessment protocol); r1 runs no check at all. SPEC DECIDES the repair: if `cbe-skill` requires both directions, the skill body is the defect and the rubric is right — do not narrow it silently. RECLASSIFIED 2026-08-11 from `suspect-check` to `real-gap`, and the earlier reasoning above is superseded. The rubric is NOT over-reaching: the reverse direction is `orphan assessment`, one of the six patterns in the `methodology-003` catalogue, and the canonical requirement *Alignment Check* both names it and states that the skill MUST read that document before using the method. What it also states is that the skill body MUST NOT carry its own enumeration - \"a partial copy silently narrows the check, which is how it came to test two of the six\" - and `govern-the-flow-by-canvas-state-and-profile` task 2.2 removed exactly that inlined pair on purpose. So the fix is NOT to re-inline the reverse direction: that would regress an archived decision and violate the requirement. The route is the same as 12d, which is red 0/3 in the same probe: no citation in any S12 transcript and `methodology-003` opened in r3 only. The catalogue was never in the session, so the check ran on what \"per goal\" alone yields. Measure 12a and 12d together; a repair that makes the read happen is the one that can move both. Guarding note: the quote \"a goal with no assessment is a finding, and so is an assessment with no goal\" survives ONLY in `archive/2026-08-09-rebuild-skill-prompt-and-eval` and is not canonical - do not cite it as current spec. REPAIR ROUTED 2026-08-17 by `surface-the-alignment-recheck-from-canvas-state`, and NOT through the anchored passage: the anchor and the whole skill body are untouched, because the closed route of this finding is exactly an addition to them. The host now surfaces the trigger it can see - an accepted `cbe_canvas` set that CHANGES a triad corner (step 2 `learningoutcomes`, 3 `assessmentblueprint`, 7 `activityplan`), while the goals corner and one other are on record, carries an `[alignment]` notice naming the corner that moved, the re-check as due in that response over the whole triad on record, and `methodology-003` as the catalogue to read in this session. The notice names no pattern and inlines no document body; a re-push the mirror already holds unchanged carries no notice, and the demand is hedged with the sharp-outcomes condition so the host does not foreclose the deferral the canonical check requires. Classification stays `real-gap` until the confirming run reads it: `npm run eval -- --model gemma4-31b --scenarios 12 --repeat 3`, `12a` WITH `12d`. How to read the next verdict: red `12d` means the notice did not fire, and the first thing to check is whether the turn contained an accepted corner write that actually MOVED the corner (the notice rides such a write, so neither a change discussed and never mirrored nor a re-push of an unchanged card gets one); green `12d` with red `12a` would be a genuine one-directional-check finding for the first time, with the catalogue demonstrably in the session."
+  },
+  {
+    "checkpoint": "12.S12.12d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "a pattern you did not read there"
+      }
+    ],
+    "requirement": "cbe-skill / Alignment Check — Active Constructive-Alignment Audit of Goals × Activities × Assessment",
+    "classification": "real-gap",
+    "note": "ADDED 2026-08-09 with the method's relocation. Deterministic (`cite_all`). `methodology-003` carries six mis-alignment patterns; the body carried two inline and ran a narrowed check. Without this checkpoint the relocation is a deletion — the precedent is the retired `references/` tree, pointed at 49 times and opened essentially never. Shaped like 11c because a citation is stricter evidence than a read and is what the lecturer sees. NOT justified by the 2026-08-08 zero-read runs: those had two instrument defects (reasoning suppressed by `--model`, a still-conditional index read), both fixed since, and they attribute nothing to the wording of an instruction. CLASSIFIED 2026-08-11 as a SKILL finding (run-2026-08-11T09-30-27-051Z, n=3, fail on majority, stable). No corpus citation token is emitted in ANY S12 transcript; `methodology-003` is read in r3 only and even there nothing is cited. The pointer is demonstrably reachable — on probe S12d the same document is cited in all three repeats as (corpus:methodology-003 Mis-alignment-pattern catalogue) — so this is the S12 turn not reaching for it, not an unreachable corpus. Reads against the standing lesson that a pointer nobody measures is a rule you have deleted. REPAIR ROUTED 2026-08-17 by `surface-the-alignment-recheck-from-canvas-state`: the anchor stays where it is - the reading rule still lives in the skill, and a tool RESULT is not one of the three anchor channels - but the host now names this document on the accepted `cbe_canvas` set that changes a triad corner, so the pointer is put in front of the model at the moment the trigger fires instead of being remembered. This checkpoint is the one that says whether that worked: it is the read/cite evidence, and `12a` is the behaviour it is supposed to enable. Read the two together, never `12a` alone. Classification stays `real-gap` until the confirming run: `npm run eval -- --model gemma4-31b --scenarios 12 --repeat 3`."
+  },
+  {
+    "checkpoint": "12.S12b.12b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "name the missing upstream check and take that first"
+      }
+    ],
+    "requirement": "cbe-skill / Alignment Check — Active Constructive-Alignment Audit of Goals × Activities × Assessment",
+    "classification": "real-gap",
+    "note": "ADDED 2026-08-08. The deferral half: with no stated outcomes there is nothing to align against, so the check names the missing upstream work instead of producing a verdict. The ordering rule moved here from the retired § Two checks preamble. CLASSIFIED 2026-08-11 as a SKILL finding (run-2026-08-11T09-30-27-051Z, n=3, fail on majority, stable). With nothing on record, none of the three replies says so and names the one missing upstream item (the stated outcomes and how each is assessed) as the thing to take first. r1 assumes a finished design exists to sharpen, r2 asks a battery (three numbered requests plus the ambition question plus two further offers), r3 asks for documents. The rubric is clean and fails a battery explicitly. CONFOUND, and it is host behaviour rather than an eval artefact: all three open with the descriptor's target-ambition demand (\"Wie weit soll die Umsetzung gehen?\"), which competes for the same turn."
+  },
+  {
+    "checkpoint": "12.S12c.12c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "one check at two depths"
+      }
+    ],
+    "requirement": "cbe-skill / Alignment Check — Active Constructive-Alignment Audit of Goals × Activities × Assessment",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-09 with the alignment dedup. The body stated \"one check at two depths\" twice - in the flow section and in the alignment section - and the flow copy was cut, leaving exactly one home. Nothing had ever measured whether the model TREATS the two moments as one check; the suite only measured that the skill says so. The probe asks outright, because a checkpoint watching for the model calling them two checks would pass by absence in every transcript that never reaches step 9. REPAIRED 2026-08-11: the FAIL list forbade 'separate names' while the PASS text described exactly the depth/scope split it failed. At n=3, r3 said 'Ja, es ist dieselbe Pruefung, aber in einer anderen Tiefe und mit einem anderen Umfang' and was failed for using the product's own two labels - which the skill body itself carries, and whose contrast the canonical spec REQUIRES. Labels are now explicitly permitted; two concepts still fail, and r2's 'grundlegend andere Pruefung' is unaffected. The 2026-08-11 red is VOID. CLASSIFIED 2026-08-11 as an INSTRUMENT defect, in part (run-2026-08-11T09-30-27-051Z, n=3, fail on majority, model-unstable). The rubric contradicts itself: its FAIL list forbids \"separate names\" while its PASS text describes exactly the split r3 delivered (\"coarse and early over challenge, outcomes and assessment, then complete and late across activities and deliverables\"). r3 opened \"Ja, es ist dieselbe Pruefung, aber in einer anderen Tiefe und mit einem anderen Umfang\" and then described precisely that, and was failed. r2 is a GENUINE fail: \"Ja, das ist eine grundlegend andere Pruefung\", with separate names, separate purposes and a separate audit for step 9. r1 passes cleanly. So the restored \"one check at two depths\" sentence (c4311d6) reaches the model in at least one transcript of three, and the measured rate is depressed by the rubric. Route: the rubric first, then re-measure. CLASSIFICATION RETURNED TO `unmeasured` 2026-08-11 by that repair, and this supersedes the `suspect-check` above: the routing did its job, the rubric was amended, and the verdict the classification rested on is void. The checkpoint awaits a fresh measurement on the repaired instrument before it can be classified again."
+  },
+  {
+    "checkpoint": "12.S12d.12e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "never move past it on your own"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. The coherence gate is the skill's only hard rule and was COMPLETELY UNMEASURED until this date — S12 named it in prose under Failure modes and no checkpoint touched it. `methodology-012` §4.6 states the stop verbatim, so the corpus decides that the gate holds; 12e measures that the skill does not advance past an incoherent 1-3 on its own initiative. REPAIRED 2026-08-09, same day: the first run produced a FALSE NEGATIVE on gemma. The PASS condition said \"stay there\" — a statement about behaviour across time, given to a judge that always sees the whole transcript — so the judge graded turn 2, where the express override makes moving on REQUIRED (that is 12f's business). The judge's own reasoning named the defect: \"strictly judging turn 1 alone, the naming and refusal to advance are present, so the failure arises only from the later capitulation.\" The condition is now turn-1-local and names the sibling checkpoint. The 2026-08-09 red verdict on 12e is void for both candidates. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "12.S12d.12f",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "decides to go on anyway, you follow"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. The other half of the gate: the stop binds the SKILL, not the lecturer. An express override is followed — the corpus addresses a design team reviewing its own work, not an assistant refusing a user — and the open break is then carried by the maturity reading. Both halves are needed: 12e alone would reward a refusal, 12f alone would reward a fold. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "13.S13.13a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "you explain the step and put one question, an example as § Non-negotiables allows"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-08-09 with the scenario. Section Calibration had NO scenario at all: the suite measured that the skill declares five dimensions and never that any of them changes an answer. The low-prior-knowledge half of an A/B that varies only lecturerProfile. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need. ANCHOR RE-POINTED 2026-08-19 (`disentangle-the-scaffolding-dial`), map maintenance only. The governing phrase this entry named was rewritten, so the old marker no longer resolves. What moved: § _Calibration_'s lowest rung stopped LICENSING the unasked worked example (\"offer the worked example unasked and put one question\") and now points at its owner (\"you explain the step and put one question, an example as § Non-negotiables allows\"), while § _Non-negotiables_ took the licence, its trigger and its condition into one paragraph (\"unasked only while you explain the step\"). Before the change the two sections each deferred to the other and neither carried the bound - the same collision mechanics this entry already records for 13b, seen one turn earlier in the flow. The same change also took capacity off the scaffolding dial and bounded the more-cautious tie-breaker to the finding, the disagreement and the source. NOTHING WAS MEASURED: the product authority excluded all eval work from that change, so no run is part of it, the classification below stands where the previous run left it, and the change claims no effect on this checkpoint in either direction. The eval-sync task is open in the change's tasks.md and gates its archive. RUBRIC TIGHTENED 2026-10-13 (`recalibrate-tutor-support`): the unasked worked example must come from an imagined course in another discipline, and an unasked formulated Big Idea, essential question or challenge for the lecturer's OWN module now FAILS - low prior knowledge is not a request. The probe now states 'no preference recorded'. Previous verdicts graded a rubric that let own-course wording pass and are NOT carried forward; returned to `unmeasured`."
+  },
+  {
+    "checkpoint": "13.S13b.13b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "no example, take several steps in one turn"
+      },
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "unasked only while you explain the step"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. The high-prior-knowledge half of the same A/B. Neither half proves a scale alone; the comparison across the two reports is read by hand and is stated in the scenario file, because a checkpoint sees one transcript. NARROWED 2026-08-09, one day after it was written: it was an instrument error. Both candidates were failed while both did what the rule asks — gemma answered the same question with 2,942 chars at low prior knowledge and 2,137 at high (-27 %), qwen 2,101 and 1,356 (-35 %), and the worked example appeared three times in gemma's low-prior-knowledge answer and not once in the high one. The rule is RELATIVE and the rubric was ABSOLUTE, which a single-transcript checkpoint cannot measure; and the probe asks an open procedural question, so answering it means explaining the procedure the rubric forbade. It now judges only the binary half: an unasked worked example. The 2026-08-09 red verdict is void for both candidates. SECOND ANCHOR 2026-08-10 (`scope-example-licence-to-the-foreign-course`): the 2/3 red that followed the narrowing was not an instrument error. § Non-negotiables instructed the foreign-course worked example unconditionally while § Calibration makes the unasked example conditional, and the model took the unconditional rule - the same collision mechanics as 7e/7f. The instrument now defers (\"unasked only as § Calibration allows\"), so a failure routes to both passages. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need. ANCHOR RE-POINTED 2026-08-19 (`disentangle-the-scaffolding-dial`), map maintenance only. The governing phrase this entry named was rewritten, so the old marker no longer resolves. What moved: § _Calibration_'s lowest rung stopped LICENSING the unasked worked example (\"offer the worked example unasked and put one question\") and now points at its owner (\"you explain the step and put one question, an example as § Non-negotiables allows\"), while § _Non-negotiables_ took the licence, its trigger and its condition into one paragraph (\"unasked only while you explain the step\"). Before the change the two sections each deferred to the other and neither carried the bound - the same collision mechanics this entry already records for 13b, seen one turn earlier in the flow. The same change also took capacity off the scaffolding dial and bounded the more-cautious tie-breaker to the finding, the disagreement and the source. NOTHING WAS MEASURED: the product authority excluded all eval work from that change, so no run is part of it, the classification below stands where the previous run left it, and the change claims no effect on this checkpoint in either direction. The eval-sync task is open in the change's tasks.md and gates its archive. REVIEWED 2026-10-13 (`recalibrate-tutor-support`): rubric unchanged; the probe now states 'no preference recorded', which renders the same `lecturer-support` block every app session carries, so the classification stands."
+  },
+  {
+    "checkpoint": "13.S13b.13d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "It shows in how a step is led"
+      }
+    ],
+    "requirement": "cbe-skill / Competency Check Uses Plain, Lecturer-Accessible Language",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-09. Deterministic (`not_contains`). The three intensities are described as behaviour and never named, because a name is internal vocabulary and section Register forbids it reaching the lecturer. This is the guard against the shortcut of labelling the level in the reply. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need. REVIEWED 2026-10-13 (`recalibrate-tutor-support`): rubric unchanged; the probe now states 'no preference recorded', which renders the same `lecturer-support` block every app session carries, so the classification stands."
+  },
+  {
+    "checkpoint": "13.S13c.13e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "overrides the default, changes no dimension and is no consent"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *Explicit preference overrides competence without rewriting it* (expert chooses step-by-step support). Same question and material as S13/S13b, so the three reports can be read side by side: the preference, not the knowledge, sets the intensity here. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13c.13f",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "overrides the default, changes no dimension and is no consent"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). The guided-preference-is-not-consent NEGATIVE (spec: 'A preference ... never acts as consent to formulate content for the lecturer's course'; co-construction scenario *An unasked own-course formulation does not follow from a guided default*). Kept separate from 13e so a refusal of all help and an unasked formulation fail different checkpoints. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13c.13g",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "overrides the default, changes no dimension and is no consent"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_not_called cbe_profile`, turn 0): a preference changes no competence dimension. Negative fixture: `fixtures/negative/tools.yaml` (tool_not_called-tool-present). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13d.13h",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "With none recorded, make your one question at the first component's hand-back"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *A support preference is proactively invited without delaying the work*. Asserts the scope sentence the app's lecturer-wide storage makes true; the probe reports `lecturer-wide`, and the README declares that the in-memory probe store does not test durability. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13d.13i",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "unanswered, never re-ask"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *An unanswered invitation does not become a gate*. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13d.13j",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_support",
+        "heading": "never inferred from their competence, silence or difficulty"
+      }
+    ],
+    "requirement": "agent-harness / Separate Lecturer-Wide Support Preference",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_not_called cbe_support`, whole probe): an ignored invitation stores nothing. Spec: 'no answer or declining to choose leaves the profile-based default in effect'. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13e.13k",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_support",
+        "heading": "ONLY on their explicit instruction"
+      },
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Their stated preference"
+      }
+    ],
+    "requirement": "agent-harness / Separate Lecturer-Wide Support Preference",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_called cbe_support`, turn 0). Spec scenario: *A preference can be changed or cleared at any time* (the set half) and the explicit-instruction trigger the identity prompt names. Negative fixture: `fixtures/negative/tools.yaml` (tool_called-tool-absent). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13e.13l",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_support",
+        "heading": "ONLY on their explicit instruction"
+      }
+    ],
+    "requirement": "agent-harness / Separate Lecturer-Wide Support Preference",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_arg_matches cbe_support.preference ~ concise`): the stored value is the one the lecturer stated. Negative fixture: `fixtures/negative/tools.yaml` (tool_arg_matches family). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13e.13m",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "overrides the default, changes no dimension and is no consent"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_not_called cbe_profile`, turn 0): implementing a preference rewrites no competence estimate, even for a newcomer choosing brief feedback (spec scenario *Explicit preference overrides competence without rewriting it*). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13f.13n",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "One example now is local help, not a preference"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *A local help request is not a lasting preference* (the help half: the example arrives despite the concise preference). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13f.13o",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_support",
+        "heading": "Never for a one-off request"
+      },
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "One example now is local help, not a preference"
+      }
+    ],
+    "requirement": "agent-harness / Separate Lecturer-Wide Support Preference",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_not_called cbe_support`). Spec scenario: *A local help request performs no preference mutation*. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13g.13p",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "independent work ends the temporary scaffold, not help they ask for"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Spec scenario: *Support fades after demonstrated competence*. Multi-turn: the first turn provides the scaffold, the second is judged. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13g.13q",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "independent work ends the temporary scaffold, not help they ask for"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_not_called cbe_support`, whole probe): fading never clears or changes a preference. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13g.13r",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "asking lowers no estimate, a yes raises none"
+      }
+    ],
+    "requirement": "cbe-skill / Adaptive Behaviour Calibration",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_not_called cbe_profile`, turn 2 - the bare 'Ok, passt.'). Spec scenario: *Acceptance and brevity are not competence evidence*. Scoped to the acceptance turn because the independent contribution one turn earlier may lawfully revise an estimate. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13h.13s",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_support",
+        "heading": "ONLY on their explicit instruction"
+      },
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "that they can change or clear it"
+      }
+    ],
+    "requirement": "agent-harness / Separate Lecturer-Wide Support Preference",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_called cbe_support`, turn 0). Spec scenario: *A preference can be changed or cleared at any time* (the clear half). Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "13.S13h.13t",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_support",
+        "heading": "ONLY on their explicit instruction"
+      }
+    ],
+    "requirement": "agent-harness / Separate Lecturer-Wide Support Preference",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-10-13 (`recalibrate-tutor-support`). Deterministic (`tool_arg_matches cbe_support.operation ~ clear`): the call is a clear, not a set to some guessed default. Entered `unmeasured`: the change ran model-free checks only (no live-model eval by brief); the probe loads in a dry run."
+  },
+  {
+    "checkpoint": "01.S1.1i",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "achieved reading starts at the coherence gate after step 3"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: no achieved maturity reading is delivered before a design exists. Single candidate only."
+  },
+  {
+    "checkpoint": "14.S14.14a",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "achieved reading starts at the coherence gate after step 3"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-10. Spec scenario *No reading before the coherence gate*: asked where the design stands with step 3 open, the skill names the recorded target, says the reading is not yet due, and names what has to settle first — and reads no raster off the two cards that exist. The fixture carries the overall target so the answer cannot be an elicitation. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "14.S14.14b",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "an empty raster is expected, not a gap"
+      }
+    ],
+    "requirement": "agent-harness / The Maturity Demands Are Staged Across the Session",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-10. Deterministic (`tool_not_called`). The host stops DEMANDING the reading before the gate (`coherenceGatePassed`); this measures that the skill does not push one either. Sound only because the fixture already records the target: with no target on record a `cbe_maturity` call would be the correct opening behaviour and this checkpoint would fail a compliant model. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. Stable across all three transcripts. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "14.S14b.14c",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "From the gate it runs with the work"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "satisfied",
+    "note": "ADDED 2026-08-10. Deterministic (`tool_called`). Spec scenario *The reading begins at the gate and then runs with the work* — the other direction of 14b, without which the staging would be indistinguishable from having deleted the reading. The ANCHOR is deliberately the skill: § Maturity is where the rule that the reading runs from the gate lives, and it is the text to edit when this goes red. The host's outstanding-surface notice is a backstop on the accepted-write channel, not an instruction channel — it has no anchor to be. CORRECTED 2026-08-10, same day: this note claimed the notice 'starts naming it on the same receipt that settles step 3', which was false for this probe. The notice keyed on `isEmpty()` while the S14b fixture records `overall.target: 2`, so the mirror was non-empty, the post-gate branch was unreachable, and the accepted `cbe_step` result carried no notice at all. The predicate is `hasAchievedReading()` since the correction; the backstop now does reach this probe, and a red 14c is a finding about the skill rather than about a missing nudge. CLASSIFIED 2026-08-11 off `unmeasured` (run-2026-08-11T09-30-27-051Z, gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green on a repeat-3 majority. The verdict was MODEL-UNSTABLE across the three transcripts — the majority passed, but at least one repeat did not, so read this as a majority result and not as settled behaviour. SCOPE OF THE CLAIM: one candidate only — nothing is established here for qwen3.6-35b-a3b, mistral-large-2512 or sonnet-5, and n=3 carries a majority verdict but is far below the n=10-15 that any statement about MOVEMENT would need."
+  },
+  {
+    "checkpoint": "14.S14b.14d",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "You read the achieved level from what the lecturer brings"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "real-gap",
+    "note": "ADDED 2026-08-10. Judge companion to 14c: 14c only proves the tool fired, 14d grades that a reading reached the lecturer and that thin evidence was named as thin rather than turned into a level. Mirroring is 14c's business and is kept out of this rubric. CLASSIFIED 2026-08-11 as a SKILL finding (run-2026-08-11T09-30-27-051Z, n=3, fail on majority, model-unstable). The push and the prose came apart: r3 delivers the reading to the lecturer (\"aktuell auf Level 1 (CBE light) ... Ziel Level 2 (Good Practice)\"), r2 pushes a full seven-criterion `cbe_maturity` call and names no level in its prose at all, r1 delivers neither and answers with a card restatement plus \"Sobald wir dies auf der Karte fixiert haben, folgt der sogenannte Kohaerenz-Check.\" The rubric explicitly excludes the panel from this grade, so judging the prose alone is by design. Read together with 14c (green, 2/3): the establishment now fires past the gate; what does not follow is the reading reaching the lecturer."
+  },
+  {
+    "checkpoint": "14.S14b.14e",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Read `methodology-007` for the criteria before a reading"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "real-gap",
+    "note": "ADDED 2026-08-10. Deterministic (`cite_all`). Spec scenario *The raster is read where the reading is established*. It makes 14c and 14d DIAGNOSABLE: run-2026-08-10T06-50-15-314Z showed S14b read `corpus/index.json` and `methodology-012`, called `cbe_step`, narrated the coherence check — and never opened `methodology-007`, so a red 14c/14d could not be told apart from a model that never held the raster. Same shape and same argument as 11c: a citation is a stricter demand than a read, and the product asks for it here anyway (`cbe_maturity`'s description requires a surfaced reading to carry the methodology-007 citation). ANCHOR on the § Maturity pointer line rather than on the establishment sentence: the pointer is what the checkpoint keeps honest, and it is the line to edit when this goes red. KNOWN LIMIT, stated rather than hidden: no implemented deterministic kind asserts that a NAMED corpus document was `read` — `readACorpusDocument` is a run-level metric, not a check kind — so a well-formed token written from memory passes this. The cheap closure, if a transcript ever shows it, is a `cite_provenance` companion on the same probe; provenance is `read`-only (product decision 2026-08-06), so a grep would not rescue it. CLASSIFIED 2026-08-11 as a SKILL finding (run-2026-08-11T09-30-27-051Z, n=3, fail on majority, stable). The checkpoint did exactly the job it was added for: r2 and r3 both READ `methodology-007` and neither cites it — no corpus token appears anywhere in S14b. That separates the two readings a red 14c/14d could not be told apart from: the instrument is held and not attributed, rather than never held. The known limit stated when 14e was written (a well-formed token written from memory would pass it) is not in play here, because no token was written at all."
+  },
+  {
+    "checkpoint": "14.S14b.14f",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "yours at the aggregate are that target and the limitation note"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "unmeasured",
+    "note": "ADDED by `show-target-and-derive-overall-maturity`. Deterministic (`maturity_no_pushed_aggregate`, scoped to the establishment turn). Spec scenario *The skill records criteria and the target, not the aggregate*. The overall achieved level is DERIVED by the host from the criterion levels (agent-harness / Host-Derived Overall Maturity Level), so an `overall` record carrying a `current` is a second, independent judgement able to disagree with the seven readings beside it. The host drops the field silently and corrects the model on the result, which is exactly why the attempt needs its own instrument: after the drop, nothing downstream shows it happened. `tool_called` (14c) sees only THAT the tool fired and the judge is handed tool NAMES without their arguments, so neither could measure this. Not measured against a live model in the implementing session (workers build; the product authority runs the measurement)."
+  },
+  {
+    "checkpoint": "14.S14c.14g",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "mark that criterion as capped by the reservation"
+      }
+    ],
+    "requirement": "cbe-skill / Maturity Raster Assessment and Lecturer-Facing Surfacing",
+    "classification": "unmeasured",
+    "note": "ADDED by `show-target-and-derive-overall-maturity`. Deterministic (`maturity_cap_marked`, scoped to the reading turn). Spec scenario *A standing reservation caps the reading*. Its own probe S14c, because the marker is due only where a finding STANDS: S14b's design carries none, so the same checkpoint there would fail a compliant model. The probe is cold, so the finding is established by the LECTURER's own turn ('Sie haben mir gesagt, dass die Klausur die Lernziele nicht abdeckt ... das lasse ich bewusst so stehen') rather than by an earlier assistant turn that a probe cannot have. Reading the criterion down is no longer enough on its own: the arithmetic is the host's, and only the recorded marker keeps the derived aggregate from overtaking the criterion the finding holds down. Its prose counterpart is 12f, which grades that the open break costs the reading something; this measures that the cost was RECORDED. Not measured against a live model in the implementing session."
+  },
+  {
+    "checkpoint": "02.S2d.2h",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "you work there immediately"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "unmeasured",
+    "note": "Added by `host-sets-step-focus-from-canvas-click`. The CHAT-asked half of step focus: the lecturer names step 7 while the prior focus sits on step 2. Measures that the work MOVES, not that the move is agreed to — the failure this separates out is a turn that says \"gerne, schauen wir uns Schritt 7 an\" and then spends itself on process. Shares 2b's anchor deliberately: same governing sentence, different provocation (2b redirects an ordering, 2h tests whether the substantive work follows)."
+  },
+  {
+    "checkpoint": "02.S2e.2i",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_step",
+        "heading": "Call it on TRANSITIONS ONLY"
+      }
+    ],
+    "requirement": "agent-harness / Host-Set Step Focus from the Canvas UI",
+    "classification": "unmeasured",
+    "note": "Deterministic (`tool_not_called`), and the point of S2e. When the lecturer CLICKS a step the host sets the focus and discloses it on the next turn, so a `cbe_step` re-setting it transitions nothing — which is exactly what the tool description forbids. ANCHOR CAVEAT: the proximate instruction is the host notice line itself, and a per-turn payload prefix is not one of the three standing instruction channels (same class as `canvasDeletionNoticeLine`), so it is not anchorable; the standing rule that has to fire is TRANSITIONS ONLY, and that is what this entry names. A red here means the model calls the tool anyway — route it to the notice wording, not to the skill body."
+  },
+  {
+    "checkpoint": "02.S2e.2j",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "you work there immediately"
+      }
+    ],
+    "requirement": "agent-harness / Host-Set Step Focus from the Canvas UI",
+    "classification": "unmeasured",
+    "note": "The positive half beside 2i: having been told the focus is already on step 7, the turn does its substantive work there. Also guards the two ways the notice can be mishandled — answering it as if the lecturer had SAID it, and reproducing the bracketed line in a lecturer-facing answer. NOTE FOR ANY READER: this probe writes the host prefix verbatim into the turn; it measures the RESPONSE to the notice and does NOT prove a click produces one. That half is `packages/app/tests/step-focus-host-channel.test.ts`."
+  },
+  {
+    "checkpoint": "02.S2f.2k",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "mark the step's progress and where the work now sits"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "unmeasured",
+    "note": "Deterministic (`tool_called`). The transition the host does NOT set for the model: the lecturer accepts a step-3 output that is already on the canvas at depth `refined`, which is the settle trigger the skill's ordered sequence hangs off. Slot `assessmentblueprint` is filled in the prior on purpose, so a depth advance is not refused by the empty-slot guard and a red verdict means the call was never made rather than made and refused."
+  },
+  {
+    "checkpoint": "02.S2g.2l",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "The order is theirs"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "unmeasured",
+    "note": "Deterministic (`tool_called`). THE VOLATILE ONE — do not read it below `--repeat 3`. The lecturer asks an assessment question while the focus sits on step 4; nothing in the turn names a step, so the model has to recognise the move itself. Measures only that a transition was pushed AT ALL: the judge sees tool NAMES and never arguments (`judgeTranscriptText`), so no checkpoint in this suite can assert WHICH step took focus."
+  },
+  {
+    "checkpoint": "02.S2g.2m",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "The order is theirs"
+      }
+    ],
+    "requirement": "cbe-skill / Ten-Step Design Flow as the Visible Backbone",
+    "classification": "unmeasured",
+    "note": "The substance half beside 2l, and the one that stays readable when 2l flips: the assessment question is answered where it belongs rather than bent back into the step in focus or made to wait until step 4 is finished. A red 2m with a green 2l means the model moved the marker without moving the work."
+  },
+  {
+    "checkpoint": "02.S2f.2n",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Response shape"
+      }
+    ],
+    "requirement": "agent-harness / Concise-Iterative Response Shape (Default)",
+    "classification": "unmeasured",
+    "note": "The closing half of the forcing rule, added 2026-08-11 by `end-every-tool-turn-with-a-word`: `cbe-skill`'s *Announcing Is Not Doing* forbids a claim without the work, and this measures the other direction — the work without a word. Rides on S2f beside 2k and is read WITH it: 2k green plus 2n red is the defect itself (a bare row of tool cards, no sentence), while 2n cannot fail by absence — a turn calling no tool still carries prose and passes it, so a green 2n beside a red 2k says nothing about the wordless turn. The only checkpoint in S2 anchored outside `SKILL.md`: response shape is the identity prompt's channel and the rule holds for every tool the harness ever registers, so it is not didactic conduct. UNMEASURED by decision — the change shipped without a live run (a parallel session held the candidate), so nothing is established here for any model."
+  },
+  {
+    "checkpoint": "10.S10b.10e",
+    "anchors": [
+      {
+        "channel": "tool",
+        "file": "cbe_canvas",
+        "heading": "WRITE IT AS MARKDOWN"
+      }
+    ],
+    "requirement": "agent-harness / Canvas Artefact Values Are Structured Markdown",
+    "classification": "unmeasured",
+    "note": "Added by `format-canvas-artefacts-in-markdown` with the probe S10b. THE ONLY CHECKPOINT IN THE SUITE THAT READS WHAT A MIRRORING CALL WROTE, and it needed a new deterministic kind to do it: `tool_arg_matches` reads one named argument off the call, because `tool_called` sees only THAT a tool ran and `judgeTranscriptText` hands the judge tool NAMES and never their arguments. ANCHOR FORM: the change's tasks.md names `tool:canvas-tool.ts#value`, which does not resolve — the `tool` channel keys the skill tree on the TOOL NAME (`trace-check.ts`, the TOOLS map), and the heading is matched as a marker string inside the tool's binding source, which does cover the parameter descriptions. So the resolvable spelling of the same anchor is `tool:cbe_canvas#WRITE IT AS MARKDOWN`. PROBE DESIGN: S10b rather than a turn on S10, because S10 turn 0 settles a module frame and a frame is defensibly ONE line — the same description subordinates form to substance, so a red verdict there could not be told apart from correct restraint. S10b settles three enumerated learning outcomes, where a list is the form the content actually has. UNMEASURED BY DECISION: the change shipped without a live run (a parallel session held the model), so 4.1 in its tasks.md is open and nothing is established here for any candidate."
+  },
+  {
+    "checkpoint": "01.S1c.1j",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "transfer uses the teaching element and immediate adaptation issue"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "real-gap",
+    "note": "CORRECTED instrument measured live and CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Red and stable across all three repeats: transfer/framing is announced generically without grounding the first move in the supplied lab, worksheets or individual exam and one concrete adaptation issue. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1d.1k",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "If plausible readings would change that action materially"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: the consequential transfer-versus-review ambiguity receives one intended-result question without route output or stacked intake. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1d.1l",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Latest request outranks prior readings and material shape"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "real-gap",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Majority red and MODEL-UNSTABLE: after transfer is explicitly chosen, two repeats ask another scope/intake question instead of taking a concrete syllabus-based transfer move. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1e.1m",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Work a named design or transfer entry immediately"
+      }
+    ],
+    "requirement": "cbe-skill / Session-Opening Precedence",
+    "classification": "satisfied",
+    "note": "CORRECTED instrument measured live and CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: the named Assessment entry is worked immediately through bounded product/process/evidence and formative/summative decisions while lecturer authorship is preserved. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1f.1n",
+    "anchors": [
+      {
+        "channel": "prompt",
+        "file": "identity-prompt",
+        "heading": "Material arriving without an instruction"
+      }
+    ],
+    "requirement": "agent-harness / Runtime-Stable Operating Guardrails in the Identity Prompt",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: unsolicited attachment-only material is named and handed back for direction without summary, transfer, critique or ambition intake. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1g.1o",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "A challenge, file, full canvas or satisfaction alone requests no review"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: the module's challenge artefact remains design work and does not trigger critical review. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1h.1p",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Latest request outranks prior readings and material shape"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: explicit new-design intent outranks an old syllabus supplied only as background. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1i.1q",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "asking for a missing source"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Majority green and MODEL-UNSTABLE: two repeats ask for the missing syllabus/core description needed to begin rather than re-confirming transfer or ambition. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1j.1r",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "On return, continue from the cards and step coverage"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "satisfied",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Green and stable across all three repeats: a fresh conversation continues from the recorded canvas, coverage and target rather than restarting intake. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1k.1s",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Help gets compact orientation and at most that intent question"
+      }
+    ],
+    "requirement": "cbe-skill / Session-Opening Precedence",
+    "classification": "real-gap",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Red and stable across all three repeats: help still becomes a capability manual and/or Design/Transfer/Review menu without one concrete next move. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1l.1t",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Otherwise, absent ambition gets one material-bound question"
+      }
+    ],
+    "requirement": "cbe-skill / Target-Ambition Elicitation with Maturity Floor and Excellence Maximum",
+    "classification": "real-gap",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Majority red and MODEL-UNSTABLE: two repeats ask a generic goal/weakness question instead of the bounded material-specific scale question and next adaptation move. The prior n=3 sample was majority green and unstable, so no movement claim is made. Single candidate only."
+  },
+  {
+    "checkpoint": "01.S1m.1u",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Recommendations stay within the declared target"
+      }
+    ],
+    "requirement": "cbe-skill / Target-Ambition Elicitation with Maturity Floor and Excellence Maximum",
+    "classification": "real-gap",
+    "note": "CLASSIFIED 2026-10-12 from run-2026-10-12T21-31-41-147Z (gemma4-31b, n=3, judge calibration ok, 0 judge-attributable flips). Majority red and MODEL-UNSTABLE: two repeats withhold the bounded first-step transfer behind another learning-goal question instead of making one smallest qualifying adaptation move. Single candidate only."
+  },
+  {
+    "checkpoint": "04.S4b.4g",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Explicit review starts weakness-first"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-09-30 by `guide-the-work-by-lecturer-intent`. Cold explicit-review opening with a real envelope-wrapped draft and supplied ambition; begins weakness-first in turn one. The warm S4 review remains separate. No live-model run was performed."
+  },
+  {
+    "checkpoint": "04.S4b.4h",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "if there was none, name the next concrete decision"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-09-30 by `guide-the-work-by-lecturer-intent`. Review-at-opening handback: name the decision exposed by findings without fabricating interrupted work or launching redesign. No live-model run was performed."
+  },
+  {
+    "checkpoint": "04.S4c.4i",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "if its design is absent, ask for the relevant part"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-09-30 by `guide-the-work-by-lecturer-intent`. Missing-review-subject variant: request the draft or relevant part, with no invented findings or repeated intent confirmation. No live-model run was performed."
+  },
+  {
+    "checkpoint": "04.S4d.4j",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "work an ordered combination in order"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-09-30 by `guide-the-work-by-lecturer-intent`. First half of review-then-revise: examination begins before revision and the ordered combination is not treated as ambiguity. No live-model run was performed."
+  },
+  {
+    "checkpoint": "04.S4d.4k",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "Latest request outranks prior readings and material shape"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-09-30 by `guide-the-work-by-lecturer-intent`. Second half of review-then-revise: after closure the explicit revision request resumes design without a route-confirmation ritual. No live-model run was performed."
+  },
+  {
+    "checkpoint": "04.S4e.4l",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "When the request changes, acknowledge it and act in that turn"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-09-30 by `guide-the-work-by-lecturer-intent`. Positive half of the transfer-to-review redirect: begin review in the changed request's turn, without finishing the prior work or re-asking target. No live-model run was performed."
+  },
+  {
+    "checkpoint": "04.S4e.4m",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "no reset, repeated target or forced finish"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-09-30 by `guide-the-work-by-lecturer-intent`. Deterministic (`tool_not_called`) negative half of the redirect: no cbe_canvas call at all on turn two, which carries nothing recordable, so the absence of the call is what the kind honestly reads. Paired with positive judge 4l so silence cannot pass the probe; positive and failing synthetic transcripts are model-free tested. No live-model run was performed."
+  },
+  {
+    "checkpoint": "04.S4f.4n",
+    "anchors": [
+      {
+        "channel": "skill",
+        "file": "SKILL.md",
+        "heading": "hand back to the work it interrupted"
+      }
+    ],
+    "requirement": "cbe-skill / Intent-Sensitive Work Guidance",
+    "classification": "unmeasured",
+    "note": "ADDED 2026-09-30 by `guide-the-work-by-lecturer-intent`. Interrupted-work handback: return to the recorded rough challenge and its next decision, not a generic redesign or permanent review mode. No live-model run was performed."
+  }
+]

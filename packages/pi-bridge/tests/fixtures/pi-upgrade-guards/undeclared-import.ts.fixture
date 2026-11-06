@@ -1,0 +1,7 @@
+// Imports the schema library and pi-ai, relying on Pi to bring them in.
+import { Type } from "typebox";
+import { getCurrentTools } from "@earendil-works/pi-ai";
+import { readFileSync } from "node:fs";
+import path from "path";
+
+export const used = [Type, getCurrentTools, readFileSync, path];

@@ -1,0 +1,785 @@
+{
+  "probe": "S6",
+  "model": "claude-sonnet-5-gegenprobe",
+  "_source": "Captured S6 run run-2026-08-06T17-29-32-295Z (claude-sonnet-5 Gegenprobe). Five cbe_cite calls; ids are also named in prose, each after its token. read/grep results trimmed, cbe_cite results verbatim, repo path normalised to /repo.",
+  "turns": [
+    {
+      "user": "Was sagt der Korpus zu Assessment in CBE?",
+      "assistant": "Der Korpus behandelt Assessment aus zwei Richtungen: als Design-Schritt im Zehn-Schritte-Ablauf und als Prüfstein für Kohärenz (Constructive Alignment).\n\n**Als Design-Schritt (Schritt 3 von zehn).** Assessment wird nicht am Ende, sondern früh und evidenzbasiert entschieden (\"backward design\"): Für jedes Learning Outcome legt man fest, welche Evidenz es belegt — Produkt *und* Prozess — und was summativ benotet vs. formativ mit Feedback geübt wird. Weil Assessment einer der Reibungspunkte im Designprozess ist, folgt danach ausdrücklich das Kohärenz-Gate: Challenge, Learning Outcomes und Assessment-Blueprint müssen zusammenpassen, bevor es weitergeht. Output dieses Schritts: ein Assessment-Blueprint plus Rubrik-Skelett (corpus:methodology-012 § Step 3 — Decide how you will assess learning (evidence first), PIONEER Project Team 2026).\n\n**Als Kohärenzprüfung (Constructive Alignment nach Biggs).** Ziele, Aktivitäten und Assessment müssen als Triade zusammenpassen. Mis-Alignment ist dabei der Normalfall, nicht die Ausnahme — weil jede Ecke meist zu einem anderen Zeitpunkt entsteht und die Drift erst sichtbar wird, wenn Lernende auf die Bewertung hin optimieren statt auf das Ziel (corpus:methodology-003 § The triad). Der Korpus katalogisiert wiederkehrende Mis-Alignment-Muster, u. a.:\n\n- **Prozessziel, Produktbewertung** — das Ziel benennt eine Prozesskompetenz, die Rubrik gewichtet aber fast nur das Endartefakt.\n- **Verb-Deliverable-Mismatch** — das Ziel-Verb (\"entwerfen\", \"bewerten\") passt nicht zum tatsächlich bewerteten Deliverable.\n- **Unbewertetes Ziel** — eine genannte Kompetenz hat keine Bewertungsevidenz.\n- **Verwaiste Bewertung** — ein stark gewichtetes Assessment-Element hat kein zugehöriges Ziel.\n- **Aktivität ohne Bewertungssignal** — eine wichtige Lernaktivität erzeugt kein Artefakt, das in irgendein Assessment einfließt.\n- **Granularitäts-Mismatch** — eine einzelne holistische Note soll mehrere verschiedene Kompetenzen zertifizieren, die getrennte Evidenz bräuchten.\n\nFür prozessorientierte Ziele — in CBE der Regelfall, weil das Framework prozessschwer ist — braucht es entsprechende Prozessartefakte: Decision Logs, Iteration Trails, Reflexionseinträge, Guiding-Question-Maps, Synthesis Memos, Peer-/Selbstbewertungen. Rubriken müssen dann Gewichtungsparität (Prozessanteil spiegelt Prozessgewicht des Ziels), Kriterien-Nachvollziehbarkeit, formative Checkpoints vor der summativen Bewertung und getrennte Evidenz pro Kompetenz sicherstellen (corpus:methodology-005 § Process-artefact catalogue).\n\nEin Hinweis zur Quellenlage: Beide Dokumente (methodology-003, methodology-005) sind als Dev-Drafts markiert, die noch auf PIONEER-Quellenverifikation warten (Biggs & Tang, Black & Wiliam, Sadler u. a. sind Kandidatenquellen, noch nicht final geprüft) — ich zitiere sie als Korpusinhalt, aber mit dieser Einschränkung transparent gemacht.\n\n---\n\nZwei mögliche Vertiefungen: Ich kann den **Assessment-Blueprint für Ihr Modul** anhand Ihrer Learning Outcomes durchgehen (Schritt 3), oder ich kann eine **Alignment-Prüfung** auf ein bestehendes Ziel/Aktivität/Assessment-Set anwenden, um Mis-Alignment-Muster konkret zu finden.",
+      "tools": [
+        {
+          "name": "read",
+          "callId": "toolu_01Wj6Z57xTCixZxaiLMQVYj1",
+          "args": {
+            "path": "/repo/corpus/index.json"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "read",
+          "callId": "toolu_01TvzD3W69p9JnSGbBz5mxV2",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-003-constructive-alignment-in-cbe.md"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "read",
+          "callId": "toolu_01U7KecJBFB3C3NTE1xxkB8R",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-005-process-assessment-patterns.md"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "grep",
+          "callId": "toolu_01CGn1pvT1khj4fJZsy799fF",
+          "args": {
+            "pattern": "Assessment",
+            "path": "/repo/corpus/content/methodology/methodology-012-ten-step-module-design-flow.md",
+            "context": 3
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "cbe_cite",
+          "callId": "toolu_018v2nRJTaf66rbVG7VZuizj",
+          "args": {
+            "id": "methodology-012",
+            "section": "Step 3 — Decide how you will assess learning (evidence first)",
+            "claim": "Für jeden Learning Outcome wird festgelegt, welche Evidenz (Produkt + Prozess) ihn belegt und was summativ benotet vs. formativ mit Feedback geübt wird; danach folgt das Kohärenz-Gate."
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-012 § Step 3 — Decide how you will assess learning (evidence first), PIONEER Project Team 2026)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-012",
+              "section": "Step 3 — Decide how you will assess learning (evidence first)",
+              "author": "PIONEER Project Team",
+              "year": 2026,
+              "claim": "Für jeden Learning Outcome wird festgelegt, welche Evidenz (Produkt + Prozess) ihn belegt und was summativ benotet vs. formativ mit Feedback geübt wird; danach folgt das Kohärenz-Gate."
+            }
+          }
+        },
+        {
+          "name": "cbe_cite",
+          "callId": "toolu_01DbGEChvH2uXeUP5dYn8SbH",
+          "args": {
+            "id": "methodology-003",
+            "section": "The triad",
+            "claim": "Constructive alignment verlangt, dass Ziele, Aktivitäten und Assessment als Triade zusammenpassen; Mis-Alignment ist der Normalfall, nicht die Ausnahme."
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-003 § The triad)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-003",
+              "section": "The triad",
+              "claim": "Constructive alignment verlangt, dass Ziele, Aktivitäten und Assessment als Triade zusammenpassen; Mis-Alignment ist der Normalfall, nicht die Ausnahme."
+            }
+          }
+        },
+        {
+          "name": "cbe_cite",
+          "callId": "toolu_01UERXBUCAFiKMaNG6Sok4Zr",
+          "args": {
+            "id": "methodology-005",
+            "section": "Process-artefact catalogue",
+            "claim": "Für prozessorientierte Ziele braucht Assessment Prozessartefakte (Decision Logs, Iteration Trails, Reflexionseinträge etc.) statt nur Produktbewertung."
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-005 § Process-artefact catalogue)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-005",
+              "section": "Process-artefact catalogue",
+              "claim": "Für prozessorientierte Ziele braucht Assessment Prozessartefakte (Decision Logs, Iteration Trails, Reflexionseinträge etc.) statt nur Produktbewertung."
+            }
+          }
+        }
+      ],
+      "events": [
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "toolu_01Wj6Z57xTCixZxaiLMQVYj1",
+          "args": {
+            "path": "/repo/corpus/index.json"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "toolu_01Wj6Z57xTCixZxaiLMQVYj1",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "toolu_01TvzD3W69p9JnSGbBz5mxV2",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-003-constructive-alignment-in-cbe.md"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "toolu_01TvzD3W69p9JnSGbBz5mxV2",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "toolu_01U7KecJBFB3C3NTE1xxkB8R",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-005-process-assessment-patterns.md"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "toolu_01U7KecJBFB3C3NTE1xxkB8R",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "grep",
+          "callId": "toolu_01CGn1pvT1khj4fJZsy799fF",
+          "args": {
+            "pattern": "Assessment",
+            "path": "/repo/corpus/content/methodology/methodology-012-ten-step-module-design-flow.md",
+            "context": 3
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "grep",
+          "callId": "toolu_01CGn1pvT1khj4fJZsy799fF",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "cbe_cite",
+          "callId": "toolu_018v2nRJTaf66rbVG7VZuizj",
+          "args": {
+            "id": "methodology-012",
+            "section": "Step 3 — Decide how you will assess learning (evidence first)",
+            "claim": "Für jeden Learning Outcome wird festgelegt, welche Evidenz (Produkt + Prozess) ihn belegt und was summativ benotet vs. formativ mit Feedback geübt wird; danach folgt das Kohärenz-Gate."
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "cbe_cite",
+          "callId": "toolu_018v2nRJTaf66rbVG7VZuizj",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-012 § Step 3 — Decide how you will assess learning (evidence first), PIONEER Project Team 2026)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-012",
+              "section": "Step 3 — Decide how you will assess learning (evidence first)",
+              "author": "PIONEER Project Team",
+              "year": 2026,
+              "claim": "Für jeden Learning Outcome wird festgelegt, welche Evidenz (Produkt + Prozess) ihn belegt und was summativ benotet vs. formativ mit Feedback geübt wird; danach folgt das Kohärenz-Gate."
+            }
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "cbe_cite",
+          "callId": "toolu_01DbGEChvH2uXeUP5dYn8SbH",
+          "args": {
+            "id": "methodology-003",
+            "section": "The triad",
+            "claim": "Constructive alignment verlangt, dass Ziele, Aktivitäten und Assessment als Triade zusammenpassen; Mis-Alignment ist der Normalfall, nicht die Ausnahme."
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "cbe_cite",
+          "callId": "toolu_01DbGEChvH2uXeUP5dYn8SbH",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-003 § The triad)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-003",
+              "section": "The triad",
+              "claim": "Constructive alignment verlangt, dass Ziele, Aktivitäten und Assessment als Triade zusammenpassen; Mis-Alignment ist der Normalfall, nicht die Ausnahme."
+            }
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "cbe_cite",
+          "callId": "toolu_01UERXBUCAFiKMaNG6Sok4Zr",
+          "args": {
+            "id": "methodology-005",
+            "section": "Process-artefact catalogue",
+            "claim": "Für prozessorientierte Ziele braucht Assessment Prozessartefakte (Decision Logs, Iteration Trails, Reflexionseinträge etc.) statt nur Produktbewertung."
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "cbe_cite",
+          "callId": "toolu_01UERXBUCAFiKMaNG6Sok4Zr",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-005 § Process-artefact catalogue)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-005",
+              "section": "Process-artefact catalogue",
+              "claim": "Für prozessorientierte Ziele braucht Assessment Prozessartefakte (Decision Logs, Iteration Trails, Reflexionseinträge etc.) statt nur Produktbewertung."
+            }
+          }
+        },
+        {
+          "type": "text",
+          "text": "Der"
+        },
+        {
+          "type": "text",
+          "text": " Korpus behandelt Assessment aus zwei Richtungen: als Design-Schritt im Zehn-Schritte-"
+        },
+        {
+          "type": "text",
+          "text": "Ablauf und als Prüfstein für Kohärenz (Constructive Alignment).\n\n**Als Design-Schritt (Schritt 3 von z"
+        },
+        {
+          "type": "text",
+          "text": "ehn).** Assessment wird nicht am Ende, sondern früh und evidenzbasiert entschieden (\"backward design\"): Für jedes Learning Outcome legt man f"
+        },
+        {
+          "type": "text",
+          "text": "est, welche Evidenz es belegt — Produkt *und* Prozess — und was summativ benotet vs. form"
+        },
+        {
+          "type": "text",
+          "text": "ativ mit Feedback geübt wird. Weil Assessment einer der Reibungspunkte im Designprozess ist, folgt danach aus"
+        },
+        {
+          "type": "text",
+          "text": "drücklich das Kohärenz-Gate: Challenge, Learning Outcomes und Assessment-Blueprint müssen zusammenpassen, bevor es"
+        },
+        {
+          "type": "text",
+          "text": " weitergeht. Output dieses Schritts: ein Assessment-Blueprint plus Rubrik-Skelett (corpus:methodology-012 § Step 3 — Decide how you"
+        },
+        {
+          "type": "text",
+          "text": " will assess learning (evidence first), PIONEER Project Team 2026).\n\n**Als Kohärenzprü"
+        },
+        {
+          "type": "text",
+          "text": "fung (Constructive Alignment nach Biggs).** Ziele, Aktivitäten und Assessment müssen als Triade zusammenpassen. Mis-Alignment ist d"
+        },
+        {
+          "type": "text",
+          "text": "abei der Normalfall, nicht die Ausnahme — weil jede Ecke meist zu einem anderen Zeitpunkt entsteht und die Drift erst sichtbar wird, w"
+        },
+        {
+          "type": "text",
+          "text": "enn Lernende auf die Bewertung hin optimieren statt auf das Ziel (corpus:methodology-003 § The triad). Der Korpus katalogisiert wiederkehrende Mis-Alignment-"
+        },
+        {
+          "type": "text",
+          "text": "Muster, u. a.:\n\n- **Prozessziel, Produktbewertung** — das Ziel benennt eine Prozesskompetenz, die Rubr"
+        },
+        {
+          "type": "text",
+          "text": "ik gewichtet aber fast nur das Endartefakt.\n- **Verb-Deliverable-Mismatch** — das Ziel-Verb (\"ent"
+        },
+        {
+          "type": "text",
+          "text": "werfen\", \"bewerten\") passt nicht zum tatsächlich bewerteten Deliverable.\n- **Unbewertetes Ziel** — eine genannte Kompetenz hat keine Bewertungsevidenz.\n- **Ver"
+        },
+        {
+          "type": "text",
+          "text": "waiste Bewertung** — ein stark gewichtetes Assessment-Element hat kein z"
+        },
+        {
+          "type": "text",
+          "text": "ugehöriges Ziel.\n- **Aktivität ohne Bewertungssignal** — eine wichtige Lernaktivität erzeugt kein Artefakt, das in"
+        },
+        {
+          "type": "text",
+          "text": " irgendein Assessment einfließt.\n- **Granularitäts-Mismatch** — eine einzelne holistische Note so"
+        },
+        {
+          "type": "text",
+          "text": "ll mehrere verschiedene Kompetenzen zertifizieren, die getrennte Evidenz bräuchten.\n\nFür prozessorientierte Ziele — in CB"
+        },
+        {
+          "type": "text",
+          "text": "E der Regelfall, weil das Framework prozessschwer ist — braucht es entsprechende Prozessartefakte: Decision Logs, Iteration Trails, Reflexion"
+        },
+        {
+          "type": "text",
+          "text": "seinträge, Guiding-Question-Maps, Synthesis Memos, Peer-/Selbstbewertungen. Rubriken müssen d"
+        },
+        {
+          "type": "text",
+          "text": "ann Gewichtungsparität (Prozessanteil spiegelt Prozessgewicht des Ziels), Kriterien-Nachvollziehbark"
+        },
+        {
+          "type": "text",
+          "text": "eit, formative Checkpoints vor der summativen Bewertung und getrennte Evidenz pro Kompetenz sicherstellen (corpus:methodology-005 § Process-artefact catal"
+        },
+        {
+          "type": "text",
+          "text": "ogue).\n\nEin Hinweis zur Quellenlage: Beide Dokumente (methodology-003, methodology-005) sind als Dev-Drafts mark"
+        },
+        {
+          "type": "text",
+          "text": "iert, die noch auf PIONEER-Quellenverifikation warten (Biggs & Tang, Black & Wili"
+        },
+        {
+          "type": "text",
+          "text": "am, Sadler u. a. sind Kandidatenquellen, noch nicht final geprüft) — ich zitiere sie als Korpusinhalt, aber m"
+        },
+        {
+          "type": "text",
+          "text": "it dieser Einschränkung transparent gemacht.\n\n---\n\nZwei mögliche Vertiefungen:"
+        },
+        {
+          "type": "text",
+          "text": " Ich kann den **Assessment-Blueprint für Ihr Modul** anhand Ihrer Learning Outcomes dur"
+        },
+        {
+          "type": "text",
+          "text": "chgehen (Schritt 3), oder ich kann eine **Alignment-Prüfung** auf ein bestehendes Ziel/Aktivität/Assessment-Set anwenden, um"
+        },
+        {
+          "type": "text",
+          "text": " Mis-Alignment-Muster konkret zu finden."
+        }
+      ]
+    },
+    {
+      "user": "Und Swellers Cognitive-Load-Theorie — wie wendet man die aufs Assessment an?",
+      "assistant": "Kurz vorweg: Der Korpus hat kein Dokument, das Cognitive Load Theory (CLT) direkt auf Assessment-*Design* anwendet — Sweller wird ausschließlich für den Delegation Check aufgerufen, also die Frage \"was dürfen Studierende an KI delegieren?\". Ich zeige, was der Korpus dazu sagt, und wo die Brücke zu Assessment eine Verbindung ist, die der Korpus selbst zieht, vs. wo ich extrapoliere.\n\n**Was der Korpus grundiert (methodology-002).** CLT unterscheidet drei Lastarten:\n\n- **Germane load** — die anstrengende Verarbeitung, die genau die Schemata aufbaut, die das Modul lehren will. Das *ist* das Lernen; wird sie delegiert, verschwindet der Lernertrag.\n- **Extraneous load** — durch die Aufgabenform verursachter Overhead ohne Lernsubstanz (Formatierung, Boilerplate, mechanische Transformation). Delegierbar, ohne den Lernertrag zu beschädigen.\n- **Intrinsic load** — die inhärente Schwierigkeit des Materials selbst, bestimmt durch Element-Interaktivität; nicht delegierbar, aber durch Sequenzierung steuerbar (corpus:methodology-002 § The distinction that makes delegation answerable).\n\nDiese Unterscheidung wird **pro Challenge-Komponente** angewendet, nicht aufs Modul als Ganzes — ein einzelner CBE-Challenge mischt Komponenten mit unterschiedlichem Lastprofil.\n\n**Die entscheidende Abhängigkeit von Assessment.** Der Korpus macht explizit, warum die Reihenfolge zwingend ist: \"Germane\" hat keinen Referenten, solange nicht der Competence Check geklärt hat, *welche* Kompetenz gemeint ist, und der Alignment Check geklärt hat, *wie* sie bewertet wird. Den Delegation Check vor diesen beiden laufen zu lassen, reduziert \"germane vs. extraneous\" auf ästhetische Präferenz (corpus:methodology-002 § Why the upstream checks are prerequisites). Das heißt: CLT wird hier nicht *auf* Assessment angewendet — Assessment ist die Voraussetzung, die CLT erst anwendbar macht.\n\n**Die Brücke, die sich daraus ergibt (meine Einordnung, nicht wörtlich im Korpus so formuliert):** Wenn Assessment bereits (Schritt 3) festlegt, welche Evidenz welches Learning Outcome belegt, dann sagt CLT im Umkehrschluss, was diese Evidenz *zeigen muss*: Sie muss germane Verarbeitung sichtbar machen, nicht extraneous. Konkret aus dem Delegation-Check-Raster übertragen:\n\n- Wenn eine Assessment-Aufgabe eine Kompetenz prüfen soll, deren Kernarbeit (Kernargument, Analyse, Design-Entscheidung) germane ist, dann darf die Bewertung nicht an einem Artefakt hängen, das diese germane Arbeit verdeckt — z. B. wenn ein polierter Endbericht auch von KI hätte formuliert werden können, misst die Bewertung möglicherweise extraneous Politur statt germane Denkarbeit.\n- Das ist strukturell verwandt mit dem \"Verb-Deliverable-Mismatch\" aus dem Alignment Check (methodology-003): eine Rubrik, die Formatierung/Boilerplate hoch gewichtet, bewertet extraneous load, während das Ziel germane load verlangt.\n- Die Prozessartefakte aus methodology-005 (Decision Logs, Iteration Trails) sind aus CLT-Sicht plausibel deshalb wirksam, weil sie germane Verarbeitung direkt festhalten, statt nur das Endprodukt zu zeigen — das ist aber meine Verknüpfung, keine explizite Korpusaussage.\n\nIch würde diese Brücke nicht als \"der Korpus sagt\" ausgeben — sie ist eine naheliegende, aber ungrundierte Praxisschlussfolgerung aus zwei getrennten Korpusdokumenten (methodology-002 und methodology-003/005), nicht eine dort selbst gezogene Verbindung.\n\n---\n\nZwei mögliche nächste Schritte: Ich kann den **Delegation Check** für eine konkrete Challenge-Komponente Ihres Moduls durchgehen (braucht vorher festgelegte Outcomes + Assessment), oder ich kann prüfen, ob Ihre bestehende Rubrik germane vs. extraneous load in der oben skizzierten Weise auseinanderhält.",
+      "tools": [
+        {
+          "name": "read",
+          "callId": "toolu_01Y1C68mTwxG4GHGVCD9VLwX",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-002-ai-delegation-cognitive-load.md"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "read",
+          "callId": "toolu_01XuGEXcXUnamhbxogUQmWBL",
+          "args": {
+            "path": "/repo/corpus/content/foundations/foundations-004-intelligent-tutoring-foundations.md"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "cbe_cite",
+          "callId": "toolu_01Rgrk4EUbsBCwD99jfQpLz7",
+          "args": {
+            "id": "methodology-002",
+            "section": "The distinction that makes delegation answerable",
+            "claim": "Germane load ist die Verarbeitung, die die Zielkompetenz aufbaut; extraneous load ist formbedingter Overhead ohne Lernsubstanz; intrinsic load ist die inhärente Schwierigkeit des Materials, nicht delegierbar aber durch Sequenzierung steuerbar."
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-002 § The distinction that makes delegation answerable)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-002",
+              "section": "The distinction that makes delegation answerable",
+              "claim": "Germane load ist die Verarbeitung, die die Zielkompetenz aufbaut; extraneous load ist formbedingter Overhead ohne Lernsubstanz; intrinsic load ist die inhärente Schwierigkeit des Materials, nicht delegierbar aber durch Sequenzierung steuerbar."
+            }
+          }
+        },
+        {
+          "name": "cbe_cite",
+          "callId": "toolu_018BNxTLYjisfAAMQ4YGvjPv",
+          "args": {
+            "id": "methodology-002",
+            "section": "Why the upstream checks are prerequisites",
+            "claim": "\"Germane\" hat keinen Referenten, solange nicht der Competence Check die Zielkompetenz und der Alignment Check die Bewertungsform geklärt haben — daher die Reihenfolge Competence → Alignment → Delegation."
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-002 § Why the upstream checks are prerequisites)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-002",
+              "section": "Why the upstream checks are prerequisites",
+              "claim": "\"Germane\" hat keinen Referenten, solange nicht der Competence Check die Zielkompetenz und der Alignment Check die Bewertungsform geklärt haben — daher die Reihenfolge Competence → Alignment → Delegation."
+            }
+          }
+        }
+      ],
+      "events": [
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "toolu_01Y1C68mTwxG4GHGVCD9VLwX",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-002-ai-delegation-cognitive-load.md"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "toolu_01Y1C68mTwxG4GHGVCD9VLwX",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "toolu_01XuGEXcXUnamhbxogUQmWBL",
+          "args": {
+            "path": "/repo/corpus/content/foundations/foundations-004-intelligent-tutoring-foundations.md"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "toolu_01XuGEXcXUnamhbxogUQmWBL",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "cbe_cite",
+          "callId": "toolu_01Rgrk4EUbsBCwD99jfQpLz7",
+          "args": {
+            "id": "methodology-002",
+            "section": "The distinction that makes delegation answerable",
+            "claim": "Germane load ist die Verarbeitung, die die Zielkompetenz aufbaut; extraneous load ist formbedingter Overhead ohne Lernsubstanz; intrinsic load ist die inhärente Schwierigkeit des Materials, nicht delegierbar aber durch Sequenzierung steuerbar."
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "cbe_cite",
+          "callId": "toolu_01Rgrk4EUbsBCwD99jfQpLz7",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-002 § The distinction that makes delegation answerable)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-002",
+              "section": "The distinction that makes delegation answerable",
+              "claim": "Germane load ist die Verarbeitung, die die Zielkompetenz aufbaut; extraneous load ist formbedingter Overhead ohne Lernsubstanz; intrinsic load ist die inhärente Schwierigkeit des Materials, nicht delegierbar aber durch Sequenzierung steuerbar."
+            }
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "cbe_cite",
+          "callId": "toolu_018BNxTLYjisfAAMQ4YGvjPv",
+          "args": {
+            "id": "methodology-002",
+            "section": "Why the upstream checks are prerequisites",
+            "claim": "\"Germane\" hat keinen Referenten, solange nicht der Competence Check die Zielkompetenz und der Alignment Check die Bewertungsform geklärt haben — daher die Reihenfolge Competence → Alignment → Delegation."
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "cbe_cite",
+          "callId": "toolu_018BNxTLYjisfAAMQ4YGvjPv",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "(corpus:methodology-002 § Why the upstream checks are prerequisites)"
+              }
+            ],
+            "details": {
+              "kind": "citation",
+              "id": "methodology-002",
+              "section": "Why the upstream checks are prerequisites",
+              "claim": "\"Germane\" hat keinen Referenten, solange nicht der Competence Check die Zielkompetenz und der Alignment Check die Bewertungsform geklärt haben — daher die Reihenfolge Competence → Alignment → Delegation."
+            }
+          }
+        },
+        {
+          "type": "text",
+          "text": "Kurz vorweg: Der Korpus hat kein Dokument, das Cognitive Load Theory (CLT) direkt auf Assessment"
+        },
+        {
+          "type": "text",
+          "text": "-*Design* anwendet — Sweller wird ausschließlich für den Delegation Check aufgerufen, also die Frage \"was d"
+        },
+        {
+          "type": "text",
+          "text": "ürfen Studierende an KI delegieren?\". Ich zeige, was der Korpus dazu sagt, und wo die Br"
+        },
+        {
+          "type": "text",
+          "text": "ücke zu Assessment eine Verbindung ist, die der Korpus selbst zieht, vs. wo ich extrapoliere.\n\n**Was der Kor"
+        },
+        {
+          "type": "text",
+          "text": "pus grundiert (methodology-002).** CLT unterscheidet drei Lastarten:\n\n- **Germane load** —"
+        },
+        {
+          "type": "text",
+          "text": " die anstrengende Verarbeitung, die genau die Schemata aufbaut, die das Modul lehren will. Das *ist* das"
+        },
+        {
+          "type": "text",
+          "text": " Lernen; wird sie delegiert, verschwindet der Lernertrag.\n- **Extraneous load** — durch die Aufgabenform verursachter"
+        },
+        {
+          "type": "text",
+          "text": " Overhead ohne Lernsubstanz (Formatierung, Boilerplate, mechanische Transformation). Delegierbar, ohne den Lernertrag zu beschädig"
+        },
+        {
+          "type": "text",
+          "text": "en.\n- **Intrinsic load** — die inhärente Schwierigkeit des Materials selbst, bestimmt durch Element-Interaktivität; nicht delegierbar, aber durch Sequenzierung steuerbar (corpus:meth"
+        },
+        {
+          "type": "text",
+          "text": "odology-002 § The distinction that makes delegation answerable).\n\nDiese Unterscheidung wird **pro Challenge-Komponente** angewendet, nicht aufs Modul als"
+        },
+        {
+          "type": "text",
+          "text": " Ganzes — ein einzelner CBE-Challenge mischt Komponenten mit unterschiedlichem Lastprofil.\n\n**Die entscheidende Abhängigkeit von Assessment.** Der"
+        },
+        {
+          "type": "text",
+          "text": " Korpus macht explizit, warum die Reihenfolge zwingend ist: \"Germane\" hat keinen Referenten, solange nicht der Competence Check geklärt h"
+        },
+        {
+          "type": "text",
+          "text": "at, *welche* Kompetenz gemeint ist, und der Alignment Check geklärt hat, *wie* sie bewertet wird. Den Delegation Check vor diesen be"
+        },
+        {
+          "type": "text",
+          "text": "iden laufen zu lassen, reduziert \"germane vs. extraneous\" auf ästhetische Präferenz (corpus:methodology-002 § Why the upstream checks are prerequis"
+        },
+        {
+          "type": "text",
+          "text": "ites). Das heißt: CLT wird hier nicht *auf* Assessment angewendet — Assessment ist die Voraussetzung, die"
+        },
+        {
+          "type": "text",
+          "text": " CLT erst anwendbar macht.\n\n**Die Brücke, die sich daraus ergibt (meine Einordnung, nicht w"
+        },
+        {
+          "type": "text",
+          "text": "örtlich im Korpus so formuliert):** Wenn Assessment bereits (Schritt 3) festlegt, welche Evidenz welches Lear"
+        },
+        {
+          "type": "text",
+          "text": "ning Outcome belegt, dann sagt CLT im Umkehrschluss, was diese Evidenz *zeigen muss*: S"
+        },
+        {
+          "type": "text",
+          "text": "ie muss germane Verarbeitung sichtbar machen, nicht extraneous. Konkret aus dem Delegation-Check-Raster übertragen:\n\n- Wen"
+        },
+        {
+          "type": "text",
+          "text": "n eine Assessment-Aufgabe eine Kompetenz prüfen soll, deren Kernarbeit (Kernargument, Analyse, Design"
+        },
+        {
+          "type": "text",
+          "text": "-Entscheidung) germane ist, dann darf die Bewertung nicht an einem Artefakt hängen, das"
+        },
+        {
+          "type": "text",
+          "text": " diese germane Arbeit verdeckt — z. B. wenn ein polierter Endbericht au"
+        },
+        {
+          "type": "text",
+          "text": "ch von KI hätte formuliert werden können, misst die Bewertung möglicherweise extraneous Politur"
+        },
+        {
+          "type": "text",
+          "text": " statt germane Denkarbeit.\n- Das ist strukturell verwandt mit dem \"Verb-Deliverable-Mismatch\" aus d"
+        },
+        {
+          "type": "text",
+          "text": "em Alignment Check (methodology-003): eine Rubrik, die Formatierung/Boilerplate hoch gewichtet, bewertet extraneous load"
+        },
+        {
+          "type": "text",
+          "text": ", während das Ziel germane load verlangt.\n- Die Prozessartefakte aus methodology-005 (Decision Logs, Iteration Tr"
+        },
+        {
+          "type": "text",
+          "text": "ails) sind aus CLT-Sicht plausibel deshalb wirksam, weil sie germane Verarbeitung direkt festhalten, stat"
+        },
+        {
+          "type": "text",
+          "text": "t nur das Endprodukt zu zeigen — das ist aber meine Verknüpfung, keine explizite Korpus"
+        },
+        {
+          "type": "text",
+          "text": "aussage.\n\nIch würde diese Brücke nicht als \"der Korpus sagt\" ausgeben — sie ist eine nahelieg"
+        },
+        {
+          "type": "text",
+          "text": "ende, aber ungrundierte Praxisschlussfolgerung aus zwei getrennten Korpusdokumenten ("
+        },
+        {
+          "type": "text",
+          "text": "methodology-002 und methodology-003/005), nicht eine dort selbst gezogene Verbindung.\n\n---\n\nZ"
+        },
+        {
+          "type": "text",
+          "text": "wei mögliche nächste Schritte: Ich kann den **Delegation Check** für eine konkrete Challenge-Komponente Ihres Moduls durchg"
+        },
+        {
+          "type": "text",
+          "text": "ehen (braucht vorher festgelegte Outcomes + Assessment), oder ich kann prüfen, ob Ihre bestehende Rubrik"
+        },
+        {
+          "type": "text",
+          "text": " germane vs. extraneous load in der oben skizzierten Weise auseinanderhält."
+        }
+      ]
+    }
+  ]
+}

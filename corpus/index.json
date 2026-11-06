@@ -1,0 +1,236 @@
+{
+  "corpus-version": "2026-11",
+  "generated": "2026-11-06",
+  "generator": "cbe-corpus-cli@0.1.0",
+  "document-count": 13,
+  "categories": {
+    "foundations": 4,
+    "methodology": 8,
+    "vocabulary": 1
+  },
+  "documents": [
+    {
+      "id": "foundations-001",
+      "title": "CBL and Its Experiential Learning Foundations",
+      "category": "foundations",
+      "version": "1.0.1",
+      "path": "content/foundations/foundations-001-experiential-learning-roots.md",
+      "tags": [
+        "experiential-learning",
+        "constructivism",
+        "progressive-education",
+        "dewey",
+        "kolb",
+        "vygotsky"
+      ],
+      "short-description": "Challenge Based Learning explicitly situates itself within a long tradition of progressive and experiential education."
+    },
+    {
+      "id": "foundations-002",
+      "title": "CBL Foundational Ideas and Design Principles",
+      "category": "foundations",
+      "version": "1.0.1",
+      "path": "content/foundations/foundations-002-foundational-ideas-design-principles.md",
+      "tags": [
+        "foundational-ideas",
+        "design-principles",
+        "learner-agency",
+        "technology",
+        "reflection",
+        "21st-century-skills",
+        "historical-development"
+      ],
+      "short-description": "The CBL framework \"builds on a set of foundational ideas\" — persistent orientations that inform the entire approach, not steps in a process (CBL Guide 2016, p. 8)."
+    },
+    {
+      "id": "foundations-003",
+      "title": "CBL Implementation Scales and Entry Points",
+      "category": "foundations",
+      "version": "1.0.1",
+      "path": "content/foundations/foundations-003-implementation-scales.md",
+      "tags": [
+        "implementation",
+        "institutional",
+        "capstone",
+        "flexible",
+        "entry-points",
+        "challenge-variations"
+      ],
+      "short-description": "Guide-backed implementation scales from bounded Challenge events to an overarching institutional approach, including multiple entry points and Challenge variations."
+    },
+    {
+      "id": "foundations-005",
+      "title": "The PIONEER-Alliance Definition of Challenge-Based Education",
+      "category": "foundations",
+      "version": "0.1.1",
+      "path": "content/foundations/foundations-005-pioneer-cbe-definition.md",
+      "tags": [
+        "pioneer",
+        "cbe-definition",
+        "criteria",
+        "pbl",
+        "pjbl",
+        "multi-actor-ecosystem",
+        "stakeholders",
+        "sdg11",
+        "foundations"
+      ],
+      "short-description": "The PIONEER-Alliance CBE definition: how CBE differs from PBL/PjBL, the seven operationalised PIONEER criteria with maturity cues, the multi-actor ecosystem, and the SDG11 impact orientation."
+    },
+    {
+      "id": "methodology-001",
+      "title": "The Challenge Based Learning Three-Phase Framework",
+      "category": "methodology",
+      "version": "1.0.1",
+      "path": "content/methodology/methodology-001-cbl-three-phase-framework.md",
+      "tags": [
+        "engage",
+        "investigate",
+        "act",
+        "framework",
+        "phases",
+        "documentation",
+        "reflection"
+      ],
+      "short-description": "Challenge Based Learning (CBL) organizes the learning experience into three interconnected phases: Engage, Investigate, and Act."
+    },
+    {
+      "id": "methodology-002",
+      "title": "AI Delegation and Cognitive Load: Germane vs Extraneous Processing",
+      "category": "methodology",
+      "version": "0.1.1",
+      "path": "content/methodology/methodology-002-ai-delegation-cognitive-load.md",
+      "tags": [
+        "cognitive-load",
+        "ai-delegation",
+        "germane",
+        "extraneous",
+        "sweller",
+        "generative-ai",
+        "delegation-check"
+      ],
+      "short-description": "Cognitive Load Theory distinguishes germane processing — the working-memory work that builds the targeted schemas, which must happen in the learner's head — from extraneous processing, which can be de"
+    },
+    {
+      "id": "methodology-003",
+      "title": "Constructive Alignment in CBE: The Goals × Activities × Assessment Triad",
+      "category": "methodology",
+      "version": "0.1.1",
+      "path": "content/methodology/methodology-003-constructive-alignment-in-cbe.md",
+      "tags": [
+        "constructive-alignment",
+        "biggs",
+        "assessment",
+        "alignment-check",
+        "mis-alignment-patterns"
+      ],
+      "short-description": "Constructive alignment (Biggs) holds that intended competencies, learning activities, and assessment must form a coherent triad; the Alignment Check audits the triad and flags the recurring patterns w"
+    },
+    {
+      "id": "methodology-004",
+      "title": "Heterogeneity and Scaffolding: Composition and Role-Differentiation Patterns",
+      "category": "methodology",
+      "version": "0.1.1",
+      "path": "content/methodology/methodology-004-heterogeneity-and-scaffolding.md",
+      "tags": [
+        "heterogeneity",
+        "scaffolding",
+        "differentiation",
+        "zpd",
+        "composition",
+        "role-differentiation",
+        "dev-marked"
+      ],
+      "short-description": "Cohort heterogeneity spans several axes (prior-knowledge spread, methodological readiness, self-regulation, disciplinary and cultural plurality); team composition and role differentiation are the two "
+    },
+    {
+      "id": "methodology-005",
+      "title": "Process Assessment Patterns: Artefacts and Rubrics for Process-Oriented CBE",
+      "category": "methodology",
+      "version": "0.1.1",
+      "path": "content/methodology/methodology-005-process-assessment-patterns.md",
+      "tags": [
+        "process-assessment",
+        "formative",
+        "rubrics",
+        "artefacts",
+        "black-wiliam",
+        "alignment-check"
+      ],
+      "short-description": "When a CBE goal is process-oriented, assessment needs process artefacts and process-sensitive rubrics; otherwise the rubric rewards only the final product and the process goal goes unmeasured."
+    },
+    {
+      "id": "methodology-006",
+      "title": "Soft-Skill Scaffolding: Structural Anchors for Teamwork, Feedback and Self-Regulation",
+      "category": "methodology",
+      "version": "0.1.1",
+      "path": "content/methodology/methodology-006-soft-skills-scaffolding.md",
+      "tags": [
+        "soft-skills",
+        "scaffolding",
+        "teamwork",
+        "feedback",
+        "self-regulation",
+        "structural-anchors",
+        "dev-marked"
+      ],
+      "short-description": "Soft-skill goals (teamwork, feedback, self-regulation, interdisciplinary communication) develop only when the design provides a structural anchor that makes the skill practicable and observable; \"orga"
+    },
+    {
+      "id": "methodology-007",
+      "title": "The CBE Maturity Continuum: Three Levels Across the Seven PIONEER Criteria",
+      "category": "methodology",
+      "version": "0.1.0",
+      "path": "content/methodology/methodology-007-cbe-maturity-continuum.md",
+      "tags": [
+        "pioneer",
+        "maturity",
+        "maturity-levels",
+        "continuum",
+        "raster",
+        "criteria",
+        "minimum-standards",
+        "excellence",
+        "methodology"
+      ],
+      "short-description": "The PIONEER CBE maturity continuum: three levels (CBE light, good practice, full-fledged) across the seven PIONEER criteria as a 3×7 raster, with synonym mapping and minimum/excellence vocabulary."
+    },
+    {
+      "id": "methodology-012",
+      "title": "The PIONEER Ten-Step CBE Module Design Flow",
+      "category": "methodology",
+      "version": "0.1.1",
+      "path": "content/methodology/methodology-012-ten-step-module-design-flow.md",
+      "tags": [
+        "pioneer",
+        "design-flow",
+        "ten-step",
+        "module-design",
+        "backward-design",
+        "constructive-alignment",
+        "coherence-gate",
+        "iterative",
+        "learning-journey",
+        "methodology"
+      ],
+      "short-description": "The PIONEER ten-step CBE module design flow (§4.6): ten steps with named outputs, backward-design (evidence first), the coherence gate after step 3, and iterative three-round use."
+    },
+    {
+      "id": "vocabulary-001",
+      "title": "CBL Core Vocabulary: Official Terminology and Contested Concepts",
+      "category": "vocabulary",
+      "version": "1.0.1",
+      "path": "content/vocabulary/vocabulary-001-cbl-core-vocabulary.md",
+      "tags": [
+        "glossary",
+        "terminology",
+        "durable-skills",
+        "meta-skills",
+        "big-idea",
+        "challenge",
+        "essential-question"
+      ],
+      "short-description": "Glossary of CBL core terms (Big Idea, Essential Question, Challenge Statement, Guiding Questions) plus the PBL/CBL distinction and the meta-skills terminology gap."
+    }
+  ]
+}

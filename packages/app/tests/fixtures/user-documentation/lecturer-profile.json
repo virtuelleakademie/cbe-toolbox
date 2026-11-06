@@ -1,0 +1,16 @@
+{
+  "pbl-prior-knowledge": {
+    "value": "some",
+    "confidence": "medium",
+    "evidence": "Synthetic documentation fixture: described one prior project course.",
+    "provenance": "estimate",
+    "lastRevised": "2026-10-27T12:00:00.000Z"
+  },
+  "capacity": {
+    "value": "headroom",
+    "confidence": "low",
+    "evidence": "Synthetic documentation fixture: asked to explore alternatives.",
+    "provenance": "estimate",
+    "lastRevised": "2026-10-27T12:00:00.000Z"
+  }
+}

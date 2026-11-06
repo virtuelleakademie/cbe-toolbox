@@ -1,0 +1,77 @@
+{
+  "probe": "S6",
+  "model": "qwen3.6-35b-a3b",
+  "_source": "Captured S6 run run-2026-08-06T16-14-40-151Z (qwen3.6-35b-a3b). Zero cbe_cite calls; document ids attributed in parentheses. read/grep results trimmed, repo path normalised to /repo; user and assistant text verbatim.",
+  "turns": [
+    {
+      "user": "Was sagt der Korpus zu Assessment in CBE?",
+      "assistant": "\n\nIch lese zuerst den Korpus-Index, um die relevanten Dokumente zu finden.\n\n\n\nDas Dokument `methodology-003` zur Constructive Alignment und `methodology-005` zu Prozess-Assessment sind die zentralen Dokumente zu Assessment. Ich lese beide.\n\n\n\n\nDer Korpus behandelt Assessment in CBE aus zwei Perspektiven. Wichtig vorab: beide Dokumente sind **nicht-autoritative Dev-Drafts** — sie warten noch auf PIONEER-Quellenüberprüfung und dürfen nicht als verbindlich zitiert werden.\n\n---\n\n## 1. Constructive Alignment (methodology-003)\n\nDas Grundmodell orientiert sich an Biggs: Ein Modul ist nur dann kohärent, wenn **Ziele × Aktivitäten × Assessment** eine stimmige Triade bilden. Assessment ist die dritte Ecke — was gemessen und belohnt wird. Drift zwischen den drei Ecken ist die Norm, nicht die Ausnahme: Lernende optimieren rational für die Bewertung, nicht für das Ziel.\n\n**Six Mis-alignment Patterns** (die häufigsten Fehler):\n\n- **Prozessziel, Produktbewertung** — die Kompetenz lautet z.B. \"zusammenarbeiten\", aber die Rubric bewertet fast nur das Endprodukt → Lernende überspringen den Prozess.\n- **Verb-Deliverable-Mismatch** — das Zielverb (\"designen\", \"evaluieren\") passt nicht zum bewerteten Deliverable (\"ein Bericht\").\n- **Unassessed Goal** — eine Kompetenz wird formuliert, hat aber keinerlei assessment evidence → sie ist aspirational, nicht gemessen.\n- **Orphan Assessment** — ein stark gewichteter Bewertungspunkt hat keine Zielzuordnung.\n- **Activity without assessment signal** — eine zentrale Aktivität liefert kein Artefakt, das in die Bewertung eingeht → wird von Lernenden depriorisiert.\n- **Granularity Mismatch** — eine einzige holistic Note soll mehrere verschiedene Kompetenzen abdecken, die getrennte Evidenz brauchen.\n\nFür jedes Flag wird der spezifische Konflikt benannt, der Mechanismus beschrieben, durch den Lernende irregeführt werden, und ein \"lift\" (Korrekturansatz) vorgeschlagen — keine stillschweigende Umbenennung der Rubric.\n\n## 2. Process Assessment Patterns (methodology-005)\n\nWeil CBE framework-prozessschwer ist, ist \"Prozessziel, Produktbewertung\" das häufigste Pattern. Das Dokument liefert zwei Hebel:\n\n**Process-Artefakte** (machen Prozess messbar):\n- Decision logs (begründete Design-/Entscheidungsprotokolle)\n- Iteration trails (Versionen + Change Rationale)\n- Reflection entries (strukturierte Reflexion)\n- Guiding-question maps (evolvierende Forschungsagenda)\n- Synthesis memos (interim sense-making)\n- Peer- und Self-Assessment Records\n\n**Rubric-Patterns**:\n- **Weighting parity** — prozessschwere Ziele brauchen entsprechende Prozessgewichtung; 70/30 zugunsten Produkt bei einem prozess-dominanten Ziel ist eine Fehlausrichtung.\n- **Criterion traceability** — jedes Rubric-Kriterium mappt zu einer stated competence.\n- **Formative checkpoints** — low-stakes Prozess-Checkpoints (Black & Wiliam's formative-assessment Tradition) vor dem summativen Artefakt.\n- **Separated evidence** — verschiedene Kompetenzen brauchen getrennte Evidenz, keine einzige holistic Note.\n\n---\n\n**Was fehlt im Korpus:** Es gibt kein eigenständiges Dokument, das die allgemeinen Assessment-Strategien in CBE systematisch beschreibt (z.B. die Rolle des Reflect Documents, Summative vs. Formative im Drei-Phasen-Rahmen, oder die Verknüpfung von Assessment mit den seven PIONEER criteria). Der Fokus liegt aktuell auf der Alignment-Check-Perspektive und Process-Assessment.\n\nMöchtest du tiefer in eines der beiden Themen einsteigen, oder soll ich nach weiteren Quellen (z.B. case study-002 hat \"assessment\" als Tag) suchen?",
+      "tools": [
+        {
+          "name": "read",
+          "args": {
+            "path": "/repo/corpus/index.json"
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "read",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-003-constructive-alignment-in-cbe.md"
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "read",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-005-process-assessment-patterns.md"
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        }
+      ],
+      "events": []
+    },
+    {
+      "user": "Und Swellers Cognitive-Load-Theorie — wie wendet man die aufs Assessment an?",
+      "assistant": "\n\nDas Dokument (`methodology-002`) behandelt CLT nicht als eigenständige Assessment-Theorie, sondern als **Filter für die Delegation-Entscheidung** — die Frage, ob Lernende generative KI für eine Aufgabenkomponente nutzen dürfen. Daraus folgen aber wichtige assessment-relevante Implikationen.\n\n## Was CLT im Dokument leistet\n\nSwells Unterscheidung (germane vs. extraneous vs. intrinsic load) wird als Diskriminator eingesetzt, um pro **Komponente** einer CBE-Herausforderung zu entscheiden:\n\n| Load-Typ | Was es ist | Assessment-Relevanz |\n|---|---|---|\n| **Germane** | Arbeitsgedächtnis-Arbeit, die die Ziel-Schemas baut → das ist das Lernen selbst | MESSBAR durch Assessment — das Assessment muss prüfen, ob diese Arbeit im Kopf der Lernenden stattfand |\n| **Extraneous** | Form-Overhead (Layout, Zitierbereinigung, mechanische Transformation) | Sollte im Assessment **nicht gewichtet** werden — es belohnt nichts, was zum Lernertrag beiträgt |\n| **Intrinsic** | Materiale固有的 Schwierigkeit (Element Interactivity) | Nicht delegierbar, aber durch Sequenzierung handhabbar → Assessment muss den Sequenzfortschritt abbilden |\n\n## Die Implikation für Assessment-Design\n\n1. **Germane load muss im Assessment-Signal sichtbar sein.** Wenn eine Aufgabenkomponente den germane load trägt (Kernargument, Synthese, Design-Entscheidung), dann muss das Assessment prüfen, ob diese kognitive Arbeit tatsächlich von den Lernenden geleistet wurde — nicht vom AI-System. Ein AI-generierter Text hat null germane load für die Lernenden.\n\n2. **Extraneous load darf nicht bestraft oder belohnt werden.** Wenn das Assessment Layout, Formatierung oder Zitierstyle gewichtet, strafft es nicht die Zielfähigkeit — es belohnt nur Form-Overhead. Nach CLT-Logik sollte solches Assessment diese Komponente entweder auf ein Pass/Fail-Niveau senken oder ganz aus der gewichteten Bewertung nehmen.\n\n3. **Die Delegation-Heuristik ist assessmentgetrieben.** Das Dokument stellt klar: \"Germane\" hat keinen Referenten, bis die Competence Check die Zielkompetenz definiert hat und die Alignment Check festlegt, wie sie assessed wird. Erst dann kann die Frage \"Ist diese Komponente germane oder extraneous?\" überhaupt beantwortet werden. Die Reihenfolge ist zwingend: **Competence → Alignment → Delegation**. Wer vorher Delegation fragt, reduziert CLT auf ästhetische Präferenz.\n\n## Was das Dokument NICHT liefert\n\n- Keine systematische Diskussion, wie sich die drei Load-Typen auf **Assessment-Formate** auswirken (z.B. \"Soll ich process artefacts oder product artefacts priorisieren?\").\n- Keine Verbindung zu den PIONEER criteria — wann ein \"extraneous load reduction\" durch KI gut practice ist (level 2), wann es gegen student agency spricht (criterion 4).\n- Keine konkreten Rubric-Muster für CLT — wie man im Assessment misst, dass germane load statt extraneous load produziert wurde. Diese Brücke würde methodology-005 (Process Assessment) schlagen müssen, aber die beiden Dokumente verknüpfen sich nicht explizit.\n\n## Praktische Übersetzung\n\nEin Assessment, das CLT konsequent anwendet, stellt für jede gewichtete Kompetenz die Frage:\n\n> *Welche kognitive Arbeit baut das Zielschema? Wo muss diese Arbeit im Arbeitsgedächtnis der Lernenden stattfinden?*\n\nWenn die Antwort \"im Kopf der Lernenden\" ist → germane → das Assessment muss direkte Evidenz dafür prüfen (Decision logs, Iteration trails, Synthesis memos — aus methodology-005). Wenn die Antwort \"kann delegiert werden, ohne den Lernertrag zu schmälern\" → extraneous → entweder nicht gewichten oder AI-Delegation explizit erlauben, solange die germane Komponente nachgewiesen wird.\n\nMöchtest du, dass ich die Verbindung zwischen CLT-Filter und Process Assessment Patterns (methodology-005) ausarbeite? Das wäre der konsequente nächste Schritt — wie man CLT konkret in Rubric-Kriterien und Artefakt-Anforderungen übersetzt.",
+      "tools": [
+        {
+          "name": "read",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-002-ai-delegation-cognitive-load.md"
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        }
+      ],
+      "events": []
+    }
+  ]
+}

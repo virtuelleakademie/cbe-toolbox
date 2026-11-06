@@ -1,0 +1,175 @@
+{
+  "probe": "S6",
+  "model": "qwen3.6-35b-a3b",
+  "_source": "Captured probe session s-1786036684506 of the werkzeuge-erreichen-modell-w6 investigation (qwen3.6-35b-a3b, citing-nudge run 1). Zero cbe_cite calls, three hand-written token-shaped strings. Tool results trimmed, repo path normalised to /repo; user and assistant text verbatim. Events are ordered as captured (thinking blocks dropped).",
+  "turns": [
+    {
+      "user": "Was sagt der Korpus zu Assessment in CBE? Bitte belege jede Aussage mit einem Zitat aus dem Korpus.",
+      "assistant": "Zu diesem Thema greifen mehrere Dokumente im Korpus. Ich lese die drei relevantesten nacheinander.\n\n\n\n\n\nDrei Korpusdokumente behandeln Assessment in CBE. Hier ist die Zusammenfassung, jeweils mit Korpusbeleg:\n\n---\n\n**1. Assessment als eine der drei Säulen der konstruktiven Ausrichtung**\n\nNach der Theorie der konstruktiven Ausrichtung (Biggs) muss ein Modul kohärent sein, wenn die beabsichtigten Kompetenzen, die Lernaktivitäten und das Assessment ein stimmiges Dreieck bilden.\n\n> \"Constructive alignment treats a module as coherent only when three corners agree: 1. **Goals** — the intended competencies. 2. **Activities** — what learners actually do. 3. **Assessment** — what is measured and rewarded.\"\n\nMissachtung führt zu Misalignment-Mustern, darunter:\n- *\"Process goal, product assessment\"* — das Ziel nennt eine Prozesskompetenz, aber die Bewertung gewichtet nur das Endprodukt.\n- *\"Unassessed goal\"* — ein genanntes Kompetenzziel hat keine entsprechende Assessment-Evidenz.\n- *\"Orphan assessment\"* — ein stark gewichtetes Assessment-Item hat kein zugehöriges Ziel.\n\n(corpus:methodology-003, \"Constructive Alignment in CBE: The Goals × Activities × Assessment Triad\", \"The triad\" / \"Mis-alignment-pattern catalogue\")\n\n---\n\n**2. Step 3 im Design-Flow — Evidence First**\n\nDer PIONEER Zehn-Schritte-Flow behandelt Assessment explizit als **Step 3** — vor der Ausgestaltung der Challenge. Das Prinzip heisst *evidence first*:\n\n> \"For each learning outcome decide: what evidence will prove it (product + process), and what is graded (summative) versus practised with feedback (formative).\"\n\nDas Output-Artefakt ist ein *\"Assessment Blueprint (plus rubric skeleton)\"*. Nach diesem Schritt gibt es ein explizites **Coherence Gate**:\n\n> \"do not move on before the initial challenge, learning outcomes and assessment blueprint are coherent.\"\n\nSpäter, in Step 9, wird eine vollständige Alignment-Prüfung wiederholt:\n\n> \"every learning outcome is trained in activities; every learning outcome is assessed with evidence; and no big graded item appears that students did not practise for.\"\n\n(corpus:methodology-012, \"The PIONEER Ten-Step CBE Module Design Flow\", \"Step 3 — Decide how you will assess learning\" / \"Step 9 — Run an alignment check\")\n\n---\n\n**3. Process Assessment — Artefakte und Rubric Patterns**\n\nWeil CBE prozessintensiv ist, muss das Assessment auch den Prozess abbilden. Andernfalls:\"otherwise the rubric rewards only the final product and the process goal goes unmeasured.\"\n\nZur Sichtbarmachung nennt der Korpus einen **Process-Artefact-Katalog**:\n\n- *\"Decision logs\"* — datierte Entscheidungen mit Begründung\n- *\"Iteration trails\"* — aufeinanderfolgende Entwürfe mit Change-Rationale\n- *\"Reflection entries\"* — strukturierte Reflexion\n- *\"Guiding-question maps\"*, *\"Synthesis memos\"*, *\"Peer- and self-assessment records\"*\n\nFür die Rubrik-Design heisst es zu den **Rubric Patterns**:\n- *\"Weighting parity\"* — bei prozesslastigen Zielen muss der Gewichtungsanteil der Prozess-Artefakte dem entsprechen.\n- *\"Criterion traceability\"* — jedes Rubrik-Kriterium muss auf ein genanntes Kompetenzziel mapbar sein.\n- *\"Formative checkpoints\"* — niedrigschwellige, prozessbegleitende Checkpoints vor dem summativen Artefakt.\n- *\"Separated evidence\"* — distinct competencies need separate evidence, nicht eine holistische Gesamtnote.\n\n(corpus:methodology-005, \"Process Assessment Patterns: Artefacts and Rubrics for Process-Oriented CBE\", \"Process-artefact catalogue\" / \"Rubric patterns\")\n\n---\n\n**Zusammenfassend** definiert das Korpus Assessment in CBE auf drei Ebenen:\n\n| Ebene | Kernaussage |\n|---|---|\n| **Konstruktive Ausrichtung** | Assessment muss mit Learning Outcomes und Activities triangulieren; jede Abweichung ist ein eigenständiges Misalignment-Muster. |\n| **Design-Flow** | Assessment (Step 3) kommt **vor** der Challenge-Details (evidence first) und wird mit einem Coherence Gate geprüft. |\n| **Prozessassessment** | CBE-spezifisch: Prozessziele brauchen eigene Artefakte (Decision Logs, Iteration Trails etc.) und separate Evidenz in der Rubrik. |\n\nMöchtest du zu einem dieser Themen tiefer einsteigen — z.B. die Misalignment-Muster im Detail, oder wie man ein Assessment Blueprint konkret ausfüllt?",
+      "tools": [
+        {
+          "name": "read",
+          "callId": "call_847b82ba6c2c43fdbe59460e",
+          "args": {
+            "path": "/repo/corpus/index.json"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "read",
+          "callId": "call_235ed65beb5f4f6ab98218f5",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-003-constructive-alignment-in-cbe.md"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "read",
+          "callId": "call_6717d346668e402c915bc98c",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-005-process-assessment-patterns.md"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "name": "read",
+          "callId": "call_b7f82f9559d74942b48e82ad",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-012-ten-step-module-design-flow.md"
+          },
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "call_847b82ba6c2c43fdbe59460e",
+          "args": {
+            "path": "/repo/corpus/index.json"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "call_847b82ba6c2c43fdbe59460e",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "text": "Zu diesem Thema greifen mehrere Dokumente im Korpus. Ich lese die drei relevantesten nacheinander.\n\n\n\n"
+        },
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "call_235ed65beb5f4f6ab98218f5",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-003-constructive-alignment-in-cbe.md"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "call_235ed65beb5f4f6ab98218f5",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "call_6717d346668e402c915bc98c",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-005-process-assessment-patterns.md"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "call_6717d346668e402c915bc98c",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tool_start",
+          "name": "read",
+          "callId": "call_b7f82f9559d74942b48e82ad",
+          "args": {
+            "path": "/repo/corpus/content/methodology/methodology-012-ten-step-module-design-flow.md"
+          }
+        },
+        {
+          "type": "tool_end",
+          "name": "read",
+          "callId": "call_b7f82f9559d74942b48e82ad",
+          "isError": false,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "<tool result trimmed for the fixture>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "text": "\n\nDrei Korpusdokumente behandeln Assessment in CBE. Hier ist die Zusammenfassung, jeweils mit Korpusbeleg:\n\n---\n\n**1. Assessment als eine der drei Säulen der konstruktiven Ausrichtung**\n\nNach der Theorie der konstruktiven Ausrichtung (Biggs) muss ein Modul kohärent sein, wenn die beabsichtigten Kompetenzen, die Lernaktivitäten und das Assessment ein stimmiges Dreieck bilden.\n\n> \"Constructive alignment treats a module as coherent only when three corners agree: 1. **Goals** — the intended competencies. 2. **Activities** — what learners actually do. 3. **Assessment** — what is measured and rewarded.\"\n\nMissachtung führt zu Misalignment-Mustern, darunter:\n- *\"Process goal, product assessment\"* — das Ziel nennt eine Prozesskompetenz, aber die Bewertung gewichtet nur das Endprodukt.\n- *\"Unassessed goal\"* — ein genanntes Kompetenzziel hat keine entsprechende Assessment-Evidenz.\n- *\"Orphan assessment\"* — ein stark gewichtetes Assessment-Item hat kein zugehöriges Ziel.\n\n(corpus:methodology-003, \"Constructive Alignment in CBE: The Goals × Activities × Assessment Triad\", \"The triad\" / \"Mis-alignment-pattern catalogue\")\n\n---\n\n**2. Step 3 im Design-Flow — Evidence First**\n\nDer PIONEER Zehn-Schritte-Flow behandelt Assessment explizit als **Step 3** — vor der Ausgestaltung der Challenge. Das Prinzip heisst *evidence first*:\n\n> \"For each learning outcome decide: what evidence will prove it (product + process), and what is graded (summative) versus practised with feedback (formative).\"\n\nDas Output-Artefakt ist ein *\"Assessment Blueprint (plus rubric skeleton)\"*. Nach diesem Schritt gibt es ein explizites **Coherence Gate**:\n\n> \"do not move on before the initial challenge, learning outcomes and assessment blueprint are coherent.\"\n\nSpäter, in Step 9, wird eine vollständige Alignment-Prüfung wiederholt:\n\n> \"every learning outcome is trained in activities; every learning outcome is assessed with evidence; and no big graded item appears that students did not practise for.\"\n\n(corpus:methodology-012, \"The PIONEER Ten-Step CBE Module Design Flow\", \"Step 3 — Decide how you will assess learning\" / \"Step 9 — Run an alignment check\")\n\n---\n\n**3. Process Assessment — Artefakte und Rubric Patterns**\n\nWeil CBE prozessintensiv ist, muss das Assessment auch den Prozess abbilden. Andernfalls:\"otherwise the rubric rewards only the final product and the process goal goes unmeasured.\"\n\nZur Sichtbarmachung nennt der Korpus einen **Process-Artefact-Katalog**:\n\n- *\"Decision logs\"* — datierte Entscheidungen mit Begründung\n- *\"Iteration trails\"* — aufeinanderfolgende Entwürfe mit Change-Rationale\n- *\"Reflection entries\"* — strukturierte Reflexion\n- *\"Guiding-question maps\"*, *\"Synthesis memos\"*, *\"Peer- and self-assessment records\"*\n\nFür die Rubrik-Design heisst es zu den **Rubric Patterns**:\n- *\"Weighting parity\"* — bei prozesslastigen Zielen muss der Gewichtungsanteil der Prozess-Artefakte dem entsprechen.\n- *\"Criterion traceability\"* — jedes Rubrik-Kriterium muss auf ein genanntes Kompetenzziel mapbar sein.\n- *\"Formative checkpoints\"* — niedrigschwellige, prozessbegleitende Checkpoints vor dem summativen Artefakt.\n- *\"Separated evidence\"* — distinct competencies need separate evidence, nicht eine holistische Gesamtnote.\n\n(corpus:methodology-005, \"Process Assessment Patterns: Artefacts and Rubrics for Process-Oriented CBE\", \"Process-artefact catalogue\" / \"Rubric patterns\")\n\n---\n\n**Zusammenfassend** definiert das Korpus Assessment in CBE auf drei Ebenen:\n\n| Ebene | Kernaussage |\n|---|---|\n| **Konstruktive Ausrichtung** | Assessment muss mit Learning Outcomes und Activities triangulieren; jede Abweichung ist ein eigenständiges Misalignment-Muster. |\n| **Design-Flow** | Assessment (Step 3) kommt **vor** der Challenge-Details (evidence first) und wird mit einem Coherence Gate geprüft. |\n| **Prozessassessment** | CBE-spezifisch: Prozessziele brauchen eigene Artefakte (Decision Logs, Iteration Trails etc.) und separate Evidenz in der Rubrik. |\n\nMöchtest du zu einem dieser Themen tiefer einsteigen — z.B. die Misalignment-Muster im Detail, oder wie man ein Assessment Blueprint konkret ausfüllt?"
+        }
+      ]
+    }
+  ]
+}

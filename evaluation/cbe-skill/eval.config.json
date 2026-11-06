@@ -1,0 +1,60 @@
+{
+  "$comment": "Candidate board for `npm run eval`, via OpenRouter. VERSIONED ON PURPOSE and the ONLY copy — it carries no key material, because baseUrlEnv/apiKeyEnv name environment variables that are resolved at runtime (resolution order in runner/src/secrets.ts), so every checkout can run the harness without a provisioning step. There is no .example twin: two near-identical files kept in step by hand drift. Judge = local Claude CLI. The improvement loop optimizes against this WHOLE board, not a single model: keep an edit only if it improves a checkpoint across the board with no regression. Edit here to add or retire a candidate.",
+  "$strategy": "TWO RULES GOVERN THIS BOARD (product decisions; the reasoning belongs to the whole file, not to any one entry). (1) SMALL MODEL FIRST. Skill, eval and harness are developed against a SMALL model on purpose. A large model finds its own way through a mediocre instruction and therefore proves nothing about the instruction; a small one only complies when the instruction actually carries. What holds on small holds on large — the converse is false. The primary test candidate is `gemma4-31b`. `qwen3.6-35b-a3b` and `mistral-large-2512` stay on the board for runs across more than one model. (2) NEVER WITHOUT THINKING. No model without reasoning can carry the multi-step sequences this harness demands — read the index, read the document, produce the token, record the artefact, in order. Every candidate therefore carries `reasoning: true` plus a `reasoningEffort`, and a new candidate is not added without them. A run whose candidate lacks them measures a configuration the product never ships, and its tool verdicts are not evidence of anything.",
+  "judgeCalibration": {
+    "threshold": 0.8,
+    "$note": "Agreement the judge must reach on the hand-labelled gold set (evaluation/cbe-skill/fixtures/gold/), measured SEPARATELY per direction over the unambiguous triples — a judge that passes everything would score high on a pass-heavy set. Below it the run exits 4 and is never reported as green. The value is a stated judgement argued from the acceptance model, not a measurement: change harden-eval-instrument, design.md § 2."
+  },
+  "candidates": [
+    {
+      "name": "qwen3.6-35b-a3b",
+      "modelId": "qwen/qwen3.6-35b-a3b",
+      "baseUrlEnv": "CBE_LLM_BASE_URL",
+      "apiKeyEnv": "CBE_LLM_API_KEY",
+      "contextLength": 262144,
+      "reasoning": true,
+      "reasoningEffort": "medium",
+      "$note": "Qwen 3.6 35B MoE (A3B), successor to qwen3.5-35b-a3b. NO LONGER THE PRIMARY TEST CANDIDATE (product decision 2026-08-07): on identical scenarios it produced contradictory runs — citing 6/6 with 13 cbe_cite calls in one, 2/6 with zero calls in the next — so its variance exceeded every effect being measured. It stays on the board for runs across more than one model. reasoning:true is mandatory here for the same reason it is mandatory everywhere ($strategy rule 2), and this A3B class makes the point loudest: it emits NO tool calls at all without reasoning_effort. WHY QWEN RESULTS ARE NOT PRODUCT EVIDENCE (2026-08-09). The practical rule stands: a red checkpoint on qwen is a finding about qwen until it reproduces on gemma. On S1 that day qwen missed cbe_profile and cbe_maturity entirely while gemma scored all seven checkpoints green on the identical probes, and an exploratory qwen3.6-27b entry (added and removed the same day) emitted a completely empty first assistant turn — see RUN-LOG.md. CORRECTION, recorded because it was briefly written here as fact: this entry is NOT a code-specialised model. OpenRouter describes qwen3.6-35b-a3b and qwen3.6-27b as general multimodal models; the coding-optimised member of the 3.6 family is qwen3.6-max-preview. Do not justify demoting a qwen result with a coder-model claim — justify it with the measured behaviour above."
+    },
+    {
+      "name": "gemma4-31b",
+      "modelId": "google/gemma-4-31b-it",
+      "baseUrlEnv": "CBE_LLM_BASE_URL",
+      "apiKeyEnv": "CBE_LLM_API_KEY",
+      "contextLength": 131072,
+      "$note": "PRIMARY TEST CANDIDATE (product decision 2026-08-07) — this is the model skill, eval and harness are developed against; see $strategy rule 1. Gemma 4 31B instruct, DENSE variant (not the MoE gemma-4-26b-a4b-it). Same size class as qwen but not a pure coding model, which is closer to what the product actually runs against, and it does not swing the way qwen did. reasoning:true added 2026-08-08: a --model run takes the candidate from THIS file and does not inherit the app's persisted reasoning setting, so every earlier gemma measurement ran without reasoning_effort while the app sends it — a weaker configuration than the product's. Every 'tool was not invoked' verdict recorded for gemma before that date is therefore void. GEMMA IS REASONING-CAPABLE — recorded 2026-08-09 because an agent assumed the opposite from general pre-training belief about Gemma and spent a diagnosis on it. `compat.supportsReasoningEffort` is set exactly when `reasoning: true` stands here (provider.ts), so this entry DOES send reasoning_effort and the provider accepts it. A transient `Provider finish_reason: error` is NOT evidence about reasoning support: on 2026-08-09 a full run died on the first candidate call at 19:33 and the identical configuration scored scenario 08 clean at 19:36, three minutes later. Treat such an abort as a provider hiccup and RETRY before theorising; exit 3 says provider, not candidate.",
+      "reasoning": true,
+      "reasoningEffort": "medium"
+    },
+    {
+      "name": "mistral-large-2512",
+      "modelId": "mistralai/mistral-large-2512",
+      "baseUrlEnv": "CBE_LLM_BASE_URL",
+      "apiKeyEnv": "CBE_LLM_API_KEY",
+      "contextLength": 262144,
+      "reasoning": true,
+      "reasoningEffort": "medium",
+      "$note": "EU flagship instruction-follower (latest Mistral Large, 262k ctx). Second board candidate for runs across more than one model, not a development target. reasoning:true added 2026-08-09 under $strategy rule 2, which admits no exception; if THIS model turns out not to accept reasoning_effort over OpenRouter, record what it does here rather than quietly dropping the field. The hedge is about this untested entry only and says nothing about the other candidates — it was read as a general suspicion of reasoning_effort once already, on 2026-08-09, and misdirected a diagnosis onto gemma, which supports it."
+    },
+    {
+      "name": "sonnet-5",
+      "modelId": "anthropic/claude-sonnet-5",
+      "baseUrlEnv": "CBE_LLM_BASE_URL",
+      "apiKeyEnv": "CBE_LLM_API_KEY",
+      "contextLength": 200000,
+      "reasoning": true,
+      "reasoningEffort": "medium",
+      "$note": "REFERENCE CEILING, not a target and not a development candidate. It answers exactly one question: does this checkpoint fail on the instruction or on the model? A red checkpoint that goes green here is an instruction that only a strong model can follow — which under $strategy rule 1 means the instruction still needs work. A green run here NEVER shows the instruction is good; it shows the model is clever. Never optimise against this entry."
+    },
+    {
+      "name": "qwen3.6-flash",
+      "modelId": "qwen/qwen3.6-flash",
+      "baseUrlEnv": "CBE_LLM_BASE_URL",
+      "apiKeyEnv": "CBE_LLM_API_KEY",
+      "contextLength": 1000000,
+      "reasoning": true,
+      "reasoningEffort": "medium",
+      "$note": "EXPLORATORY, added 2026-08-09. Smallest and cheapest of the qwen3.6 family on OpenRouter (0.19 $/M prompt vs 0.60 for the dense 27b), 1M context, general multimodal — NOT the coding-optimised member of the family, which is qwen3.6-max-preview. Added to see whether a small generalist holds the harness's multi-step sequences. NOT a development target and NOT board-eligible until it has been run more than once; `--compare` runs every configured candidate, so remove this entry rather than leaving it to pad every comparison. reasoning:true per $strategy rule 2; the provider lists `reasoning` and `tools` in supported_parameters."
+    }
+  ]
+}

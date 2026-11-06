@@ -1,0 +1,263 @@
+{
+  "$comment": "The Pi upgrade contract matrix (capability agent-harness, Requirement: Pi Upgrades Are Proven Through a Public Contract Harness; change guard-pi-upgrades-with-contract-tests). One group per failure domain, one owner per group, every file in exactly one group. Run one group with `npm run pi:contracts -- --group <name>`; contract-matrix.test.ts keeps this file honest. docs/pi-upgrades.md explains how to read a red group.",
+  "groups": {
+    "construction": {
+      "owner": "packages/pi-bridge/src/session.ts, atomization-session.ts and runtime/pi-config.ts — explicit home/settings/resources, prompt composition, active tool sets per policy",
+      "files": [
+        "packages/pi-bridge/tests/pi-runtime-port.test.ts",
+        "packages/pi-bridge/tests/runtime-isolation.test.ts",
+        "packages/pi-bridge/tests/request-parity.test.ts",
+        "packages/pi-bridge/tests/eval-workspace-prompt.test.ts",
+        "packages/pi-bridge/tests/session-eager-skill.test.ts"
+      ]
+    },
+    "provider": {
+      "owner": "packages/pi-bridge/src/provider.ts and runtime/pi-model.ts — BYO registration on the session's ModelRuntime, reasoning, context window, live and failed re-bind; plus the scripted provider seam itself",
+      "files": [
+        "packages/pi-bridge/tests/contracts/scripted-provider.contract.test.ts",
+        "packages/pi-bridge/tests/pi-runtime-config.test.ts",
+        "packages/pi-bridge/tests/provider.test.ts",
+        "packages/pi-bridge/tests/provider-reasoning.test.ts",
+        "packages/pi-bridge/tests/session-update-provider.test.ts"
+      ]
+    },
+    "lifecycle": {
+      "owner": "packages/pi-bridge/src/runtime/pi-events.ts (settled run bracket), runtime/pi-session-port.ts and turn-stop.ts — chronology, retry, continuation, abort/stop, exactly-once settlement, concurrent sessions; the renderer's finalization consumer",
+      "files": [
+        "packages/pi-bridge/tests/contracts/lifecycle.contract.test.ts",
+        "packages/pi-bridge/tests/settled-lifecycle.test.ts",
+        "packages/pi-bridge/tests/runtime-characterization.test.ts",
+        "packages/pi-bridge/tests/pi-events.test.ts",
+        "packages/pi-bridge/tests/pi13-runtime-semantics.test.ts",
+        "packages/pi-bridge/tests/turn-stop.test.ts",
+        "packages/app/tests/run-finalization.test.tsx"
+      ]
+    },
+    "deferred-answer": {
+      "owner": "packages/pi-bridge/src/picker-tool.ts and pending-answer-gate.ts — terminate ends the run, the answer is the next user turn",
+      "files": [
+        "packages/pi-bridge/tests/picker-roundtrip-repro.test.ts",
+        "packages/pi-bridge/tests/deferred-tool-terminates-run.test.ts"
+      ]
+    },
+    "compaction": {
+      "owner": "packages/pi-bridge/src/compaction-companion-extension.ts and retained-state-handover.ts — direct, steered, failed and bounded compaction on the real Pi pipeline; the handover's host delivery",
+      "files": [
+        "packages/pi-bridge/tests/compaction-companion-runtime.test.ts",
+        "packages/pi-bridge/tests/retained-state-handover.test.ts",
+        "packages/app/tests/post-compaction-handover-delivery.test.ts"
+      ]
+    },
+    "persistence": {
+      "owner": "packages/pi-bridge/src/session.ts (resume seed, pinned session id) and maturity-replay.ts — both Pi JSONL generations, fail-soft and read-only",
+      "files": [
+        "packages/pi-bridge/tests/contracts/persistence.contract.test.ts",
+        "packages/pi-bridge/tests/session-format-compat.test.ts",
+        "packages/pi-bridge/tests/session-resume.test.ts"
+      ]
+    },
+    "security": {
+      "owner": "packages/pi-bridge/src/write-fence.ts, atomization-session.ts and the tool allowlist in session.ts — write/edit fence, no shell, the ephemeral FS-only atomization policy",
+      "files": [
+        "packages/pi-bridge/tests/write-fence-session.test.ts",
+        "packages/pi-bridge/tests/write-fence.test.ts",
+        "packages/pi-bridge/tests/atomization-write-fence.test.ts",
+        "packages/pi-bridge/tests/tool-allowlist.test.ts"
+      ]
+    },
+    "guards": {
+      "owner": "the repository guards — runtime boundary, private/deep Pi access, installed-package patches, version alignment, direct declarations, and this matrix",
+      "files": [
+        "packages/pi-bridge/tests/pi-boundary.test.ts",
+        "packages/pi-bridge/tests/pi-public-api-only.test.ts",
+        "packages/pi-bridge/tests/pi-upgrade-guards.test.ts",
+        "packages/pi-bridge/tests/contracts/contract-matrix.test.ts"
+      ]
+    }
+  },
+  "outsideContracts": {
+    "reason": "Domain behaviour that happens to run on a real session. These stay in `npm test` and their owners' suites; a Pi upgrade that breaks one shows up there, not as an SDK contract.",
+    "files": [
+      "evaluation/cbe-skill/runner/tests/descriptor-parity.test.ts",
+      "packages/pi-bridge/tests/ingest-unreachable-endpoint.test.ts",
+      "packages/pi-bridge/tests/initial-step-focus-session.test.ts",
+      "packages/pi-bridge/tests/maturity-session.test.ts",
+      "packages/pi-bridge/tests/session-wiki-citation-wiring.test.ts",
+      "packages/pi-bridge/tests/support-session.test.ts"
+    ]
+  },
+  "scenarios": [
+    {
+      "scenario": "Scripted provider exercises the real runtime without network",
+      "tests": [
+        {
+          "file": "packages/pi-bridge/tests/contracts/scripted-provider.contract.test.ts",
+          "title": "drives thinking, a real tool execution, a retried error and text through real Pi with no request leaving the process"
+        },
+        {
+          "file": "packages/pi-bridge/tests/contracts/scripted-provider.contract.test.ts",
+          "title": "holds a controlled delay open: nothing terminal is emitted until the scripted response is released"
+        },
+        {
+          "file": "packages/pi-bridge/tests/contracts/scripted-provider.contract.test.ts",
+          "title": "the sentinel itself is able to fail: a real fetch or socket connect is recorded and refused"
+        }
+      ]
+    },
+    {
+      "scenario": "Lifecycle contract catches premature finalization",
+      "tests": [
+        {
+          "file": "packages/pi-bridge/tests/contracts/lifecycle.contract.test.ts",
+          "title": "emits nothing terminal, persists no answer and keeps the prompt pending between the low-level end and the retried response"
+        },
+        {
+          "file": "packages/pi-bridge/tests/contracts/lifecycle.contract.test.ts",
+          "title": "settles exactly once per accepted prompt across consecutive ordinary runs"
+        },
+        {
+          "file": "packages/pi-bridge/tests/contracts/lifecycle.contract.test.ts",
+          "title": "a stop inside the held retry completes only at settlement and leaves the session continuable"
+        },
+        {
+          "file": "packages/pi-bridge/tests/settled-lifecycle.test.ts",
+          "title": "emits one terminal agent_end only after the continued low-level run, through the real runtime"
+        },
+        {
+          "file": "packages/pi-bridge/tests/settled-lifecycle.test.ts",
+          "title": "keys each settled end to its own session while two runs overlap"
+        },
+        {
+          "file": "packages/app/tests/run-finalization.test.tsx",
+          "title": "does NOT finalize before the settled agent_end — a retry inside the run keeps the buffer"
+        }
+      ]
+    },
+    {
+      "scenario": "Deferred-answer tool ends cleanly and accepts the next answer",
+      "tests": [
+        {
+          "file": "packages/pi-bridge/tests/picker-roundtrip-repro.test.ts",
+          "title": "a picker call ends the run — one model round trip, no second turn on the placeholder"
+        },
+        {
+          "file": "packages/pi-bridge/tests/picker-roundtrip-repro.test.ts",
+          "title": "two picker round-trips submit their answers cleanly (no continue-from-assistant throw)"
+        }
+      ]
+    },
+    {
+      "scenario": "Compaction contract drives Pi rather than a fake runner",
+      "tests": [
+        {
+          "file": "packages/pi-bridge/tests/compaction-companion-runtime.test.ts",
+          "title": "direct: with nothing unmirrored the compaction proceeds unsteered and arms the handover"
+        },
+        {
+          "file": "packages/pi-bridge/tests/compaction-companion-runtime.test.ts",
+          "title": "steered: an unmirrored decision cancels once and re-triggers Pi's compaction with the fenced excerpt"
+        },
+        {
+          "file": "packages/pi-bridge/tests/compaction-companion-runtime.test.ts",
+          "title": "failed: a summary that cannot be produced leaves no handover and the run still settles once"
+        },
+        {
+          "file": "packages/pi-bridge/tests/compaction-companion-runtime.test.ts",
+          "title": "trips the bound on repeated mid-run compactions inside ONE run (no settled reset between them)"
+        },
+        {
+          "file": "packages/pi-bridge/tests/contracts/contract-matrix.test.ts",
+          "title": "the compaction group builds no CompactionResult and copies no token trigger"
+        }
+      ]
+    },
+    {
+      "scenario": "Persistence contract reads both runtime generations safely",
+      "tests": [
+        {
+          "file": "packages/pi-bridge/tests/contracts/persistence.contract.test.ts",
+          "title": "rebuilds the reading from old and new legs beside foreign entries, rewrites nothing, and reads only its own pinned legs"
+        },
+        {
+          "file": "packages/pi-bridge/tests/session-format-compat.test.ts",
+          "title": "reads an old leg and a new leg of one session in chronological order and tolerates 1.x recovery entries"
+        },
+        {
+          "file": "packages/pi-bridge/tests/session-resume.test.ts",
+          "title": "seeds the stored turns into the fresh session's context, in order"
+        }
+      ]
+    },
+    {
+      "scenario": "Candidate upgrade runs in isolation",
+      "tests": [
+        {
+          "file": "scripts/pi-upgrade-candidate/self-test.mjs",
+          "title": "refuses a floating or inexact version set before touching anything"
+        },
+        {
+          "file": "scripts/pi-upgrade-candidate/self-test.mjs",
+          "title": "a green candidate leaves a clean caller byte-identical and removes its temporary checkout"
+        },
+        {
+          "file": "scripts/pi-upgrade-candidate/self-test.mjs",
+          "title": "a green candidate leaves a dirty caller and its lockfile byte-identical"
+        },
+        {
+          "file": "scripts/pi-upgrade-candidate/self-test.mjs",
+          "title": "an install failure is reported as install and still cleans up"
+        },
+        {
+          "file": "scripts/pi-upgrade-candidate/self-test.mjs",
+          "title": "a build failure is reported as build, not contract, and still cleans up"
+        },
+        {
+          "file": "scripts/pi-upgrade-candidate/self-test.mjs",
+          "title": "a contract failure is reported per group and exits non-zero"
+        }
+      ]
+    },
+    {
+      "scenario": "Contract success does not replace release evidence",
+      "tests": [
+        {
+          "file": "scripts/pi-upgrade-candidate/self-test.mjs",
+          "title": "a green report states what it did not prove"
+        },
+        {
+          "file": "packages/pi-bridge/tests/contracts/contract-matrix.test.ts",
+          "title": "the contract runner names the evidence it does not provide"
+        }
+      ]
+    },
+    {
+      "scenario": "Private Pi access is rejected mechanically",
+      "tests": [
+        {
+          "file": "packages/pi-bridge/tests/pi-boundary.test.ts",
+          "title": "imports `@earendil-works/pi-*` only from approved adapter modules and adapter-level tests"
+        },
+        {
+          "file": "packages/pi-bridge/tests/pi-upgrade-guards.test.ts",
+          "title": "finds no private session-agent access, deep Pi import or adapter-internal reach in the repository"
+        },
+        {
+          "file": "packages/pi-bridge/tests/pi-upgrade-guards.test.ts",
+          "title": "finds no installed-package patch mechanism and no drift in the installed Pi packages"
+        },
+        {
+          "file": "packages/pi-bridge/tests/pi-upgrade-guards.test.ts",
+          "title": "finds the Pi runtime set exactly pinned and aligned in manifests and lockfile"
+        },
+        {
+          "file": "packages/pi-bridge/tests/pi-upgrade-guards.test.ts",
+          "title": "finds every imported runtime/schema package declared directly"
+        },
+        {
+          "file": "packages/pi-bridge/tests/pi-upgrade-guards.test.ts",
+          "title": "every guard fails on its negative fixture"
+        }
+      ]
+    }
+  ]
+}

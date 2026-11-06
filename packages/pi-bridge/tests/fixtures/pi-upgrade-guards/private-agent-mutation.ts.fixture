@@ -1,0 +1,8 @@
+// A test that drives Pi's internals instead of its public provider API.
+import { piSessionOf } from "../../helpers/pi-adapter-access.js";
+
+export function rewire(port: never, fake: unknown): void {
+  const session = piSessionOf(port);
+  (session as any).agent.streamFn = fake;
+  (session as any)["_extensionRunner"] = undefined;
+}

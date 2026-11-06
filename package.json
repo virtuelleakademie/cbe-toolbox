@@ -1,0 +1,46 @@
+{
+  "name": "cbe-toolbox",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "evaluation/cbe-skill/runner"
+  ],
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "corpus:validate": "node packages/corpus-schema/dist/cli.js validate corpus/content",
+    "corpus:index": "node packages/corpus-schema/dist/cli.js index corpus/content corpus/index.json",
+    "skill:bundle": "npm run build --workspace @cbe/corpus-schema && npm run build --workspace @cbe/pi-bridge && node scripts/skill-bundle.mjs skills/cbe dist/skill-bundle",
+    "ui:reference": "node packages/corpus-schema/dist/cli.js ui-reference packages/app/src/renderer skills/cbe/references/ui-guide.md",
+    "build": "npm run build --workspace @cbe/corpus-schema && npm run build --workspace @cbe/pi-bridge && npm run build --workspaces --if-present",
+    "test": "npm run test:mirror",
+    "test:mirror": "node scripts/mirror-verification/run-tests.mjs",
+    "dev": "npm run dev --workspace packages/app",
+    "trace:check": "node evaluation/cbe-skill/runner/dist/trace-check-cli.js",
+    "docs:check": "npm run docs:check:product",
+    "docs:check:product": "node scripts/user-documentation/check-docs.mjs --product-only",
+    "docs:screenshots": "node scripts/user-documentation/capture-screenshots.mjs --write",
+    "docs:screenshots:check": "node scripts/user-documentation/capture-screenshots.mjs --check",
+    "pi:contracts": "node scripts/pi-contracts/run.mjs",
+    "pi:candidate": "node scripts/pi-upgrade-candidate/cli.mjs",
+    "pi:candidate:self-test": "node scripts/pi-upgrade-candidate/self-test.mjs",
+    "freshness:mirror": "npm run corpus:validate && node scripts/mirror-verification/check-generated.mjs && npm run icons:check --workspace packages/app && npm run docs:check:product && npm run trace:check",
+    "verify:mirror": "npm run build && npm run test:mirror && npm run lint && npm run freshness:mirror",
+    "lint": "prettier --check . && eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@fission-ai/openspec": "1.5.0",
+    "@types/node": "^22.10.0",
+    "eslint": "^9.20.0",
+    "fontkit": "2.0.4",
+    "js-yaml": "^4.1.0",
+    "jszip": "^3.10.1",
+    "prettier": "3.8.3",
+    "typescript": "^5.7.0",
+    "husky": "^9.1.0"
+  }
+}

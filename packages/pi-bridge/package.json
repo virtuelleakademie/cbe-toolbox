@@ -1,0 +1,93 @@
+{
+  "name": "@cbe/pi-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./runtime": {
+      "types": "./dist/runtime/index.d.ts",
+      "default": "./dist/runtime/index.js"
+    },
+    "./didactic-checks": {
+      "types": "./dist/didactic-checks.d.ts",
+      "default": "./dist/didactic-checks.js"
+    },
+    "./lecturer-profile": {
+      "types": "./dist/lecturer-profile.d.ts",
+      "default": "./dist/lecturer-profile.js"
+    },
+    "./lecturer-identity": {
+      "types": "./dist/lecturer-identity.d.ts",
+      "default": "./dist/lecturer-identity.js"
+    },
+    "./lecturer-support": {
+      "types": "./dist/lecturer-support.d.ts",
+      "default": "./dist/lecturer-support.js"
+    },
+    "./ingest-envelope": {
+      "types": "./dist/ingest-envelope.d.ts",
+      "default": "./dist/ingest-envelope.js"
+    },
+    "./ingest-formats": {
+      "types": "./dist/ingest-formats.d.ts",
+      "default": "./dist/ingest-formats.js"
+    },
+    "./canvas-addressing": {
+      "types": "./dist/canvas-addressing.d.ts",
+      "default": "./dist/canvas-addressing.js"
+    },
+    "./design-substance": {
+      "types": "./dist/design-substance.d.ts",
+      "default": "./dist/design-substance.js"
+    },
+    "./maturity": {
+      "types": "./dist/maturity-mirror.d.ts",
+      "default": "./dist/maturity-mirror.js"
+    },
+    "./compaction-companion": {
+      "types": "./dist/compaction-companion-extension.d.ts",
+      "default": "./dist/compaction-companion-extension.js"
+    },
+    "./citation-verification": {
+      "types": "./dist/citation-verification.d.ts",
+      "default": "./dist/citation-verification.js"
+    },
+    "./wiki-index": {
+      "types": "./dist/wiki-index.d.ts",
+      "default": "./dist/wiki-index.js"
+    },
+    "./turn-stop": {
+      "types": "./dist/turn-stop.d.ts",
+      "default": "./dist/turn-stop.js"
+    },
+    "./skill-compatibility": {
+      "types": "./dist/skill-compatibility.d.ts",
+      "default": "./dist/skill-compatibility.js"
+    }
+  },
+  "bin": {
+    "cbe-headless": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@cbe/corpus-schema": "*",
+    "@earendil-works/pi-coding-agent": "1.3.0",
+    "gray-matter": "^4.0.3",
+    "typebox": "1.3.27"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "1.3.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

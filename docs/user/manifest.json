@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "sourceManifestVersion": 1,
+  "screenshotManifestVersion": 1,
+  "canonicalLocale": "en",
+  "locales": ["en", "de"],
+  "reviewedAppVersion": "0.1.21",
+  "reviewedSkillVersion": "0.4.2",
+  "status": "first-review-draft",
+  "pages": [
+    { "id": "index", "path": "README.md" },
+    { "id": "installation-and-local-it", "path": "installation-and-local-it.md" },
+    { "id": "quick-start", "path": "quick-start.md" },
+    { "id": "user-guide", "path": "user-guide.md" },
+    { "id": "privacy-data-storage", "path": "privacy-data-storage.md" },
+    { "id": "accessibility-keyboard", "path": "accessibility-keyboard.md" },
+    { "id": "troubleshooting-and-reference", "path": "troubleshooting-and-reference.md" },
+    { "id": "glossary-faq", "path": "glossary-faq.md" }
+  ],
+  "topics": {
+    "first-course-and-request": "quick-start",
+    "purpose-and-limits": "user-guide",
+    "workspace-orientation": "user-guide",
+    "course-lifecycle": "user-guide",
+    "conversation-lifecycle": "user-guide",
+    "intent-sensitive-work": "user-guide",
+    "support-and-consent": "user-guide",
+    "iterative-formulation": "user-guide",
+    "canvas": "user-guide",
+    "maturity": "user-guide",
+    "attachment-versus-wiki": "user-guide",
+    "wiki-ingestion": "user-guide",
+    "wiki-use": "user-guide",
+    "sources-and-citations": "user-guide",
+    "settings": "user-guide",
+    "installation-current-build": "installation-and-local-it",
+    "model-connection": "installation-and-local-it",
+    "local-it": "installation-and-local-it",
+    "troubleshooting": "troubleshooting-and-reference",
+    "updates-and-refresh": "troubleshooting-and-reference",
+    "support-sharing": "troubleshooting-and-reference",
+    "local-storage": "privacy-data-storage",
+    "backup-boundary": "privacy-data-storage",
+    "provider-data-flow": "privacy-data-storage",
+    "student-data": "privacy-data-storage",
+    "keyboard": "accessibility-keyboard",
+    "focus-and-status": "accessibility-keyboard",
+    "zoom-and-native": "accessibility-keyboard",
+    "glossary": "glossary-faq",
+    "faq": "glossary-faq"
+  },
+  "terminology": {
+    "preferred": ["Course", "CBE Process Canvas", "CBE Maturity"],
+    "retiredRenderedTerms": ["Artifacts", "Artefacts", "Artefakte"],
+    "internalTermsForbidden": ["tool call", "host notice", "system prompt", "affordance flag"]
+  },
+  "reviews": [
+    { "role": "english-product-content", "owner": "CBE Toolbox documentation review", "status": "pending" },
+    { "role": "german-language", "owner": "CBE Toolbox documentation review", "status": "pending" },
+    { "role": "app-ux-screenshots", "owner": "CBE Toolbox documentation review", "status": "pending" },
+    {
+      "role": "installation-it-privacy-security",
+      "owner": "CBE Toolbox documentation review",
+      "status": "pending"
+    },
+    { "role": "accessibility-keyboard", "owner": "CBE Toolbox documentation review", "status": "pending" },
+    { "role": "release-integration", "owner": "CBE Toolbox documentation review", "status": "pending" }
+  ]
+}

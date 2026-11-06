@@ -1,0 +1,41 @@
+# Pre-existing content not formatted by this project
+corpus/
+plan/
+openspec/
+notes/
+.claude/
+*.html
+
+# Frozen reference/handoff material — source documents and third-party snapshots,
+# not living code. Reformatting them only creates diff churn against the originals.
+materialien/
+pioneer-handoff/
+
+# Fixtures for the archive-losslessness guard: verbatim copies of canonical specs
+# and of one historical delta (commit 33cb5ff). Reformatting them would change the
+# very text the guard compares, so the fixtures must stay byte-faithful.
+scripts/archive-losslessness/fixtures/
+
+# Eager skill body — injected verbatim into every session's system prompt, so its
+# character count IS the instruction budget (see packages/pi-bridge/tests/skill-body-contract.test.ts).
+# Keep it out of Prettier so `format --write` cannot consume budget headroom through
+# Markdown-only whitespace changes.
+skills/cbe/SKILL.md
+
+# Generated UI reference (npm run ui:reference) — committed artifact guarded by a
+# byte-equality freshness test in packages/corpus-schema; keeping it out of prettier
+# means that contract never depends on the installed prettier version.
+skills/cbe/references/ui-guide.md
+
+# Generated lockfiles
+package-lock.json
+npm-shrinkwrap.json
+yarn.lock
+
+# Generated public website
+/public-site/
+
+# Build output
+**/dist/
+**/out/
+node_modules/

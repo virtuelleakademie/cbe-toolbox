@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "sessionId": "documentation-session",
+    "modelId": "documentation-fixture-model",
+    "skillVersion": "0.4.2",
+    "environmentProfile": "app",
+    "createdAt": "2026-10-27T12:00:00.000Z",
+    "closedAt": "2026-10-27T12:05:00.000Z"
+  },
+  "turns": [
+    { "role": "user", "text": "Help me review the challenge and its assessment connection." },
+    { "role": "assistant", "text": "We are working at the coherence check after step 3. The challenge is concrete; the assessment still needs evidence of student decision-making." }
+  ],
+  "canvas": [
+    { "step": 1, "id": "moduleframe", "label": "Module frame", "value": "A four-week synthetic civic-energy studio for second-year learners.", "state": "done" },
+    { "step": 2, "id": "learningoutcomes", "label": "Learning outcomes", "value": "Compare evidence, justify a design decision, and reflect on societal value.", "state": "done" },
+    { "step": 3, "id": "assessmentblueprint", "label": "Assessment blueprint", "value": "Decision note, prototype record and individual reflection.", "state": "active" },
+    { "step": 4, "id": "challenge", "label": "Challenge", "value": "How might an invented neighbourhood learning lab reduce peak electricity demand?", "state": "done" },
+    { "step": 5, "id": "stakeholderplan", "label": "Stakeholders", "value": "Fictional residents, grid planner and community workshop role.", "state": "draft" },
+    { "step": 6, "phase": "engage", "id": "es", "label": "Engage", "value": "Map the challenge and competing definitions of value.", "state": "draft" },
+    { "step": 7, "id": "activityplan", "label": "Activities", "value": "Scenario comparison, interview rehearsal and prototype critique.", "state": "draft" },
+    { "step": 8, "id": "deliverablesmap", "label": "Deliverables", "value": "Challenge map, decision note, prototype record and reflection memo.", "state": "draft" },
+    { "step": 9, "id": "alignmentmatrix", "label": "Alignment matrix", "value": "Evidence comparison → scenario task → decision note.", "state": "open" }
+  ],
+  "steps": [
+    { "step": 1, "depth": "detailed", "focus": false },
+    { "step": 2, "depth": "refined", "focus": false },
+    { "step": 3, "depth": "refined", "focus": true },
+    { "step": 4, "depth": "rough", "focus": false },
+    { "step": 5, "depth": "rough", "focus": false },
+    { "step": 6, "depth": "rough", "focus": false },
+    { "step": 7, "depth": "rough", "focus": false },
+    { "step": 8, "depth": "rough", "focus": false },
+    { "step": 9, "depth": "open", "focus": false },
+    { "step": 10, "depth": "open", "focus": false }
+  ],
+  "maturity": {
+    "societal-challenge": { "current": 2, "target": 3 },
+    "stakeholder-involvement": { "current": 1, "target": 2, "uncertain": true, "hint": "Synthetic stakeholder roles only." },
+    "interdisciplinarity": { "current": 2, "target": 2 },
+    "student-agency": { "current": 2, "target": 3 },
+    "iterative-process": { "current": 2, "target": 2 },
+    "value-reflection": { "current": 2, "target": 3 },
+    "societal-impact": { "current": 1, "target": 2, "capped": true },
+    "overall": { "target": 3, "note": "Synthetic fixture: real stakeholder ownership remains open." }
+  }
+}

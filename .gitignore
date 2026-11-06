@@ -1,0 +1,56 @@
+# macOS
+.DS_Store
+
+# Claude Code – lokale Einstellungen
+.claude/settings.local.json
+
+# Node / Build (Electron + React, sobald gescaffoldet)
+node_modules/
+dist/
+build/
+# ...but plan/build/ is the published "Current Build" page of the project site, not
+# build output. The generic rule above silently swallowed it, which is why nav.js
+# linked /build/ and site.css carried .dl-card while the page existed in no commit.
+!plan/build/
+out/
+*.log
+.env
+.env.local
+
+# Workspace builds
+packages/*/dist/
+
+# electron-builder output (installers, produced in CI)
+packages/app/release/
+
+# Local session data (kept off git per data-sovereignty rule)
+sessions/
+
+# Husky internals managed by tool
+.husky/_/
+
+# graphify generated artefacts (graph.json, GRAPH_REPORT.md, caches, query memory)
+graphify-out/
+
+
+# CBE eval harness run artifacts (noisy, reproducible)
+evaluation/cbe-skill/runs/
+evaluation/cbe-skill/.eval-loop-in-progress.json
+.cbe-agent/
+
+# local eval secrets. NOTE: evaluation/cbe-skill/eval.config.json is deliberately NOT
+# here — it carries no key material (base URL and key are referenced by env-var NAME
+# only), and ignoring it cost every checkout the run. The legacy runner/ slot stays
+# ignored: it is a local-only read location for working copies that still have one.
+evaluation/cbe-skill/runner/eval.config.json
+evaluation/cbe-skill/runner/.eval-secrets
+*.eval-secrets
+
+# Claude Code scheduled-tasks lock (local runtime state)
+.claude/scheduled_tasks.lock
+.wrangler/
+
+# build-time default LLM key, written by packages/app/scripts/default-llm-config.mjs from a CI secret
+packages/app/build-defaults/
+plan/skill-dist/v2/
+plan/corpus-dist/v2/

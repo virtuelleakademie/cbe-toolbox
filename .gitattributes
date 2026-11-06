@@ -1,0 +1,19 @@
+# Every checkout keeps repository text as LF, whatever the local Git line-ending
+# setting is (Git for Windows defaults to core.autocrlf=true). Scripts, tests,
+# hashes and tooling in this tree read exact LF bytes; a CRLF checkout breaks
+# them. Git still auto-detects binary content; text it detects is LF on disk.
+* text=auto eol=lf
+
+# Preserve the approved application-icon master byte-for-byte on every checkout.
+packages/app/icon-source/cbe-toolbox-icon.svg -text
+
+# Committed binary formats stay byte-opaque, independent of content detection.
+# Only formats the tree actually tracks are listed here.
+*.png -text
+*.jpg -text
+*.ico -text
+*.icns -text
+*.woff2 -text
+*.zip -text
+*.pdf -text
+*.docx -text

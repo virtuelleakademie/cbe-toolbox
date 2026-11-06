@@ -1,0 +1,26 @@
+{
+  "name": "@cbe/eval-runner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "cbe-eval": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "eval": "node dist/cli.js"
+  },
+  "dependencies": {
+    "@cbe/pi-bridge": "*",
+    "commander": "^12.1.0",
+    "js-yaml": "^4.1.0",
+    "p-limit": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

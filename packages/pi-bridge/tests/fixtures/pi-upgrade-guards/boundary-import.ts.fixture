@@ -1,0 +1,6 @@
+// Product code (Electron main) holding a raw Pi session.
+import type { AgentSession } from "@earendil-works/pi-coding-agent";
+
+export function keep(session: AgentSession): AgentSession {
+  return session;
+}

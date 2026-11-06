@@ -1,0 +1,5 @@
+// Reaching past the published entry points into Pi's build output.
+import { AgentSession } from "@earendil-works/pi-coding-agent/dist/core/agent-session.js";
+import { compact } from "../../node_modules/@earendil-works/pi-coding-agent/dist/core/compaction/index.js";
+
+export const both = [AgentSession, compact];

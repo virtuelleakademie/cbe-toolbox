@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "roots": [
+    "packages/app/tests",
+    "packages/corpus-schema/tests",
+    "packages/pi-bridge/tests",
+    "evaluation/cbe-skill/runner/tests"
+  ],
+  "suffixes": [".test.ts", ".test.tsx", ".test.js", ".test.mjs", ".spec.ts", ".spec.tsx"],
+  "mirrorSafeCount": 344,
+  "pathsSha256": "e5a4f8e9c55317b50d95f5ad9fc7d467f5b91b9e392031078cfb7a5947348555"
+}

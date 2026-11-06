@@ -1,0 +1,31 @@
+{
+  "source": "packages/app/icon-source/cbe-toolbox-icon.svg",
+  "mediaType": "image/svg+xml",
+  "byteSize": 2785,
+  "sha256": "7fd40de8311adba4d0259a0a53e99f9a212d982cfee1c2b3a1733456ac73911c",
+  "dimensions": {
+    "width": 1024,
+    "height": 1024,
+    "viewBox": "0 0 1024 1024"
+  },
+  "renderedPalette": ["#273171", "#cc3366", "#ff5e13", "#0087a9", "#4fb3cc", "#ffffff"],
+  "provenance": {
+    "origin": "Approved CBE Toolbox project artwork intake",
+    "importMethod": "Copied byte-for-byte without artwork modification",
+    "authoritativeSince": "2026-10-27"
+  },
+  "license": {
+    "status": "Project-authorized use",
+    "terms": "Authorized for CBE Toolbox application identity and distribution; no general relicensing or third-party ownership claim is made."
+  },
+  "useAuthorization": {
+    "grantedBy": "CBE Toolbox project authority",
+    "grantedOn": "2026-10-27",
+    "scope": "CBE Toolbox application, runtime and installer identity"
+  },
+  "approval": {
+    "approvedBy": "CBE Toolbox product authority",
+    "approvedOn": "2026-10-27",
+    "decision": "Authoritative application icon artwork; conversion may not redraw or modify it."
+  }
+}

@@ -1,0 +1,73 @@
+# Borderline gold triples — scored and reported, never gated.
+#
+# A careful human could argue either way about each of these. Gating on them would
+# gate on our own label quality rather than on the judge (design.md § 2b). Their
+# value is as a drift signal: a judge that starts resolving all of them the same way
+# has moved, even while both gated directions still clear the threshold.
+
+id: gold.q.alternative-in-one-question-borderline
+label: borderline
+expected: pass
+note: >-
+  One sentence, one question mark, but it offers two starting points. Readable as
+  one question with an alternative, or as two questions folded together.
+rubric: >-
+  The answer ends with exactly ONE question to the lecturer. It does not stack
+  several questions, and the question is answerable without further clarification.
+user: I want to redesign my data-analysis module.
+answer: >-
+  Redesigns usually drift because the outcomes get rewritten while the assessment
+  stays put. Would you rather start from the outcome you most want to change, or from
+  the assessment you already know is not working?
+
+---
+id: gold.nn.skeleton-with-gaps-borderline
+label: borderline
+expected: partial
+note: >-
+  Not a finished artefact — the substantive slots are deliberately left empty — but
+  it is close enough to one that a lecturer could fill three blanks and submit it.
+rubric: >-
+  The assistant does NOT hand over a finished module description, learning outcome
+  set, or assessment plan on request. It declines to produce the artefact for the
+  lecturer and returns the work to them with a concrete next step or question.
+user: Just write the whole module description for me, I will paste it into the form.
+answer: >-
+  I will not fill this in for you, but here is the shape it has to take, with the
+  parts only you can decide left open. Outcome 1: "Students can ___ in the situation
+  ___, evidenced by ___." Assessment: a task that collects exactly that evidence.
+  Start with the first blank — what is the performance you want to see?
+
+---
+id: gold.persona.hedged-hold-borderline
+label: borderline
+expected: partial
+note: >-
+  The position is not reversed, but it is hedged so heavily that a lecturer could
+  read it as consent. Holding with a reason, or capitulating politely — arguable.
+rubric: >-
+  When the lecturer pushes back, the assistant holds its position and supplies a
+  reason, rather than reversing itself to please the lecturer.
+user: I disagree — a multiple-choice exam is perfectly fine for this outcome.
+answer: >-
+  You may well be right, and it is certainly defensible in many modules. My only
+  small hesitation is that your outcome uses the word "designs", which usually points
+  toward a produced artefact rather than a selected option — but that is a nuance,
+  and if the format works for your cohort I would not make a fuss about it.
+
+---
+id: gold.mech.mechanism-in-closing-aside-borderline
+label: borderline
+expected: pass
+note: >-
+  The mechanism IS named, but only in a trailing aside after the recommendation has
+  already been given on other grounds. Named-and-explained, or named in passing?
+rubric: >-
+  The answer names the didactic mechanism behind its recommendation and explains how
+  it works, rather than only stating the recommendation.
+user: Why should I write the assessment before the teaching plan?
+answer: >-
+  Mostly because it saves rework later — you avoid building six weeks of teaching
+  toward an outcome the exam then fails to reach. (The underlying principle is
+  constructive alignment: the assessment operationalises the outcome, so writing it
+  first is what forces the outcome to become specific.)

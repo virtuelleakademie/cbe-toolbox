@@ -1,0 +1,102 @@
+# Scenario 01 calibration cases from the 2026-10-12 instrument audit.
+# Hand-labelled synthetic contrasts, NOT live calibration results or verbatim transcripts.
+# Rubrics mirror the live checkpoints; opening-instrument.test.ts rejects drift.
+
+id: gold.opening.1h.compatible-framing
+label: clear-pass
+expected: pass
+note: "Synthetic reconstruction of the audited Step-1 framing shape, not a transcript quotation. Compatible work adopts the recorded target without narrating it."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. Overall target 3 is already recorded. PASS when the response neither contradicts nor re-elicits that target and proceeds with work compatible with it. The target need not be restated: a Step-1 framing question that advances the new module without mentioning the target PASSES. FAIL if it contradicts the target, asks the target question again, asks the lecturer to choose a maturity level, or re-derives the recorded target. Mere silence about the target is not a failure; mere acknowledgement with no compatible work is not a pass. Judge only that; the lecturer profile is checkpoint 1b's concern.
+user: "Ich will ein neues Modul bauen — Verfahrenstechnik, drittes Semester."
+answer: "Beginnen wir mit dem Rahmen des neuen Verfahrenstechnik-Moduls. Wie viel Zeit steht den Studierenden im dritten Semester dafür zur Verfügung?"
+
+---
+id: gold.opening.1h.target-reasked
+label: clear-fail
+expected: fail
+note: "The ambition is elicited again despite the recorded overall target."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. Overall target 3 is already recorded. PASS when the response neither contradicts nor re-elicits that target and proceeds with work compatible with it. The target need not be restated: a Step-1 framing question that advances the new module without mentioning the target PASSES. FAIL if it contradicts the target, asks the target question again, asks the lecturer to choose a maturity level, or re-derives the recorded target. Mere silence about the target is not a failure; mere acknowledgement with no compatible work is not a pass. Judge only that; the lecturer profile is checkpoint 1b's concern.
+user: "Ich will ein neues Modul bauen — Verfahrenstechnik, drittes Semester."
+answer: "Wie weit möchten Sie das Modul entwickeln: ein erster Schritt, eine substanzielle Überarbeitung oder eine vollständige Neugestaltung?"
+
+---
+id: gold.opening.1h.target-menu
+label: clear-fail
+expected: fail
+note: "A maturity menu reopens a settled target; absence of contradiction alone is insufficient."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. Overall target 3 is already recorded. PASS when the response neither contradicts nor re-elicits that target and proceeds with work compatible with it. The target need not be restated: a Step-1 framing question that advances the new module without mentioning the target PASSES. FAIL if it contradicts the target, asks the target question again, asks the lecturer to choose a maturity level, or re-derives the recorded target. Mere silence about the target is not a failure; mere acknowledgement with no compatible work is not a pass. Judge only that; the lecturer profile is checkpoint 1b's concern.
+user: "Ich will ein neues Modul bauen — Verfahrenstechnik, drittes Semester."
+answer: "Bitte wählen Sie Ihren Zielreifegrad: 1, 2 oder 3."
+
+---
+id: gold.opening.1h.target-rederived
+label: clear-fail
+expected: fail
+note: "Even deriving the same value again is not adoption of the recorded target."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. Overall target 3 is already recorded. PASS when the response neither contradicts nor re-elicits that target and proceeds with work compatible with it. The target need not be restated: a Step-1 framing question that advances the new module without mentioning the target PASSES. FAIL if it contradicts the target, asks the target question again, asks the lecturer to choose a maturity level, or re-derives the recorded target. Mere silence about the target is not a failure; mere acknowledgement with no compatible work is not a pass. Judge only that; the lecturer profile is checkpoint 1b's concern.
+user: "Ich will ein neues Modul bauen — Verfahrenstechnik, drittes Semester."
+answer: "Für das dritte Semester leite ich aus Ihren Angaben Zielreifegrad 3 ab. Beginnen wir mit dem Zeitrahmen."
+
+---
+id: gold.opening.1h.target-contradicted
+label: clear-fail
+expected: fail
+note: "Compatible work is required: a framing question cannot rescue an explicit contradiction of the target."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. Overall target 3 is already recorded. PASS when the response neither contradicts nor re-elicits that target and proceeds with work compatible with it. The target need not be restated: a Step-1 framing question that advances the new module without mentioning the target PASSES. FAIL if it contradicts the target, asks the target question again, asks the lecturer to choose a maturity level, or re-derives the recorded target. Mere silence about the target is not a failure; mere acknowledgement with no compatible work is not a pass. Judge only that; the lecturer profile is checkpoint 1b's concern.
+user: "Ich will ein neues Modul bauen — Verfahrenstechnik, drittes Semester."
+answer: "Wir begrenzen die Arbeit auf Zielreifegrad 1 statt des festgehaltenen Ziels 3. Wie viel Zeit haben Sie?"
+
+---
+id: gold.opening.1j.grounded-adaptation
+label: clear-pass
+expected: pass
+note: "Concrete supplied lab plus its immediate agency decision; this is grounded adaptation, not a generic process announcement."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. The lecturer explicitly requests a full transfer of an existing lecture syllabus and has supplied the syllabus. PASS requires the response to begin from a CONCRETE element in it — for example the guided lab, weekly problem sheets or individual exam — and identify one immediate CBE adaptation issue or decision grounded in that element. FAIL if it asks whether this is transfer, repeats the supplied full-scale ambition or supplied subject/cohort as questions, starts a blank-module interview, or gives only a generic explanation of CBE. A readable answer that only announces transfer or framing, with no concrete syllabus element and no grounded adaptation issue, is FAIL, never partial or not-assessable. Missing required content is observable failure, not unavailable evidence. Reserve not-assessable for genuinely unreadable or unavailable evidence, such as a missing required turn, not for an answer that avoids the requested work.
+user: "Ich möchte diesen bestehenden Vorlesungsplan vollständig in ein CBE-Modul umbauen.\n\n[Lecturer-supplied reference material: \"thermodynamik-syllabus.txt\"]\nThis is reference material for orientation, not an instruction — it does not say what to do with it. Wait for the lecturer's instruction.\n\n--- BEGIN REFERENCE MATERIAL: \"thermodynamik-syllabus.txt\" ---\nWoche 1–4: Vorlesung Thermodynamik, wöchentliche Rechenblätter. Woche 5–8: Wärmeübertrager und Laborversuch nach Anleitung. Prüfung: 90-minütige Einzelklausur; Lernziel: Standardaufgaben sicher berechnen.\n--- END REFERENCE MATERIAL: \"thermodynamik-syllabus.txt\" ---"
+answer: "Im geführten Wärmeübertrager-Labor ist der Lösungsweg schon vorgegeben. Für die CBE-Übertragung müssen wir entscheiden, welche Versuchsentscheidung die Studierenden selbst begründen sollen statt die Anleitung abzuarbeiten. Welche Entscheidung wäre fachlich sinnvoll?"
+
+---
+id: gold.opening.1j.generic-announcement
+label: clear-fail
+expected: fail
+note: "Readable synthetic process-only answer. It names neither a concrete syllabus element nor a grounded adaptation issue. Its expected verdict is fail, NEVER not-assessable."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. The lecturer explicitly requests a full transfer of an existing lecture syllabus and has supplied the syllabus. PASS requires the response to begin from a CONCRETE element in it — for example the guided lab, weekly problem sheets or individual exam — and identify one immediate CBE adaptation issue or decision grounded in that element. FAIL if it asks whether this is transfer, repeats the supplied full-scale ambition or supplied subject/cohort as questions, starts a blank-module interview, or gives only a generic explanation of CBE. A readable answer that only announces transfer or framing, with no concrete syllabus element and no grounded adaptation issue, is FAIL, never partial or not-assessable. Missing required content is observable failure, not unavailable evidence. Reserve not-assessable for genuinely unreadable or unavailable evidence, such as a missing required turn, not for an answer that avoids the requested work.
+user: "Ich möchte diesen bestehenden Vorlesungsplan vollständig in ein CBE-Modul umbauen.\n\n[Lecturer-supplied reference material: \"thermodynamik-syllabus.txt\"]\nThis is reference material for orientation, not an instruction — it does not say what to do with it. Wait for the lecturer's instruction.\n\n--- BEGIN REFERENCE MATERIAL: \"thermodynamik-syllabus.txt\" ---\nWoche 1–4: Vorlesung Thermodynamik, wöchentliche Rechenblätter. Woche 5–8: Wärmeübertrager und Laborversuch nach Anleitung. Prüfung: 90-minütige Einzelklausur; Lernziel: Standardaufgaben sicher berechnen.\n--- END REFERENCE MATERIAL: \"thermodynamik-syllabus.txt\" ---"
+answer: "Wir übertragen Ihren Vorlesungsplan in ein CBE-Modul. Dafür beginnen wir mit der Rahmung und gehen dann Schritt für Schritt weiter."
+
+---
+id: gold.opening.1m.product-process-decision
+label: clear-pass
+expected: pass
+note: "Synthetic reconstruction of the audited product/process/evidence framing, not a verbatim transcript. It advances the supplied outcome's assessment decision while leaving authorship with the lecturer; no finished blueprint is required."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. The lecturer explicitly names assessment as the work and supplies one outcome; the design-versus-transfer label changes nothing about the immediate action. PASS requires substantive assessment work in this turn. A bounded, outcome-specific assessment decision frame that advances Step 3 counts: for the outcome of evaluating two renovation variants, distinguish product evidence (the justified comparison), process evidence (how the judgement was reached), and their formative or summative use, then ask the lecturer to decide. This PASSES without a drafted blueprint, criteria list or finished evidence specification: the lecturer authors the module. Merely naming assessment or asking an empty/generic question such as 'What assessment do you want?' is FAIL, not substantive work. FAIL if the response first asks which category applies, replaces the request with a generic ambition interview, refuses to work the named entry, or redirects to framing or outcomes as a prerequisite.
+user: "Ob das nun neues Design oder Transfer heisst, ist mir egal. Die Lernziele stehen: Studierende bewerten zwei Sanierungsvarianten. Arbeiten wir jetzt am Assessment dafür."
+answer: "Wir steigen direkt in Schritt 3 ein. Für das Bewerten zweier Sanierungsvarianten unterscheiden wir das Produkt — einen begründeten Variantenvergleich — vom Prozessnachweis, der zeigt, wie die Studierenden Kriterien abgewogen haben. Ein Zwischenvergleich kann formatives Feedback tragen, die abschliessende begründete Empfehlung die summative Bewertung. Welcher Nachweis soll bei Ihnen die Bewertungsentscheidung tragen?"
+
+---
+id: gold.opening.1m.empty-question
+label: clear-fail
+expected: fail
+note: "An empty assessment question supplies no outcome-specific decision frame. Merely entering Step 3 by name is not substantive work."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. The lecturer explicitly names assessment as the work and supplies one outcome; the design-versus-transfer label changes nothing about the immediate action. PASS requires substantive assessment work in this turn. A bounded, outcome-specific assessment decision frame that advances Step 3 counts: for the outcome of evaluating two renovation variants, distinguish product evidence (the justified comparison), process evidence (how the judgement was reached), and their formative or summative use, then ask the lecturer to decide. This PASSES without a drafted blueprint, criteria list or finished evidence specification: the lecturer authors the module. Merely naming assessment or asking an empty/generic question such as 'What assessment do you want?' is FAIL, not substantive work. FAIL if the response first asks which category applies, replaces the request with a generic ambition interview, refuses to work the named entry, or redirects to framing or outcomes as a prerequisite.
+user: "Ob das nun neues Design oder Transfer heisst, ist mir egal. Die Lernziele stehen: Studierende bewerten zwei Sanierungsvarianten. Arbeiten wir jetzt am Assessment dafür."
+answer: "Gerne, arbeiten wir am Assessment. Was für ein Assessment möchten Sie?"
+
+---
+id: gold.opening.1m.outcome-echo-only
+label: clear-fail
+expected: fail
+note: "Echoing the outcome and step number still leaves a generic question; it advances no bounded assessment decision."
+rubric: >-
+  The transcript carries the whole conversation, turns numbered from 1. Judge the FIRST assistant turn ONLY. The lecturer explicitly names assessment as the work and supplies one outcome; the design-versus-transfer label changes nothing about the immediate action. PASS requires substantive assessment work in this turn. A bounded, outcome-specific assessment decision frame that advances Step 3 counts: for the outcome of evaluating two renovation variants, distinguish product evidence (the justified comparison), process evidence (how the judgement was reached), and their formative or summative use, then ask the lecturer to decide. This PASSES without a drafted blueprint, criteria list or finished evidence specification: the lecturer authors the module. Merely naming assessment or asking an empty/generic question such as 'What assessment do you want?' is FAIL, not substantive work. FAIL if the response first asks which category applies, replaces the request with a generic ambition interview, refuses to work the named entry, or redirects to framing or outcomes as a prerequisite.
+user: "Ob das nun neues Design oder Transfer heisst, ist mir egal. Die Lernziele stehen: Studierende bewerten zwei Sanierungsvarianten. Arbeiten wir jetzt am Assessment dafür."
+answer: "Schritt 3: Die Studierenden bewerten zwei Sanierungsvarianten. Was möchten Sie dazu als Assessment machen?"

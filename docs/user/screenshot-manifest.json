@@ -1,0 +1,837 @@
+{
+  "schemaVersion": 1,
+  "fixtureSchemaVersion": 1,
+  "capture": {
+    "appVersion": "0.1.21",
+    "electronVersion": "36.9.5",
+    "timezone": "UTC",
+    "theme": "light",
+    "accent": "blue",
+    "chatTextSize": "medium",
+    "font": "DocumentationSans",
+    "deviceScaleFactor": 1,
+    "captureScale": 2,
+    "viewports": { "desktop": { "width": 1440, "height": 900 }, "narrow": { "width": 775, "height": 900 } },
+    "lane": "linux-xvfb-real-electron-cdp",
+    "realApplication": true,
+    "liveModel": false,
+    "sourceCommit": "f38fffec16973ed9b49d0511002f7684904a07df",
+    "capturedAt": "2026-10-27T12:00:00.000Z",
+    "fixtureFingerprint": "2c22ecd98c3eda431371ed56908b3711de79efda49f04d9aadb7770e00e4c063",
+    "networkRoutes": ["GET /v1/models", "POST /v1/chat/completions"],
+    "captureDefinitionFingerprint": "ceed66f38bab103c0c800fbef4f3c727b796f882a84ea52eec46dfce922607fc"
+  },
+  "views": [
+    {
+      "id": "workspace-orientation",
+      "states": ["default"],
+      "viewports": ["desktop", "narrow"],
+      "owners": [
+        "packages/app/src/renderer/App.tsx",
+        "packages/app/src/renderer/components/LeftPanel.tsx",
+        "packages/app/src/renderer/components/RightPanel.tsx"
+      ]
+    },
+    {
+      "id": "course-management",
+      "states": ["create-switch"],
+      "viewports": ["desktop"],
+      "owners": ["packages/app/src/renderer/components/CoursesPanel.tsx"]
+    },
+    {
+      "id": "composer-plus-menu",
+      "states": ["default"],
+      "viewports": ["desktop"],
+      "owners": ["packages/app/src/renderer/components/ChatPanel.tsx"]
+    },
+    {
+      "id": "first-use-orientation",
+      "states": ["default"],
+      "viewports": ["desktop", "narrow"],
+      "owners": ["packages/app/src/renderer/components/FirstUseOverview.tsx"]
+    },
+    {
+      "id": "working-and-stop",
+      "states": ["default"],
+      "viewports": ["desktop"],
+      "owners": ["packages/app/src/renderer/components/ChatPanel.tsx", "packages/app/src/renderer/state/agentEvents.ts"]
+    },
+    {
+      "id": "process-canvas",
+      "states": ["default"],
+      "viewports": ["desktop"],
+      "owners": ["packages/app/src/renderer/components/ArtifactsPanel.tsx"]
+    },
+    {
+      "id": "maturity-reading",
+      "states": ["default"],
+      "viewports": ["desktop"],
+      "owners": ["packages/app/src/renderer/components/MaturityPanel.tsx", "packages/pi-bridge/src/maturity-mirror.ts"]
+    },
+    {
+      "id": "wiki-ingestion-progress",
+      "states": ["default"],
+      "viewports": ["desktop"],
+      "owners": [
+        "packages/app/src/renderer/components/WikiBrowser.tsx",
+        "packages/app/src/renderer/state/wikiIngest.ts"
+      ]
+    },
+    {
+      "id": "wiki-browser",
+      "states": ["list", "graph"],
+      "viewports": ["desktop"],
+      "owners": ["packages/app/src/renderer/components/WikiBrowser.tsx"]
+    },
+    {
+      "id": "citation-source",
+      "states": ["default"],
+      "viewports": ["desktop"],
+      "owners": [
+        "packages/app/src/renderer/components/CitationDetail.tsx",
+        "packages/app/src/renderer/components/MarkdownView.tsx"
+      ]
+    },
+    {
+      "id": "support-preference",
+      "states": ["default"],
+      "viewports": ["desktop"],
+      "owners": ["packages/pi-bridge/src/support-tool.ts", "packages/app/src/renderer/components/ChatPanel.tsx"]
+    },
+    {
+      "id": "language-selector",
+      "states": ["default"],
+      "viewports": ["desktop"],
+      "owners": ["packages/app/src/renderer/components/AppHeader.tsx", "packages/app/src/shared/i18n/index.ts"]
+    },
+    {
+      "id": "attachment-and-wiki",
+      "states": ["overview"],
+      "viewports": ["desktop"],
+      "owners": [
+        "packages/app/src/renderer/components/ChatPanel.tsx",
+        "packages/app/src/renderer/components/CoursesPanel.tsx",
+        "packages/app/src/renderer/components/WikiBrowser.tsx"
+      ]
+    },
+    {
+      "id": "profile",
+      "states": ["entry", "pane"],
+      "viewports": ["desktop"],
+      "owners": [
+        "packages/app/src/renderer/components/AppHeader.tsx",
+        "packages/app/src/renderer/components/ProfilePanel.tsx",
+        "packages/app/src/renderer/components/ProfileSettingsOverlay.tsx"
+      ]
+    },
+    {
+      "id": "model-settings",
+      "states": ["example-values"],
+      "viewports": ["desktop"],
+      "owners": [
+        "packages/app/src/renderer/components/ProfileSettingsOverlay.tsx",
+        "packages/app/src/renderer/components/SettingsPanel.tsx"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "viewId": "attachment-and-wiki",
+      "state": "overview",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/attachment-and-wiki--overview--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "55859b7b4d48ffe6bbb007bbff63420dcf67481f717aa62f61f228cfe25f33b0",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 },
+        "highlights": [
+          { "x": 448, "y": 840, "width": 38, "height": 38 },
+          { "x": 0, "y": 167, "width": 403, "height": 291 }
+        ]
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ChatPanel.tsx": "82b5c5a2909fa378531f5ed388f0744c094c10428832accd006bada51b603de1",
+        "packages/app/src/renderer/components/CoursesPanel.tsx": "b212515710092d7e005c85dc9b981c5607e3ec7a9277892000b32bac7784d012",
+        "packages/app/src/renderer/components/WikiBrowser.tsx": "cf295d1816165def741d3ec1cf8c18f15c79f041a8b0d4d0a0cdad164700fb16"
+      }
+    },
+    {
+      "viewId": "citation-source",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/citation-source--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "6fe58680ac1b81dd97536b169203eb51e869e75d4c01079d639703a2a6d028dc",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/CitationDetail.tsx": "ae93b7c1fa55ac7512931f2e957f3f41b378d204f983ab0f9af221d88e1ea7a0",
+        "packages/app/src/renderer/components/MarkdownView.tsx": "072ca920c42b2c02c5019e84e3391fd7b1b7f79352da846b10d993d495c4cc0a"
+      }
+    },
+    {
+      "viewId": "composer-plus-menu",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/composer-plus-menu--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "9eed5e469d306a0335fff3ace7f7b3eb42c4edcd83aed3305840d3f3d9eb020d",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ChatPanel.tsx": "82b5c5a2909fa378531f5ed388f0744c094c10428832accd006bada51b603de1"
+      }
+    },
+    {
+      "viewId": "course-management",
+      "state": "create-switch",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/course-management--create-switch--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "71f5044ead66d07cf2c0ab7a78ccbbf9e50f8cc04a93b057bc5f66eb0f2e179b",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/CoursesPanel.tsx": "b212515710092d7e005c85dc9b981c5607e3ec7a9277892000b32bac7784d012"
+      }
+    },
+    {
+      "viewId": "first-use-orientation",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/first-use-orientation--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "b4752e19a996525a5b9789d186ca5082f310a6347d0d4ec38d696096f9610b6e",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/FirstUseOverview.tsx": "60606790cb53c5661daa18a3ee54c69bd7d2540c927c90944c21e50eb4253e81"
+      }
+    },
+    {
+      "viewId": "first-use-orientation",
+      "state": "default",
+      "locale": "de",
+      "viewport": "narrow",
+      "path": "assets/screenshots/de/first-use-orientation--default--de--narrow.png",
+      "width": 1550,
+      "height": 1800,
+      "pngSha256": "77ed22ca67fe72fc1cc77c064c9970736d9dd477cf1683283fe78f8a23fa08c5",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/FirstUseOverview.tsx": "60606790cb53c5661daa18a3ee54c69bd7d2540c927c90944c21e50eb4253e81"
+      }
+    },
+    {
+      "viewId": "language-selector",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/language-selector--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "29ab1c50dbb89959168ab2bc9c60b390f5f435240dc029d6b8a28977299245f9",
+      "stateMetadata": {
+        "scroll": { "kind": "background-top", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/AppHeader.tsx": "4cec100336e770c20757313da7ba60596428a672b8fe24b5abe335999043e601",
+        "packages/app/src/shared/i18n/index.ts": "89f0b190748954d4b5ad2e7e72d43fd85c78a474ca21475198d29f68c49365e4"
+      }
+    },
+    {
+      "viewId": "maturity-reading",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/maturity-reading--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "70329d0d12be927293f283de2be49355b044a4979a0f2aa2fd0d989f4cce01f9",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/MaturityPanel.tsx": "8fee02197096662f068564d56059f305289a8d024ba231c5c5941e22166faeb0",
+        "packages/pi-bridge/src/maturity-mirror.ts": "06e8fb9b37f351bc6b74062792a629f207eda6608843ac9c35efe61f8a33b939"
+      }
+    },
+    {
+      "viewId": "model-settings",
+      "state": "example-values",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/model-settings--example-values--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "9baf906df0cd0e101d8e59e1186b93a1be01b7f81e4d7df01834288867661344",
+      "stateMetadata": {
+        "scroll": { "kind": "background-top", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ProfileSettingsOverlay.tsx": "a08666985c08a93d8887a1a5e22422a59e7c161cbd944d8aeb69551cfc8d6bfb",
+        "packages/app/src/renderer/components/SettingsPanel.tsx": "91bf93665d7f42037f797b5aece3cf43313c6ceb38baab23614912450ae955fc"
+      }
+    },
+    {
+      "viewId": "process-canvas",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/process-canvas--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "942e56e9c82c767b6d9da8c826c990d5f7a000784a1c4a08507b6dd2d228d54c",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ArtifactsPanel.tsx": "41251f00e9e2059df4d9c569ca54766b02bfc8b55dc0de51d40ad12a10e525db"
+      }
+    },
+    {
+      "viewId": "profile",
+      "state": "entry",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/profile--entry--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "c9b9c3ecb1d977ff27eabbdc19e3d576cb5efb254cb2d2ffc05932e0e3b000a4",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 },
+        "highlights": [{ "x": 1394, "y": 2, "width": 34, "height": 34 }]
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/AppHeader.tsx": "4cec100336e770c20757313da7ba60596428a672b8fe24b5abe335999043e601",
+        "packages/app/src/renderer/components/ProfilePanel.tsx": "5e469db72094ff3d6fcde00baae4ce0835ea380d2fd6e5b3393050b75500042e",
+        "packages/app/src/renderer/components/ProfileSettingsOverlay.tsx": "a08666985c08a93d8887a1a5e22422a59e7c161cbd944d8aeb69551cfc8d6bfb"
+      }
+    },
+    {
+      "viewId": "profile",
+      "state": "pane",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/profile--pane--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "1e94da5c21d1e678db04fc47e9b4d69508999a70f71dce4aa632d852d752d58b",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 },
+        "highlights": [
+          { "x": 940, "y": 395, "width": 125, "height": 22 },
+          { "x": 366, "y": 448, "width": 699, "height": 34 }
+        ]
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/AppHeader.tsx": "4cec100336e770c20757313da7ba60596428a672b8fe24b5abe335999043e601",
+        "packages/app/src/renderer/components/ProfilePanel.tsx": "5e469db72094ff3d6fcde00baae4ce0835ea380d2fd6e5b3393050b75500042e",
+        "packages/app/src/renderer/components/ProfileSettingsOverlay.tsx": "a08666985c08a93d8887a1a5e22422a59e7c161cbd944d8aeb69551cfc8d6bfb"
+      }
+    },
+    {
+      "viewId": "support-preference",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/support-preference--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "3696c3a28198d2e26a243a4749eda4eb87767d42eae857546fe4184afab3a5b6",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ChatPanel.tsx": "82b5c5a2909fa378531f5ed388f0744c094c10428832accd006bada51b603de1",
+        "packages/pi-bridge/src/support-tool.ts": "0f3d6a89286634026da5ec181434bfeaa1d255b159577bd62d2f455be92b57a8"
+      }
+    },
+    {
+      "viewId": "wiki-browser",
+      "state": "graph",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/wiki-browser--graph--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "ca39165028499bdc206d49a6f307900b2d241b0076550fc49ad8bec47e0fbfde",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/WikiBrowser.tsx": "cf295d1816165def741d3ec1cf8c18f15c79f041a8b0d4d0a0cdad164700fb16"
+      }
+    },
+    {
+      "viewId": "wiki-browser",
+      "state": "list",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/wiki-browser--list--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "d2863bba42939362e0dcc3bc48d703ba1598793d9bcbe9a68a46e72846cfc162",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/WikiBrowser.tsx": "cf295d1816165def741d3ec1cf8c18f15c79f041a8b0d4d0a0cdad164700fb16"
+      }
+    },
+    {
+      "viewId": "wiki-ingestion-progress",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/wiki-ingestion-progress--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "9068e4853ebcf50449968d56d81f4a4ce7c1255b7ae609e53860b717802fe85f",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/WikiBrowser.tsx": "cf295d1816165def741d3ec1cf8c18f15c79f041a8b0d4d0a0cdad164700fb16",
+        "packages/app/src/renderer/state/wikiIngest.ts": "c55b9f9241b580794d9b507139dd5c19cb07d9f3123c005877181f12919d25f4"
+      }
+    },
+    {
+      "viewId": "working-and-stop",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/working-and-stop--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "a2014724060eb7e421a83b5bfe7d0db71d116f9e0c269d4ea4333e82db98cffd",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ChatPanel.tsx": "82b5c5a2909fa378531f5ed388f0744c094c10428832accd006bada51b603de1",
+        "packages/app/src/renderer/state/agentEvents.ts": "aa0d8638598dfedcc3d1ec1dba771f211608c785913664fa100a445c4e244bc6"
+      }
+    },
+    {
+      "viewId": "workspace-orientation",
+      "state": "default",
+      "locale": "de",
+      "viewport": "desktop",
+      "path": "assets/screenshots/de/workspace-orientation--default--de--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "453544e3957575c91a5495cfafc946f3cb351c9af6ac28e3136dea601d78cbaa",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/App.tsx": "85ab3d1cf7576ca344925a1846a7077ed41b1e09436ee286fb407df02a307066",
+        "packages/app/src/renderer/components/LeftPanel.tsx": "b159216eaa0c75269603bbaddc6ef427f716635b9783404c73820394877374c8",
+        "packages/app/src/renderer/components/RightPanel.tsx": "b5b990c50f79ad59d6e44b3163265835a4bde13712870a37fe08ce1a107749b5"
+      }
+    },
+    {
+      "viewId": "workspace-orientation",
+      "state": "default",
+      "locale": "de",
+      "viewport": "narrow",
+      "path": "assets/screenshots/de/workspace-orientation--default--de--narrow.png",
+      "width": 1550,
+      "height": 1800,
+      "pngSha256": "c4a3fc2436d70a3f3c5d510a33db5420937792cb366bd6a76a5e226546acc509",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/App.tsx": "85ab3d1cf7576ca344925a1846a7077ed41b1e09436ee286fb407df02a307066",
+        "packages/app/src/renderer/components/LeftPanel.tsx": "b159216eaa0c75269603bbaddc6ef427f716635b9783404c73820394877374c8",
+        "packages/app/src/renderer/components/RightPanel.tsx": "b5b990c50f79ad59d6e44b3163265835a4bde13712870a37fe08ce1a107749b5"
+      }
+    },
+    {
+      "viewId": "attachment-and-wiki",
+      "state": "overview",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/attachment-and-wiki--overview--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "5bdb588469b18e104b03c2c513324d8a54989f0bff4e424b98dad073ca4901de",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 },
+        "highlights": [
+          { "x": 448, "y": 840, "width": 38, "height": 38 },
+          { "x": 0, "y": 167, "width": 403, "height": 291 }
+        ]
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ChatPanel.tsx": "82b5c5a2909fa378531f5ed388f0744c094c10428832accd006bada51b603de1",
+        "packages/app/src/renderer/components/CoursesPanel.tsx": "b212515710092d7e005c85dc9b981c5607e3ec7a9277892000b32bac7784d012",
+        "packages/app/src/renderer/components/WikiBrowser.tsx": "cf295d1816165def741d3ec1cf8c18f15c79f041a8b0d4d0a0cdad164700fb16"
+      }
+    },
+    {
+      "viewId": "citation-source",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/citation-source--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "400dbd3668bc9e744ea99746ea77e91ca538293e47260f2879d9b4e86a580025",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/CitationDetail.tsx": "ae93b7c1fa55ac7512931f2e957f3f41b378d204f983ab0f9af221d88e1ea7a0",
+        "packages/app/src/renderer/components/MarkdownView.tsx": "072ca920c42b2c02c5019e84e3391fd7b1b7f79352da846b10d993d495c4cc0a"
+      }
+    },
+    {
+      "viewId": "composer-plus-menu",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/composer-plus-menu--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "4b249b777d003e083489cb40996949e6a73d50f5de63a9189504354163ac565e",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ChatPanel.tsx": "82b5c5a2909fa378531f5ed388f0744c094c10428832accd006bada51b603de1"
+      }
+    },
+    {
+      "viewId": "course-management",
+      "state": "create-switch",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/course-management--create-switch--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "ae1cce1e49ac576f887998f8df10f2fcb192a81cbb767b49c27501572144e13f",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/CoursesPanel.tsx": "b212515710092d7e005c85dc9b981c5607e3ec7a9277892000b32bac7784d012"
+      }
+    },
+    {
+      "viewId": "first-use-orientation",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/first-use-orientation--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "e5196a2bc81619360a22b41cf751ea8b97feaade0916c887ee35ac8ab13070dd",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/FirstUseOverview.tsx": "60606790cb53c5661daa18a3ee54c69bd7d2540c927c90944c21e50eb4253e81"
+      }
+    },
+    {
+      "viewId": "first-use-orientation",
+      "state": "default",
+      "locale": "en",
+      "viewport": "narrow",
+      "path": "assets/screenshots/en/first-use-orientation--default--en--narrow.png",
+      "width": 1550,
+      "height": 1800,
+      "pngSha256": "412678c415e9598b4480a45f5c21a26b5fc8c400098195b75b20c8005daca53d",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/FirstUseOverview.tsx": "60606790cb53c5661daa18a3ee54c69bd7d2540c927c90944c21e50eb4253e81"
+      }
+    },
+    {
+      "viewId": "language-selector",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/language-selector--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "bf3c0e4a047dacfaf2e61b9f49528843b016e750901bf03f6deacbe86274aa0c",
+      "stateMetadata": {
+        "scroll": { "kind": "background-top", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/AppHeader.tsx": "4cec100336e770c20757313da7ba60596428a672b8fe24b5abe335999043e601",
+        "packages/app/src/shared/i18n/index.ts": "89f0b190748954d4b5ad2e7e72d43fd85c78a474ca21475198d29f68c49365e4"
+      }
+    },
+    {
+      "viewId": "maturity-reading",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/maturity-reading--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "5726eb39475b3c880f86f258f11c4c6f060ea56a1e13b0d1277e52a4662d8bbc",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/MaturityPanel.tsx": "8fee02197096662f068564d56059f305289a8d024ba231c5c5941e22166faeb0",
+        "packages/pi-bridge/src/maturity-mirror.ts": "06e8fb9b37f351bc6b74062792a629f207eda6608843ac9c35efe61f8a33b939"
+      }
+    },
+    {
+      "viewId": "model-settings",
+      "state": "example-values",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/model-settings--example-values--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "a7b5b27bccbbf42ce873b6a67194bfeb1ff544e79028730615ac05cb89d591ed",
+      "stateMetadata": {
+        "scroll": { "kind": "background-top", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ProfileSettingsOverlay.tsx": "a08666985c08a93d8887a1a5e22422a59e7c161cbd944d8aeb69551cfc8d6bfb",
+        "packages/app/src/renderer/components/SettingsPanel.tsx": "91bf93665d7f42037f797b5aece3cf43313c6ceb38baab23614912450ae955fc"
+      }
+    },
+    {
+      "viewId": "process-canvas",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/process-canvas--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "b9d282f45f499db86f84d0d304e1d4276f3a090bad75661427f9b9c2364db13c",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ArtifactsPanel.tsx": "41251f00e9e2059df4d9c569ca54766b02bfc8b55dc0de51d40ad12a10e525db"
+      }
+    },
+    {
+      "viewId": "profile",
+      "state": "entry",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/profile--entry--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "a9c852afd8ce20d8c4771a35d31033d2cf373fcee5e58376a022ff34a2b40885",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 },
+        "highlights": [{ "x": 1394, "y": 2, "width": 34, "height": 34 }]
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/AppHeader.tsx": "4cec100336e770c20757313da7ba60596428a672b8fe24b5abe335999043e601",
+        "packages/app/src/renderer/components/ProfilePanel.tsx": "5e469db72094ff3d6fcde00baae4ce0835ea380d2fd6e5b3393050b75500042e",
+        "packages/app/src/renderer/components/ProfileSettingsOverlay.tsx": "a08666985c08a93d8887a1a5e22422a59e7c161cbd944d8aeb69551cfc8d6bfb"
+      }
+    },
+    {
+      "viewId": "profile",
+      "state": "pane",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/profile--pane--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "0229d74c54b6818e0b9912ccbab9c7d96ce28b8e46b89cf603f03982f328537b",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 },
+        "highlights": [
+          { "x": 942, "y": 381, "width": 132, "height": 22 },
+          { "x": 366, "y": 420, "width": 708, "height": 34 }
+        ]
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/AppHeader.tsx": "4cec100336e770c20757313da7ba60596428a672b8fe24b5abe335999043e601",
+        "packages/app/src/renderer/components/ProfilePanel.tsx": "5e469db72094ff3d6fcde00baae4ce0835ea380d2fd6e5b3393050b75500042e",
+        "packages/app/src/renderer/components/ProfileSettingsOverlay.tsx": "a08666985c08a93d8887a1a5e22422a59e7c161cbd944d8aeb69551cfc8d6bfb"
+      }
+    },
+    {
+      "viewId": "support-preference",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/support-preference--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "3dae43cfdcb32bbaef32ab7b4e54a7df748a44a95bd5b5bfe9a65dd420a2f16d",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ChatPanel.tsx": "82b5c5a2909fa378531f5ed388f0744c094c10428832accd006bada51b603de1",
+        "packages/pi-bridge/src/support-tool.ts": "0f3d6a89286634026da5ec181434bfeaa1d255b159577bd62d2f455be92b57a8"
+      }
+    },
+    {
+      "viewId": "wiki-browser",
+      "state": "graph",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/wiki-browser--graph--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "ce348d7739d431479125e80a40e4d01da21abdefc438e1cfc5c6ff0daaae0e42",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/WikiBrowser.tsx": "cf295d1816165def741d3ec1cf8c18f15c79f041a8b0d4d0a0cdad164700fb16"
+      }
+    },
+    {
+      "viewId": "wiki-browser",
+      "state": "list",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/wiki-browser--list--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "947bafb042f6395acb3a86ccb211808506cd3d861a8ba5c9ffdb6ba8fe5892d6",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/WikiBrowser.tsx": "cf295d1816165def741d3ec1cf8c18f15c79f041a8b0d4d0a0cdad164700fb16"
+      }
+    },
+    {
+      "viewId": "wiki-ingestion-progress",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/wiki-ingestion-progress--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "2788f15579af444bcd163e1b99e18d56a13eececc36d7f9d52679d026894e796",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/WikiBrowser.tsx": "cf295d1816165def741d3ec1cf8c18f15c79f041a8b0d4d0a0cdad164700fb16",
+        "packages/app/src/renderer/state/wikiIngest.ts": "c55b9f9241b580794d9b507139dd5c19cb07d9f3123c005877181f12919d25f4"
+      }
+    },
+    {
+      "viewId": "working-and-stop",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/working-and-stop--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "e3d98f95cabb2026ce91011bca143379d8db8301a9f8b2bb49812eab755b0b92",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 1, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/components/ChatPanel.tsx": "82b5c5a2909fa378531f5ed388f0744c094c10428832accd006bada51b603de1",
+        "packages/app/src/renderer/state/agentEvents.ts": "aa0d8638598dfedcc3d1ec1dba771f211608c785913664fa100a445c4e244bc6"
+      }
+    },
+    {
+      "viewId": "workspace-orientation",
+      "state": "default",
+      "locale": "en",
+      "viewport": "desktop",
+      "path": "assets/screenshots/en/workspace-orientation--default--en--desktop.png",
+      "width": 2880,
+      "height": 1800,
+      "pngSha256": "aaae4c557c4e620f44c0a7003cd172e1ecc2a53cb710d81831a120abf72e2454",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/App.tsx": "85ab3d1cf7576ca344925a1846a7077ed41b1e09436ee286fb407df02a307066",
+        "packages/app/src/renderer/components/LeftPanel.tsx": "b159216eaa0c75269603bbaddc6ef427f716635b9783404c73820394877374c8",
+        "packages/app/src/renderer/components/RightPanel.tsx": "b5b990c50f79ad59d6e44b3163265835a4bde13712870a37fe08ce1a107749b5"
+      }
+    },
+    {
+      "viewId": "workspace-orientation",
+      "state": "default",
+      "locale": "en",
+      "viewport": "narrow",
+      "path": "assets/screenshots/en/workspace-orientation--default--en--narrow.png",
+      "width": 1550,
+      "height": 1800,
+      "pngSha256": "215d0bd662d4d11392fd9586dad94a24f7e5c5c99cfed4bc7f3257716501ce9b",
+      "stateMetadata": {
+        "scroll": { "kind": "natural", "chatScrollTop": 0 },
+        "citationStates": { "verified": 0, "unverified": 0 }
+      },
+      "sourceFingerprints": {
+        "packages/app/src/renderer/App.tsx": "85ab3d1cf7576ca344925a1846a7077ed41b1e09436ee286fb407df02a307066",
+        "packages/app/src/renderer/components/LeftPanel.tsx": "b159216eaa0c75269603bbaddc6ef427f716635b9783404c73820394877374c8",
+        "packages/app/src/renderer/components/RightPanel.tsx": "b5b990c50f79ad59d6e44b3163265835a4bde13712870a37fe08ce1a107749b5"
+      }
+    }
+  ]
+}

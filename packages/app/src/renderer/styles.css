@@ -1,0 +1,4992 @@
+/* CBE Toolbox renderer — Phase-1 visual scope.
+   Catppuccin Macchiato (default) + Latte (light). JS overrides per flavour/accent at runtime.
+   Slim app header, edge-to-edge workspace, two side panels.
+*/
+
+/* ============ TOKENS — light (Latte oklch) + dark (Catppuccin Macchiato as baseline) ============ */
+:root,
+html[data-theme="light"] {
+  --bg: oklch(99.4% 0 0);
+  --panel: oklch(97.6% 0 0);
+  --raise: oklch(95.4% 0 0);
+  --fg: oklch(25% 0 0);
+  --muted: oklch(50% 0 0);
+  --faint: oklch(67% 0 0);
+  --border: oklch(91% 0 0);
+  --border-2: oklch(85% 0 0);
+  --accent: oklch(52% 0.16 254);
+  --accent-ink: oklch(99% 0 0);
+  --accent-soft: oklch(95.5% 0.026 254);
+}
+html[data-theme="dark"] {
+  --bg: #24273a;
+  --panel: #1e2030;
+  --raise: #363a4f;
+  --fg: #cad3f5;
+  --muted: #a5adcb;
+  --faint: #8087a2;
+  --border: #363a4f;
+  --border-2: #494d64;
+  --accent: #8aadf4;
+  --accent-ink: #181926;
+  --accent-soft: #494d64;
+}
+
+/* ============ RESET + BODY ============ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+#root {
+  display: contents;
+}
+.mono {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+/* ============ TEXT SELECTION SCOPE ============
+   Chrome is not text: dragging across the settings, the panel tabs, buttons,
+   lists, headers or status lines must not paint a selection (Requirement:
+   Collected UX-3 Fixes (Wave 1), scenario *Text selection is limited to content
+   and input surfaces*).
+
+   Direction on purpose: lock the app WHOLESALE, then re-open the surfaces the
+   lecturer reads or types into. The inverse — locking each control one by one —
+   rots with every new element, because a forgotten control is selectable by
+   default while a forgotten content surface is a visible, reported defect. Any
+   new surface carrying content the lecturer might reuse belongs in the
+   allowlist below. */
+body {
+  user-select: none;
+  -webkit-user-select: none;
+}
+/* Content the lecturer reads and pulls text out of, plus every real input.
+   `[role="alert"]` and `[role="status"]` are listed as a PAIR on purpose: an
+   announced message is content whichever of the two roles carries it, and
+   allowlisting only one of them is what left the Settings connection-test
+   result and the app-level notice banner locked. */
+.md,
+.msg-text,
+.artifact-value,
+.anchor-value,
+.annotation-note,
+.decisions-body,
+.cite-modal-body,
+.cite-modal-meta,
+.thinking-body,
+.tool-card-body,
+.picker-other-answer,
+.wiki-atom-detail,
+.wiki-atom-row-title,
+.wiki-atom-row-preview,
+.wiki-ingest-name,
+.maturity-gloss,
+.maturity-hint,
+.maturity-provenance,
+.maturity-assess-reason,
+.profile-evidence,
+.artifacts-export-done,
+.artifacts-export-reason,
+.chat-notice-text,
+.chat-notice-hint,
+.config-error,
+.set-note,
+.set-val,
+.set-tooltip,
+.wiki-ingest-error,
+.wiki-ingest-notice,
+.wiki-ingest-inactive,
+[role="alert"],
+[role="status"],
+input,
+textarea,
+[contenteditable="true"] {
+  user-select: text;
+  -webkit-user-select: text;
+}
+/* `user-select` is INHERITED, so an allowlisted live region opens everything
+   nested inside it — not only its message text. Two narrowings keep the role
+   pair without letting it widen the rule this section states:
+   (a) controls are chrome wherever they sit, so a dismiss/action button inside
+       a notice stays locked (a rule matching the control itself always wins
+       over an inherited value, regardless of order or specificity);
+   (b) the live regions that carry NO lecturer message — the transient loading
+       pane, the Working disclosure's visually-hidden announcement, the API-key
+       state badge — are announced state, not text to reuse. Without the
+       disclosure entry, dragging a selection across a streaming answer copies an
+       invisible stray "Working…". The (b) entries are named by
+       class, so they exempt `role="alert"`: the same class can also carry a
+       failure message the lecturer must be able to copy and pass on (the
+       hydration pane is both), and the exemption hangs on that meaning rather
+       than on a class name. */
+button,
+[role="button"],
+select,
+summary {
+  user-select: none;
+  -webkit-user-select: none;
+}
+.hydration-pane:not([role="alert"]),
+.working-disclosure-status:not([role="alert"]),
+.set-keystate:not([role="alert"]) {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The scrollbar's width and the space reserved for it come from ONE declaration
+   (`SCROLLBAR_RESERVE` in `shared/layout.ts`, published as a custom property by
+   `applyLayoutVariables`), so they cannot drift apart — Requirement: One Centred
+   Content Column for the Conversation. */
+::-webkit-scrollbar {
+  width: var(--scrollbar-reserve);
+  height: var(--scrollbar-reserve);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-2);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--faint);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+button {
+  font-family: inherit;
+}
+
+/* ============ APP ROOT ============ */
+.app-root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* ============ APP HEADER (slim strip — not a fake window chrome) ============ */
+.app-header {
+  flex: 0 0 38px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+  -webkit-app-region: drag;
+}
+.app-header button,
+.app-header input,
+.header-language,
+.header-language-listbox {
+  -webkit-app-region: no-drag;
+}
+.app-header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  min-width: 0;
+  flex: 1;
+}
+.app-header-name {
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.app-header-sep {
+  flex: 0 0 auto;
+  color: var(--faint);
+  font-size: 12px;
+}
+.app-header-course {
+  display: block;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* The active course name doubles as the reveal affordance for the left panel
+   (Requirement: App Header Strip). It is a button, but it must not read as one —
+   the header carries no button chrome. */
+.app-header-course-btn {
+  padding: 0;
+  min-width: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 4px;
+}
+.app-header-course-btn:hover .app-header-course {
+  color: var(--fg);
+}
+/* Language, Help, gear, user; the existing three keep their right-edge order.
+   The group never shrinks — the course title yields and ellipsizes first. */
+.app-header-right {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 2px;
+}
+.header-language {
+  position: relative;
+  display: flex;
+}
+.header-language-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 26px;
+  min-width: 48px;
+  padding: 0 5px;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  font: inherit;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+.header-language-trigger:hover,
+.header-language-trigger[aria-expanded="true"] {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+.header-language-globe {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+.header-language-chevron {
+  width: 9px;
+  height: 9px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+.header-language-listbox {
+  position: fixed;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100vw - 16px);
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 18%);
+  user-select: none;
+}
+.header-language-listbox [role="option"] {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 30px;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  white-space: normal;
+}
+.header-language-listbox [role="option"]:hover,
+.header-language-listbox [role="option"]:focus-visible {
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+.header-language-listbox [role="option"][aria-disabled="true"] {
+  cursor: progress;
+}
+.header-language-check {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+.header-language-feedback {
+  padding: 5px 8px;
+  color: var(--danger);
+  font-size: 11px;
+  line-height: 1.3;
+}
+.app-header-affordance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+}
+.app-header-affordance:hover {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+.app-header-affordance .panel-tab-icon {
+  width: 17px;
+  height: 17px;
+}
+/* Unsaved-changes indication mirrored onto the gear (Requirement: Settings Save
+   Feedback and Unsaved-Changes Indication). It is what makes the overlay's
+   click-outside dismissal safe: a lecturer who closed mid-edit can see that they
+   did, and the accordion re-opens on the group holding it. */
+.app-header-affordance-unsaved {
+  position: relative;
+  color: var(--fg);
+}
+.app-header-unsaved-dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ============ WORKSPACE ============ */
+/* Three columns: left panel · chat · right panel. Every track width is set
+   inline by `Workspace.tsx`, which owns the clamps and the width arbitration
+   (Requirements: Resizable Chat–Panel Split; The Chat Column Survives Two
+   Flanking Panels); the declaration here is the pre-hydration fallback — the
+   two panels at their rails. */
+.workspace {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  transition: grid-template-columns 160ms ease;
+  /* Anchor for the absolutely-positioned resize handles at each chat ↔ panel
+     boundary (Requirement: Resizable Chat–Panel Split). */
+  position: relative;
+}
+/* Suspended while dragging a split — otherwise the columns rubber-band
+   160ms behind the pointer. */
+.workspace.workspace-resizing {
+  transition: none;
+}
+/* Drag handle on a chat ↔ expanded-panel boundary — one per expanded panel. A
+   separate element from that boundary's edge-toggle chevron: click toggles
+   (chevron), drag resizes (handle) — a drag can never collapse a panel. Not
+   rendered while its panel is collapsed. */
+.panel-resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  cursor: col-resize;
+  z-index: 4;
+  background: transparent;
+}
+.panel-resize-handle:hover,
+.panel-resize-handle:focus-visible {
+  background: color-mix(in oklch, transparent, var(--accent) 30%);
+  outline: none;
+}
+
+/* ============ CONVERSATION ============ */
+.conv {
+  display: grid;
+  /* Five named tracks, in reading order: the pinned session-controls row above
+     the transcript (Requirement: Pinned Session Controls — layout, not overlay),
+     the optional first-use orientation row, the scroll region as the sole
+     flexible row, the notice stack, the composer. Every child declares its own
+     `grid-row`: a hidden optional row reserves no cell, so an unassigned child
+     would auto-place into it and land ABOVE the transcript. */
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+  min-height: 0;
+  border-right: 1px solid var(--border);
+}
+/* ---- The conversation's content column ----------------------------------
+   One centred column shared by the transcript and the composer (Requirement:
+   One Centred Content Column for the Conversation). Every figure here is a
+   custom property published from `shared/layout.ts`; no literal is repeated.
+
+   The gutter comes ENTIRELY from the column's own width and auto margins. The
+   only horizontal padding around the column anywhere in the chain is the
+   symmetric scrollbar reservation, which every column-carrying surface carries
+   so all of them resolve the column against one equally wide shared content
+   box — and, being symmetric, keep it concentric with the chat column. */
+.content-column {
+  width: min(var(--content-column-max), 100% - var(--content-column-gutter));
+  margin-inline: auto;
+}
+/* The reservation on every column-carrying surface OUTSIDE the scroll region —
+   the header row, the orientation row, each notice row and the composer row.
+   `.chat-scroll` gets the same width back through `scrollbar-gutter: stable
+   both-edges`. */
+.composer,
+.conv-header,
+.conv-row {
+  padding-inline: var(--scrollbar-reserve);
+}
+.chat-scroll {
+  grid-row: 3;
+  min-height: 0;
+  overflow-y: auto;
+  /* Reserve one scrollbar width on BOTH inline edges, whether or not the
+     transcript currently scrolls — so crossing the scrollable threshold in
+     either direction changes nothing about the column's geometry. */
+  scrollbar-gutter: stable both-edges;
+  /* Needed so the absolutely-positioned jump-to-latest pill anchors to the
+     scroll viewport, not to the next non-static ancestor. */
+  position: relative;
+}
+
+/* Vertical spacing belongs to scrollable content, not the grid item: at high
+   zoom the flexible track can be shorter than this padding. Keeping padding on
+   the viewport would force its border box over the composer. */
+.chat-scroll > .chat-column {
+  padding-block: 24px 14px;
+}
+
+/* Notices retain their position between transcript and composer. Group them in
+   one auto-sized track so none can auto-place into the hidden onboarding slot. */
+.chat-notices {
+  grid-row: 4;
+  min-height: 0;
+}
+
+/* Jump-to-latest floating pill — accent-styled, bottom-centred above the chat
+   when the lecturer has scrolled up and new content is below their viewport. */
+.jump-to-latest {
+  position: sticky;
+  bottom: 14px;
+  /* Block-level flex (not inline-flex) so `margin: 0 auto` actually centres
+     the pill horizontally inside the scroll viewport. With inline-flex the
+     element sits in the text flow and auto-margins are a no-op, which left
+     the pill anchored against the left padding of the chat scroll. */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  margin: 0 auto;
+  padding: 6px 14px 6px 11px;
+  background: var(--bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 11.5px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px color-mix(in oklch, black, transparent 78%);
+  transition: background-color 120ms ease;
+  z-index: 5;
+}
+.jump-to-latest:hover {
+  /* Tint with the accent but mix INTO the opaque surface, never to transparency.
+     Earlier hover used color-mix(... transparent 88%), which left the pill ~88 %
+     see-through and let chat text bleed through. No transform offset either —
+     the pill must not jump when the cursor enters it. */
+  background: color-mix(in oklch, var(--accent) 12%, var(--bg));
+}
+.jump-to-latest-arrow {
+  font-size: 13px;
+  line-height: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .jump-to-latest {
+    transition: none;
+  }
+}
+.chat-lead {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+/* Conversation header (Requirement: Pinned Session Controls): sits in the chat
+   column's own grid row ABOVE .chat-scroll — visible at any scroll position;
+   inline confirm/error states wrap and grow the row downward. Hosts New Session
+   alone since the Help control moved into the composer's "+" menu. */
+/* The header's own BORDER BOX spans the chat column's full width, so its bottom
+   border reads as a boundary of the column rather than a stripe floating inside
+   it; its CONTENTS align to the content column (Requirement: One Centred Content
+   Column…, § What stays full-bleed). Carrying the reservation — declared once
+   above, for every column-carrying surface outside the scroll region — is what
+   makes that alignment exact rather than merely concentric. */
+.conv-header {
+  grid-row: 1;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* First-use orientation is its own layout row — never a transcript turn and
+   never a composer child. The explicit row assignments leave row 2 at zero
+   height whenever readiness hides it, while the transcript remains the only
+   flexible row. */
+.first-use-row {
+  grid-row: 2;
+  min-width: 0;
+  padding-block: 10px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklch, var(--surface) 88%, var(--accent) 12%);
+}
+.first-use-row[hidden] {
+  display: none;
+}
+.first-use-row-inner {
+  min-width: 0;
+}
+.first-use-overview {
+  min-width: 0;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+.first-use-overview-automatic {
+  max-height: min(18vh, 430px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2px 8px 4px 2px;
+  scrollbar-gutter: stable;
+}
+.first-use-overview h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+}
+.first-use-overview p,
+.first-use-overview li {
+  font-size: 0.78125rem;
+  line-height: 1.48;
+}
+.first-use-value {
+  margin: 5px 0 8px;
+  color: var(--subtext);
+}
+.first-use-points {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding-inline-start: 20px;
+}
+.first-use-next {
+  margin: 9px 0 0;
+  color: var(--text);
+  font-weight: 600;
+}
+.first-use-help {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+.first-use-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.first-use-actions button {
+  max-width: 100%;
+  white-space: normal;
+}
+/* The primary action reuses `.send` for its accent fill only — never the
+   composer's 32x32 circular ICON geometry, which clips a word label in every
+   shipped language. Same precedent as `.chat-notice .send`, sized like the
+   sibling `.set-secondary` action so the pair reads as one row. Colour, focus
+   ring and theme tokens are left to `.send`. */
+.first-use-actions .send {
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.set-about-identity {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0 12px;
+}
+.set-about-identity img {
+  width: 72px;
+  height: 72px;
+}
+.set-about-pioneer {
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.set-about-pioneer p,
+.set-about-pioneer-status {
+  margin: 6px 0 0;
+  color: var(--subtext);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.set-about-pioneer-link {
+  appearance: none;
+  border: 0;
+  padding: 2px 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.set-about-pioneer-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.set-about-external-cue {
+  font-style: italic;
+}
+.set-about-pioneer-status:empty {
+  display: none;
+}
+.set-about-overview {
+  padding: 12px 0 2px;
+  border-top: 1px solid var(--border);
+}
+.set-about-overview-trigger {
+  width: 100%;
+  white-space: normal;
+}
+.set-about-overview .first-use-overview {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.set-about-overview .first-use-overview h2 {
+  font-size: 0.9375rem;
+}
+.conv-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+/* Secondary disclosure line in the New Session confirm/error copy — always
+   present, visually subordinate to the plain primary sentence. */
+.new-session-confirm-detail {
+  display: block;
+  margin-top: 3px;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.new-session-initializing .new-session-confirm-text {
+  color: var(--muted);
+}
+.new-session-btn {
+  flex-shrink: 0;
+}
+.new-session-confirm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--muted, var(--faint));
+}
+.new-session-confirm-text {
+  max-width: 420px;
+}
+
+/* Boot-hydration panes (pending / error) — the chat column while
+   conversationOpen resolves or after it failed (desktop-app spec, Requirement:
+   Renderer Boot-Hydration from the Main Process). */
+.hydration-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hydration-pane-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+  text-align: center;
+  padding: 40px 20px;
+}
+.hydration-pane-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+.hydration-pane-sub {
+  font-size: 13px;
+  color: var(--faint);
+  line-height: 1.5;
+}
+
+.msg {
+  margin-bottom: 21px;
+  /* The turn cap is unchanged in value; what changed is the container it is
+     measured against — the content column rather than an unbounded region
+     (Requirement: One Centred Content Column…, § The left/right distinction is
+     preserved, inside the column). The literal moved to `shared/layout.ts`. */
+  max-width: var(--turn-max);
+}
+/* `.msg-role` carries no visual rules any more: every instance is rendered with
+   `.visually-hidden` (Requirement: The Turn Role Label Is Hidden From View, Not
+   From Assistive Technology). The label stays in the DOM because it is the only
+   element naming a turn's speaker — attribution for a sighted reader is carried
+   by `.msg-lecturer`'s alignment, its filled `.msg-text` background and that
+   bubble's asymmetric radius, none of which reaches assistive technology. Hiding
+   it with `display: none` would take it out of the accessibility tree too. */
+.msg-text {
+  font-size: 13.5px;
+  line-height: 1.66;
+  color: var(--fg);
+  white-space: pre-wrap;
+}
+.msg-text b {
+  font-weight: 600;
+}
+.msg-lecturer {
+  margin-left: auto;
+}
+.msg-lecturer .msg-text {
+  background: var(--raise);
+  border-radius: 13px 13px 4px 13px;
+  padding: 12px 14px;
+}
+.msg-skill .msg-text {
+  color: var(--fg);
+}
+
+/* Markdown — used inside .msg-text for assistant turns. Reset white-space because
+   block-level elements (p, ul, table) provide their own layout; pre/code keep the
+   pre-formatted whitespace where it belongs. */
+.md {
+  white-space: normal;
+}
+.md > * + * {
+  margin-top: 0.7em;
+}
+.md p {
+  margin: 0;
+}
+.md h1,
+.md h2,
+.md h3,
+.md h4,
+.md h5,
+.md h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--fg);
+}
+.md h1 {
+  font-size: 1.35em;
+}
+.md h2 {
+  font-size: 1.2em;
+}
+.md h3 {
+  font-size: 1.08em;
+}
+.md h4,
+.md h5,
+.md h6 {
+  font-size: 1em;
+}
+.md ul,
+.md ol {
+  padding-left: 1.5em;
+}
+.md li + li {
+  margin-top: 0.25em;
+}
+.md li > p {
+  display: inline;
+}
+.md blockquote {
+  margin: 0;
+  padding: 0.3em 0.9em;
+  border-left: 3px solid var(--border-2);
+  color: var(--muted);
+}
+.md a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.md hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1em 0;
+}
+.md code {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--raise);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.md pre {
+  background: var(--raise);
+  padding: 12px 14px;
+  border-radius: 8px;
+  overflow-x: auto;
+  /* Relative, never absolute: code blocks are conversation content too, so they scale
+     with the chat text-size setting exactly like tables (Requirement: Collected UX-2
+     Fixes — no absolute px may shadow the setting on conversation content). */
+  font-size: 0.95em;
+  line-height: 1.55;
+  border: 1px solid var(--border);
+}
+.md pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  border-radius: 0;
+}
+.md table {
+  border-collapse: collapse;
+  width: 100%;
+  /* Relative, never absolute: the chat text-size setting is a reading-comfort setting
+     and tables are conversation content, so they scale with the surrounding paragraph
+     text (Requirement: Collected UX-2 Fixes, Scenario: *Markdown tables follow the chat
+     text-size setting*). An absolute px here shadowed the setting. */
+  font-size: 0.95em;
+  border: 1px solid var(--border);
+}
+.md th,
+.md td {
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.md th {
+  background: var(--raise);
+  font-weight: 600;
+}
+.md tr:last-child td {
+  border-bottom: 0;
+}
+.md-fallback pre {
+  white-space: pre-wrap;
+}
+
+/* LaTeX math (change render-latex-math-in-markdown). KaTeX's own stylesheet is imported
+   as a bundled local asset in MarkdownView.tsx; these rules only scope it to this app.
+
+   Relative, never absolute: math is conversation content, so it scales with the chat
+   text-size setting exactly like tables and code blocks (Requirement: Collected UX-2
+   Fixes — "one text-size scope"; Requirement: Markdown Rendering in the Chat View —
+   "Math rendered inside conversation content MUST scale with the chat text-size
+   setting"). KaTeX ships `.katex { font: normal 1.21em … }`, a shorthand that also
+   carries family and line-height; restating only the SIZE here, at a higher specificity
+   (0,2,0 beats 0,1,0 whichever stylesheet lands first), pins math to the surrounding
+   paragraph while leaving KaTeX's metrics alone. 1.1em rather than KaTeX's 1.21em so an
+   inline expression sits with the prose instead of towering over 13.5px body text. */
+.md .katex {
+  font-size: 1.1em;
+}
+/* A wide display block scrolls inside its own container rather than widening the chat
+   column or the artefact card — the same containment `.md table` and `.md pre` have. */
+.md .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 0;
+}
+/* A malformed expression renders as its own marked-up source (KaTeX colours it inline).
+   Long broken source must wrap instead of stretching the bubble. */
+.md .katex-error {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Syntax highlighting (highlight.js token classes) — Catppuccin-aligned with theme tokens. */
+.md .hljs {
+  color: var(--fg);
+  background: transparent;
+}
+.md .hljs-keyword,
+.md .hljs-built_in,
+.md .hljs-type {
+  color: var(--accent);
+}
+.md .hljs-string,
+.md .hljs-attr {
+  color: var(--accent);
+  opacity: 0.85;
+}
+.md .hljs-number,
+.md .hljs-literal {
+  color: var(--accent);
+  opacity: 0.75;
+}
+.md .hljs-comment,
+.md .hljs-meta {
+  color: var(--faint);
+  font-style: italic;
+}
+.md .hljs-title,
+.md .hljs-function,
+.md .hljs-name {
+  color: var(--fg);
+  font-weight: 500;
+}
+.md .hljs-variable,
+.md .hljs-attribute {
+  color: var(--muted);
+}
+
+.cite {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  color: var(--accent);
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.cite:hover {
+  text-decoration-thickness: 2px;
+}
+.cite::before {
+  content: "\21B3  ";
+  text-decoration: none;
+  color: var(--faint);
+}
+
+/* Citation verification (capability `desktop-app`, Requirement: A Citation Token Is
+   Verified Against the Corpus Before It Is Linked). Only the EXCEPTION is marked — a
+   verified citation keeps the plain `.cite` presentation, because chrome on the norm
+   trains the reader to ignore the marker. */
+.cite-unverified {
+  color: var(--warn, #b26a00);
+  text-decoration-style: dashed;
+}
+.cite-unresolved {
+  color: var(--faint);
+  text-decoration: line-through;
+  cursor: help;
+}
+.cite-unresolved::before {
+  content: "\21B3  ";
+  text-decoration: none;
+  color: var(--faint);
+}
+.cite-flag {
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 4px;
+  padding: 0 4px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  vertical-align: 1px;
+}
+
+/* Legacy streaming cursor — superseded by the Working disclosure's dot-grid but kept
+   for any plain-text bubbles. */
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.92em;
+  background: var(--accent);
+  vertical-align: -2px;
+  margin-left: 2px;
+  animation: blink 1.05s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ============ AGENT ACTIVITY (tool cards, thinking, banners, streaming indicator) ============ */
+
+/* Inline chat notice — soft, dismissible, gated to the chat surface. Used for
+   recoverable prompt errors (e.g. "agent busy"). Hard failures still go to the
+   global banner via setError. */
+.chat-notice {
+  position: relative;
+  /* Horizontal margin withdrawn: the notice carries the content column, whose
+     gutter comes from its own width and auto margins. */
+  margin: 0 auto 8px;
+  padding: 9px 30px 9px 12px;
+  /* A multiselect ingest can report several per-file problems in one notice,
+     one line per file. */
+  white-space: pre-line;
+  border: 1px solid var(--border-2);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  background: color-mix(in oklch, var(--panel), var(--accent) 4%);
+  color: var(--fg);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.chat-notice-text {
+  color: var(--fg);
+}
+.chat-notice-hint {
+  margin-top: 4px;
+  font-size: 10.5px;
+  color: var(--faint);
+  letter-spacing: 0.01em;
+}
+.chat-notice-close {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--faint);
+  font-size: 14px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.chat-notice-close:hover {
+  color: var(--fg);
+  background: var(--raise);
+}
+.chat-notice-remediation {
+  padding-right: 12px;
+}
+.chat-notice-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+/* In the remediation variant the "Not now" button is an inline action, not the
+   absolute corner ×. */
+.chat-notice-remediation .chat-notice-close {
+  position: static;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+/* One active-turn disclosure. The panel does not exist while closed; these
+   rules only style the deliberately mounted open state. */
+.working-disclosure {
+  margin: 6px 0;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: color-mix(in oklch, var(--panel), var(--raise) 22%);
+}
+.working-disclosure-trigger {
+  width: 100%;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: left;
+}
+.working-disclosure-trigger:hover,
+.working-disclosure-trigger:focus-visible {
+  color: var(--fg);
+  background: var(--raise);
+}
+.working-disclosure-label {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+}
+.working-disclosure-chevron {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  color: var(--faint);
+}
+.working-disclosure-panel {
+  padding: 8px 10px 10px;
+  border-top: 1px solid var(--border);
+  max-height: 320px;
+  overflow: auto;
+  user-select: text;
+  -webkit-user-select: text;
+}
+.working-disclosure-empty {
+  color: var(--faint);
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* Tool trace lines — visible only inside deliberately opened current-turn
+   detail (valid interactive components use their own wrappers outside it). */
+.tool-card {
+  margin: 4px 0;
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+.tool-card-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+  font-family: inherit;
+}
+.tool-card-head::before {
+  content: "→";
+  color: var(--faint);
+  flex: 0 0 12px;
+  font-size: 11px;
+}
+.tool-card-head:hover .tool-card-args {
+  color: var(--fg);
+}
+.tool-card-dot {
+  display: none;
+}
+
+.tool-card-name {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 1px 7px;
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+.tool-running .tool-card-name {
+  animation: tool-name-pulse 1.2s ease-in-out infinite;
+}
+.tool-error .tool-card-name {
+  background: color-mix(in oklch, oklch(58% 0.2 25), transparent 80%);
+  color: oklch(60% 0.2 25);
+}
+@keyframes tool-name-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* The human-readable action label LEADS the tool-card head (prominent); the raw
+   tool id follows, de-emphasised. Both are visible only inside the deliberately
+   opened current-turn detail. */
+.tool-card-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--fg);
+  flex: 0 0 auto;
+}
+.tool-running .tool-card-label {
+  color: var(--accent);
+  animation: tool-name-pulse 1.2s ease-in-out infinite;
+}
+.tool-error .tool-card-label {
+  color: oklch(60% 0.2 25);
+}
+.tool-card-id {
+  font-size: 10px;
+  color: var(--faint);
+  flex: 0 0 auto;
+}
+
+.tool-card-args {
+  flex: 1;
+  min-width: 0;
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tool-card-status {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  flex: 0 0 auto;
+}
+.tool-running .tool-card-status {
+  color: var(--accent);
+}
+.tool-done .tool-card-status {
+  color: var(--muted);
+}
+.tool-error .tool-card-status {
+  color: oklch(60% 0.2 25);
+}
+.tool-card-body {
+  margin-left: 21px;
+  padding: 7px 11px;
+  border-left: 2px solid var(--border-2);
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  max-height: 240px;
+  overflow-y: auto;
+  background: color-mix(in oklch, var(--panel), transparent 30%);
+}
+.tool-error .tool-card-body {
+  color: oklch(70% 0.18 25);
+  border-left-color: oklch(58% 0.2 25);
+}
+
+/* Thinking — dim inline block; collapsed by default once done. */
+.thinking {
+  border-left: 2px solid var(--border-2);
+  margin: 6px 0;
+  padding-left: 10px;
+}
+.thinking-live {
+  border-left-color: var(--accent);
+}
+.thinking-head {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.thinking-live .thinking-head {
+  color: var(--accent);
+}
+.thinking-chev {
+  font-size: 8px;
+}
+.thinking-body {
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted);
+  white-space: pre-wrap;
+  font-style: italic;
+}
+
+/* The Working disclosure's 3x3 square dot-grid. */
+.stream-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 4px);
+  grid-template-rows: repeat(3, 4px);
+  gap: 2px;
+  width: 16px;
+  height: 16px;
+}
+.stream-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: var(--accent);
+  animation: stream-pulse 1.1s ease-in-out infinite;
+}
+@keyframes stream-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stream-dot,
+  .tool-running .tool-card-dot {
+    animation: none;
+  }
+}
+
+/* ============ COMPOSER + MODESWITCH ============ */
+/* The composer's grid row. The CARD is `.composer-box`; this element only
+   positions it and hosts the slash panel, which is drawn above the card and is
+   deliberately NOT one of the card's three children. It states no width and no
+   centring — that is `centre-the-conversation-on-wide-screens`' subject. */
+.composer {
+  /* Own the bottom row even when the optional onboarding row is hidden.
+     Auto-placement would otherwise fill that vacant row above the transcript. */
+  grid-row: 5;
+  background: var(--panel);
+  /* Only the vertical padding is the composer row's own; the horizontal is the
+     symmetric scrollbar reservation, declared once for every column-carrying
+     surface outside the scroll region. */
+  padding-block: 10px 14px;
+  /* The "+" menu and the slash panel are drawn OVER the surrounding surface. */
+  overflow: visible;
+}
+/* THE CARD (Requirement: Long-Form Composer for Lecturer Input): one rounded
+   surface, one hairline border, a soft shadow, carrying exactly three children —
+   the pending pills, the text area and the control row. No separator between the
+   text area and the row. */
+.composer-box {
+  position: relative;
+  /* The card's own inner horizontal padding, declared once: the "+" menu reads
+     it to line its left edge up with the "+" button, since an absolutely
+     positioned child resolves `left` against the card's PADDING box. */
+  --composer-card-pad: 14px;
+  padding: 12px var(--composer-card-pad) 10px;
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 16px;
+  box-shadow: 0 2px 10px color-mix(in oklch, black, transparent 90%);
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease;
+}
+.composer-box textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  /* The composer follows the chat text-size setting: what the lecturer types and what
+     they read are the same size (Requirement: Collected UX-2 Fixes, Scenario: *The
+     composer input follows the chat text-size setting*). The variable is set by the
+     `data-chat-text-size` block further down, which the composer carries too. */
+  font-size: var(--chat-font-size, 13.5px);
+  line-height: 1.55;
+  resize: none;
+  /* Long-form input: min ~3 rows, max ~45% of the viewport with internal scroll
+     beyond that. JS sets `height` to scrollHeight; CSS clamps both ends. The
+     in-field ingest icon is gone, so nothing is reserved for it any more. */
+  min-height: calc(3 * 1.55em + 12px);
+  max-height: 45vh;
+  overflow-y: auto;
+  /* The card is the only frame: no second border, no own background. */
+  background: transparent;
+  color: var(--fg);
+  border: 0;
+  padding: 2px 2px 0;
+  transition: opacity 120ms ease;
+}
+.composer-box textarea:focus {
+  outline: none;
+}
+.composer-box:focus-within {
+  border-color: var(--accent);
+}
+.composer-box textarea:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+/* THE CONTROL ROW (Requirement: Composer Control Row) — three actions and at
+   most one status indicator, and it MUST NOT wrap at any width. */
+.composer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-top: 8px;
+}
+.composer-row-left,
+.composer-row-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.composer-row-left {
+  flex: 0 0 auto;
+}
+/* The right group may shrink — but only the pill inside it actually gives way. */
+.composer-row-right {
+  flex: 0 1 auto;
+  justify-content: flex-end;
+}
+/* ---- The "+" button and its upward menu ---- */
+/* Deliberately NOT a positioning context: the menu is anchored to the "+" but
+   resolves against the CARD (`.composer-box`, the nearest positioned ancestor),
+   so it floats clear ABOVE the card instead of opening inside it over the text
+   area. `left: 0` on the menu is the card's padding-box left edge, which is
+   exactly where the "+" sits — so it stays anchored to the button horizontally. */
+.composer-menu-anchor {
+  position: static;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+.composer-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border-2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    color 120ms ease;
+}
+.composer-plus:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+/* Pressed state: a filled circle behind the glyph, so the open menu is
+   attributable to the control that opened it. Written with the class doubled so
+   it outranks `:hover` — a menu is opened by a click, which leaves the pointer
+   ON the button, and the hover rule above would otherwise paint the glyph in the
+   very accent the pressed circle is filled with and make it vanish. */
+.composer-plus.composer-plus-open,
+.composer-plus.composer-plus-open:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+/* Opens UPWARD, anchored to the "+", drawn OVER the surrounding surface on its
+   own layer: it consumes no layout width or height, so neither the transcript
+   nor the card reflows, and it is not clipped by the card, the chat column or a
+   panel. `bottom: calc(100% + …)` measures from the CARD's padding box, so the
+   menu clears the card's top edge entirely rather than covering the text area. */
+.composer-menu {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: var(--composer-card-pad);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  padding: 5px;
+  background: var(--panel);
+  border: 1px solid var(--border-2);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px color-mix(in oklch, black, transparent 78%);
+}
+.composer-menu-item {
+  display: block;
+  /* Wide enough for the label at the app's text size, and no wider. */
+  white-space: nowrap;
+  text-align: left;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--fg);
+  font-size: 12.5px;
+  cursor: pointer;
+}
+.composer-menu-item:hover {
+  background: var(--raise);
+}
+/* `aria-disabled`, never the `disabled` attribute: the entry stays focusable and
+   announced, and carries its reason as its accessible description. */
+.composer-menu-item[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.composer-menu-item[aria-disabled="true"]:hover {
+  background: none;
+}
+
+/* ---- The context-usage ring (the row's single status indicator) ----
+   Requirement: Context-Usage Ring in the Composer Control Row. It keeps its
+   footprint in ALL five states, so the control row never reflows, and every
+   state is distinguishable by more than hue: the carried state dashes the
+   track coarsely, the window-unknown state dots it, the pending state pulses,
+   and the near-full state adds a mark on top of its colour change. Track and
+   fill are drawn against `--muted` / `--fg` / `--accent`, all of which clear
+   3:1 against the card in both themes and on the tinted locked card. */
+.ring-wrap {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+.ctx-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: default;
+}
+.ctx-ring-track {
+  stroke: var(--border-2);
+}
+.ctx-ring-fill {
+  stroke: var(--fg);
+}
+/* Unmeasured: an empty track, never a 0 % fill. */
+.ctx-ring-fresh .ctx-ring-track {
+  stroke: var(--border-2);
+}
+/* Carried but not re-measured — visually AND textually distinct from fresh. */
+.ctx-ring-carried .ctx-ring-track {
+  stroke: var(--muted);
+}
+/* No denominator: a dotted track, and no fraction is drawn at all. */
+.ctx-ring-window-unknown .ctx-ring-track {
+  stroke: var(--muted);
+}
+/* Near full: an accent fill PLUS the non-colour mark drawn in the component. */
+.ctx-ring-near-full .ctx-ring-fill,
+.ctx-ring-near-full .ctx-ring-mark {
+  stroke: var(--accent);
+}
+.ctx-ring-near-full {
+  color: var(--accent);
+}
+.ctx-ring-pending .ctx-ring-track {
+  stroke: var(--accent);
+  animation: ctx-ring-pulse 1.1s ease-in-out infinite;
+}
+@keyframes ctx-ring-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ctx-ring-pending .ctx-ring-track {
+    animation: none;
+  }
+}
+/* The OVERLAY placement of the app's one tooltip component: drawn over the
+   surrounding surface, consuming no layout box, so revealing it cannot reflow
+   the control row. */
+.set-tooltip-overlay {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  width: max-content;
+  max-width: 280px;
+  margin-top: 0;
+  background: var(--panel);
+  box-shadow: 0 8px 24px color-mix(in oklch, black, transparent 78%);
+}
+
+/* ---- The model pill (display-only entry point to Settings → Model) ---- */
+.model-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  /* The ONLY element in the row permitted to shrink or truncate. */
+  min-width: 0;
+  flex: 0 1 auto;
+  max-width: 100%;
+  padding: 5px 10px;
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11.5px;
+  cursor: pointer;
+}
+.model-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.model-pill-icon {
+  flex: none;
+}
+.model-pill-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* The locked state tints the WHOLE CARD as a surface — a muted, non-accent tint,
+   not merely a dimmed textarea or a greyed-out button, so the lock is read from
+   the shape. A tint is a colour-only signal, so the lock is carried without it by
+   the send slot becoming the STOP control (its accessible name says what it
+   stops) and by the transcript's `role="status"` working indicator. */
+.composer-locked .composer-box {
+  background: color-mix(in oklch, var(--bg), var(--muted) 12%);
+  border-color: var(--border);
+}
+.send {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 0;
+  border-radius: 50%;
+}
+.send:hover {
+  opacity: 0.9;
+}
+.send:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+/* The send slot's SECOND state (Requirement: Composer Control Row): a rounded
+   SQUARE, sharing `.send`'s footprint exactly so the row does not shift at
+   either transition.
+
+   Expressed in theme TOKENS, never a literal dark square: `--fg` on `--bg` is
+   the surface inverted, which is what carries the 3:1 floor against the muted
+   tint the locked card wears in BOTH themes — near-black on near-white in
+   light, near-white on the dark card in dark. Inverting the pair is also what
+   makes the stop read as a different act from the accent-filled send rather
+   than as the same button in another colour. */
+.send.stop {
+  background: var(--fg);
+  color: var(--bg);
+  border-radius: 9px;
+}
+/* Settling: a distinct presentation, and the control is inert (`aria-disabled`,
+   not `disabled`, so it stays focusable and announced). A stop can take
+   seconds while the abort waits for an in-flight tool, and a button that still
+   reads "stop" through that wait invites a second click and reads as broken. */
+.send.stop-pending {
+  opacity: 0.55;
+  cursor: default;
+}
+/* Refused during the compaction companion sequence — same inert presentation,
+   with the reason carried as the accessible description rather than a
+   pointer-only tooltip. */
+.send.stop[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: default;
+}
+.send.stop[aria-disabled="true"]:hover {
+  opacity: 0.55;
+}
+/* The cut-off / remediation notices reuse `.send` as a labelled text button;
+   those instances keep the previous rectangular shape. */
+.chat-notice .send {
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+/* ============ SIDE PANELS (left = courses, right = course work) ============
+   One rule for both, with the side as a modifier — the left panel's collapse and
+   resize capability IS the right panel's (Requirement: Collapsible Left Panel,
+   stated as parity clause by clause). */
+.panel {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+  background: var(--panel);
+}
+.panel[data-collapsed="true"] {
+  grid-template-rows: 1fr;
+}
+/* The left panel is the mirror image: its border and its edge toggle sit on the
+   boundary it shares with the chat, which is its RIGHT edge. */
+.panel-left {
+  grid-column: 1;
+  border-right: 1px solid var(--border);
+}
+/* The two-row track above belongs to a panel with a tab bar above its body. The
+   expanded left panel has none — its edge toggle is absolutely positioned, so
+   `.panel-content` is its only in-flow child and would land in the `auto` row,
+   sized to its content, with `overflow-y: auto` never activating. Under
+   `.app-root { overflow: hidden }` that clips a long course list or a course
+   detail (WikiBrowser, delete control) with no way to reach the rest. */
+.panel-left:not([data-collapsed="true"]) {
+  grid-template-rows: 1fr;
+}
+
+/* Collapsed icon rail — one button per tab, stacked vertically. */
+.panel-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 0;
+  overflow: hidden;
+}
+.panel-rail-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 7px;
+  color: var(--muted);
+}
+.panel-rail-btn:hover {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+/* The rail icon of the surface the rail opens carries the lecturer's chosen
+   Catppuccin accent. `aria-current` on the right rail (the selected tab among
+   several); `data-current` on the left rail, whose set of one has no "current
+   among others" to announce. */
+.panel-rail-btn[aria-current="true"],
+.panel-rail-btn[data-current="true"] {
+  color: var(--accent);
+}
+
+/* Edge toggle — straddles the chat ↔ panel boundary at the panel's left edge. */
+.panel-edge-toggle {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  transform: translateX(-50%);
+  /* Above the resize handle (z-index 4): the chevron stays clickable on the
+     shared boundary — click toggles, drag (on the handle) resizes. */
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  cursor: pointer;
+  color: var(--muted);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+/* The left panel's toggle straddles ITS chat boundary — the right edge. */
+.panel-edge-toggle-left {
+  left: auto;
+  right: 0;
+  transform: translateX(50%);
+}
+.panel-edge-toggle:hover {
+  color: var(--fg);
+  border-color: var(--accent);
+}
+.panel-tabs {
+  display: flex;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--border);
+  /* Both tabs at the panel's 300px minimum width: shortened tab presentation
+     plus horizontal overflow scrolling — no tab is ever dropped or clipped
+     (Requirement: Collapsible Right Panel, tab-fit rule). */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.panel-tab {
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 13px 9px 12px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+.panel-tab:hover {
+  color: var(--fg);
+}
+.panel-tab[aria-current="true"] {
+  color: var(--fg);
+  font-weight: 600;
+}
+.panel-tab[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  right: 13px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+}
+.panel-content {
+  overflow-y: auto;
+}
+.panel-intro {
+  padding: 16px 18px 14px;
+  font-size: 11px;
+  color: var(--faint);
+  line-height: 1.6;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============ ARTIFACTS — 3-phase accordion ============ */
+.phase-group {
+  border-bottom: 1px solid var(--border);
+}
+.phase-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 15px 18px;
+}
+.phase-head:hover {
+  background: var(--raise);
+}
+.phase-num {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--border-2);
+  color: var(--faint);
+  font-size: 11px;
+  display: grid;
+  place-items: center;
+  font-variant-numeric: tabular-nums;
+}
+.phase-head.is-current .phase-num {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.phase-name {
+  flex: 1;
+  text-align: left;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.phase-prog {
+  display: flex;
+  gap: 3px;
+}
+.phase-prog .phase-seg {
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  border: 1px solid var(--border-2);
+  background: transparent;
+}
+.phase-prog .phase-seg-done {
+  background: var(--fg);
+  border-color: var(--fg);
+}
+.phase-prog .phase-seg-active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.phase-prog .phase-seg-draft {
+  background: var(--faint);
+  border-color: var(--faint);
+}
+.phase-chev {
+  flex: 0 0 auto;
+  color: var(--faint);
+  font-size: 10px;
+  width: 12px;
+  text-align: center;
+}
+.phase-body {
+  padding: 2px 18px 18px;
+}
+
+/* Design-Flow Canvas — ten step groups (change add-ten-step-design-flow) */
+.step-head-row {
+  display: flex;
+  align-items: center;
+}
+.step-head-row .step-head {
+  flex: 1;
+}
+.step-group[data-focus="true"] {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.step-head.is-focus .phase-num {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.step-coverage {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: var(--faint);
+}
+.step-coverage .step-depth {
+  padding: 1px 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border-2);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.step-coverage[data-depth="rough"] .step-depth {
+  color: var(--faint);
+}
+.step-coverage[data-depth="refined"] .step-depth {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+.step-coverage[data-depth="detailed"] .step-depth {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.step-coverage .step-focus {
+  color: var(--accent);
+  font-weight: 600;
+}
+.step-select {
+  flex: 0 0 auto;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--faint);
+  font-size: 14px;
+  padding: 8px 14px;
+}
+.step-select:hover:not(:disabled) {
+  color: var(--accent);
+}
+.step-select:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.journey-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.journey-element {
+  padding: 6px 0 2px;
+}
+.journey-element-head {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-bottom: 4px;
+}
+.journey-element-empty {
+  color: var(--border-2);
+  font-size: 12px;
+  padding: 2px 0 6px;
+}
+.artifact {
+  padding: 13px 0;
+  border-top: 1px solid var(--border);
+}
+.artifact:first-child {
+  border-top: 0;
+}
+.artifact-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+.artifact-label {
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.artifact-state {
+  font-size: 10px;
+  color: var(--faint);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+/* Per-artefact delete control (Requirement: Canvas Artefact Delete Control). Only
+   rendered on cards that currently carry content; gated by an inline confirmation. */
+.artifact-delete {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: var(--faint);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+  border-radius: 4px;
+}
+.artifact-delete:hover {
+  color: var(--fg);
+  background: var(--surface-2, rgba(128, 128, 128, 0.14));
+}
+.artifact-delete-confirm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 7px;
+  font-size: 11px;
+}
+.artifact-delete-msg {
+  color: var(--muted);
+}
+.artifact-delete-yes,
+.artifact-delete-no {
+  border: 1px solid var(--faint);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.artifact-delete-yes:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.artifact-state .st-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid var(--faint);
+  flex: 0 0 6px;
+}
+.artifact[data-state="done"] .st-dot {
+  background: var(--fg);
+  border-color: var(--fg);
+}
+.artifact[data-state="done"] .artifact-state {
+  color: var(--muted);
+}
+.artifact[data-state="active"] .st-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.artifact[data-state="active"] .artifact-state {
+  color: var(--accent);
+}
+.artifact[data-state="draft"] .st-dot {
+  background: var(--faint);
+  border-color: var(--faint);
+}
+.artifact-value {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--fg);
+  text-wrap: pretty;
+  /* The value is rendered through the shared chat Markdown component. Wide content
+     (tables, code blocks) must scroll INSIDE the card rather than widening the panel
+     (Requirement: Collected UX-2 Fixes, Scenario: *Canvas artefact values render as
+     Markdown, not as raw text*). `min-width: 0` lets the flex/grid parent shrink us. */
+  min-width: 0;
+  overflow-x: auto;
+}
+/* Markdown inside an artefact card sits tighter than in the transcript: no leading or
+   trailing block margin, so the card keeps its compact rhythm. */
+.artifact-value .md > :first-child {
+  margin-top: 0;
+}
+.artifact-value .md > :last-child {
+  margin-bottom: 0;
+}
+.artifact-value .md table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.artifact[data-state="open"] .artifact-value {
+  color: var(--faint);
+  font-style: italic;
+  font-size: 12px;
+}
+/* Empty-value placeholder for an artefact not yet populated by a cbe_canvas call. */
+.artifact-empty {
+  color: var(--faint);
+  opacity: 0.6;
+}
+.artifact[data-state="active"] .artifact-value {
+  font-size: 14.5px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* The in-field ingest button is retired: the ingestion entry point is the "+"
+   menu's `Upload files` entry (capability desktop-app, Requirement:
+   Material Ingestion Stub into the Chat Context). Its styles are gone with it —
+   `.composer-plus` and `.composer-menu` above are what replaced them. */
+
+/* ============ INGESTED-DOCUMENT PILLS & CHIPS ============ */
+/* Shared doc-type icon glyph — inherits the surrounding text colour. */
+.doc-type-icon {
+  flex: none;
+  vertical-align: -2px;
+  color: var(--accent);
+}
+
+/* Pending attachments above the composer textarea (removable pills). */
+.pending-attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 9px;
+}
+.pending-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 240px;
+  padding: 4px 6px 4px 9px;
+  font-size: 12px;
+  color: var(--fg);
+  background: var(--raise);
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+}
+.pending-pill-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Reuses the .annotation-remove / .chat-notice-close remove-control idiom. */
+.pending-pill-remove {
+  flex: none;
+  background: none;
+  border: 0;
+  color: var(--faint);
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+}
+.pending-pill-remove:hover {
+  color: var(--accent);
+}
+
+/* Doc chips in the transcript — bound to the lecturer turn, right-aligned with the
+   lecturer bubble. Inert: no hover affordance, no pointer. */
+.doc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 6px;
+}
+.doc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 260px;
+  padding: 5px 11px;
+  font-size: 12px;
+  color: var(--fg);
+  background: var(--raise);
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+}
+.doc-chip-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============ SLASH-COMMAND AUTOCOMPLETE ============ */
+.slash-autocomplete {
+  list-style: none;
+  margin: 0 0 6px;
+  padding: 4px;
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  background: var(--bg);
+  max-height: 240px;
+  overflow-y: auto;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.18);
+}
+.slash-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.slash-item-active {
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg));
+}
+.slash-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--fg);
+}
+.slash-source {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--border-2);
+  color: var(--faint);
+}
+.slash-source-app {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.slash-desc {
+  font-size: 11px;
+  color: var(--muted);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============ GENERATIVE UI — DECISION CHECKLIST ============ */
+.decision-checklist {
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.dc-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.dc-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+}
+.dc-badge {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  white-space: nowrap;
+}
+/* Checklist presentation */
+.dc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dc-checkbox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  background: none;
+  border: 1px solid var(--border-2);
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+  color: var(--fg);
+  font-size: 13px;
+}
+.dc-checkbox:hover {
+  border-color: var(--accent);
+}
+.dc-check {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid var(--border-2);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: var(--accent);
+}
+.dc-checkbox-done .dc-check {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: var(--accent);
+}
+.dc-checkbox-done .dc-item-label {
+  color: var(--muted);
+}
+/* Progress-bar presentation */
+.dc-progress {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 4px;
+}
+.dc-progress-step {
+  flex: 1;
+}
+.dc-marker {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--faint);
+  font-size: 10px;
+}
+.dc-marker-dot {
+  width: 100%;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border-2);
+}
+.dc-marker-done .dc-marker-dot {
+  background: var(--accent);
+}
+.dc-marker-current .dc-marker-dot {
+  background: color-mix(in srgb, var(--accent) 50%, var(--border-2));
+}
+.dc-marker-current .dc-marker-label,
+.dc-marker-done .dc-marker-label {
+  color: var(--fg);
+}
+.dc-footer {
+  margin-top: 12px;
+}
+.dc-submit {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  cursor: pointer;
+}
+.dc-submit:hover {
+  background: color-mix(in srgb, var(--accent) 16%, var(--bg));
+}
+.dc-answered .dc-checkbox,
+.dc-answered .dc-marker {
+  cursor: default;
+}
+
+/* ============ ARTIFACT ANNOTATION / ITERIEREN ============ */
+.artifacts-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.iterate-btn {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  cursor: pointer;
+}
+.iterate-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 16%, var(--bg));
+}
+.iterate-btn:disabled {
+  border-color: var(--border-2);
+  color: var(--faint);
+  background: none;
+  cursor: not-allowed;
+}
+.annotation-count {
+  font-size: 10px;
+  color: var(--faint);
+}
+.annotate-toggle {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  background: none;
+  border: 1px dashed var(--border-2);
+  border-radius: 4px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.annotate-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.annotation-editor {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.annotation-input {
+  flex: 1;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-2);
+  background: var(--bg);
+  color: var(--fg);
+}
+.annotation-add {
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: none;
+  cursor: pointer;
+}
+.annotation-add:disabled {
+  border-color: var(--border-2);
+  color: var(--faint);
+  cursor: not-allowed;
+}
+.annotation-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.annotation-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-radius: 0 4px 4px 0;
+}
+.annotation-note {
+  flex: 1;
+  color: var(--fg);
+}
+.annotation-remove {
+  background: none;
+  border: 0;
+  color: var(--faint);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+.annotation-remove:hover {
+  color: var(--accent);
+}
+
+/* ============ DECISIONS — Canvas section (didactic-check outcomes) ============ */
+/* Fourth, always-available container — visually set apart from the three phase
+   accordions by an accent left border on the header. */
+.decisions-head {
+  border-left: 2px solid var(--accent);
+}
+.decisions-body {
+  padding-top: 4px;
+}
+.decision-entry {
+  padding: 13px 0;
+  border-top: 1px solid var(--border);
+}
+.decision-entry:first-child {
+  border-top: 0;
+}
+.decision-entry-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 7px;
+}
+.decision-entry-head .artifact-label {
+  flex: 1;
+}
+.decision-goal,
+.decision-finding,
+.decision-delegation,
+.decision-anchor {
+  margin: 6px 0;
+}
+.decision-citation {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.decision-citation code {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.decision-deeplink {
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.decision-deeplink:hover {
+  text-decoration: underline;
+}
+.decision-flag {
+  font-size: 12px;
+  color: var(--accent);
+  margin-top: 4px;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+/* The warning glyph rides the first text line rather than the block's top edge. */
+.decision-flag .action-icon {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+}
+.muted {
+  color: var(--faint);
+  font-style: italic;
+}
+
+/* Sharpness / alignment / delegation status chips */
+.sharpness-flag,
+.alignment-flag,
+.delegation-status {
+  display: inline-block;
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border-2);
+  color: var(--muted);
+}
+.sharpness-pending-sharpening,
+.alignment-flagged {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.anchor-missing {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* Goal-revision propagation: invalidated downstream entries (Requirement: Decision
+   Artifacts, goal-change-resets-downstream). */
+.decision-reset {
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+/* ============ PROJECTS — list cards ============ */
+.proj {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 15px 18px;
+  display: block;
+  color: inherit;
+}
+.proj:hover {
+  background: var(--raise);
+}
+.proj-top {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+.proj-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.proj-badge {
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+.proj-meta {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  display: block;
+}
+.proj-foot {
+  font-size: 10px;
+  color: var(--faint);
+  margin-top: 7px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.proj-arrow {
+  margin-left: auto;
+  color: var(--faint);
+  font-size: 13px;
+}
+
+/* ============ PROJECTS — detail page ============ */
+.pp {
+  padding: 16px 18px 24px;
+}
+.pp-back {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 0;
+  margin-bottom: 16px;
+}
+.pp-back:hover {
+  color: var(--accent);
+}
+.pp-kicker {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.pp-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 8px 0 5px;
+  color: var(--fg);
+}
+.pp-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+.pp-rows {
+  margin: 18px 0 4px;
+  border-top: 1px solid var(--border);
+}
+.pp-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+.pp-row .k {
+  color: var(--faint);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+}
+.pp-row .v {
+  color: var(--fg);
+  text-align: right;
+}
+.pp-sub {
+  font-size: 9.5px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 20px 0 9px;
+}
+.pp-session {
+  display: flex;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 11.5px;
+  border-top: 1px solid var(--border);
+}
+.pp-session:first-of-type {
+  border-top: 0;
+}
+.pp-session .w {
+  flex: 0 0 62px;
+  color: var(--faint);
+}
+.pp-empty {
+  font-size: 11px;
+  color: var(--faint);
+  font-style: italic;
+}
+
+.wiki-open {
+  width: 100%;
+  margin-top: 18px;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 0;
+  border-radius: 8px;
+  padding: 11px;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.wiki-open:hover {
+  opacity: 0.9;
+}
+.wiki-open .ext {
+  font-size: 11px;
+}
+.wiki-box {
+  margin-top: 12px;
+  border: 1px solid var(--border-2);
+  border-radius: 9px;
+  overflow: hidden;
+}
+.wiki-box-head {
+  padding: 10px 13px;
+  background: var(--raise);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wiki-atom {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  padding: 10px 13px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+}
+.wiki-atom:first-child {
+  border-top: 0;
+}
+.wiki-atom .a-t {
+  color: var(--fg);
+}
+.wiki-atom .a-p {
+  margin-left: auto;
+  font-size: 9.5px;
+  color: var(--faint);
+}
+
+/* ============ SETTINGS PANEL ============ */
+.settings-panel {
+  /* inherits panel-content scroll */
+}
+
+.set-group {
+  padding: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.set-group:last-child {
+  border-bottom: 0;
+}
+.set-label {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  display: block;
+  margin-bottom: 14px;
+}
+.set-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 13px;
+}
+.set-row:last-of-type {
+  margin-bottom: 4px;
+}
+.set-row .rk {
+  font-size: 12px;
+  color: var(--fg);
+  flex: 0 0 auto;
+}
+.set-row .rk small {
+  display: block;
+  font-size: 10px;
+  color: var(--faint);
+  margin-top: 2px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.set-row-stack {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.set-row-stack .rk {
+  flex: none;
+}
+/* Stacked rows (label on top, control below) let the control use the full
+   sidebar width instead of the side-by-side 260px / 50% cap. */
+.set-row-stack input.set-input,
+.set-row-stack select.set-input {
+  width: 100%;
+  max-width: none;
+}
+.set-val {
+  font-size: 11.5px;
+  color: var(--muted);
+  text-align: right;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  max-width: 55%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.set-val.muted {
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--faint);
+}
+.set-note {
+  font-size: 10.5px;
+  color: var(--faint);
+  line-height: 1.6;
+  margin-top: 11px;
+}
+/* Per-field explanation tooltip (Requirement: Collected UX Polish — settings
+   field explanations). The element is ALWAYS in the DOM (it is the field's
+   accessible description via aria-describedby); only its visibility toggles
+   with the hover/focus reveal, so AT reads it regardless of the reveal state.
+   It renders inside the field row (in flow, not overlayed), so pointing at it
+   keeps it open (WCAG 1.4.13 hoverable) and it never covers other controls. */
+.set-tooltip {
+  display: none;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  padding: 7px 9px;
+  margin-top: 2px;
+}
+.set-tooltip[data-open="true"] {
+  display: block;
+}
+
+/* The `?` help control (Requirement: Collected UX Polish — settings field
+   explanations). A real button, sitting to the RIGHT of the field it explains:
+   it takes keyboard focus in the ordinary tab order and is activated by
+   Enter/Space, where a hover target on an icon would be pointer-only. The row
+   below keeps the input flexible so the `?` never pushes it out of the panel. */
+.set-field-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.set-field-control > input.set-input,
+.set-field-control > select.set-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.set-help {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  color: var(--faint);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+.set-help:hover {
+  color: var(--muted);
+  background: color-mix(in srgb, var(--fg) 7%, transparent);
+}
+.set-help[aria-expanded="true"] {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.set-help:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.set-note-inline {
+  margin: 0;
+  padding: 4px 8px;
+}
+.set-note-block {
+  margin-top: 0;
+}
+.set-note-ok {
+  color: var(--accent);
+}
+/* Non-blocking endpoint guidance (Provider Configuration Input Hygiene). */
+.set-note-hint {
+  color: var(--muted);
+}
+.set-note-warn {
+  color: var(--peach, #ef9f76);
+}
+.set-note-hint code,
+.set-note-warn code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+}
+.set-path {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+.set-save {
+  margin-top: 6px;
+}
+
+/* Collapsible Settings section (accordion). The header is a full-width button
+   carrying the section label + a disclosure chevron; clicking it toggles only
+   this section's body. The 14px gap that the bare .set-label used to provide via
+   its margin-bottom now lives on .set-acc-body, so a collapsed section is just
+   its header line within the group's padding. */
+.set-acc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.set-acc-header .set-label {
+  margin-bottom: 0;
+}
+.set-acc-chevron {
+  color: var(--faint);
+  flex: 0 0 auto;
+  transition: transform 0.18s ease;
+}
+.set-group-collapsed .set-acc-chevron {
+  transform: rotate(-90deg);
+}
+.set-acc-body {
+  margin-top: 14px;
+}
+/* A closed group is HIDDEN, not unmounted, so a half-typed value survives a trip
+   through another group (`SettingsPanel.tsx`). */
+.set-acc-body[hidden] {
+  display: none;
+}
+
+/* The Advanced disclosure INSIDE the Model group (Requirement: Settings Panel
+   (Phase 1 scaffold)). Same idiom as a group header — label, chevron,
+   aria-expanded — with its OWN classes, because it is not one of the four
+   accordion groups and no selector meaning "a group" may pick it up. It sets no
+   height and clips nothing: the context-length field it holds must stay
+   reachable through the settings surface's own scroll affordance. */
+.set-adv {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.set-adv-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.set-adv-header .set-label {
+  margin-bottom: 0;
+}
+.set-adv-collapsed .set-acc-chevron {
+  transform: rotate(-90deg);
+}
+.set-adv-body {
+  margin-top: 14px;
+}
+.set-adv-body[hidden] {
+  display: none;
+}
+
+/* Segmented control (theme / flavour) */
+.seg {
+  display: flex;
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.seg button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 10.5px;
+  color: var(--muted);
+  padding: 6px 10px;
+}
+.seg button + button {
+  border-left: 1px solid var(--border-2);
+}
+.seg button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 500;
+}
+
+/* Accent swatches — 14-button grid (Catppuccin) */
+.sw-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 0;
+}
+.sw {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  background: var(--sw);
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 1px var(--border-2);
+}
+.sw:hover {
+  box-shadow: 0 0 0 1px var(--faint);
+}
+.sw[aria-pressed="true"] {
+  border-color: var(--panel);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* Flavour field wrappers (kept for parity with prototype) */
+.fl-field {
+  margin-top: 12px;
+}
+.fl-k {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+/* ============ CONFIG PAGE ============ */
+.config-page {
+  position: relative;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 36px 24px;
+}
+.config-page .set-group {
+  width: min(560px, 100%);
+  border-bottom: 0;
+}
+.config-intro {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+input.set-input {
+  font: inherit;
+  font-size: 11.5px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  padding: 6px 9px;
+  width: 260px;
+  max-width: 50%;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: 0.06em;
+}
+input.set-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+select.set-input {
+  font: inherit;
+  font-size: 11.5px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  padding: 6px 9px;
+  width: 260px;
+  max-width: 50%;
+}
+select.set-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+/* Sliding switch (reasoning on/off). The native checkbox stays in the DOM for
+   accessibility + form semantics but is visually replaced by a track/thumb. */
+.set-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11.5px;
+  color: var(--fg);
+  cursor: pointer;
+  user-select: none;
+}
+.set-switch input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  margin: 0;
+  pointer-events: none;
+}
+.set-switch-track {
+  position: relative;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--border-2);
+  transition: background 0.15s ease;
+}
+.set-switch-track::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease;
+}
+.set-switch input[type="checkbox"]:checked + .set-switch-track {
+  background: var(--accent);
+}
+.set-switch input[type="checkbox"]:checked + .set-switch-track::after {
+  transform: translateX(16px);
+}
+.set-switch input[type="checkbox"]:focus-visible + .set-switch-track {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.set-switch-text {
+  min-width: 2ch;
+  color: var(--muted);
+}
+.config-error {
+  color: oklch(58% 0.2 25);
+  font-size: 11.5px;
+  margin: 10px 0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.config-page .send {
+  margin-top: 16px;
+}
+
+/* Theme pill — floating corner toggle on config page (first-run only; after config saved
+   the theme is changed in the settings surface). */
+.theme-pill {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  display: flex;
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.theme-pill button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 10.5px;
+  color: var(--muted);
+  padding: 5px 9px;
+}
+.theme-pill button + button {
+  border-left: 1px solid var(--border-2);
+}
+.theme-pill button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 500;
+}
+
+/* ============ MODE PICKER ============ */
+.mode-pick-conv {
+  grid-template-rows: 1fr;
+}
+.mode-pick-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 48px 30px;
+  max-width: 660px;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+.mode-pick-title {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.mode-pick-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.mode-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mode-card {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--border);
+  padding: 18px 4px;
+}
+.mode-card:first-child {
+  border-top: 1px solid var(--border);
+}
+.mode-card:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.mode-card:hover {
+  background: var(--raise);
+}
+.mode-card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin-bottom: 5px;
+}
+.mode-card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ============ CITATION MODAL ============ */
+.cite-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 24px;
+}
+.cite-modal-body {
+  width: min(720px, 100%);
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    0 18px 48px rgba(0, 0, 0, 0.24);
+  display: flex;
+  flex-direction: column;
+}
+.cite-modal-head {
+  padding: 16px 20px 14px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+}
+.cite-modal-head h3 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  grid-column: 1;
+  line-height: 1.3;
+}
+.cite-modal-meta {
+  grid-column: 1;
+  font-size: 10.5px;
+  color: var(--faint);
+  line-height: 1.55;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.cite-modal-meta code {
+  font-family: inherit;
+  color: var(--muted);
+}
+.cite-modal-close {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: start;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 4px 8px;
+  font: inherit;
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cite-modal-close:hover {
+  color: var(--accent);
+}
+/* The citation modal's document container. It holds a rendered `.md` subtree — the
+   shared Markdown component, exactly as the chat uses it — so it sets only the reading
+   frame (padding, colour, base size) and leaves block layout to `.md`. It carries NO
+   `white-space: pre-wrap`: that was the verbatim posture of the `<pre>` this replaced,
+   and it would now fight the rendered blocks. The base `font-size` stays absolute
+   because the modal is portalled to `document.body`, outside the chat text-size scope;
+   the `.md` subtree's `em`-based sizes scale off it. (Requirement: *The Citation Detail
+   Renders the Cited Source as Markdown*.) */
+.md-body {
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.66;
+  color: var(--fg);
+  padding: 18px 20px 22px;
+  margin: 0;
+}
+
+/* ============ ERROR BANNER ============ */
+/* Reserved for hard failures (Requirement: Tiered Error Surfacing). Calm but
+   recognisable: theme error token as accent, readable body font, no glyph
+   decoration (Iconography rule), always dismissible. Recoverable failures use
+   the soft .chat-notice instead. */
+.banner-error {
+  padding: 10px 20px;
+  background: color-mix(in oklch, var(--panel), var(--red, #ed8796) 12%);
+  border-bottom: 1px solid var(--red, #ed8796);
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.banner-error > span {
+  flex: 1;
+}
+.banner-error-close {
+  background: none;
+  border: none;
+  color: var(--faint);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+}
+.banner-error-close:hover {
+  color: var(--fg);
+}
+
+/* Non-fatal, dismissible notice (unreadable conversation archive, unknown
+   stored mode) — informational tone, not the red alert. */
+.banner-notice {
+  padding: 10px 20px;
+  background: var(--panel, transparent);
+  border-bottom: 1px solid var(--border);
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.banner-notice-close {
+  background: none;
+  border: none;
+  color: var(--faint);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+}
+.banner-notice-close:hover {
+  color: var(--fg);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}
+@media (max-width: 1180px) {
+  body {
+    overflow: auto;
+  }
+  /* No `.workspace` column override here any more: with a panel on each side,
+     narrow-window behaviour is a decision (reduce, then auto-collapse left
+     first, reversibly) rather than a breakpoint. `Workspace.tsx` owns it —
+     Requirement: The Chat Column Survives Two Flanking Panels. */
+}
+
+/* ============ PICKER (Generative UI, Phase 2) ============ */
+.picker {
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  background: color-mix(in oklch, var(--panel), transparent 30%);
+  margin: 8px 0;
+  max-width: 540px;
+}
+.picker-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.picker-question {
+  flex: 1 1 auto;
+}
+.picker-question .md {
+  font-size: 14px;
+  line-height: 1.45;
+}
+.picker-question .md > *:first-child {
+  margin-top: 0;
+}
+.picker-question .md > *:last-child {
+  margin-bottom: 0;
+}
+.picker-required {
+  color: oklch(60% 0.2 25);
+  margin-left: 4px;
+  font-size: 13px;
+  vertical-align: top;
+}
+.picker-badge {
+  flex: 0 0 auto;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 10px;
+  color: var(--faint);
+  letter-spacing: 0.08em;
+  background: var(--bg);
+}
+.picker-pills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.picker-pill-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.picker-pill {
+  width: 100%;
+  text-align: left;
+  padding: 11px 16px;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+}
+.picker-pill:hover:not([aria-disabled="true"]) {
+  border-color: color-mix(in oklch, var(--accent), var(--border-2) 50%);
+}
+.picker-pill:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.picker-pill-selected {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: color-mix(in oklch, var(--accent), transparent 90%);
+}
+.picker-answered .picker-pill {
+  cursor: default;
+}
+.picker-answered .picker-pill:not(.picker-pill-selected) {
+  opacity: 0.55;
+}
+.picker-other-input {
+  width: 100%;
+  margin-top: 2px;
+  padding: 9px 14px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+}
+.picker-other-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+.picker-other-answer {
+  margin-top: 2px;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  background: color-mix(in oklch, var(--panel), transparent 20%);
+  border-left: 2px solid var(--accent);
+  border-radius: 4px;
+}
+.picker-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+.picker-submit {
+  padding: 7px 18px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--bg);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: opacity 120ms ease;
+}
+.picker-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---------- Profile Panel (capability desktop-app, Requirement: Profile Panel) ---------- */
+
+.profile-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+/* The Profile section's content group. The inset is the SAME 18px the overlay's
+   sibling Settings section establishes with `.set-group` — the two sections are
+   one surface and must not have two different margins. Deliberately on an inner
+   wrapper rather than on `.profile-panel`, so a full-bleed band added to the
+   panel later keeps its own inset and a divider that spans the whole surface
+   width. Guarded by `profile-overlay-inset.test.tsx`. */
+.profile-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+}
+
+.profile-error {
+  font-size: 12px;
+  color: var(--red, #e64553);
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+/* ---------- Lecturer identity (capability desktop-app, Requirement: Lecturer
+   Identity in the User/Profile Area) ----------
+
+   The lecturer's OWN two statements about themselves. Their own group, separated
+   from the dimension list by a rule, so they cannot read as a sixth dimension:
+   no badge, no evidence line, no provenance marking — nothing here is an estimate. */
+
+.profile-group-heading {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+  font-weight: 600;
+}
+
+.profile-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-2);
+}
+
+.profile-identity-intro {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.profile-identity-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-identity-label {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.profile-identity-field input {
+  font: inherit;
+  font-size: 13px;
+  padding: 5px 7px;
+  border: 1px solid var(--border-2);
+  border-radius: 6px;
+  background: var(--surface-1, transparent);
+  color: inherit;
+}
+
+.profile-identity-error {
+  font-size: 12px;
+  color: var(--red, #e64553);
+}
+
+.profile-identity-status {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.profile-identity-save {
+  align-self: flex-start;
+  font: inherit;
+  font-size: 12.5px;
+  padding: 4px 12px;
+  border: 1px solid var(--border-2);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.profile-identity-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.profile-dimensions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The estimate framing sits inside the dimension group it describes, mirroring
+   `.profile-identity-intro` in the lecturer's own group above it. */
+.profile-dimensions-intro {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.profile-dim {
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-dim[data-overridden] {
+  border-color: var(--accent);
+}
+
+.profile-dim-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.profile-dim-label {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+/* Estimate badge stays neutral — confidence is information, not a highlight.
+   Only an override gets the accent (visually distinct per Requirement: Profile Panel). */
+.profile-badge {
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border-2);
+  border-radius: 4px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+.profile-badge-empty {
+  color: var(--faint);
+  border-color: var(--border-2);
+}
+
+.profile-badge-override {
+  background: var(--accent);
+  color: var(--base, #1e1e2e);
+}
+
+.profile-dim-control select {
+  width: 100%;
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border-2);
+}
+
+/* Not-yet-estimated: the control stays visually empty — no filled value bar
+   until an estimate or override exists (Requirement: Profile Panel). */
+.profile-dim-control select[data-empty] {
+  background: transparent;
+  border-style: dashed;
+  color: var(--faint);
+  font-style: italic;
+}
+
+.profile-dim-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.profile-evidence {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-revised {
+  font-size: 10px;
+  color: var(--faint);
+}
+
+/* =====================================================================
+   refine-course-workspace-ux — course surface + wiki browser design integration.
+   Appended as one delimited block (styles.css is a conflict magnet — parallel
+   changes append their own blocks rather than editing shared lines).
+   ========================================================================= */
+
+.action-icon {
+  display: block;
+}
+
+/* ---- Courses list ---- */
+.courses-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Course creation as a dashed plus-card at the end of the list. */
+.proj-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 18px 18px;
+  padding: 12px;
+  width: auto;
+  font: inherit;
+  font-size: 12px;
+  color: var(--muted);
+  background: none;
+  border: 1.5px dashed var(--border-2);
+  border-radius: 9px;
+  cursor: pointer;
+}
+.proj-plus:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--raise);
+}
+
+/* Inline create form revealed by the plus-card (same card geometry). */
+.proj-create {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 12px 18px 18px;
+  padding: 8px 10px;
+  border: 1.5px dashed var(--border-2);
+  border-radius: 9px;
+}
+.proj-create-input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 12px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  padding: 6px 9px;
+}
+.proj-create-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+/* ---- Course detail ---- */
+.pp-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pp-title-row .pp-title {
+  margin: 8px 0 5px;
+}
+.pp-title-row .pp-icon-btn {
+  margin-top: 4px;
+}
+
+.pp-rename {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 8px 0 5px;
+}
+.pp-rename-input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  padding: 6px 9px;
+}
+.pp-rename-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.pp-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 4px;
+}
+
+/* Small ghost action button (text form — confirm steps, mode dialog). */
+.pp-action {
+  font: inherit;
+  font-size: 11px;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border-2);
+  border-radius: 6px;
+  padding: 3px 9px;
+  cursor: pointer;
+}
+.pp-action:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--raise);
+}
+.pp-action:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Icon-only action button (PanelTabIcon idiom: SVG inherits currentColor,
+   accessible name lives on the button). */
+.pp-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border-2);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.pp-icon-btn:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--raise);
+}
+.pp-icon-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pp-danger:hover:not(:disabled) {
+  color: var(--red, #ed8796);
+  border-color: var(--red, #ed8796);
+}
+
+/* ---- Stored sessions as cards with a hover-revealed icon row ---- */
+.pp-session {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  font-size: 11.5px;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--raise);
+}
+.pp-session-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--muted);
+}
+.pp-session-meta > :first-child {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.pp-session-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+  transition: opacity 120ms ease;
+}
+.pp-session:hover .pp-session-actions,
+.pp-session:focus-within .pp-session-actions {
+  opacity: 1;
+}
+.pp-session-reason {
+  font-size: 10.5px;
+  color: var(--faint);
+  font-style: italic;
+}
+.pp-mode-confirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--fg);
+}
+
+/* ---- Wiki browser ---- */
+.wiki-browser {
+  /* Same offset from the tab divider as `.chat-list` (12px). */
+  margin-top: 12px;
+}
+.wiki-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+.wiki-search {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 11.5px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  padding: 6px 9px;
+}
+.wiki-search:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.wiki-ingest {
+  margin-bottom: 10px;
+}
+.wiki-ingest-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+/* Stands where the start control does for the active course: a non-active
+   course's wiki surface says why it has none (capability `lecturer-wiki`,
+   Requirement: An Ingest Belongs to the Course It Was Started In). */
+.wiki-ingest-inactive {
+  font-size: 11px;
+  color: var(--muted);
+}
+.wiki-ingest-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 11px;
+  border-bottom: 1px solid var(--border);
+}
+.wiki-ingest-name {
+  color: var(--fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wiki-ingest-status {
+  margin-left: auto;
+  font-size: 9.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.wiki-ingest-done .wiki-ingest-status {
+  color: var(--accent);
+}
+.wiki-ingest-failed .wiki-ingest-status,
+.wiki-ingest-error {
+  color: var(--red, #ed8796);
+}
+.wiki-ingest-error {
+  font-size: 10.5px;
+}
+.wiki-ingest-notice {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 7px;
+}
+.wiki-invalid {
+  font-size: 11px;
+  color: var(--red, #ed8796);
+  border: 1px solid var(--red, #ed8796);
+  border-radius: 7px;
+  padding: 7px 10px;
+  margin-bottom: 10px;
+}
+
+/* Atom rows as cards. */
+.wiki-atom-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  background: var(--raise);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 9px 12px;
+  margin-bottom: 7px;
+}
+.wiki-atom-row:hover {
+  border-color: var(--accent);
+}
+.wiki-atom-row-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg);
+}
+.wiki-atom-row-meta {
+  display: block;
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-top: 2px;
+}
+.wiki-atom-row-preview {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 5px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Atom detail. */
+.wiki-atom-detail {
+  padding: 2px 0 8px;
+}
+.wiki-atom-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 7px 0 9px;
+  color: var(--fg);
+}
+.wiki-atom-related {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.wiki-atom-related .pp-sub {
+  width: 100%;
+  margin: 0 0 3px;
+}
+.wiki-atom-related-missing {
+  font-size: 10.5px;
+  color: var(--faint);
+}
+
+/* Knowledge graph. */
+.wiki-graph {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--raise);
+}
+.wiki-graph-edge {
+  stroke: var(--border-2);
+  stroke-width: 1;
+}
+.wiki-graph-node {
+  cursor: pointer;
+}
+.wiki-graph-node circle {
+  fill: var(--accent);
+}
+.wiki-graph-node text {
+  fill: var(--muted);
+  font-size: 8.5px;
+}
+.wiki-graph-node:hover text {
+  fill: var(--fg);
+}
+
+/* ============ COURSES — one-click activation on the list level ============
+   (refine-course-workspace-ux, Scenario: One-click activation from the course
+   list.) The card is a wrapper div carrying the .proj geometry; the main
+   surface activates the course, the chevron opens the detail view — separate
+   sibling controls. The active card is marked by an accented frame. */
+.proj-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.proj-open {
+  flex: 1;
+  min-width: 0;
+  display: block;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.proj-row.proj-active {
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+  border-radius: 9px;
+}
+.proj-row.proj-active .proj-open {
+  cursor: default;
+}
+.proj-more {
+  flex: none;
+  width: 30px;
+  height: 30px;
+}
+
+/* ---- Background course sessions: per-course activity signals ----
+   (capability desktop-app, Requirement: Background Conversations and
+   Per-Session Event Demultiplexing — running indicator + unseen-completion
+   marker on the left panel's course cards) */
+.course-run-dot,
+.course-unseen-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: 0 0 7px;
+  display: inline-block;
+}
+/* Shared pulse for the running-activity dots. It lived in the composer section
+   while the composer card carried a status dot of its own; that dot is gone with
+   the card's hint/status line, and the course cards are the only consumer left. */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.course-run-dot {
+  background: var(--accent);
+  animation: pulse-dot 1.1s ease-in-out infinite;
+}
+.course-unseen-dot {
+  background: var(--accent);
+  opacity: 0.75;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .course-run-dot {
+    animation: none;
+  }
+}
+
+/* Settings — credential erasure, presence indicator, connection test, unsaved
+   state (change clarify-and-erase-credentials). Appended as its own block. */
+.llm-conn-dirty {
+  /* Framed unsaved-changes state on the LLM-connection section. */
+  box-shadow: inset 2px 0 0 var(--peach, #ef9f76);
+  padding-left: 10px;
+  margin-left: -10px;
+  border-radius: 2px;
+}
+.set-keystate {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+.set-keystate-set {
+  color: var(--green, #a6da95);
+  background: color-mix(in srgb, var(--green, #a6da95) 14%, transparent);
+}
+.set-keystate-unset {
+  color: var(--peach, #ef9f76);
+  background: color-mix(in srgb, var(--peach, #ef9f76) 14%, transparent);
+}
+.set-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+}
+.set-actions .set-save {
+  margin-top: 0;
+}
+.set-secondary {
+  flex: 0 0 auto;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 500;
+  background: none;
+  color: var(--muted);
+  border: 1px solid var(--faint);
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+.set-secondary:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.set-secondary:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.set-danger {
+  flex: 0 0 auto;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  background: none;
+  color: var(--red, #ed8796);
+  border: 1px solid color-mix(in srgb, var(--red, #ed8796) 55%, transparent);
+  border-radius: 8px;
+  padding: 7px 12px;
+  margin-top: 12px;
+}
+.set-danger:hover {
+  background: color-mix(in srgb, var(--red, #ed8796) 12%, transparent);
+}
+.set-erase-confirm {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--red, #ed8796) 40%, transparent);
+  border-radius: 8px;
+}
+.set-erase-confirm .set-note {
+  margin-top: 0;
+}
+.set-erase-confirm .set-danger,
+.set-erase-confirm .set-actions {
+  margin-top: 8px;
+}
+
+/* Chat text size (change add-chat-text-size-and-trim-settings): the store value
+   binds as a data attribute on the surfaces that present conversation content;
+   each discrete size sets the font-size variable those surfaces consume. Markdown
+   inside .msg-text scales along via its em-based sizes. Appended as its own block.
+
+   The size-variable selectors are attribute-only (not `.chat-scroll[…]`) so every
+   carrier of the attribute gets the variable — today the transcript container AND
+   the composer (change harden-canvas-determinism-and-ux2-fixes, Requirement:
+   Collected UX-2 Fixes: "Every element that presents conversation content … and the
+   composer input MUST scale with it"). */
+[data-chat-text-size="small"] {
+  --chat-font-size: 12px;
+}
+[data-chat-text-size="medium"] {
+  --chat-font-size: 13.5px;
+}
+[data-chat-text-size="large"] {
+  --chat-font-size: 15.5px;
+}
+.chat-scroll[data-chat-text-size] .msg-text {
+  font-size: var(--chat-font-size, 13.5px);
+}
+
+/* The standalone Help-me button is retired: the help request is dispatched from
+   the composer's "+" menu (desktop-app spec, Requirement: Help-Me Button
+   Dispatches a Structured Help Request). Its styles went with it. */
+/* Screen-reader-only announcement region. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============ AUTO-UPDATE NOTICE ============ */
+/* Non-blocking update banner (capability `distribution`, Requirement:
+   Auto-update mechanism) — rides the banner-notice look; the primary action
+   uses the accent, the decline options stay quiet text buttons. */
+.update-banner span {
+  flex: 1;
+}
+.update-banner a {
+  color: var(--accent, inherit);
+}
+.update-banner .banner-notice-close {
+  font-size: 12px;
+}
+.update-banner-action {
+  background: var(--accent);
+  color: var(--bg, #fff);
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.update-banner-action:hover {
+  filter: brightness(1.1);
+}
+
+/* ---------- Maturity Panel (Requirement: Maturity Panel) ---------- */
+
+.maturity-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.maturity-row {
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  padding: 9px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Header block above the raster: the declared target and the derived achieved
+   reading, two distinct elements. Deliberately NOT a `.maturity-row` — it is the
+   frame the seven criteria are read inside, not a member of the raster. */
+.maturity-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  padding: 10px;
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+.maturity-header-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+/* The two elements stay visibly separate inside the block. */
+.maturity-header-item + .maturity-header-item {
+  border-top: 1px solid var(--border-2);
+  padding-top: 8px;
+}
+
+.maturity-header-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.maturity-unsettled,
+.maturity-not-due {
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.maturity-derivation {
+  font-size: 10.5px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.maturity-header .maturity-note {
+  flex-basis: 100%;
+}
+
+.maturity-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.maturity-criterion {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg);
+  flex: 1;
+  min-width: 0;
+}
+
+.maturity-discuss,
+.maturity-assess {
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--border-2);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 10.5px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+.maturity-discuss:hover:not(:disabled),
+.maturity-assess:hover:not(:disabled) {
+  color: var(--fg);
+  border-color: var(--accent);
+}
+.maturity-discuss:disabled,
+.maturity-assess:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.maturity-row-levels {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.maturity-segments {
+  display: inline-flex;
+  gap: 3px;
+}
+.maturity-seg {
+  width: 16px;
+  height: 7px;
+  border-radius: 2px;
+  border: 1px solid var(--border-2);
+  background: transparent;
+}
+.maturity-seg[data-lit="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+/* Target segment: distinguished by more than colour — double outline ring. */
+.maturity-seg[data-target="true"] {
+  outline: 1.5px solid var(--fg);
+  outline-offset: 1.5px;
+}
+
+.maturity-level {
+  font-size: 10.5px;
+  color: var(--fg);
+}
+.maturity-unassessed {
+  color: var(--faint);
+  font-style: italic;
+}
+
+.maturity-target {
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px dashed var(--border-2);
+  border-radius: 4px;
+  padding: 1px 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.maturity-target[data-reached="true"] {
+  border-style: solid;
+  color: var(--fg);
+}
+
+/* The reservation marker is distinguished from the uncertainty badge by more
+   than its wording: solid accent outline against the neutral badge idiom. */
+.maturity-reservation {
+  border-style: solid;
+  border-color: var(--accent);
+  color: var(--fg);
+}
+
+.maturity-disclosure summary {
+  cursor: pointer;
+  list-style-position: inside;
+}
+.maturity-gloss {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.maturity-hint {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.45;
+  border-left: 2px solid var(--border-2);
+  padding-left: 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.maturity-empty {
+  gap: 12px;
+}
+.maturity-empty .maturity-assess {
+  align-self: flex-start;
+  font-size: 11.5px;
+  padding: 6px 12px;
+}
+
+/* ---- Inferred calibration framed as an overridable assumption ----
+   (change surface-calibration-assumptions — additive block only; this file is a
+   conflict magnet, do not restructure existing rules.) */
+
+/* cbe_profile tool card: quiet one-liner under the head — the framing must not
+   shout louder than the update summary itself. */
+.tool-card-note {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--muted);
+  padding: 2px 0 4px 12px;
+}
+
+/* Profile Panel: estimate-only note above the override select. Override rows
+   never render it (they carry the accent border + "set by you" badge instead),
+   which keeps the two provenances visually distinct. */
+.profile-dim-assumption {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ============ RESPONSE-CUT-OFF STATE ============
+   (change surface-truncation-cutoff-in-renderer — additive block only; this
+   file is a conflict magnet, do not restructure existing rules.) */
+
+/* "Response was cut off" notice: the chat-notice idiom with a warm warning
+   accent so a truncated answer is clearly not a completed turn. Layout grammar
+   matches the remediation variant (inline actions row, no corner ×). */
+.chat-notice-cutoff {
+  padding-right: 12px;
+  border-left-color: var(--peach, #ef9f76);
+  background: color-mix(in oklch, var(--panel), var(--peach, #ef9f76) 5%);
+}
+.chat-notice-cutoff .chat-notice-actions .pp-action {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+/* Disabled-reason line under the Maturity assess control and the honest Decisions
+   empty state (change harden-canvas-determinism-and-ux2-fixes, wave B). Appended as
+   its own block per the repo's seam-file convention. */
+.maturity-assess-reason {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: var(--faint);
+  max-width: 46ch;
+}
+.decisions-empty .panel-intro {
+  margin: 0;
+}
+
+/* Maturity provenance framing (change ground-maturity-assessment-in-substance):
+   thin-substance explanation, provisional marking, stale marking, unknown
+   provenance. Information plus a caveat — never a blank, never a warning icon
+   alone, and never in place of the levels, which stay rendered underneath. */
+.maturity-provenance {
+  margin: 8px 0 4px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  max-width: 52ch;
+  border-left: 3px solid var(--faint);
+  background: var(--surface-1, transparent);
+  color: var(--fg);
+}
+.maturity-provenance strong {
+  font-weight: 600;
+}
+.maturity-provenance[data-provenance="stale"] {
+  border-left-color: var(--peach, var(--faint));
+}
+.maturity-provenance[data-provenance="provisional"],
+.maturity-provenance[data-substance="thin"] {
+  border-left-color: var(--yellow, var(--faint));
+}
+/* The refresh path in the populated panel: the SAME Assess control, so the
+   lecturer never has to look for a second one. */
+.maturity-refresh {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border, var(--faint));
+}
+
+/* Export control in the Artifacts panel (wave B). */
+/* Export lives in the artefacts panel's control row, on the same level as
+   the iterate control and the annotation count — not in a row of its own below the
+   annotation area (Requirement: Collected UX-3 Fixes (Wave 1)). */
+.artifacts-export {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+.artifacts-export-reason,
+.artifacts-export-done {
+  font-size: 11.5px;
+  color: var(--faint);
+}
+
+/* Panel attention marker — unseen artefact changes on the CBE Process Canvas tab
+   (Requirement: Panel Follows the Agent's Artefact Work), and the aggregate
+   background-activity marker on the collapsed left rail (Requirement: Background
+   Conversations and Per-Session Event Demultiplexing). The dot is decorative;
+   the accessible name carries the meaning, so neither relies on colour alone. */
+.panel-tab,
+.panel-rail-btn {
+  position: relative;
+}
+.panel-attention-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+}
+
+/* ============ PROFILE-AND-SETTINGS OVERLAY ============
+   ONE overlay with two sibling sections (`ProfileSettingsOverlay.tsx`;
+   Requirement: Profile-and-Settings Overlay). Drawn OVER the workspace, which
+   keeps its widths and states underneath: the backdrop is `position: fixed`, so
+   the overlay is outside the workspace grid's flow and consumes no layout width.
+   It neither resizes nor collapses — those are the panels' capabilities and they
+   deliberately do not extend here.
+
+   `[hidden]` is what a closed overlay and a not-shown section carry, and both
+   need the explicit `display: none` because the rules below would otherwise
+   out-specify the UA default. Hidden rather than unmounted is load-bearing: it is
+   how an unsaved settings edit survives a dismissal. */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  /* Above every in-conversation surface, the citation modal (1000) included: the
+     overlay is the newest surface and its backdrop must cover the header too, so
+     that a click anywhere outside it is a dismissal rather than a live control. */
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: rgb(0 0 0 / 45%);
+}
+.overlay-backdrop[hidden] {
+  display: none;
+}
+.overlay-surface {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: min(760px, 100%);
+  max-height: 100%;
+  min-height: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 18px 48px rgb(0 0 0 / 38%);
+  overflow: hidden;
+}
+.overlay-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.overlay-sections {
+  display: flex;
+  gap: 4px;
+}
+.overlay-section-tab {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+}
+.overlay-section-tab:hover {
+  color: var(--fg);
+}
+.overlay-section-tab[aria-selected="true"] {
+  color: var(--fg);
+  border-color: var(--border);
+  background: var(--raise);
+}
+.overlay-dismiss {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+}
+.overlay-dismiss:hover {
+  color: var(--fg);
+  border-color: var(--border);
+}
+/* The overlay's ONE scrollable region — the settings surface's fields and the
+   profile's dimensions both scroll here, and nothing between it and a field may
+   clip or fix a height (`settings-scroll-structure.test.tsx`). */
+.overlay-body {
+  overflow-y: auto;
+  min-height: 0;
+  padding: 4px 0;
+}
+.overlay-body[hidden] {
+  display: none;
+}
+
+/* ============ LECTURER STOP (change stop-a-running-turn) ============
+   Appended as its own block per this file's seam-file convention — do not
+   restructure the rules above. */
+
+/* The stopped-turn marker (Requirement: Composer Control Row): the chat-notice
+   idiom attached to the turn, quieter than the surfaces that ask for an action,
+   because this one carries none — the answer stands as it is. */
+.chat-notice-stopped {
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-left-color: var(--muted);
+  background: color-mix(in oklch, var(--panel), var(--muted) 6%);
+  font-size: 12px;
+}
+
+/* A stop that never settled (Requirement: Composer Control Row). Same warm
+   warning accent as the cut-off state — it is the one stop outcome the lecturer
+   has to act on — with the force-close recovery in the actions row. */
+.chat-notice-stop-timeout {
+  padding-right: 12px;
+  border-left-color: var(--peach, #ef9f76);
+  background: color-mix(in oklch, var(--panel), var(--peach, #ef9f76) 5%);
+}
+.chat-notice-stop-timeout .chat-notice-actions .pp-action {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+/* Course detail — Chats | Wiki tabs (Requirement: Course Detail Tabs: Chats and
+   Wiki). Reuses the right panel's tab idiom; the modifier only adjusts spacing
+   inside the detail column. */
+.pp-tabs {
+  margin: 12px -14px 0;
+}
+
+/* Chats tab — stored-conversation rows (newest first; the open one marked).
+   A real <ul>/<li> wrapping the row buttons, so list AND button roles survive
+   for assistive technology; the list chrome is reset away. */
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.chat-list-item {
+  display: block;
+}
+.chat-list-item .chat-row {
+  width: 100%;
+}
+.chat-list-empty {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--faint);
+}
+.chat-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3px;
+  text-align: left;
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.chat-row:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.chat-row:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.chat-row-open {
+  border-color: var(--accent);
+}
+.chat-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.chat-row-date {
+  font-size: 11px;
+  font-weight: 600;
+}
+.chat-row-snippet {
+  font-size: 11px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chat-row-meta {
+  font-size: 10px;
+  color: var(--faint);
+}

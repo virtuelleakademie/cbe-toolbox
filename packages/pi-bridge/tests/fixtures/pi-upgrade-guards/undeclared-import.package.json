@@ -1,0 +1,6 @@
+{
+  "name": "@cbe/fixture-undeclared",
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "1.3.0"
+  }
+}

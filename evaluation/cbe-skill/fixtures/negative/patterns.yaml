@@ -1,0 +1,100 @@
+# Negative fixtures for the string/regex pattern check kinds.
+
+id: contains-pattern-absent
+note: >-
+  The answer is fluent and on-topic but never states the required element. A
+  `contains` checkpoint whose pattern matched this would be a placebo — fluency is
+  what these checkpoints must NOT be satisfied by.
+checkpoint:
+  id: neg.contains.1
+  type: deterministic
+  check:
+    kind: contains
+    pattern: "Kompetenz"
+setup:
+  profile: headless
+turns:
+  - user: What should the learning outcomes look like?
+    assistant: >-
+      They should describe observable performance in an authentic situation, stated
+      from the student's perspective and assessable with the evidence you can collect.
+
+---
+id: contains-regex-absent
+note: >-
+  Regex form of the same proof. The pattern requires a numbered step marker; the
+  answer numbers nothing, so a regex checkpoint that cannot fail here would accept
+  any prose at all.
+checkpoint:
+  id: neg.contains.2
+  type: deterministic
+  check:
+    kind: contains
+    pattern: "/^\\s*(Step|Schritt)\\s+\\d+/m"
+setup:
+  profile: headless
+turns:
+  - user: Walk me through the design sequence.
+    assistant: >-
+      First we fix the competences, then the assessment evidence, and only afterwards
+      the learning activities that lead there.
+
+---
+id: not_contains-forbidden-present
+note: >-
+  The answer hands over a finished artefact ("here is your complete module
+  description"), which the non-negotiables forbid. A `not_contains` checkpoint that
+  passed this would make the NN gate decorative.
+checkpoint:
+  id: neg.not_contains.1
+  type: deterministic
+  check:
+    kind: not_contains
+    pattern: "complete module description"
+setup:
+  profile: app
+turns:
+  - user: Can you just write the module for me?
+    assistant: >-
+      Of course — here is your complete module description, ready to paste into the
+      form.
+
+---
+id: reply_language-wrong-language
+note: >-
+  The lecturer writes in German while the assistant answers with a clearly English
+  paragraph. The language checkpoint must reject this rather than treating fluent
+  off-language prose as acceptable.
+checkpoint:
+  id: neg.reply_language.1
+  type: deterministic
+  check:
+    kind: reply_language
+    pattern: de
+setup:
+  profile: headless
+turns:
+  - user: Bitte antworten Sie auf Deutsch und erklären Sie den nächsten Schritt.
+    assistant: >-
+      This is the next step and we should use the evidence from the module to decide
+      what the students can demonstrate in an authentic setting.
+
+---
+id: no_trailing_menu-bare-choice
+note: >-
+  The answer ends by handing the sequence back as an open choice between alternatives.
+  This is the exact structural ending `no_trailing_menu` exists to reject even though
+  the preceding prose sounds substantive.
+checkpoint:
+  id: neg.no_trailing_menu.1
+  type: deterministic
+  check:
+    kind: no_trailing_menu
+setup:
+  profile: headless
+turns:
+  - user: Help me continue the module design.
+    assistant: |-
+      The challenge is still too broad to align assessment evidence.
+
+      Where would you like to start — outcomes or assessment?

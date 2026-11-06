@@ -1,0 +1,1 @@
+- **tool call:** an internal cbe_picker invocation from the system prompt.

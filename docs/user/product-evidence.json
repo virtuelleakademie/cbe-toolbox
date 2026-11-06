@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "normalization": "lf-trailing-space-trim-final-newline-v1",
+  "entries": {
+    "first-course-and-request": {
+      "type": "test",
+      "path": "packages/app/tests/first-use-onboarding.test.tsx",
+      "name": "A ready workspace explains its value without becoming a gate",
+      "sha256": "607168022c4efedbcabecc5a00db0f3836a1bbef3602168f07048a8c57bb8299"
+    },
+    "purpose-and-limits": {
+      "type": "test",
+      "path": "packages/pi-bridge/tests/skill-body-contract.test.ts",
+      "name": "Non-negotiables: five, who decides, named in substance not by number",
+      "sha256": "3781138aa092f9c0f9e9c79b72f2987e70fadb27d70b8595e8cb3e079ad00f28"
+    },
+    "workspace-orientation": {
+      "type": "test",
+      "path": "packages/app/tests/first-use-onboarding.test.tsx",
+      "name": "locates course management, stored Chats, Wiki, conversation, Canvas and Maturity in one bounded reading",
+      "sha256": "5a1306b2043ec9ff8b3432fcfb16071718b194a3dda6bf4ecb21bd664b5a1c5a"
+    },
+    "course-lifecycle": {
+      "type": "test",
+      "path": "packages/app/tests/courses.test.ts",
+      "name": "creating a course produces a folder with course.md, empty lecturer-state.md, and all subfolders",
+      "sha256": "f3b6e66c0b12afb9e5e14c3a25d25bc06c4a415cc060b86fb489d2734be6d5b2"
+    },
+    "conversation-lifecycle": {
+      "type": "test",
+      "path": "packages/app/tests/course-chats-switch-real-path.test.tsx",
+      "name": "moves border and badge to the resumed row through the real resume pipeline",
+      "sha256": "cac0fc812dc6c2fbb4400247b303e327b79d3297d0f35044e04654767d848785"
+    },
+    "intent-sensitive-work": {
+      "type": "test",
+      "path": "packages/pi-bridge/tests/skill-intent-guidance.test.ts",
+      "name": "Clear transfer intent starts from the existing teaching",
+      "sha256": "17e89c6c9c1a2c4365254f4d38e18a40d09bd1179ea6bf35a27895f2c3fe4491"
+    },
+    "support-and-consent": {
+      "type": "test",
+      "path": "packages/pi-bridge/tests/support-tool.test.ts",
+      "name": "states the explicit-instruction-only trigger and the one-off/lasting distinction",
+      "sha256": "a23fad2b440e71c1bb227a307451fb8f427375b3c0fe95d03279fa07ffcf8397"
+    },
+    "iterative-formulation": {
+      "type": "test",
+      "path": "packages/pi-bridge/tests/skill-body-contract.test.ts",
+      "name": "Co-construction: formulation is stepwise, and everything-at-once works the current component",
+      "sha256": "4934f40970603a706d14e4e4b574cc7cb648e1c24d0557baa50f4fd22da7ce4b"
+    },
+    "canvas": {
+      "type": "test",
+      "path": "packages/pi-bridge/tests/skill-body-contract.test.ts",
+      "name": "Ten steps: every Step-6 journey element carries named cards, none is self-minted",
+      "sha256": "87f943f55225cbece7112b68b571930376e1a709cce10767e62d0f86c819fe71"
+    },
+    "maturity": {
+      "type": "test",
+      "path": "packages/app/tests/maturity-panel.test.tsx",
+      "name": "Raster shows current vs target per criterion",
+      "sha256": "febd1a3778206ca8521f8ec3485796720ce1b76775bcea0dcc8ea8f118bd1bd6"
+    },
+    "attachment-versus-wiki": {
+      "type": "test",
+      "path": "packages/app/tests/ingest-format-authority.test.ts",
+      "name": "the app's SUPPORTED_EXTENSIONS is the shared declaration itself, not a copy",
+      "sha256": "2d137421df12b709f4655ef3322de7318bb5f8fd124c8f8ed35363801837417b"
+    },
+    "wiki-ingestion": {
+      "type": "test",
+      "path": "packages/app/tests/wiki-ingest-run.test.tsx",
+      "name": "keeps the run bound to its own course when the active course changes mid-run",
+      "sha256": "94550e4654b62368aa7a7f0b455b5966680ba8efb4176b0cc3ed3cb30c49e542"
+    },
+    "wiki-use": {
+      "type": "test",
+      "path": "packages/app/tests/wiki-browser.test.tsx",
+      "name": "renders atoms as nodes and related-references as edges, clickable through to the atom",
+      "sha256": "5b06064705719fc29d3b969a80ab9fca821db9e05752ccf5b77cda24e048ed05"
+    },
+    "sources-and-citations": {
+      "type": "test",
+      "path": "packages/pi-bridge/tests/skill-body-contract.test.ts",
+      "name": "Citing: index then document, no unread citation, gap stated, wiki wins",
+      "sha256": "e3d1220a41e3fcd17b6ea6ba01db136cde6f088a7c643907c62e04226a0d4ca5"
+    },
+    "settings": {
+      "type": "test",
+      "path": "packages/app/tests/settings-panel.test.tsx",
+      "name": "renders exactly four groups in the order Model, Appearance, About, Corpus",
+      "sha256": "b9fcddb322af35a1fc747a84303ce03b62dd49e87d2742500143e79371785b45"
+    },
+    "installation-current-build": {
+      "type": "test",
+      "path": "packages/app/tests/release-metadata.test.ts",
+      "name": "composes a release body that carries the section and the closed-testing note",
+      "sha256": "a67f23b05f719f1a430073b4e1fe7feb44c9ff8da994128f4ae7ee0ac9fb4745"
+    },
+    "model-connection": {
+      "type": "test",
+      "path": "packages/app/tests/settings-panel.test.tsx",
+      "name": "shows a recoverable error note when the live swap fails, and does not show the plain Saved note",
+      "sha256": "12ab29ae802acc8d9a194094642e8574250d5837adecef53bf05f4aee2b46ad1"
+    },
+    "local-it": {
+      "type": "test",
+      "path": "packages/app/tests/release-metadata.test.ts",
+      "name": "names the app version in the lockfile and the top CHANGELOG section",
+      "sha256": "ae05dba425da9165c0a2715493f891204c05e38d489d810adb464d25a4a4ef06"
+    },
+    "updates-current": {
+      "type": "test",
+      "path": "packages/app/tests/settings-panel.test.tsx",
+      "name": "shows the About group as read-only skill / skill version / app version",
+      "sha256": "ba7dbb0f36edf50e8a550239407bdcc4e13f216539eb49f44a8ef1c24394d76d"
+    },
+    "troubleshooting": {
+      "type": "test",
+      "path": "packages/app/tests/settings-panel.test.tsx",
+      "name": "shows a recoverable error note when the live swap fails, and does not show the plain Saved note",
+      "sha256": "12ab29ae802acc8d9a194094642e8574250d5837adecef53bf05f4aee2b46ad1"
+    },
+    "updates-and-refresh": {
+      "type": "test",
+      "path": "packages/app/tests/update-banner.test.tsx",
+      "name": "shows a non-blocking notice with version, changelog link and install now / later / skip",
+      "sha256": "809afb451cd208506626c29652b5982442d376d69a506fae68366015e601f4da"
+    },
+    "support-sharing": {
+      "type": "test",
+      "path": "packages/app/tests/sessions.test.ts",
+      "name": "emits .md and .json side by side when both writers run for the same session",
+      "sha256": "943dc18d32eb87b3e8ac06438e1f885f2010d3c823d408d1b14d2696f0e9b61c"
+    },
+    "local-storage": {
+      "type": "test",
+      "path": "packages/app/tests/courses.test.ts",
+      "name": "new work lands in the active course: sessions and wiki paths derive from the course folder",
+      "sha256": "f1b49c2d1a0c8f60a3641947395d91a79e5374262ad68000b4a404fc58bcc143"
+    },
+    "backup-boundary": {
+      "type": "test",
+      "path": "packages/app/tests/sessions.test.ts",
+      "name": "writes a JSON sidecar alongside the markdown archive",
+      "sha256": "01c578ab82bea9983e4d18b2a039c6d7b3c31c8c7412c37ee6ac1a1bca2227da"
+    },
+    "provider-data-flow": {
+      "type": "test",
+      "path": "packages/app/tests/data-handling-documentation.test.tsx",
+      "name": "fact 2 — the configured language model reads it in order to answer",
+      "sha256": "392b1e2448abc725dd80f504f95cd5e4b0445d5f15ece4e59d8ee316968620e1"
+    },
+    "student-data": {
+      "type": "test",
+      "path": "packages/pi-bridge/tests/identity-prompt.test.ts",
+      "name": "carries the four runtime-surface rules",
+      "sha256": "94a9117c0bd0b7df57ad03c30d05cf03eea2b7ca79c84c870552319f9ed627d7"
+    },
+    "records-and-exports": {
+      "type": "test",
+      "path": "packages/app/tests/sessions.test.ts",
+      "name": "writes the projected Markdown and the verbatim JSON from one unprojected turns array",
+      "sha256": "2990fbc0117f7322503743fa69d8f642a76b7fc8d94c5a619a9bc3bebe5d1a73"
+    },
+    "keyboard": {
+      "type": "test",
+      "path": "packages/app/tests/composer-card.test.tsx",
+      "name": "sends on a bare Enter",
+      "sha256": "d67237bcd27b23c119a460af173ab74c7d7b3be2b0dbde332f3e9fd772325f8c"
+    },
+    "focus-and-status": {
+      "type": "test",
+      "path": "packages/app/tests/first-use-onboarding.test.tsx",
+      "name": "announces availability once without focus theft or global Escape dismissal",
+      "sha256": "5180affd090482cb259854f85f7acac199206201023cd1fe9defc053d0980801"
+    },
+    "zoom-and-native": {
+      "type": "test",
+      "path": "packages/app/tests/first-use-onboarding-layout.test.ts",
+      "name": "verifies the real Electron renderer at narrow widths, both themes, enlarged text and 200% zoom",
+      "sha256": "b224738f13a00e098fd823594ba815cc9bc92cae38f938701ad15073b20b7bf6"
+    },
+    "glossary": {
+      "type": "test",
+      "path": "packages/app/tests/first-use-onboarding.test.tsx",
+      "name": "locates course management, stored Chats, Wiki, conversation, Canvas and Maturity in one bounded reading",
+      "sha256": "5a1306b2043ec9ff8b3432fcfb16071718b194a3dda6bf4ecb21bd664b5a1c5a"
+    },
+    "faq": {
+      "type": "test",
+      "path": "packages/pi-bridge/tests/skill-body-contract.test.ts",
+      "name": "Help: one compact turn, anchored in recorded state, no invented control",
+      "sha256": "348898338ac32f7d28ef25a948d8d5563f280681b025a34287bddf0281a51529"
+    },
+    "application-identity": {
+      "type": "test",
+      "path": "packages/app/tests/app-icon-packaging.test.ts",
+      "name": "keeps signing and icon ownership separate in package metadata",
+      "sha256": "37f0ab1ab9f02e3846611439576d67d7c0c1b370df9c213d9cf0d1795ed5cf87"
+    },
+    "native-application-menu": {
+      "type": "test",
+      "path": "packages/app/tests/native-menu-template.test.ts",
+      "name": "pins application/File/Window placement, command ids and accelerators in production",
+      "sha256": "673dba38d99f76b4ad28b0ecaef3dd8a370436e28d064060901ec68ef8d22afd"
+    },
+    "pioneer-about-link": {
+      "type": "test",
+      "path": "packages/app/tests/pioneer-about-link.test.tsx",
+      "name": "is a focusable semantic link whose accessible description names the system browser",
+      "sha256": "e59be2253a9487ca8ecd35377533087a12d77c2ac0f8663bf269886288f857d6"
+    },
+    "accepted-formats": {
+      "type": "test",
+      "path": "packages/app/tests/ingest-format-authority.test.ts",
+      "name": "every accepted extension is dispatched by the extractor and carries a doc type",
+      "sha256": "8a9ab3e39428d04666aaae4dfe18fd7920416d53e7f9577364b5e6b9409f3c82"
+    },
+    "release-version": {
+      "type": "test",
+      "path": "packages/app/tests/release-metadata.test.ts",
+      "name": "names the app version in the lockfile and the top CHANGELOG section",
+      "sha256": "ae05dba425da9165c0a2715493f891204c05e38d489d810adb464d25a4a4ef06"
+    }
+  }
+}

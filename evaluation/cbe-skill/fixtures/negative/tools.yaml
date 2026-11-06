@@ -1,0 +1,184 @@
+# Negative fixtures for the tool-invocation check kinds.
+
+id: tool_called-tool-absent
+note: >-
+  The answer hand-writes a corpus token instead of calling `cbe_cite`. It reads as
+  a grounded reply, which is precisely why a `tool_called` checkpoint that could
+  not fail here would hide the single largest failure cluster on record
+  (ACCEPTANCE.md, "Cross-cutting finding: citation-emission").
+checkpoint:
+  id: neg.tool_called.1
+  type: deterministic
+  check:
+    kind: tool_called
+    tool: cbe_cite
+setup:
+  profile: app
+  corpus: [foundations-001]
+turns:
+  - user: Ground that claim in the corpus.
+    assistant: >-
+      Certainly — see (corpus:foundations-001 § Was CBE ausmacht) for the underlying
+      definition.
+    tools: [read, grep]
+
+---
+id: tool_not_called-tool-present
+note: >-
+  A picker is emitted in a turn where the checkpoint forbids one. Without this
+  fixture, "no phantom affordances" would be unfalsifiable in the harness.
+checkpoint:
+  id: neg.tool_not_called.1
+  type: deterministic
+  check:
+    kind: tool_not_called
+    tool: cbe_picker
+setup:
+  profile: app
+turns:
+  - user: Just answer in prose, no menus.
+    assistant: Here are the options I see for your module design.
+    tools: [cbe_picker]
+
+---
+id: tool_arg_matches-prose-block
+note: >-
+  The canvas IS written, and every tool-name-level check would call this turn a
+  success — which is exactly the blind spot: three learning outcomes arrive on the
+  card as one undifferentiated prose block. Without this fixture, a checkpoint on the
+  FORM of a mirrored value could not be told apart from one that only re-measures
+  that `cbe_canvas` ran.
+checkpoint:
+  id: neg.tool_arg_matches.1
+  type: deterministic
+  check:
+    kind: tool_arg_matches
+    tool: cbe_canvas
+    arg: value
+    pattern: '/(^|\n)[ \t]*(?:[-*+][ \t]+\S|\d+[.)][ \t]+\S|\|[^\n]*\||#{1,6}[ \t]+\S)/'
+setup:
+  profile: app
+turns:
+  - user: Die drei Lernergebnisse stehen fest, bitte festhalten.
+    assistant: Ich habe die drei Lernergebnisse auf der Karte festgehalten.
+    tools:
+      - name: cbe_canvas
+        args:
+          step: 2
+          id: learningoutcomes
+          value: >-
+            Die Studierenden analysieren eine reale Lieferkette und identifizieren die
+            grössten Emissionstreiber, bewerten zwei Reduktionsmassnahmen anhand von
+            Kosten und Wirkung und entwerfen einen Umsetzungsvorschlag für einen
+            Praxispartner.
+
+---
+id: tool_called-wrong-turn
+note: >-
+  The tool IS called, but in turn 1 while the checkpoint scopes turn 2. Proves the
+  `turn` scoping is load-bearing rather than decorative — an unscoped check would
+  pass this and silently accept a tool call from the wrong moment in the dialogue.
+checkpoint:
+  id: neg.tool_called.2
+  type: deterministic
+  turn: 1
+  check:
+    kind: tool_called
+    tool: cbe_canvas
+setup:
+  profile: app
+turns:
+  - user: Let us start designing the module.
+    assistant: I have recorded the first design decision on the canvas.
+    tools: [cbe_canvas]
+  - user: And what about assessment?
+    assistant: Assessment usually follows from the competences you just fixed.
+    tools: []
+
+---
+id: maturity_no_pushed_aggregate-overall-current-in-batch
+note: >-
+  The establishment batch is emitted, every criterion is covered, and the answer reads
+  as a textbook reading — while the `overall` record also carries an achieved level of
+  its own. That is the defect the derivation exists to remove: a second, independent
+  judgement able to disagree with the seven readings beside it. `tool_called` sees a
+  correct call here, and the judge is handed tool names only, so without this fixture
+  the rule would be unfalsifiable in the harness.
+checkpoint:
+  id: neg.maturity_no_pushed_aggregate.1
+  type: deterministic
+  check:
+    kind: maturity_no_pushed_aggregate
+setup:
+  profile: app
+turns:
+  - user: Wo steht das Modul jetzt insgesamt?
+    assistant: >-
+      Ich lese das Design aktuell auf Level 2 — die Kriterien stehen unten im Detail.
+    tools:
+      - name: cbe_maturity
+        args:
+          readings:
+            - criterion: societal-challenge
+              current: 2
+            - criterion: stakeholder-involvement
+              current: 1
+            - criterion: interdisciplinarity
+              current: 2
+            - criterion: student-agency
+              current: 2
+            - criterion: iterative-process
+              current: "unassessed"
+            - criterion: value-reflection
+              current: "unassessed"
+            - criterion: societal-impact
+              current: "unassessed"
+            - criterion: overall
+              current: 2
+              target: 3
+              note: Erst vier von sieben Kriterien gelesen.
+
+---
+id: maturity_cap_marked-standing-finding-unmarked
+note: >-
+  The lecturer has left an alignment finding standing, the affected criterion IS read
+  down to the level the finding supports, and the limitation note even names the
+  reservation — but no record carries the capping marker, so the host's derived
+  aggregate is free to rise above that criterion. The whole point of the marker is that
+  reading a criterion down is not enough on its own; without this fixture a checkpoint
+  on the marker could not be told apart from one that only re-measures that
+  `cbe_maturity` ran.
+checkpoint:
+  id: neg.maturity_cap_marked.1
+  type: deterministic
+  check:
+    kind: maturity_cap_marked
+setup:
+  profile: app
+turns:
+  - user: Die Lücke zwischen Ziel und Prüfung lasse ich so stehen. Wie steht es um die Reife?
+    assistant: >-
+      Dann halte ich fest: Student agency bleibt auf Level 1, solange die Prüfung nicht
+      trägt — das ist die offene Stelle, die ich in der Einschränkung nenne.
+    tools:
+      - name: cbe_maturity
+        args:
+          readings:
+            - criterion: societal-challenge
+              current: 3
+            - criterion: stakeholder-involvement
+              current: 3
+            - criterion: interdisciplinarity
+              current: 3
+            - criterion: student-agency
+              current: 1
+              uncertain: true
+            - criterion: iterative-process
+              current: 3
+            - criterion: value-reflection
+              current: 3
+            - criterion: societal-impact
+              current: 3
+            - criterion: overall
+              target: 3
+              note: Die offene Alignment-Lücke bei Student agency bleibt stehen.
