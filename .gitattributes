@@ -17,3 +17,4 @@ packages/app/icon-source/cbe-toolbox-icon.svg -text
 *.zip -text
 *.pdf -text
 *.docx -text
+*.xlsx -text

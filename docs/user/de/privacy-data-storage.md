@@ -1,7 +1,7 @@
 ---
 pageId: privacy-data-storage
 locale: de
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # Datenschutz, Daten und Ablage
@@ -11,7 +11,7 @@ So speichert die CBE Toolbox Daten und sendet Anfragen an den konfigurierten Mod
 > [!CAUTION]
 >
 > - Gespräche, einschliesslich Informationen, die in früheren Gesprächen über Sie gesammelt wurden (zum Beispiel Lehrerfahrung oder institutioneller Kontext), werden an den von Ihnen konfigurierten Inferenzdienst übermittelt. Es gelten die Datenschutz- und Datenrichtlinien dieses Dienstes. Die Nutzenden sind für die Einhaltung verantwortlich.
-> - Bei jedem Start prüft die Anwendung unter einer bei Cloudflare gehosteten Adresse, ob eine neuere App-Version verfügbar ist. Dabei wird Ihre IP-Adresse gegenüber Cloudflare offengelegt. In Version 0.1.21 werden Corpus- und Skill-Inhalte nicht über das Netzwerk aktualisiert.
+> - Bei jedem Start prüft die Anwendung unter einer bei Cloudflare gehosteten Adresse, ob eine neuere App-Version verfügbar ist. Dabei wird Ihre IP-Adresse gegenüber Cloudflare offengelegt. In Version 0.1.23 werden Corpus- und Skill-Inhalte nicht über das Netzwerk aktualisiert.
 
 <a id="local-storage"></a>
 

@@ -1,7 +1,7 @@
 ---
 pageId: troubleshooting-and-reference
 locale: en
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # Troubleshooting and reference
@@ -102,7 +102,7 @@ Keep the installed version. Retry only after confirming network access and the c
 
 ## What to share with support
 
-Start with app/Skill version, operating system/version, time, visible symptom, steps that led to it, and a redacted screenshot or copied visible error. Version 0.1.21 has no one-click support export. Share neither provider keys nor personal student data. Do not send a whole app-data/Course folder by default. If authorised support needs a specific session Markdown, JSON sidecar or diagnostic file, agree the exact file and secure channel, retain an untouched backup and redact confidential content.
+Start with app/Skill version, operating system/version, time, visible symptom, steps that led to it, and a redacted screenshot or copied visible error. Version 0.1.23 has no one-click support export. Share neither provider keys nor personal student data. Do not send a whole app-data/Course folder by default. If authorised support needs a specific session Markdown, JSON sidecar or diagnostic file, agree the exact file and secure channel, retain an untouched backup and redact confidential content.
 
 Contact local IT when policy, certificate, proxy, endpoint reachability, installer trust or storage permissions are involved. This includes installation problems caused by restrictions on institutionally managed devices and problems with the model configuration (base URL, model ID, API key): your local IT department is the right contact for these, not the providers of CBE Toolbox.
 

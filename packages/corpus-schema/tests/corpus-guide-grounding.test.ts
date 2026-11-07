@@ -1,14 +1,16 @@
 import fs from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
+import { generateIndex, validateCorpusInventory } from "../src/index.js";
 
 const corpusRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "corpus");
 const prescribedCitation =
   "Nichols, M., Cator, K., and Torres, M. (2016) Challenge Based Learner User Guide. Redwood City, CA: Digital Promise.";
 
 describe("governed corpus grounding", () => {
-  it("cites the Guide in the prescribed form and allows zero case-study atoms", async () => {
+  it("cites the Guide in the prescribed form and indexes the selected case studies", async () => {
     for (const relative of [
       "content/foundations/foundations-001-experiential-learning-roots.md",
       "content/foundations/foundations-002-foundational-ideas-design-principles.md",
@@ -25,8 +27,28 @@ describe("governed corpus grounding", () => {
       categories: Record<string, number>;
       documents: Array<{ id: string; category: string; path: string }>;
     };
-    expect(index["corpus-version"]).toBe("2026-11");
-    expect(index.categories).not.toHaveProperty("case-study");
-    expect(index.documents.some((document) => document.category === "case-study")).toBe(false);
+    expect(index["corpus-version"]).toBe("2026-12");
+    expect(index.categories["case-study"]).toBe(11);
+    expect(index.documents.filter((document) => document.category === "case-study")).toHaveLength(11);
+  });
+
+  it("keeps an empty case-study category coherent in a synthetic corpus fixture", async () => {
+    const root = await fs.mkdtemp(path.join(os.tmpdir(), "cbe-empty-case-study-"));
+    try {
+      const content = path.join(root, "content");
+      await fs.mkdir(content, { recursive: true });
+      for (const category of ["foundations", "methodology", "vocabulary"]) {
+        await fs.cp(path.join(corpusRoot, "content", category), path.join(content, category), { recursive: true });
+      }
+      const index = await generateIndex(content, path.join(root, "index.json"), {
+        pathsRelativeTo: root,
+        corpusVersion: "2099-01",
+      });
+      expect(index.categories).not.toHaveProperty("case-study");
+      expect(index.documents.some((document) => document.category === "case-study")).toBe(false);
+      await expect(validateCorpusInventory(root)).resolves.toMatchObject({ version: "2099-01" });
+    } finally {
+      await fs.rm(root, { recursive: true, force: true });
+    }
   });
 });

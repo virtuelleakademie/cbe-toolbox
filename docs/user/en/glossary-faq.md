@@ -1,7 +1,7 @@
 ---
 pageId: glossary-faq
 locale: en
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # Glossary and FAQ

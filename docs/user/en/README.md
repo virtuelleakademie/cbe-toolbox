@@ -1,12 +1,12 @@
 ---
 pageId: index
 locale: en
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # CBE Toolbox documentation
 
-Documentation for **CBE Toolbox 0.1.21 / CBE Skill 0.4.2**.
+Documentation for **CBE Toolbox 0.1.23 / CBE Skill 0.4.2**.
 
 **Languages:** [English](README.md) · [Deutsch](../de/README.md) · [language entry](../README.md)
 

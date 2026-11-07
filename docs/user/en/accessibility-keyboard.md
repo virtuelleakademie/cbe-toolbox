@@ -1,7 +1,7 @@
 ---
 pageId: accessibility-keyboard
 locale: en
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # Accessibility and keyboard

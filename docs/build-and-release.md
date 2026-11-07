@@ -360,7 +360,7 @@ producing a corpus version and `docs/delivery-channel.md` for signing,
 publication order, trust provisioning and the legacy delivery-key route. Skill
 publication is compatibility-bound to a compiled app/model/tool/Pi contract:
 build first, produce the pack with `npm run content:bundle`, and never hand-edit
-manifest or pointer fields. For v0.1.21 the committed Skill 0.4.2 pointer remains compatible and must
+manifest or pointer fields. For v0.1.23 the committed Skill 0.4.2 pointer remains compatible and must
 pass the deterministic compatibility suites before the tag is cut.
 
 ## Scope of delivery (handover note)

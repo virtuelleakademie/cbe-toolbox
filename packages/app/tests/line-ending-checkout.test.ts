@@ -26,7 +26,7 @@ const TEXT_SAMPLES = [
   "packages/app/src/renderer/styles.css",
   "packages/app/src/main/content-pack-store.ts",
 ];
-/** Committed binaries that must stay byte-opaque. */
+/** Mirror-included committed binaries that must stay byte-opaque. Canonical-only samples have their own test. */
 const BINARY_SAMPLES = ["packages/app/buildResources/icon.png", "packages/app/buildResources/icon.ico"];
 
 const temporary: string[] = [];
@@ -94,7 +94,7 @@ describe("Scenario: A Git for Windows checkout keeps repository text as LF", () 
     const attributes = readFileSync(path.join(repoRoot, ".gitattributes"), "utf8");
     expect(attributes).toMatch(/^\* text=auto eol=lf$/m);
     expect(attributes).toContain(`${ICON_SOURCE} -text`);
-    for (const pattern of ["*.png", "*.ico", "*.icns", "*.woff2", "*.zip", "*.pdf", "*.jpg", "*.docx"]) {
+    for (const pattern of ["*.png", "*.ico", "*.icns", "*.woff2", "*.zip", "*.pdf", "*.jpg", "*.docx", "*.xlsx"]) {
       expect(attributes).toContain(`${pattern} -text`);
     }
   });

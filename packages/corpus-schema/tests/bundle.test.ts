@@ -37,7 +37,9 @@ describe("createCorpusBundle", () => {
 
     const zipBytes = await fs.readFile(path.join(outDir, res.file));
     const zip = await JSZip.loadAsync(zipBytes);
-    const names = Object.keys(zip.files).filter((n) => !zip.files[n].dir);
+    const entries = Object.keys(zip.files);
+    expect(entries.every((name) => !zip.files[name]?.dir)).toBe(true);
+    const names = entries.filter((n) => !zip.files[n].dir);
     expect(names).toContain("index.json");
     expect(names.some((n) => n.startsWith("content/foundations/"))).toBe(true);
     // Everything the index references is inside the archive.

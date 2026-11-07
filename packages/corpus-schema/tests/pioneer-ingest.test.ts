@@ -36,8 +36,8 @@ const byId = (id: string) => manifest.documents.find((d) => d.id === id);
 const bodyOf = (entry: IndexEntry) => readFileSync(path.join(REPO_ROOT, "corpus", entry.path), "utf-8");
 
 describe("PIONEER foundations ingestion (Phase A)", () => {
-  it("keeps the PIONEER atoms in the current 2026-11 corpus", () => {
-    expect(manifest["corpus-version"]).toBe("2026-11");
+  it("keeps the PIONEER atoms in the current 2026-12 corpus", () => {
+    expect(manifest["corpus-version"]).toBe("2026-12");
   });
 
   describe("Scenario: foundations-005 is present and indexed", () => {

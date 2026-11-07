@@ -47,7 +47,7 @@ describe("Scenario: Canonical runtime application name", () => {
 
   it("Cleanup preserves installed-application identity", () => {
     expect({ version: pkg.version, ...pkg.build }).toMatchObject({
-      version: "0.1.21",
+      version: "0.1.23",
       appId: "com.bridgebinary.cbe-toolbox",
       productName: "CBE Toolbox",
       artifactName: "CBE-Toolbox-${version}-${arch}.${ext}",

@@ -321,7 +321,7 @@ describe("Canonical Owners and Deterministic Freshness Prevent Documentation Dri
   it("An app release cannot retain an unreviewed documentation version", async () => {
     await sourceOverride(
       "packages/app/package.json",
-      (value) => value.replace('"version": "0.1.21"', '"version": "0.1.22"'),
+      (value) => value.replace('"version": "0.1.23"', '"version": "0.1.24"'),
       "app-version"
     );
   });

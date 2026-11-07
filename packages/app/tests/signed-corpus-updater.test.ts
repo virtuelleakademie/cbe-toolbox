@@ -127,13 +127,13 @@ describe("signed corpus updater", () => {
       now: () => now,
       fetchImpl: responseFetch(signed.routes, []),
     });
-    expect(result).toMatchObject({ status: "updated", identity: { version: "2026-11" } });
+    expect(result).toMatchObject({ status: "updated", identity: { version: "2026-12" } });
     expect(
       selectContentPackSync({ paths, packId: "cbe-corpus", channel: "stable", markerFile: "index.json" }).source
     ).toBe("downloaded");
   });
 
-  it("validates exact index inventory and activates corpus 2026-11", async () => {
+  it("validates exact index inventory and activates corpus 2026-12", async () => {
     const signed = await fixture();
     const requested: string[] = [];
     const result = await refreshContentPack({
@@ -144,7 +144,7 @@ describe("signed corpus updater", () => {
       now: () => now,
       fetchImpl: responseFetch(signed.routes, requested),
     });
-    expect(result).toMatchObject({ status: "updated", identity: { version: "2026-11" } });
+    expect(result).toMatchObject({ status: "updated", identity: { version: "2026-12" } });
     expect(requested.at(-1)).toBe(`${baseUrl}${signed.artifactName}`);
     expect(
       selectContentPackSync({ paths, packId: "cbe-corpus", channel: "stable", markerFile: "index.json" }).source

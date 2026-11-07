@@ -1,7 +1,7 @@
 ---
 pageId: quick-start
 locale: en
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # Quick Start

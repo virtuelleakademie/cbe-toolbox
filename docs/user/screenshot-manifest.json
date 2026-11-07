@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "fixtureSchemaVersion": 1,
   "capture": {
-    "appVersion": "0.1.21",
+    "appVersion": "0.1.23",
     "electronVersion": "36.9.5",
     "timezone": "UTC",
     "theme": "light",

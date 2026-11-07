@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "d73edfc57f952a90091d51fe8fd746c648571543",
+  "sourceCommit": "63d750e9682b09e3497fb4f83c4da593ea6d066e",
   "exportPolicyVersion": 6,
   "exportPolicySha256": "6c429d3bd9908da161001ff9c2e1414ea0c0a0cde15650698c349d34285d999d",
-  "exportedTreeSha256": "b56918daf066859c0d6e4a36f8114de116aea69d7becbdccb6bd5f15acb60304",
-  "canonicalVersion": "0.1.21",
-  "canonicalTag": "v0.1.21",
+  "exportedTreeSha256": "c7aff035b8288f121b839d9db5013673d2535e63b753da968f865118a6538612",
+  "canonicalVersion": "0.1.23",
+  "canonicalTag": "v0.1.23",
   "validation": [
     {
       "gate": "install",

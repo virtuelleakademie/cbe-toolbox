@@ -97,7 +97,7 @@ export function fixtureManifest(options?: {
       options?.compatibility ??
       (packId === "cbe-skill"
         ? {
-            appRange: ">=0.1.21 <0.2.0",
+            appRange: ">=0.1.23 <0.2.0",
             modelSurfaceAbi: "cbe-skill/1",
             toolContractSha256: "e".repeat(64),
             testedPiVersion: "1.3.0",

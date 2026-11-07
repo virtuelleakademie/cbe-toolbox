@@ -77,7 +77,12 @@ export async function createCorpusBundle(
   const files = await collectFiles(corpusDir);
   const zip = new JSZip();
   for (const rel of files) {
-    zip.file(rel.split(path.sep).join("/"), await readFile(path.join(corpusDir, rel)), { date: ZIP_EPOCH });
+    zip.file(rel.split(path.sep).join("/"), await readFile(path.join(corpusDir, rel)), {
+      date: ZIP_EPOCH,
+      // JSZip otherwise synthesises directory entries with the current clock,
+      // making two bundles of identical corpus bytes differ.
+      createFolders: false,
+    });
   }
   const buffer = await zip.generateAsync({
     type: "nodebuffer",

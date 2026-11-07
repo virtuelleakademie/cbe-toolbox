@@ -25,7 +25,7 @@ export { SKILL_BODY_BUDGET } from "./cbe-system-prompt.js";
  * The pointer producer and the app verifier import these facts. Tests derive
  * expectations from this module rather than transcribing values beside it.
  */
-export const SKILL_BASE_APP_VERSION = "0.1.21";
+export const SKILL_BASE_APP_VERSION = "0.1.23";
 export const SKILL_APP_RANGE = `>=${SKILL_BASE_APP_VERSION} <0.2.0`;
 export const SKILL_MODEL_SURFACE_ABI = "cbe-skill/1";
 export const SKILL_TESTED_PI_VERSION = "1.3.0";

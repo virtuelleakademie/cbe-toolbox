@@ -6,12 +6,12 @@ Text instructions are preferred while platform trust and installation behavior c
 
 | Surface                 | Platform                | OS version | App/build               | Capture date | Operator | Review date | Asset/status                                                       |
 | ----------------------- | ----------------------- | ---------- | ----------------------- | ------------ | -------- | ----------- | ------------------------------------------------------------------ |
-| Installer window        | macOS                   | —          | 0.1.21 signed/notarized | —            | —        | —           | Text only; no image committed                                      |
-| Gatekeeper acceptance   | macOS                   | —          | 0.1.21 signed/notarized | —            | —        | —           | Text only; maintained instructions in `../../../closed-testing.md` |
-| Native file/open dialog | macOS                   | —          | 0.1.21                  | —            | —        | —           | Text only; app screenshot uses no imitation                        |
-| Installer window        | Windows                 | —          | 0.1.21 unsigned         | —            | —        | —           | Text only; no image committed                                      |
-| SmartScreen prompt      | Windows                 | —          | 0.1.21 unsigned         | —            | —        | —           | Text only; maintained instructions in `../../../closed-testing.md` |
-| Native file/open dialog | Windows                 | —          | 0.1.21                  | —            | —        | —           | Text only; app screenshot uses no imitation                        |
-| Native application menu | macOS / Windows / Linux | —          | 0.1.21                  | —            | —        | —           | Text only; platform inventory documented, no generated imitation   |
+| Installer window        | macOS                   | —          | 0.1.23 signed/notarized | —            | —        | —           | Text only; no image committed                                      |
+| Gatekeeper acceptance   | macOS                   | —          | 0.1.23 signed/notarized | —            | —        | —           | Text only; maintained instructions in `../../../closed-testing.md` |
+| Native file/open dialog | macOS                   | —          | 0.1.23                  | —            | —        | —           | Text only; app screenshot uses no imitation                        |
+| Installer window        | Windows                 | —          | 0.1.23 unsigned         | —            | —        | —           | Text only; no image committed                                      |
+| SmartScreen prompt      | Windows                 | —          | 0.1.23 unsigned         | —            | —        | —           | Text only; maintained instructions in `../../../closed-testing.md` |
+| Native file/open dialog | Windows                 | —          | 0.1.23                  | —            | —        | —           | Text only; app screenshot uses no imitation                        |
+| Native application menu | macOS / Windows / Linux | —          | 0.1.23                  | —            | —        | —           | Text only; platform inventory documented, no generated imitation   |
 
 The em dash means that no manual image claims current evidence. It is not provenance for a generated asset. When an image is added, every dash in its row must be replaced and the app/release owner must review it separately from `npm run docs:screenshots:check`.

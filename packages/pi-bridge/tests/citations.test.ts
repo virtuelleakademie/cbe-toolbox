@@ -29,7 +29,7 @@ describe("citation resolver", () => {
     expect(hit).not.toBeNull();
     expect(hit?.title).toBe("The Challenge Based Learning Three-Phase Framework");
     expect(hit?.path).toMatch(/methodology\/.*\.md$/);
-    expect(resolver.getVersion()).toBe("2026-11");
+    expect(resolver.getVersion()).toBe("2026-12");
   });
 
   it("returns null for an unknown id", async () => {

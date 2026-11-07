@@ -270,8 +270,9 @@ describe("cbe_cite — Resolves Citation-Equivalent Candidates", () => {
 });
 
 describe("cbe_cite — source-less real corpus document", () => {
-  // methodology-002..006 carry no sources[] (their literature is unverified). They
-  // are still citable: the tool emits a token without the author/year element.
+  // methodology-002..006 and the project-authored best-practice collection carry
+  // no sources[]. They are still citable: the tool emits a token without the
+  // author/year element.
   it("cites a real source-less document without an author element", async () => {
     const resolver = await createCitationResolver(corpusRoot);
     const headings = await resolver.resolveHeadings("methodology-002");
@@ -279,6 +280,25 @@ describe("cbe_cite — source-less real corpus document", () => {
     const result = await run(resolver, { id: "methodology-002", section });
     expect(text(result)).toBe(`(corpus:methodology-002 § ${section})`);
     expect(details(result).kind).toBe("citation");
+  });
+
+  it("A case field is independently citable", async () => {
+    const resolver = await createCitationResolver(corpusRoot);
+    for (const section of ["Stakeholder Involvement Moments", "PIONEER Maturity Assessment"]) {
+      const result = await run(resolver, { id: "case-study-007", section });
+      expect(text(result)).toBe(`(corpus:case-study-007 § ${section})`);
+      expect(details(result)).toMatchObject({ kind: "citation", id: "case-study-007", section });
+    }
+    const refused = await run(resolver, { id: "case-study-007", section: "Invented Criterion Scores" });
+    expect(details(refused).error).toBe("unknown-section");
+    expect(text(refused)).not.toMatch(/^\(corpus:/u);
+  });
+
+  it("Empty Source survives citation without an author-year tail", async () => {
+    const resolver = await createCitationResolver(corpusRoot);
+    const result = await run(resolver, { id: "methodology-013", section: "Level 2 — Fictional developed profile" });
+    expect(text(result)).toBe("(corpus:methodology-013 § Level 2 — Fictional developed profile)");
+    expect(text(result)).not.toMatch(/, [^)]+ \d{4}\)$/u);
   });
 });
 

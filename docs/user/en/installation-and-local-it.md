@@ -1,12 +1,12 @@
 ---
 pageId: installation-and-local-it
 locale: en
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # Installation
 
-Instructions for **CBE Toolbox 0.1.21 / CBE Skill 0.4.2**.
+Instructions for **CBE Toolbox 0.1.23 / CBE Skill 0.4.2**.
 
 <a id="what-is-cbe-toolbox"></a>
 

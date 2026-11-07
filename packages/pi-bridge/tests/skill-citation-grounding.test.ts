@@ -6,7 +6,7 @@
  * Truth (change `harden-citation-pipeline`).
  *
  * Root cause this guards against: "The Challenge Institute" is a license/copyright
- * holder, never a `sources[].author` of any corpus document (corpus 2026-11). Attributing
+ * holder, never a `sources[].author` of any corpus document (corpus 2026-12). Attributing
  * it as an author makes `cbe_cite` refuse the author (`unknown-source`), re-triggering the
  * hand-write loop the citation pipeline is meant to eliminate.
  */

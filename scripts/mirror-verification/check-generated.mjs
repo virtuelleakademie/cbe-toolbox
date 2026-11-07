@@ -23,6 +23,7 @@ async function assertSame(actual, expected, label) {
 try {
   const corpusRoot = path.join(scratch, "corpus");
   await cp(path.join(repoRoot, "corpus/content"), path.join(corpusRoot, "content"), { recursive: true });
+  await cp(path.join(repoRoot, "corpus/CHANGELOG.md"), path.join(corpusRoot, "CHANGELOG.md"));
   const generatedIndex = path.join(corpusRoot, "index.json");
   run(["index", path.join(corpusRoot, "content"), generatedIndex]);
   await assertSame(generatedIndex, path.join(repoRoot, "corpus/index.json"), "corpus/index.json");

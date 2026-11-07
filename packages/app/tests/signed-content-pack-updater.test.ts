@@ -137,7 +137,7 @@ describe("signed content pack updater", () => {
         rootPublicKeySpki: fixture.rootPublicKeySpki,
       }),
       paths,
-      installedAppVersion: "0.1.21",
+      installedAppVersion: "0.1.23",
       appBuildTime,
       now: () => now,
       fetchImpl: fetchRoutes(fixture.routes, []),
@@ -158,7 +158,7 @@ describe("signed content pack updater", () => {
         rootPublicKeySpki: fixture.rootPublicKeySpki,
       }),
       paths,
-      installedAppVersion: "0.1.21",
+      installedAppVersion: "0.1.23",
       appBuildTime,
       now: () => now,
       fetchImpl: fetchRoutes(fixture.routes, requests),
@@ -198,7 +198,7 @@ describe("signed content pack updater", () => {
     const options = {
       policy: skillContentPackPolicy({ baseUrl, rootKeyId: "root-v1", rootPublicKeySpki: fixture.rootPublicKeySpki }),
       paths,
-      installedAppVersion: "0.1.21",
+      installedAppVersion: "0.1.23",
       appBuildTime,
       now: () => now,
       fetchImpl,
@@ -225,7 +225,7 @@ describe("signed content pack updater", () => {
     const result = await refreshContentPack({
       policy: skillContentPackPolicy({ baseUrl, rootKeyId: "root-v1", rootPublicKeySpki: fixture.rootPublicKeySpki }),
       paths,
-      installedAppVersion: "0.1.21",
+      installedAppVersion: "0.1.23",
       appBuildTime,
       now: () => now,
       fetchImpl: fetchRoutes(fixture.routes, requests),
@@ -250,7 +250,7 @@ describe("signed content pack updater", () => {
     const result = await refreshContentPack({
       policy: skillContentPackPolicy({ baseUrl, rootKeyId: "root-v1", rootPublicKeySpki: fixture.rootPublicKeySpki }),
       paths,
-      installedAppVersion: "0.1.21",
+      installedAppVersion: "0.1.23",
       appBuildTime,
       now: () => now,
       fetchImpl: fetchRoutes(fixture.routes, requests),
@@ -267,7 +267,7 @@ describe("signed content pack updater", () => {
       await refreshContentPack({
         policy: skillContentPackPolicy({ baseUrl, rootKeyId: "root-v1", rootPublicKeySpki: fixture.rootPublicKeySpki }),
         paths,
-        installedAppVersion: "0.1.21",
+        installedAppVersion: "0.1.23",
         appBuildTime,
         now: () => now,
         fetchImpl: fetchRoutes(fixture.routes, requests, { [`${baseUrl}latest.json`]: redirect }),
@@ -279,7 +279,7 @@ describe("signed content pack updater", () => {
       await refreshContentPack({
         policy: skillContentPackPolicy({ baseUrl, rootKeyId: "root-v1", rootPublicKeySpki: fixture.rootPublicKeySpki }),
         paths,
-        installedAppVersion: "0.1.21",
+        installedAppVersion: "0.1.23",
         appBuildTime,
         now: () => now,
         fetchImpl: fetchRoutes(fixture.routes, [], { [`${baseUrl}latest.json`]: exactBoundary }),
@@ -291,7 +291,7 @@ describe("signed content pack updater", () => {
       await refreshContentPack({
         policy: skillContentPackPolicy({ baseUrl, rootKeyId: "root-v1", rootPublicKeySpki: fixture.rootPublicKeySpki }),
         paths,
-        installedAppVersion: "0.1.21",
+        installedAppVersion: "0.1.23",
         appBuildTime,
         now: () => now,
         fetchImpl: fetchRoutes(fixture.routes, [], { [`${baseUrl}latest.json`]: oversized }),
@@ -311,7 +311,7 @@ describe("signed content pack updater", () => {
         rootPublicKeySpki: publicKeySpkiBase64(generateKeyPairSync("ed25519").publicKey),
       }),
       paths,
-      installedAppVersion: "0.1.21",
+      installedAppVersion: "0.1.23",
       appBuildTime,
       fetchImpl: (() => pending) as typeof fetch,
     });

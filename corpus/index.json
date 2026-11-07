@@ -1,14 +1,191 @@
 {
-  "corpus-version": "2026-11",
-  "generated": "2026-11-06",
+  "corpus-version": "2026-12",
+  "generated": "2026-11-07",
   "generator": "cbe-corpus-cli@0.1.0",
-  "document-count": 13,
+  "document-count": 25,
   "categories": {
+    "case-study": 11,
     "foundations": 4,
-    "methodology": 8,
+    "methodology": 9,
     "vocabulary": 1
   },
   "documents": [
+    {
+      "id": "case-study-003",
+      "title": "Innovation & Society: Engineers Without Borders Challenge",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-003-ewb-challenge-innovation-and-society.md",
+      "tags": [
+        "maturity-level-3",
+        "engineering",
+        "engineers-without-borders",
+        "sustainability",
+        "prototyping",
+        "stakeholders"
+      ],
+      "short-description": "Real engineering module example at Level 3, using authentic NGO challenges, stakeholder consultation, iterative prototyping and embedded reflection."
+    },
+    {
+      "id": "case-study-004",
+      "title": "SGM1 — Going Global",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-004-going-global-international-live-case.md",
+      "tags": [
+        "maturity-level-2",
+        "international-business",
+        "live-case",
+        "coil",
+        "bip",
+        "intercultural-teamwork"
+      ],
+      "short-description": "Real international-business module example at Level 2, using a company live case, multicultural teamwork, coaching and study trips."
+    },
+    {
+      "id": "case-study-005",
+      "title": "TFGs y TFMs — Final Dissertations on Local Challenges",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-005-final-dissertations-on-local-challenges.md",
+      "tags": [
+        "maturity-level-2",
+        "lean-level-3",
+        "dissertations",
+        "social-work",
+        "economics",
+        "local-challenges"
+      ],
+      "short-description": "Real University of Huelva dissertation example at Level 2, directed toward Level 3 through local stakeholder engagement."
+    },
+    {
+      "id": "case-study-006",
+      "title": "InnoBioDiv — Innovative Research on Plant–Environment Interaction",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-006-innobiodiv-plant-climate-research.md",
+      "tags": [
+        "maturity-level-2",
+        "biology",
+        "engineering",
+        "climate-change",
+        "iot",
+        "research-based-learning"
+      ],
+      "short-description": "Real interdisciplinary plant-climate research module example at Level 2, combining biology, engineering, sensors and iterative experiments."
+    },
+    {
+      "id": "case-study-007",
+      "title": "Challenges & Opportunities in the Food System",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-007-food-system-campus-catering.md",
+      "tags": [
+        "maturity-level-2",
+        "food-systems",
+        "campus-catering",
+        "climate-roadmap",
+        "systems-thinking",
+        "environmental-management"
+      ],
+      "short-description": "Real campus-catering and food-system module example at Level 2, linked to the BFH Climate Roadmap and stakeholder feedback."
+    },
+    {
+      "id": "case-study-008",
+      "title": "User Experience & Information Visualization",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-008-ux-infovis-social-partner-challenges.md",
+      "tags": [
+        "maturity-level-2",
+        "user-experience",
+        "information-visualization",
+        "social-impact",
+        "prototyping",
+        "computer-science"
+      ],
+      "short-description": "Real computer-science module example at Level 2, with social partners, user research and iterative digital prototyping."
+    },
+    {
+      "id": "case-study-009",
+      "title": "Integrated Design Laboratories / Laboratori Integrati",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-009-integrated-design-laboratories.md",
+      "tags": [
+        "maturity-level-2",
+        "architecture",
+        "urban-planning",
+        "design",
+        "multidisciplinary",
+        "studio-learning"
+      ],
+      "short-description": "Real architecture and urban-design laboratory example at Level 2, combining disciplines, site work, stakeholder input and iterative studio critique."
+    },
+    {
+      "id": "case-study-010",
+      "title": "Special Week 3 — Smart Road Management",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-010-smart-road-management-special-week.md",
+      "tags": [
+        "maturity-level-2",
+        "lean-level-1",
+        "data-engineering",
+        "road-management",
+        "machine-learning",
+        "city-partner"
+      ],
+      "short-description": "Real data-engineering special-week example at Level 2, directed toward Level 1 because the partner challenge is narrow and time-limited."
+    },
+    {
+      "id": "case-study-011",
+      "title": "W.A.Ve. — Workshop Architettura Venezia",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-011-wave-architecture-summer-workshop.md",
+      "tags": [
+        "maturity-level-1",
+        "lean-level-2",
+        "architecture",
+        "summer-workshop",
+        "international",
+        "concept-design"
+      ],
+      "short-description": "Real intensive architecture workshop example at Level 1, directed toward Level 2 through open themes and public presentation."
+    },
+    {
+      "id": "case-study-012",
+      "title": "Model United Nations / UHUMUN",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-012-model-united-nations-simulation.md",
+      "tags": [
+        "maturity-level-1",
+        "model-united-nations",
+        "simulation",
+        "sdgs",
+        "debate",
+        "university-wide"
+      ],
+      "short-description": "Real university-wide Model United Nations simulation example at Level 1, with high learner agency but no real challenge owner or implemented outcome."
+    },
+    {
+      "id": "case-study-013",
+      "title": "Projektarbeit 1 — Bauingenieurwesen",
+      "category": "case-study",
+      "version": "0.1.0",
+      "path": "content/case-study/case-study-013-civil-engineering-project-work.md",
+      "tags": [
+        "maturity-level-1",
+        "civil-engineering",
+        "project-management",
+        "rainwater-management",
+        "structural-engineering",
+        "reflection"
+      ],
+      "short-description": "Real civil-engineering project module example at Level 1, using instructor-designed local tasks, guided teamwork and structured reflection."
+    },
     {
       "id": "foundations-001",
       "title": "CBL and Its Experiential Learning Foundations",
@@ -214,6 +391,22 @@
         "methodology"
       ],
       "short-description": "The PIONEER ten-step CBE module design flow (§4.6): ten steps with named outputs, backward-design (evidence first), the coherence gate after step 3, and iterative three-round use."
+    },
+    {
+      "id": "methodology-013",
+      "title": "Fictional Illustrations of Three CBE Maturity Profiles",
+      "category": "methodology",
+      "version": "0.1.0",
+      "path": "content/methodology/methodology-013-illustrative-maturity-profiles.md",
+      "tags": [
+        "fictional",
+        "illustrative-profiles",
+        "maturity-levels",
+        "cbe-light",
+        "good-practice",
+        "full-fledged"
+      ],
+      "short-description": "Three explicitly fictional illustrations of Level 1, Level 2 and Level 3 CBE profiles; they are not reports of real delivery or observed outcomes."
     },
     {
       "id": "vocabulary-001",

@@ -1,7 +1,7 @@
 ---
 pageId: privacy-data-storage
 locale: en
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # Privacy, data and storage
@@ -11,7 +11,7 @@ How CBE Toolbox stores data and sends requests to the configured model provider.
 > [!CAUTION]
 >
 > - Conversations, including information gathered about you in previous conversations (for example your teaching experience or institutional context), are transmitted to the inference service you configured. The privacy and data policies of that service apply. Users are responsible for ensuring compliance.
-> - Each time it starts, the application checks for a newer app version at an address hosted by Cloudflare. In this process, your IP address is revealed to Cloudflare. In version 0.1.21, Corpus and Skill content is not updated over the network.
+> - Each time it starts, the application checks for a newer app version at an address hosted by Cloudflare. In this process, your IP address is revealed to Cloudflare. In version 0.1.23, Corpus and Skill content is not updated over the network.
 
 <a id="local-storage"></a>
 

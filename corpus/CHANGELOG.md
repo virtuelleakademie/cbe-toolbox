@@ -4,6 +4,12 @@ The corpus is versioned content. The newest `## YYYY-MM` heading below is the
 authoritative `corpus-version` stamped into `index.json` by the index generator
 (`packages/corpus-schema/src/index-gen.ts`).
 
+## 2026-12
+
+- **CBE best-practice collection.** Added eleven real module case studies with stable `case-study-003` through `case-study-013` identities and field-level citation headings.
+- **Illustrative maturity profiles.** Added one explicitly fictional methodology document with separate Level 1, Level 2 and Level 3 profiles.
+- **Faithful maturity and source-gap handling.** Preserved the supplied holistic PIONEER labels and rationales, directional qualifiers, empty Source metadata, unresolved template gaps and only verified named external references.
+
 ## 2026-11
 
 - **Corpus content and metadata refresh.** Refreshed governed content and regenerated corpus metadata and distribution artifacts.

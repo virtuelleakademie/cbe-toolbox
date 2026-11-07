@@ -83,7 +83,7 @@ describe("signed content pack producer", () => {
     expect(implementation.join("\n")).not.toContain(legacyClaim);
   });
 
-  it("produces exactly index.json plus indexed Markdown for corpus 2026-11", async () => {
+  it("produces exactly index.json plus indexed Markdown for corpus 2026-12", async () => {
     const options = {
       packId: "cbe-corpus" as const,
       channel: "stable" as const,
@@ -98,11 +98,11 @@ describe("signed content pack producer", () => {
     };
     const first = await createUnsignedContentPack(options);
     const second = await createUnsignedContentPack(options);
-    expect(first.manifest.version).toBe("2026-11");
+    expect(first.manifest.version).toBe("2026-12");
     expect(Buffer.from(first.artifactBytes)).toEqual(Buffer.from(second.artifactBytes));
     expect(Buffer.from(first.manifestRaw)).toEqual(Buffer.from(second.manifestRaw));
-    expect(first.manifest.contents).toHaveLength(14);
-    expect(first.manifest.contents.some((entry) => entry.path.startsWith("content/case-study/"))).toBe(false);
+    expect(first.manifest.contents).toHaveLength(26);
+    expect(first.manifest.contents.filter((entry) => entry.path.startsWith("content/case-study/"))).toHaveLength(11);
     expect(first.manifest.contents[0]?.path.startsWith("content/")).toBe(true);
     expect(first.manifest.contents.at(-1)?.path).toBe("index.json");
     const zip = await JSZip.loadAsync(first.artifactBytes);
@@ -115,7 +115,7 @@ describe("signed content pack producer", () => {
         maxExpandedBytes: 4 * 1024 * 1024,
         maxExpansionRatio: 50,
       }).size
-    ).toBe(14);
+    ).toBe(26);
     expect(Object.keys(zip.files)).not.toContain("CHANGELOG.md");
   });
 

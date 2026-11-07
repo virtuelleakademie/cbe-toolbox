@@ -29,11 +29,11 @@ afterEach(async () => {
 describe("strict corpus inventory", () => {
   it("Pack contains exactly the indexed corpus data", async () => {
     const result = await validateCorpusInventory(path.join(repoRoot, "corpus"), { allowSourceDocumentation: true });
-    expect(result.version).toBe("2026-11");
-    expect(result.contents).toHaveLength(14);
-    expect(result.index.categories).not.toHaveProperty("case-study");
-    expect(result.index.documents.some((document) => document.category === "case-study")).toBe(false);
-    expect(result.contents.some((entry) => entry.path.startsWith("content/case-study/"))).toBe(false);
+    expect(result.version).toBe("2026-12");
+    expect(result.contents).toHaveLength(26);
+    expect(result.index.categories["case-study"]).toBe(11);
+    expect(result.index.documents.filter((document) => document.category === "case-study")).toHaveLength(11);
+    expect(result.contents.filter((entry) => entry.path.startsWith("content/case-study/"))).toHaveLength(11);
     expect(result.contents.map((entry) => entry.path)).toEqual(
       [...result.index.documents.map((document) => document.path), "index.json"].sort()
     );
@@ -60,8 +60,8 @@ describe("strict corpus inventory", () => {
     await writeFile(
       file,
       raw.replace(
-        '{\n  "corpus-version": "2026-11",',
-        '{\n  "corpus-version": "2026-11",\n  "corpus-version": "2026-11",'
+        '{\n  "corpus-version": "2026-12",',
+        '{\n  "corpus-version": "2026-12",\n  "corpus-version": "2026-12",'
       )
     );
     await expect(validateCorpusInventory(root, { allowSourceDocumentation: true })).rejects.toThrow(/index-invalid/);

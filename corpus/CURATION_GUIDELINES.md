@@ -1,6 +1,6 @@
 # Curation Guidelines for the CBE Toolbox Corpus
 
-Version: 1.3.0 | Last updated: 2026-11-06 | Maintained by: CBE Toolbox corpus maintainers
+Version: 1.4.0 | Last updated: 2026-11-07 | Maintained by: CBE Toolbox corpus maintainers
 
 ---
 
@@ -182,7 +182,7 @@ version: "v1.0.0"    # leading "v" not permitted
 
 ### `sources`
 
-**Definition.** Array of source objects. Every authoritative claim in the body must trace back to a `sources[]` entry. The array may be empty for pure template documents that contain no authoritative claims, but should almost never be empty for methodology, foundations, case-study, or vocabulary documents.
+**Definition.** Array of source objects. Every authoritative claim in the body must trace back to a `sources[]` entry. The array may be empty for pure template documents that contain no authoritative claims. It may also be empty for explicitly governed project-authored conversions whose supplied working files are evidence inputs rather than bibliographic works: those documents preserve the supplied account, flag unsupported observations and record only genuine named external relationships under `## References`. An empty array is always explicit (`sources: []`), never an omitted field or an empty source object.
 
 Each source entry must have five sub-fields:
 - `author`: the author(s) in citation form.
@@ -341,7 +341,7 @@ short-description: "The Engage–Investigate–Act three-phase structure and how
 
 **Typical length.** 1000–2500 words.
 
-**Current corpus state.** The category may contain zero documents while approved best-practice examples are being prepared. Do not create a placeholder: validation, indexing, browsing, and bundling must remain coherent when the category is absent.
+**Current corpus state.** The category contains the selected PIONEER best-practice collection as individual real-module cases. The pipeline must still remain coherent when a corpus version or synthetic test fixture contains zero case-study documents; do not create a placeholder for an empty category.
 
 **Anti-example.** A case study that begins to generalise from one institution's experience into prescriptive guidance ("this shows that CBL always works best when…") has crossed into methodology territory. The case-study document should report what happened; a separate methodology document can draw prescriptive conclusions from a body of evidence.
 
@@ -422,7 +422,7 @@ A corpus document distinguishes two bibliographic lists, and they are not interc
 - **Sources** are the frontmatter `sources[]` entries. They are the citation contract: the works the document's authoritative claims are grounded in and that a citation token may name in its `<author year>` element. Each entry carries its `license`, and a paginated primary source carries its `pages`.
 - **References** are the body's `## References` section. It lists the bibliographic details of works the document names or discusses — including every source and any further work the text mentions — in plain citation form. A reference carries **no licence metadata**: no licence annotation, licence field or rights note. The licence of a source is recorded once, in its `sources[]` entry.
 
-A work the document only discusses (for example, a theorist in a lineage) belongs under References, not under Sources. Do not add a `## Further reading` section or any other list of unverified or pending candidate literature: an incomplete list reads as a recommendation the corpus cannot stand behind. Literature still to be verified stays outside the corpus until it is verified and either grounds a claim (Sources) or is named in the text (References).
+A work the document only discusses (for example, a theorist in a lineage) belongs under References, not under Sources. For a governed project-authored conversion with `sources: []`, the supplied office file is not turned into a bibliographic entry; a publication, website or method explicitly named by that file may appear under References after its identity and link are verified. Do not add a `## Further reading` section or any other list of unverified or pending candidate literature: an incomplete list reads as a recommendation the corpus cannot stand behind. Literature still to be verified stays outside the corpus until it is verified and either grounds a claim (Sources) or is named in the text (References).
 
 ### Page-anchored primary-source citations
 

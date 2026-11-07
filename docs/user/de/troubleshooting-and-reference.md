@@ -1,7 +1,7 @@
 ---
 pageId: troubleshooting-and-reference
 locale: de
-appVersion: 0.1.21
+appVersion: 0.1.23
 ---
 
 # Fehlerbehebung und Referenz
@@ -102,7 +102,7 @@ Behalten Sie die installierte Version. Wiederholen Sie erst, nachdem lokale IT N
 
 ## Was Sie dem Support mitteilen
 
-Beginnen Sie mit App-/Skill-Version, Betriebssystem/-version, Zeitpunkt, sichtbarem Symptom, auslösenden Schritten und einem bereinigten Screenshot oder sichtbaren Fehlertext. Version 0.1.21 hat keinen Ein-Klick-Supportexport. Teilen Sie weder Provider-Schlüssel noch persönliche Studierendendaten. Senden Sie nicht standardmässig den ganzen App-Daten-/Course-Ordner. Benötigt autorisierter Support eine bestimmte Session-Markdown-Datei, ein JSON-Sidecar oder eine Diagnosedatei, vereinbaren Sie Datei und sicheren Kanal, behalten eine unveränderte Sicherung und entfernen vertrauliche Inhalte.
+Beginnen Sie mit App-/Skill-Version, Betriebssystem/-version, Zeitpunkt, sichtbarem Symptom, auslösenden Schritten und einem bereinigten Screenshot oder sichtbaren Fehlertext. Version 0.1.23 hat keinen Ein-Klick-Supportexport. Teilen Sie weder Provider-Schlüssel noch persönliche Studierendendaten. Senden Sie nicht standardmässig den ganzen App-Daten-/Course-Ordner. Benötigt autorisierter Support eine bestimmte Session-Markdown-Datei, ein JSON-Sidecar oder eine Diagnosedatei, vereinbaren Sie Datei und sicheren Kanal, behalten eine unveränderte Sicherung und entfernen vertrauliche Inhalte.
 
 Kontaktieren Sie lokale IT bei Richtlinien, Zertifikaten, Proxy, Endpunkt-Erreichbarkeit, Installer-Vertrauen oder Speicherrechten. Dazu gehören auch Installationsprobleme wegen Einschränkungen auf institutionell verwalteten Geräten und Probleme mit der Modellkonfiguration (Basis-URL, Modell-ID, API-Schlüssel): Dafür ist Ihre lokale IT-Abteilung zuständig, nicht die Anbieter der CBE Toolbox.
 

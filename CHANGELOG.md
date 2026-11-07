@@ -19,6 +19,38 @@ version without its section.
 
 ## [Unreleased]
 
+## [0.1.23] — 2026-11-07
+
+Wartungsrelease für die Veröffentlichung des bereinigten Quellcode-Spiegels.
+App-Verhalten, CBE Skill **0.4.2**, Korpus **2026-12** sowie die enthaltenen
+Fallstudien und Reifegradprofile bleiben unverändert.
+
+### Fixed
+
+- **Die Spiegel-Verifikation greift nicht mehr auf kanonische, vom Export
+  ausgeschlossene Projektbelege zu.** Der versionierte XLSX-Beleg bleibt in der
+  kanonischen Checkout-Prüfung bytegenau abgedeckt; Prüfungen der Originale und
+  generierten Publikationsausgaben bleiben ebenfalls kanonisch. Die exportierte
+  Testsuite verwendet nur im Spiegel enthaltene Dateien.
+
+## [0.1.22] — 2026-11-07
+
+Korpus-Release mit CBE-Best-Practices. Der CBE Skill **0.4.2** bleibt
+unverändert.
+
+### Added
+
+- **Korpus 2026-12 ergänzt elf reale CBE-Best-Practice-Fallstudien und drei
+  ausdrücklich fiktive Reifegradprofile.** Die Fallstudien bilden reale Module ab; die drei
+  Profile illustrieren getrennt die Reifegrade 1, 2 und 3 und sind klar als
+  fiktiv gekennzeichnet.
+
+### Changed
+
+- **Die generierten Korpusartefakte sind auf dem neuen Stand.** Index,
+  Download-Bundle und Browse-Ansicht wurden für Korpus 2026-12 regulär neu
+  erzeugt.
+
 ## [0.1.21] — 2026-11-06
 
 Redaktionelles Korpus-Patch. CBE Skill **0.4.2** und die Korpusversion

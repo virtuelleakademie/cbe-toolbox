@@ -7,6 +7,6 @@
     "evaluation/cbe-skill/runner/tests"
   ],
   "suffixes": [".test.ts", ".test.tsx", ".test.js", ".test.mjs", ".spec.ts", ".spec.tsx"],
-  "mirrorSafeCount": 344,
-  "pathsSha256": "e5a4f8e9c55317b50d95f5ad9fc7d467f5b91b9e392031078cfb7a5947348555"
+  "mirrorSafeCount": 345,
+  "pathsSha256": "7016a1d3253002b9515822cf59aa67d82e563e6048d5a82a6d9a0be4e290b525"
 }
